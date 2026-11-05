@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import {
   Activity,
@@ -35,14 +35,42 @@ const NAV = [
 export function AppShell({ children }: { children: ReactNode }) {
   const { meta, metaError, health, healthError, reloadHealth } = useUi();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 1000px)').matches,
+  );
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const wasMobileOpen = useRef(false);
   const location = useLocation();
   const learningOff = meta?.features.learning === false;
   const apiOnline = !healthError && health !== null;
   const stage = meta?.phase ?? (metaError ? 'unreported' : '…');
 
   useEffect(() => {
+    const query = window.matchMedia('(max-width: 1000px)');
+    const update = () => setIsMobile(query.matches);
+    update();
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
+
+  useEffect(() => {
     setMobileOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (!isMobile) {
+      wasMobileOpen.current = mobileOpen;
+      return;
+    }
+    if (mobileOpen) {
+      wasMobileOpen.current = true;
+      const firstLink = document.querySelector<HTMLElement>('#primary-navigation .nav-link');
+      firstLink?.focus();
+    } else if (wasMobileOpen.current) {
+      wasMobileOpen.current = false;
+      menuButtonRef.current?.focus();
+    }
+  }, [isMobile, mobileOpen]);
 
   useEffect(() => {
     if (!mobileOpen) return;
@@ -61,6 +89,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <header className="topbar">
         <div className="topbar-brand">
           <button
+            ref={menuButtonRef}
             type="button"
             className="icon-button topbar-menu"
             aria-label={mobileOpen ? 'Close navigation' : 'Open navigation'}
@@ -99,7 +128,13 @@ export function AppShell({ children }: { children: ReactNode }) {
       </header>
 
       <div className="shell-body">
-        <aside id="primary-navigation" className={cn('sidebar', mobileOpen && 'sidebar-open')} aria-label="Primary navigation">
+        <aside
+          id="primary-navigation"
+          className={cn('sidebar', mobileOpen && 'sidebar-open')}
+          aria-label="Primary navigation"
+          aria-hidden={isMobile && !mobileOpen ? true : undefined}
+          inert={isMobile && !mobileOpen ? true : undefined}
+        >
           <nav className="nav-list">
             {NAV.map((item) => {
               const Icon = item.icon;

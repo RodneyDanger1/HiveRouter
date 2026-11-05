@@ -15,7 +15,7 @@ Do not treat a README, prompt, or historical wave note as permission to widen sc
 
 ## 2. Current goal
 
-**Wave 10 — P2-3 search index freshness.** A terminal run’s workspace is currently treated as immutable after the first search. If a published file changes, the disposable FTS index is silently stale. Wave 10 makes the index detect a changed workspace, rebuild before serving results, expose whether it was built/reused/rebuilt, and keep the response honest if the workspace is missing or empty. This is the only implementation scope for the wave.
+**Wave 11 — P2-4 mobile/keyboard pass.** Verify `/analysis`, run-detail Search, the mobile shell navigation, and run-detail tabs at 390×844 and keyboard-only. Fix only confirmed responsive/accessibility defects; no API, DB, or router behavior changes. Wave 10 search freshness is complete and remains covered by its tests.
 
 ## 3. Skill routing — when / why / where / output
 
@@ -35,42 +35,39 @@ Do not treat a README, prompt, or historical wave note as permission to widen sc
 | `research` | A fact is unknown or local code/docs conflict | Replace guesses with confirmed facts | Installed source, lockfile, official docs | Confirmed facts + remaining unknowns |
 | `evidence-check` | Before delivery | Catches overclaiming | Final report | Claim/evidence/status table |
 
-## 4. File map and ownership for Wave 10
+## 4. File map and ownership for Wave 11
 
 | Path | Role | Expected change |
 |---|---|---|
-| `src/server/search/run-search.ts` | Search/index owner | Workspace signature, persisted index state, rebuild policy, response state |
-| `src/server/db/migrations.ts` | Schema owner | `run_search_index` table in `SEARCH_SQL` |
-| `src/server/app.ts` | Route owner | Response shape only; no path input |
-| `web/src/api-types.ts` | Client contract | `RunSearchResponse.indexState` |
-| `web/src/pages/RunDetailPage.tsx` | UI owner | Show built/reused/rebuilt truthfully |
-| `config/releases/p7.json` | Stage census | Add `run_search_index` |
-| `test/unit/run-search.test.ts` | Regression pins | Rebuild, reuse, delete, missing-workspace tests |
-| `docs/PLAN-v3.md`, `docs/CAPABILITY-MATRIX.md`, `docs/BACKLOG.md`, `README.md` | Census/docs | Update behavior and counts with OLD→NEW reasons |
+| `e2e/mobile-keyboard.spec.ts` | New regression suite | Mobile Analysis/Search overflow, keyboard tabs, mobile nav focus |
+| `web/src/components/AppShell.tsx` | Shell owner | Only if the closed mobile sidebar remains focusable |
+| `web/src/components/ui.tsx` | Tabs owner | Only if tab selection/focus or ARIA linkage is insufficient |
+| `web/src/pages/AnalysisPage.tsx` / `web/src/styles.css` | Responsive owner | Only if the 390 px test finds real overflow |
+| `docs/TRACE/WAVE-11/TRACE-SUMMARY.md` | Evidence | Tests, screenshots, fixes, residual |
+| `docs/PLAN-v3.md`, `docs/CAPABILITY-MATRIX.md`, `docs/BACKLOG.md`, `README.md` | Census/docs | Update P2-4 and counts |
 
 ## 5. Invariants for this wave
 
-- Only one terminal run’s published text files are indexed. Never accept a caller-supplied path.
-- Exclude `.staging/`, `staged/`, `RUN_REPORT.md`, `manifest.json`, symlinks, binaries, empty/NUL content, and files over 256 KB.
-- Cap at 2,000 indexed files.
-- No provider call, no shell, no generated-code execution, no P7 data, no write to the run workspace.
-- An unchanged workspace must **not** rebuild; a changed workspace must rebuild **before** returning matches.
-- Missing workspace is an empty, honest index state, not an error and not invented matches.
-- The response must say which state the caller received: `built`, `reused`, or `rebuilt`.
+- No API, DB, search, run-state, or generated-code behavior changes.
+- No paid provider call; no secret read; no destructive action.
+- Mobile checks use a 390×844 viewport; keyboard checks use real focus and `aria-selected`/`aria-expanded`.
+- A hidden mobile sidebar must not receive keyboard focus.
+- A wide table may scroll inside its wrapper, but the document must not overflow horizontally.
+- Fix only defects reproduced by the new tests; do not redesign the UI.
 
-## 6. Gates for Wave 10
+## 6. Gates for Wave 11
 
 ```powershell
-npm.cmd run typecheck
-npm.cmd test -- --run test/unit/run-search.test.ts
-npm.cmd test
-npm.cmd run build
+npx playwright test e2e/mobile-keyboard.spec.ts
 npm.cmd run e2e
+npm.cmd test
+npm.cmd run typecheck
+npm.cmd run build
 npm.cmd run assert-stage -- --stage=p7 --json
 npm.cmd run preflight -- --port 0 --json
 ```
 
-Stage table count changes from 50 to 51. Do not update the count until `assert-stage` reports it. A wave is complete only when the RED path (workspace changed) and the reuse path (workspace unchanged) both have evidence.
+Stage counts should not change unless a real source file is added beyond the E2E spec (which is already in the stage paths). A wave is complete only when the mobile overflow, keyboard tab, and hidden-nav focus paths have evidence.
 
 ## 7. Stop conditions
 

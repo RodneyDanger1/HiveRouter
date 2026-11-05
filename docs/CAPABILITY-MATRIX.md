@@ -23,6 +23,7 @@ Status is deliberately blunt. “Partial” means the path exists but a material
 | P7 evaluation | **Absent** | No `eval_runs`/`eval_results` producer; promotion unreachable |
 | P7 promotion/rollback | Code exists, unreachable | Sealed pool/consent + evaluation absent |
 | Chat | Works (B2) | Durable jobs, leases, retries, SSE, cancellation |
+| Mobile / keyboard UI | **Partial** | 390×844 Analysis/Search overflow + run-tab arrow focus + closed-nav focus ownership covered by Playwright; open-nav focus trap and full screen-reader audit remain absent |
 | Multi-user/cloud | **Absent** | Local single-user process |
 | Native `.exe` | **Absent** | Chrome app-window launcher only |
 | Browser/computer use | **Absent** | No browser driver or desktop actuator |

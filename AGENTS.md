@@ -16,7 +16,7 @@ Read `docs/PLAN-v3.md` first. It is the authoritative contract. This file is a s
 
 The durable agent plan is `docs/AGENT-OPERATING-PLAN.md`. Read it before choosing work, then read `docs/PLAN-v3.md` §0, §3, §4, §6, §10, §11, §13, `docs/BACKLOG.md`, and the latest `docs/TRACE/**/TRACE-SUMMARY.md` again.
 
-- **Current wave:** Wave 10, backlog P2-3 — make the run-workspace search index detect workspace changes and rebuild or label a stale index. This is the only implementation scope for this wave.
+- **Current wave:** Wave 11, backlog P2-4 — mobile and keyboard-only verification for `/analysis`, run-detail Search, the shell navigation, and run-detail tabs. Fix only confirmed accessibility/responsive defects; do not change the router data model.
 - **Skill routing:** use `forgewright-recon` before edits; `logic-gatekeeper` Phase 1 before every mutation; `logic-debugger` for state/error/retry invariants; `forge` for RED→GREEN; `forgewright-lead` for the final integration and gates; `capability-auditor` for registry/prompt parity; `agent-experience` for UI truth; `agent-learning-loop` only for L0/L1/L2 claims and never weight-learning claims; `agent-native-design` for CLI/API affordances; `integration-logic` for client→route→store seams; `research` when a fact is unknown; `evidence-check` before delivery.
 - **No scope drift:** do not implement approval, repo tools, the tool loop, P7 evaluation, checkpoints, or parallel generation in this wave. They stay in `docs/BACKLOG.md`.
 - **Evidence rule:** every claim in the final report names a command/output, file:line, or captured HTTP/DB result. A passing test on another path is not evidence.

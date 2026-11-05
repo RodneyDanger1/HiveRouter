@@ -575,3 +575,12 @@ Final gates: typecheck PASS; 226 tests / 30 files; 26/26 E2E; build PASS; strict
 - New failure fixtures: edited file, deleted file, missing workspace first/repeat. No provider call, no workspace write, no path input.
 - **Gates:** typecheck PASS; **440 tests / 69 files**; build PASS; **30/30 E2E**; strict stage **199 files / 51 tables / 62 routes / 24 scripts**, violations `[]`; preflight PASS (free RAM 1.92 GB, disk 9.07 GB).
 - **Residual:** mtime+size freshness is not cryptographic; a content edit that preserves both size and mtime is not detected. The index state is disposable; deleting `run_search_*` tables rebuilds on the next search. No external repository indexing.
+
+## 30. Wave 11 — mobile and keyboard-only pass (2026-11-05)
+
+- **Plan:** `docs/WAVE-11-PLAN.md`; **evidence:** `docs/TRACE/WAVE-11/TRACE-SUMMARY.md`.
+- Added `e2e/mobile-keyboard.spec.ts` with four trials: 390×844 Analysis with no document overflow, 390×844 run-detail Search with no overflow, run-detail ArrowLeft/ArrowRight selection+focus, and closed mobile navigation focus ownership.
+- **Confirmed defect:** the mobile sidebar was only `transform`-hidden, so its links remained keyboard-focusable while the menu was closed. RED: 1 of 4 trials failed (`insideNav=true`). Fixed with a media-query state, `inert`/`aria-hidden` on the closed mobile sidebar, focus entering the first nav link on open, and focus returning to the menu button on close. GREEN: 4/4.
+- Analysis and Search passed at 390px without document overflow; run-detail tabs passed selection+focus. No API, DB, search, or run-state change.
+- **Gates:** typecheck PASS; **440 tests / 69 files**; build PASS; **34/34 E2E**; strict stage **200 files / 51 tables / 62 routes / 24 scripts**, violations `[]`; preflight PASS (free RAM 2.31 GB, disk 9.07 GB); stub clean 103; secret clean 198.
+- **Residual:** this pass covers the named surfaces and viewport, not every page at every viewport; true screen-reader testing, reduced-motion visual assertions, and focus-trap behavior while the mobile menu is open remain unverified. No paid provider call.

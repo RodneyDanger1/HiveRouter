@@ -10,7 +10,7 @@ Plan a project, route each file to a specialist role, generate, statically verif
   <img alt="React" src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=111">
   <img alt="SQLite" src="https://img.shields.io/badge/SQLite-WAL-003B57?logo=sqlite&logoColor=white">
   <img alt="Tests" src="https://img.shields.io/badge/tests-440%20passing-2E7D32">
-  <img alt="E2E" src="https://img.shields.io/badge/Playwright-30%20passing-2E7D32">
+  <img alt="E2E" src="https://img.shields.io/badge/Playwright-34%20passing-2E7D32">
 </p>
 
 HiveRouter is a personal engineering showcase built around one rule: **evidence or it did not happen**. It is a real, runnable TypeScript application — not a slide deck — with a deterministic routing engine, a persisted run ledger, static verification, a staged-artifact safety model, chat fan-out, full-text run search, and honest refusals when a capability is absent.
@@ -124,7 +124,7 @@ These are the parts worth reviewing:
 - **Bounded static analysis.** Dominators and scorecards are read-only JSON endpoints with explicit limits and a real UI, not decorative cards.
 - **Scripts without execution.** The Scripts page lists every verification script with its safety class; a dry-run returns a local command string and never spawns a process. Paid scripts are labeled and disabled, and the API refuses them with `E_SCRIPT_DRY_RUN_UNSUPPORTED`.
 - **FTS5 without path traversal.** Search indexes only one terminal run’s published text files; it never accepts a caller-supplied path.
-- **Tests as a contract.** 440 unit/integration tests, 30 Playwright tests, stage allowlists, OpenAPI response pins, secret scan, and a stub sweep.
+- **Tests as a contract.** 440 unit/integration tests, 34 Playwright tests, stage allowlists, OpenAPI response pins, secret scan, and a stub sweep.
 
 ---
 
@@ -206,11 +206,11 @@ npm run assert-stage -- --stage=p7 --json
 |---|---|
 | Unit / integration | `npm.cmd test` — **440 tests / 69 files** |
 | Typecheck / build | `npm.cmd run verify` — **exit 0** |
-| Browser E2E | `npm.cmd run e2e` — **30 / 30 passed** |
-| Stage allowlist | **199 files / 51 tables / 62 routes / 24 scripts**, violations `[]` |
-| Preflight | **PASS** — free RAM 1.92 GB, disk 9.07 GB, Chrome/Node/npm/port |
+| Browser E2E | `npm.cmd run e2e` — **34 / 34 passed** |
+| Stage allowlist | **200 files / 51 tables / 62 routes / 24 scripts**, violations `[]` |
+| Preflight | **PASS** — free RAM 2.31 GB, disk 9.07 GB, Chrome/Node/npm/port |
 | Stub sweep | clean (103 files) |
-| Secret scan | clean (197 files) |
+| Secret scan | clean (198 files) |
 
 Reproduce:
 
@@ -294,6 +294,7 @@ Key documents:
 - [Wave 8 live trials](docs/TRACE/WAVE-8/TRACE-SUMMARY.md)
 - [Wave 9 tab audit and fixes](docs/TRACE/WAVE-9/TRACE-SUMMARY.md)
 - [Wave 10 search freshness](docs/TRACE/WAVE-10/TRACE-SUMMARY.md)
+- [Wave 11 mobile and keyboard](docs/TRACE/WAVE-11/TRACE-SUMMARY.md)
 - [Backlog and test matrix](docs/BACKLOG.md)
 - [Provenance](docs/PROVENANCE.md)
 
