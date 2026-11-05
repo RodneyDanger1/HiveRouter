@@ -15,7 +15,7 @@ Do not treat a README, prompt, or historical wave note as permission to widen sc
 
 ## 2. Current goal
 
-**Wave 11 — P2-4 mobile/keyboard pass.** Verify `/analysis`, run-detail Search, the mobile shell navigation, and run-detail tabs at 390×844 and keyboard-only. Fix only confirmed responsive/accessibility defects; no API, DB, or router behavior changes. Wave 10 search freshness is complete and remains covered by its tests.
+**Wave 12 — P0-3 per-file byte bound at the schema boundary.** Agent file/test/review output must be rejected before persistence when its UTF-8 content exceeds `config.limits.maxFileBytes`, with a bounded `E_FILE_TOO_LARGE` refusal and no wasted schema-repair calls. Keep `writeStaged` as defense in depth. No router data-model, route, or UI changes.
 
 ## 3. Skill routing — when / why / where / output
 
@@ -35,39 +35,40 @@ Do not treat a README, prompt, or historical wave note as permission to widen sc
 | `research` | A fact is unknown or local code/docs conflict | Replace guesses with confirmed facts | Installed source, lockfile, official docs | Confirmed facts + remaining unknowns |
 | `evidence-check` | Before delivery | Catches overclaiming | Final report | Claim/evidence/status table |
 
-## 4. File map and ownership for Wave 11
+## 4. File map and ownership for Wave 12
 
 | Path | Role | Expected change |
 |---|---|---|
-| `e2e/mobile-keyboard.spec.ts` | New regression suite | Mobile Analysis/Search overflow, keyboard tabs, mobile nav focus |
-| `web/src/components/AppShell.tsx` | Shell owner | Only if the closed mobile sidebar remains focusable |
-| `web/src/components/ui.tsx` | Tabs owner | Only if tab selection/focus or ARIA linkage is insufficient |
-| `web/src/pages/AnalysisPage.tsx` / `web/src/styles.css` | Responsive owner | Only if the 390 px test finds real overflow |
-| `docs/TRACE/WAVE-11/TRACE-SUMMARY.md` | Evidence | Tests, screenshots, fixes, residual |
-| `docs/PLAN-v3.md`, `docs/CAPABILITY-MATRIX.md`, `docs/BACKLOG.md`, `README.md` | Census/docs | Update P2-4 and counts |
+| `src/server/agents/registry.ts` | Schema owner | Byte-bounded content schemas for file emission, tests, and review revisions |
+| `src/server/llm/client.ts` | Provider boundary | Preserve a schema issue’s `E_*` code and stop repair retries for a deterministic size refusal |
+| `src/shared/refusals.ts` | Refusal registry | Add `E_FILE_TOO_LARGE` |
+| `test/unit/agents.schemas.test.ts` | Schema pins | Exact-limit passes; over-limit carries `E_FILE_TOO_LARGE`; tests/review content too |
+| `test/unit/llm.client.test.ts` | Identity/no-retry pin | Mock oversized schema response → `E_FILE_TOO_LARGE`, one request, no repair |
+| `docs/TRACE/WAVE-12/TRACE-SUMMARY.md` | Evidence | RED/GREEN, exact counts, residual |
+| `docs/PLAN-v3.md`, `docs/CAPABILITY-MATRIX.md`, `docs/BACKLOG.md`, `README.md` | Census/docs | Update P0-3 and counts only if tests change |
 
 ## 5. Invariants for this wave
 
-- No API, DB, search, run-state, or generated-code behavior changes.
-- No paid provider call; no secret read; no destructive action.
-- Mobile checks use a 390×844 viewport; keyboard checks use real focus and `aria-selected`/`aria-expanded`.
-- A hidden mobile sidebar must not receive keyboard focus.
-- A wide table may scroll inside its wrapper, but the document must not overflow horizontally.
-- Fix only defects reproduced by the new tests; do not redesign the UI.
+- The byte bound is UTF-8 bytes, not JavaScript characters; exact limit passes, limit+1 fails.
+- No file content is persisted before the schema refusal; `writeStaged` remains as defense in depth.
+- The refusal is typed and bounded: `E_FILE_TOO_LARGE`; no generic `E_INTERNAL` or `E_LLM_SCHEMA_INVALID`.
+- A deterministic size refusal must not trigger JSON repair requests; no extra provider cost.
+- No provider live call; no generated-code execution; no key read.
+- Applies to file emission, generated tests, and review file revisions.
 
-## 6. Gates for Wave 11
+## 6. Gates for Wave 12
 
 ```powershell
-npx playwright test e2e/mobile-keyboard.spec.ts
-npm.cmd run e2e
+npm.cmd test -- --run test/unit/agents.schemas.test.ts test/unit/llm.client.test.ts
 npm.cmd test
 npm.cmd run typecheck
 npm.cmd run build
+npm.cmd run e2e
 npm.cmd run assert-stage -- --stage=p7 --json
 npm.cmd run preflight -- --port 0 --json
 ```
 
-Stage counts should not change unless a real source file is added beyond the E2E spec (which is already in the stage paths). A wave is complete only when the mobile overflow, keyboard tab, and hidden-nav focus paths have evidence.
+Stage counts should not change unless a source file is added. A wave is complete only when the schema boundary test and the provider identity/no-repair test have RED→GREEN evidence.
 
 ## 7. Stop conditions
 

@@ -360,6 +360,29 @@ describe('DeepSeekClient', () => {
     expect(requests).toHaveLength(2);
   });
 
+  it('preserves a schema-issued refusal code and does not spend repair requests', async () => {
+    const bounded = z.object({
+      content: z.string().superRefine((value, ctx) => {
+        if (value.length > 3) {
+          ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'E_FILE_TOO_LARGE: content exceeds the test bound.' });
+        }
+      }),
+    });
+    queue.push({
+      status: 200,
+      body: completionBody({ content: JSON.stringify({ content: 'too-large' }) }),
+    });
+
+    await expect(
+      makeClient().structured(bounded, chatRequest({ json: true })),
+    ).rejects.toMatchObject({
+      code: 'E_FILE_TOO_LARGE',
+      status: 200,
+      retryable: false,
+    });
+    expect(requests).toHaveLength(1);
+  });
+
   it('returns typed models and balance data', async () => {
     const client = makeClient();
 

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { config } from '../config.js';
 import { AGENT_IDS } from '../../shared/types.js';
 import type { AgentCapability, AgentDefinition, AgentId, FileTask, OutputKind, VerificationSupport } from '../../shared/types.js';
 import { sha256 } from './hash.js';
@@ -810,10 +811,28 @@ export function planOutputSchemaFor(agentId: AgentId): z.ZodType {
 }
 
 
+/**
+ * Bound generated file content at the schema boundary, before the pipeline can
+ * persist it. The byte limit is config.limits.maxFileBytes; UTF-8 bytes are
+ * measured, not JavaScript code units. writeStaged remains the last defense.
+ */
+function boundedFileContent(min = 1) {
+  return z.string().min(min).superRefine((value, ctx) => {
+    const bytes = Buffer.byteLength(value, 'utf8');
+    if (bytes > config.limits.maxFileBytes) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: [],
+        message: `E_FILE_TOO_LARGE: file content is ${bytes} bytes; limit is ${config.limits.maxFileBytes}.`,
+      });
+    }
+  });
+}
+
 export const FileEmissionSchema = z.object({
   path: z.string().min(1),
   language: z.string().min(1),
-  content: z.string().min(1),
+  content: boundedFileContent(),
   summary: z.string().default(''),
   execution: z.string().default(''),
   complete: z.boolean().default(true),
@@ -829,14 +848,14 @@ export const ReviewSchema = z.object({
     issue: z.string(),
     fix: z.string(),
   })).default([]),
-  files: z.array(z.object({ path: z.string().min(1), content: z.string() })).default([]),
+  files: z.array(z.object({ path: z.string().min(1), content: boundedFileContent(0) })).default([]),
   execution: z.string().optional(),
 });
 
 export const TestsSchema = z.object({
   summary: z.string().default(''),
   testCommand: z.string().default(''),
-  files: z.array(z.object({ path: z.string().min(1), language: z.string().default('text'), content: z.string().min(1) })).default([]),
+  files: z.array(z.object({ path: z.string().min(1), language: z.string().default('text'), content: boundedFileContent() })).default([]),
 });
 
 export const CandidateDraftSchema = z.object({

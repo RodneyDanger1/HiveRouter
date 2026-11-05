@@ -7,7 +7,7 @@ Status is deliberately blunt. “Partial” means the path exists but a material
 | Plan a bounded file matrix | Works | Architect schema + max 24 files |
 | Route files to personas | Partial | CCR DP exists; constant cost/latency normalizers and auth risk now apply; critical path is still binary and full weighted CPM is not implemented |
 | Context packing | Partial | CPO uses 1-token units, CJK-aware estimates, and 200-iteration PageRank; full projection provenance (agentId/maxTokens/expected prefix hash) is still not persisted |
-| Generate whole files | Works | One DeepSeek JSON call per file/persona |
+| Generate whole files | Works | One DeepSeek JSON call per file/persona; emitted file/test/review content is UTF-8-byte bounded in Zod before persistence, with a typed `E_FILE_TOO_LARGE` and no repair retry |
 | Repository read/search tools | **Absent** | Agents receive a prompt; no tool registry or repo tools |
 | Autonomous tool loop | **Absent** | `llm/client.ts` rejects `tool_calls`; agents are one-shot |
 | Review findings gate completion | **Now works** | Critical findings fail the gate; non-critical ungrounded findings are warned as `REVIEW_UNGROUNDED_WARNING`; rows written to `reviews` |

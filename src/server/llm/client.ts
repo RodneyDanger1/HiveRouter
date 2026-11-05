@@ -627,6 +627,14 @@ export class DeepSeekClient {
 
       const validated = schema.safeParse(parsed);
       if (!validated.success) {
+        const refusalIssue = validated.error.issues.find((issue) => /^E_[A-Z0-9_]+:/.test(issue.message));
+        if (refusalIssue) {
+          const colon = refusalIssue.message.indexOf(':');
+          const code = refusalIssue.message.slice(0, colon);
+          const detail = refusalIssue.message.slice(colon + 1).trim();
+          request.onAttemptEnd?.(attempt, result.usage, null);
+          throw new LlmError(code as LlmErrorCode, detail, 200, false);
+        }
         request.onAttemptEnd?.(attempt, result.usage, null);
         lastCode = 'E_LLM_SCHEMA_INVALID';
         lastMessage = `DeepSeek JSON did not match the required schema: ${issueSummary(validated.error)}`;

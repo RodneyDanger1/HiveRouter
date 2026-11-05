@@ -24,6 +24,7 @@ export const REFUSALS = {
   E_AGENT_MOCK_UNAVAILABLE: { http: 422, exit: 6, retryable: false, message: 'Mock mode is test-only and is not available in the product runtime.', hint: 'Use live mode with a configured key.' },
   E_UNSAFE_PATH: { http: 422, exit: 2, retryable: false, message: 'Path escapes the allowed root or uses a reserved name.' },
   E_FILE_NOT_FOUND: { http: 404, exit: 3, retryable: false, message: 'File not found in this run.' },
+  E_FILE_TOO_LARGE: { http: 413, exit: 2, retryable: false, message: 'Generated file exceeds the byte limit.' },
   E_RUN_NOT_FOUND: { http: 404, exit: 3, retryable: false, message: 'Run not found.' },
   E_RUN_NOT_TERMINAL: { http: 409, exit: 4, retryable: false, message: 'The run is not terminal yet.' },
   E_RUN_NOT_CANCELLABLE: { http: 409, exit: 4, retryable: false, message: 'The run is not cancellable in its current state.' },

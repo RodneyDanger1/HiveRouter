@@ -584,3 +584,12 @@ Final gates: typecheck PASS; 226 tests / 30 files; 26/26 E2E; build PASS; strict
 - Analysis and Search passed at 390px without document overflow; run-detail tabs passed selection+focus. No API, DB, search, or run-state change.
 - **Gates:** typecheck PASS; **440 tests / 69 files**; build PASS; **34/34 E2E**; strict stage **200 files / 51 tables / 62 routes / 24 scripts**, violations `[]`; preflight PASS (free RAM 2.31 GB, disk 9.07 GB); stub clean 103; secret clean 198.
 - **Residual:** this pass covers the named surfaces and viewport, not every page at every viewport; true screen-reader testing, reduced-motion visual assertions, and focus-trap behavior while the mobile menu is open remain unverified. No paid provider call.
+
+## 31. Wave 12 — per-file byte bound at the schema boundary (2026-11-05)
+
+- **Plan:** `docs/WAVE-12-PLAN.md`; **evidence:** `docs/TRACE/WAVE-12/TRACE-SUMMARY.md`.
+- `FileEmissionSchema.content`, `TestsSchema.files[].content`, and `ReviewSchema.files[].content` now enforce `config.limits.maxFileBytes` in UTF-8 bytes. Exact limit passes; limit+1 fails with a schema issue starting `E_FILE_TOO_LARGE:`.
+- The provider boundary preserves that code as a typed `LlmError` and skips JSON repair for deterministic refusals; `E_FILE_TOO_LARGE` is registered (HTTP 413). `writeStaged` remains a redundant last-defense byte guard.
+- **RED evidence:** old schemas accepted oversized content — 2 schema tests failed (`expected true to be false`). **GREEN:** schema tests 8/8, provider test 12/12, focused 20/20, full **443 tests / 69 files**.
+- **Gates:** typecheck PASS; build PASS; **34/34 E2E**; strict stage **200 files / 51 tables / 62 routes / 24 scripts**, violations `[]`; preflight PASS (free RAM 1.77 GB, disk 9.05 GB); stub clean 103; secret clean 198.
+- **Residual:** no paid live oversized response; the provider test uses the local mock HTTP server. Plan/text outputs use their own limits. No DB/route/UI change.

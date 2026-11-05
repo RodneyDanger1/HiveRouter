@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { config } from '../../src/server/config.js';
 import {
   AgentPlanSchema,
   CandidateDraftSchema,
@@ -41,6 +42,42 @@ describe('agent output schemas', () => {
   it('accepts a full file emission and rejects empty content', () => {
     expect(FileEmissionSchema.safeParse(validFileEmission).success).toBe(true);
     expect(FileEmissionSchema.safeParse(invalidFileEmission).success).toBe(false);
+  });
+
+  it('bounds generated file content by UTF-8 bytes with a typed refusal', () => {
+    const limit = config.limits.maxFileBytes;
+    const exact = FileEmissionSchema.safeParse({ ...validFileEmission, content: 'a'.repeat(limit) });
+    expect(exact.success).toBe(true);
+
+    const oversized = FileEmissionSchema.safeParse({ ...validFileEmission, content: 'a'.repeat(limit + 1) });
+    expect(oversized.success).toBe(false);
+    expect(oversized.success ? '' : oversized.error.issues[0]?.message).toMatch(/^E_FILE_TOO_LARGE:/);
+
+    const unicodeOversized = FileEmissionSchema.safeParse({
+      ...validFileEmission,
+      content: 'é'.repeat(Math.floor(limit / 2) + 1),
+    });
+    expect(unicodeOversized.success).toBe(false);
+  });
+
+  it('bounds generated test and review file content at the same byte limit', () => {
+    const limit = config.limits.maxFileBytes;
+    const tests = TestsSchema.safeParse({
+      summary: 'test',
+      testCommand: 'npm test',
+      files: [{ path: 'tests/a.test.ts', language: 'typescript', content: 'a'.repeat(limit + 1) }],
+    });
+    expect(tests.success).toBe(false);
+    expect(tests.success ? '' : tests.error.issues[0]?.message).toMatch(/^E_FILE_TOO_LARGE:/);
+
+    const review = ReviewSchema.safeParse({
+      verdict: 'changes_required',
+      summary: 'revision',
+      findings: [],
+      files: [{ path: 'src/a.ts', content: 'a'.repeat(limit + 1) }],
+    });
+    expect(review.success).toBe(false);
+    expect(review.success ? '' : review.error.issues[0]?.message).toMatch(/^E_FILE_TOO_LARGE:/);
   });
 
   it('accepts a review with a valid severity and rejects an unknown severity', () => {
