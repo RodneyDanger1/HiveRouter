@@ -26,7 +26,7 @@ Chrome/Playwright at 1440×1000 and 390×844, on `/`, `/agents`, `/runs`, `/chat
 
 ## Capability audit — can / cannot
 
-**Can:** bounded project planning; 37-agent registry with real contracts; file routing; generation; static verification; staged artifact retention; run ledger/events; FTS5 run search; static analysis API/page; scripts dry-run catalog; durable B2 chat with SSE; vault read; local key ingress via env or app-secret; honest P7 refusal.
+**Can:** bounded project planning; 37-agent registry with real contracts; file routing; generation; static verification; staged artifact retention; run ledger/events; FTS5 run search; static analysis API/page; scripts dry-run catalog; durable B2 chat with SSE (API multi-agent fan-out; current UI sends one selected agent); vault read; local key ingress via env or app-secret; honest P7 refusal.
 
 **Cannot / absent:** repo read/search tools; autonomous tool-call loop; generated-code or test execution; approval/`needs_review` producer; mid-run checkpoints; bounded parallel generation; external repository index; P7 evaluator/promotion; native GUI/CUA driver; MCP/tool runtime; skills registry; multi-user/cloud; native `.exe`.
 
