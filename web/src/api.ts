@@ -452,8 +452,25 @@ export async function openRunFolder(runId: string, signal?: AbortSignal): Promis
   });
 }
 
-export function runDownloadUrl(runId: string): string {
-  return `${API_BASE}/runs/${encodeURIComponent(runId)}/download`;
+export async function downloadRunArchive(runId: string, signal?: AbortSignal): Promise<Blob> {
+  const response = await fetch(`${API_BASE}/runs/${encodeURIComponent(runId)}/download`, {
+    headers: { Accept: 'application/zip, application/json' },
+    signal,
+    credentials: 'same-origin',
+  });
+  if (!response.ok) {
+    const text = await response.text();
+    let payload: unknown = null;
+    if (text.trim().startsWith('{')) {
+      try {
+        payload = JSON.parse(text) as unknown;
+      } catch {
+        payload = null;
+      }
+    }
+    throw errorFromPayload(response.status, payload);
+  }
+  return response.blob();
 }
 
 export async function getFileContent(runId: string, path: string, signal?: AbortSignal): Promise<string> {

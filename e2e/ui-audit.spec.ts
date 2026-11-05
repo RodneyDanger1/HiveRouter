@@ -289,8 +289,14 @@ test.describe('@ui-audit run detail contract', () => {
     await auditDialog.getByRole('button', { name: /^Cancel$/i }).click();
 
     await expect(page.getByRole('button', { name: /^Stop/i })).toHaveCount(0);
-    const download = page.getByRole('link', { name: /Download/i }).first();
-    if (await download.count()) await expect(download).toHaveAttribute('href', /\/download$/);
+    const download = page.getByRole('button', { name: /Download/i }).first();
+    await expect(download).toBeVisible();
+    await expect(download).toBeEnabled();
+    const downloadEvent = page.waitForEvent('download');
+    await download.click();
+    const archive = await downloadEvent;
+    expect(archive.suggestedFilename()).toMatch(/\.zip$/);
+    expect(await archive.failure()).toBeNull();
     await expect(page.getByRole('button', { name: /Open folder/i }).first()).toBeVisible();
     await noSecret(page);
   });

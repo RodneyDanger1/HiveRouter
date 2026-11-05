@@ -208,7 +208,7 @@ npm run assert-stage -- --stage=p7 --json
 | Typecheck / build | `npm.cmd run verify` — **exit 0** |
 | Browser E2E | `npm.cmd run e2e` — **30 / 30 passed** |
 | Stage allowlist | **199 files / 50 tables / 62 routes / 24 scripts**, violations `[]` |
-| Preflight | **PASS** — free RAM 2.38 GB, disk 9.13 GB, Chrome/Node/npm/port |
+| Preflight | **PASS** — free RAM 3.13 GB, disk 9.12 GB, Chrome/Node/npm/port |
 | Stub sweep | clean (103 files) |
 | Secret scan | clean (197 files) |
 

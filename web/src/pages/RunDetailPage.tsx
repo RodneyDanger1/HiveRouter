@@ -19,6 +19,7 @@ import {
   ApiError,
   auditRun,
   cancelRun,
+  downloadRunArchive,
   getConfidence,
   getContext,
   getFailures,
@@ -30,7 +31,6 @@ import {
   openRunFolder,
   resumeRun,
   reviseRun,
-  runDownloadUrl,
   searchRun,
 } from '../api';
 import type {
@@ -117,6 +117,8 @@ export function RunDetailPage() {
   const [resumeError, setResumeError] = useState<ApiError | null>(null);
   const [folderError, setFolderError] = useState<ApiError | null>(null);
   const [folderBusy, setFolderBusy] = useState(false);
+  const [downloadBusy, setDownloadBusy] = useState(false);
+  const [downloadError, setDownloadError] = useState<ApiError | null>(null);
   const reloadTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const reloadRef = useRef(snapshot.reload);
   reloadRef.current = snapshot.reload;
@@ -285,6 +287,24 @@ export function RunDetailPage() {
     }
   }
 
+  async function downloadArchive() {
+    setDownloadBusy(true);
+    setDownloadError(null);
+    try {
+      const blob = await downloadRunArchive(run!.id);
+      const objectUrl = URL.createObjectURL(blob);
+      const anchor = document.createElement('a');
+      anchor.href = objectUrl;
+      anchor.download = `hive-${run!.id.replace(/^run_/, '').slice(0, 10)}.zip`;
+      anchor.click();
+      window.setTimeout(() => URL.revokeObjectURL(objectUrl), 1_000);
+    } catch (caught) {
+      setDownloadError(caught instanceof ApiError ? caught : new ApiError({ code: 'E_NETWORK', status: 0, message: 'Download failed.' }));
+    } finally {
+      setDownloadBusy(false);
+    }
+  }
+
   return (
     <div className="page">
       <div className="mb-4">
@@ -318,9 +338,9 @@ export function RunDetailPage() {
               ) : null
             ) : null}
             {downloadable ? (
-              <a className="btn btn-secondary" href={runDownloadUrl(run.id)} title="Download artifacts">
-                <Download size={14} aria-hidden /> Download
-              </a>
+              <button type="button" className="btn btn-secondary" onClick={downloadArchive} disabled={downloadBusy} title="Download artifacts">
+                {downloadBusy ? <Spinner /> : <Download size={14} aria-hidden />} Download
+              </button>
             ) : (
               <button
                 type="button"
@@ -377,6 +397,7 @@ export function RunDetailPage() {
             <div className="mt-4"><InlineNotice tone="warn">This run is paused for review. It is not complete; do not treat its artifacts as accepted.</InlineNotice></div>
           ) : null}
           {folderError ? <div className="mt-4"><InlineNotice tone="error">{humanError(folderError)}</InlineNotice></div> : null}
+          {downloadError ? <div className="mt-4"><InlineNotice tone="error">{humanError(downloadError)}</InlineNotice></div> : null}
         </Card>
 
         <Card className="p-5">

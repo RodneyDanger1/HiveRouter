@@ -2,7 +2,7 @@
 
 Date: 2026-11-05
 Baseline before audit: `32345d3` (428 tests / 66 files; 29 E2E; 195 stage files)
-Final gates after audit: **438 tests / 69 files**, **30/30 E2E**, stage **199 files / 50 tables / 62 routes / 24 scripts**, preflight PASS (free RAM 2.38 GB, disk 9.13 GB), `verify` exit 0.
+Final gates after audit: **438 tests / 69 files**, **30/30 E2E**, stage **199 files / 50 tables / 62 routes / 24 scripts**, preflight PASS (free RAM 3.13 GB, disk 9.12 GB), `verify` exit 0.
 
 ## Scope walked, in order
 
@@ -31,6 +31,7 @@ Final gates after audit: **438 tests / 69 files**, **30/30 E2E**, stage **199 fi
 | W9-08 | Vault | Refresh reloaded the tree but left the selected file preview stale | Refresh called only `tree.reload()` | Refresh increments a file nonce included in `VaultFile`'s resource dependencies | Code path; no automated test |
 | W9-09 | Agents | Refresh reloaded agents but not provider-key status, so live-run availability stayed stale | Refresh called only `agents.reload()` | Refresh now reloads key status too | Code path; no automated test |
 | W9-10 | Scripts / Runs / Events | Stale dry-run result remained beside a new error; runs empty state said "No runs recorded" under a filter; persisted Events error had no retry | component state/copy/ErrorPanel props | Clear result on retry; status-aware copy; pass `persistedEvents.reload` | Code path; no automated test |
+| W9-11 | Run detail | Download was an anchor to `/download`; a server refusal (including an empty-byte archive) replaced the app page with raw JSON and offered no in-app error | `RunDetailPage.tsx` rendered `<a href>`, so HTTP errors bypassed `ApiError` handling | Download now fetches the ZIP, saves it via an object URL, and renders `downloadError`; E2E waits for the download event and asserts a `.zip` filename with no failure | `e2e/ui-audit.spec.ts` run-detail trial; full E2E 30/30 |
 
 ## Claims and evidence
 
@@ -39,10 +40,11 @@ Final gates after audit: **438 tests / 69 files**, **30/30 E2E**, stage **199 fi
 | 438 tests pass | `npm.cmd test` → 69 files / 438 tests | VERIFIED |
 | 30 E2E pass | `npm.cmd run e2e` → 30 passed (1.1m) | VERIFIED |
 | Stage is 199/50/62/24 | `assert-stage --stage=p7` → files 199, tables 50, routes 62, scripts 24, violations [] | VERIFIED |
-| Preflight passes | `preflight --port 0` → free RAM 2.38 GB, disk 9.13 GB | VERIFIED |
+| Preflight passes | `preflight --port 0` → free RAM 3.13 GB, disk 9.12 GB | VERIFIED |
 | Prompt override round-trips | live PUT 200, GET detail `promptSource=override`, list same; invalid 422; reset 200 | VERIFIED |
 | Invalid run status is refused | live `GET /api/runs?status=nope` → 422 `E_INVALID_RUN_FILTER` | VERIFIED |
 | Files content only serves artifacts | live artifact 200/4991 bytes; `RUN_REPORT.md` 404 `E_FILE_NOT_FOUND` | VERIFIED |
+| Download control saves a ZIP and surfaces refusals in-app | E2E download event, `.zip` filename, no failure; full E2E 30/30 | VERIFIED |
 | Empty-zip refusal | not exercised with a wiped artifact fixture | UNVERIFIED |
 | Vault preview refresh | not exercised with changed file bytes | UNVERIFIED |
 | Events retry button | not exercised with an induced `/events` failure | UNVERIFIED |
