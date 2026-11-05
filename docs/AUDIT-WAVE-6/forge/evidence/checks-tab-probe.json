@@ -1,0 +1,67 @@
+{
+  "capturedAt": "2026-11-04T04:29:36.717Z",
+  "api": {
+    "checkRows": 16,
+    "distinctCheckIds": 5,
+    "checkIdCounts": {
+      "plan.coverage": 3,
+      "secret.scan": 3,
+      "stub.scan": 4,
+      "syntax.all": 3,
+      "verification.plan": 3
+    },
+    "snapshotTruncated": false,
+    "artifacts": 0
+  },
+  "dom": {
+    "rowCount": 16,
+    "domIds": [
+      "plan.coverage",
+      "secret.scan",
+      "stub.scan",
+      "stub.scan",
+      "syntax.all",
+      "verification.plan",
+      "plan.coverage",
+      "secret.scan",
+      "stub.scan",
+      "verification.plan",
+      "syntax.all",
+      "plan.coverage",
+      "stub.scan",
+      "verification.plan",
+      "secret.scan",
+      "syntax.all"
+    ],
+    "domDistinctIds": 5,
+    "badgeTexts": [
+      "FAILED",
+      "DONE",
+      "20 STEPS",
+      "TERMINAL · SNAPSHOT",
+      "PASS",
+      "PASS",
+      "FAIL",
+      "FAIL",
+      "PASS",
+      "PASS",
+      "PASS",
+      "PASS",
+      "FAIL",
+      "PASS",
+      "PASS",
+      "PASS",
+      "FAIL",
+      "PASS",
+      "PASS",
+      "PASS"
+    ]
+  },
+  "consoleMessages": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ],
+  "duplicateKeyWarnings": []
+}

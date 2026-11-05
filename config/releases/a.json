@@ -1,0 +1,33 @@
+{
+  "stage": "a",
+  "label": "A",
+  "paths": [
+    "src/shared/", "src/server/config.ts", "src/server/index.ts", "src/server/app.ts",
+    "src/server/env.ts", "src/server/db/", "src/server/llm/", "src/server/pipeline/", "src/server/runs/",
+    "src/server/routes/", "src/server/security/", "src/server/verify/", "src/server/vault/",
+    "src/server/agents/", "src/server/logic/", "web/", "public/", "scripts/",
+    "test/", "e2e/", "config/", "docs/", "logs/", "reports/",
+    "package.json", "package-lock.json", "tsconfig.json", ".gitignore", ".env.example",
+    "README.md", "AGENTS.md", "playwright.config.ts", "vitest.config.ts"
+  ],
+  "tables": [
+    "runs", "steps", "events", "artifacts", "reviews", "checks", "usage", "settings",
+    "run_snapshots", "prompt_versions", "policy_versions", "budget_reservations",
+    "gate_decisions", "idempotency_keys", "schema_migrations", "agent_evidence"
+  ],
+  "routes": [
+    "/api/health", "/api/meta", "/api/settings", "/api/settings/key", "/api/settings/key-status",
+    "/api/agents", "/api/agents/:id", "/api/agents/:id/prompt", "/api/agents/:id/run",
+    "/api/runs", "/api/runs/active", "/api/runs/:id", "/api/runs/:id/snapshot",
+    "/api/runs/:id/events", "/api/runs/:id/stream", "/api/runs/:id/cancel",
+    "/api/runs/:id/files", "/api/runs/:id/files/content", "/api/runs/:id/download",
+    "/api/runs/:id/open-folder", "/api/runs/:id/revise", "/api/stats",
+    "/api/ops/system", "/api/vault/tree", "/api/vault/file", "/openapi.json",
+    "/", "/agents", "/runs", "/runs/:id", "/settings", "/vault"
+  ],
+  "uiRoutes": ["/", "/agents", "/runs", "/runs/:id", "/vault", "/settings"],
+  "scripts": [
+    "dev", "dev:server", "dev:web", "build", "start", "typecheck", "test", "test:watch",
+    "e2e", "preflight", "stub-sweep", "secret-scan", "assert-stage", "verify"
+  ]
+}

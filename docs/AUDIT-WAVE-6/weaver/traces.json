@@ -1,0 +1,2115 @@
+{
+  "schema": "hive.audit.traces.v1",
+  "task": "task-1 / W6-AUD-01",
+  "seat": "weaver (read-only)",
+  "ladder": [
+    "render",
+    "handler",
+    "client",
+    "request",
+    "route",
+    "service",
+    "store",
+    "provider",
+    "response",
+    "renderBack",
+    "reentry"
+  ],
+  "verdictCounts": {
+    "WIRED-AND-WORKS": 24,
+    "UNVERIFIED": 7,
+    "WIRED-BUT-DEAD": 2,
+    "REFUSED-BY-NAME": 1
+  },
+  "levelCounts": {
+    "VERIFIED": 26,
+    "READ": 8
+  },
+  "families": [
+    {
+      "id": "T01",
+      "name": "Primary navigation links",
+      "page": "AppShell",
+      "controls": [
+        "Overview",
+        "Agents",
+        "Runs",
+        "Vault",
+        "Learning",
+        "Settings"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/components/AppShell.tsx",
+          "line": "102-114",
+          "detail": "NavLink list from NAV array at 20-27; active class; no aria-current"
+        },
+        "handler": {
+          "file": "web/src/components/AppShell.tsx",
+          "line": "107",
+          "detail": "onClick closes mobile drawer; router navigates"
+        },
+        "client": {
+          "file": "n/a",
+          "detail": "react-router Link opens the route directly; no API call"
+        },
+        "request": {
+          "detail": "GET document + SPA route; no XHR for navigation"
+        },
+        "route": {
+          "file": "web/src/App.tsx",
+          "line": "32-41",
+          "detail": "Routes map: /, /agents, /runs, /runs/:runId, /vault, /settings, /learning, *"
+        },
+        "service": {
+          "detail": "Page component mounts and issues its own resource GETs"
+        },
+        "store": {
+          "detail": "n/a (navigation)"
+        },
+        "response": {
+          "detail": "Each destination rendered its h1 and API data (all six verified)"
+        },
+        "renderBack": {
+          "file": "web/src/components/AppShell.tsx",
+          "line": "106,112",
+          "detail": "nav-link-active class on match; screen changes"
+        },
+        "reentry": {
+          "detail": "Direct URL loads verified for every route; back/forward not separately exercised"
+        }
+      },
+      "evidence": [
+        "evidence/browser/navigation.json#navigations",
+        "evidence/browser/pages.json#h1"
+      ]
+    },
+    {
+      "id": "T02",
+      "name": "Mobile navigation toggle",
+      "page": "AppShell",
+      "controls": [
+        "button.topbar-menu"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/components/AppShell.tsx",
+          "line": "57-66",
+          "detail": "aria-label Open/Close navigation; aria-expanded; aria-controls=primary-navigation"
+        },
+        "handler": {
+          "file": "web/src/components/AppShell.tsx",
+          "line": "63",
+          "detail": "setMobileOpen toggle; Escape listener at 41-48"
+        },
+        "client": {
+          "detail": "local state only"
+        },
+        "request": {
+          "detail": "none"
+        },
+        "route": {
+          "detail": "none"
+        },
+        "service": {
+          "detail": "none"
+        },
+        "store": {
+          "detail": "none"
+        },
+        "response": {
+          "detail": "aria-expanded false->true; sidebar class sidebar->sidebar-open"
+        },
+        "renderBack": {
+          "file": "web/src/components/AppShell.tsx",
+          "line": "96,131-138",
+          "detail": "sidebar-open class + scrim; Escape restores"
+        },
+        "reentry": {
+          "detail": "Escape and link-click both close the drawer (verified Escape)"
+        }
+      },
+      "evidence": [
+        "evidence/browser/interactions.json#shell"
+      ]
+    },
+    {
+      "id": "T03",
+      "name": "Skip to content link",
+      "page": "AppShell",
+      "controls": [
+        "a.skip-link"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/components/AppShell.tsx",
+          "line": "52-54",
+          "detail": "first focusable element; href=#main-content"
+        },
+        "handler": {
+          "detail": "native anchor"
+        },
+        "client": {
+          "detail": "none"
+        },
+        "request": {
+          "detail": "none"
+        },
+        "route": {
+          "detail": "none"
+        },
+        "service": {
+          "detail": "none"
+        },
+        "store": {
+          "detail": "none"
+        },
+        "response": {
+          "detail": "hash #main-content set; window scrollY 58"
+        },
+        "renderBack": {
+          "file": "web/src/components/AppShell.tsx",
+          "line": "140",
+          "detail": "<main id=\"main-content\"> is not tabindex=-1, so focus falls back to BODY"
+        },
+        "reentry": {
+          "detail": "Next Tab starts from the top of the document; keyboard users do not land in main content"
+        }
+      },
+      "evidence": [
+        "evidence/logs/skip-probe.log"
+      ],
+      "defect": "F8"
+    },
+    {
+      "id": "T04",
+      "name": "Composer form state (brief/preset/model/thinking/effort/max cost)",
+      "page": "Overview",
+      "controls": [
+        "PROJECT BRIEF",
+        "PRESET",
+        "MODEL",
+        "THINKING",
+        "MAX RUN COST (USD)",
+        "Reasoning effort (conditional)"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/components/RunComposer.tsx",
+          "line": "141-156,203-253",
+          "detail": "labeled fields; brief maxLength 8000; effort shown only when thinking=enabled"
+        },
+        "handler": {
+          "file": "web/src/components/RunComposer.tsx",
+          "line": "57-62,70-76",
+          "detail": "useState defaults; localStorage draft hive.composer.v1 validated at 30-47"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "334-346",
+          "detail": "startRun(input) builds StartRunInput; validates run id in response"
+        },
+        "request": {
+          "detail": "POST /api/runs eventually; body {brief,preset,model,thinking,effort?,maxCostUsd}; headers Content-Type, Idempotency-Key (api.ts:123-138,338)"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "734-766",
+          "detail": "enum validation for preset/model/thinking/effort; maxCost numeric + cap check"
+        },
+        "service": {
+          "file": "src/server/runs/manager.ts",
+          "line": "80-165",
+          "detail": "createRun: brief length, idempotency reuse, one-active-run guard, snapshot, run_limit settings, queued event"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "7-30,119-124",
+          "detail": "runs row + settings run_limit/run_meta; idempotency_keys tx at manager.ts:127-134"
+        },
+        "provider": {
+          "detail": "not reached in this trace (no submit)"
+        },
+        "response": {
+          "detail": "would be 202 {runId,replayed} (app.ts:779)"
+        },
+        "renderBack": {
+          "detail": "composer navigates via onStarted (OverviewPage.tsx:70) -> RunDetailPage"
+        },
+        "reentry": {
+          "detail": "Draft reloaded from localStorage on mount; validation errors render under role=alert"
+        }
+      },
+      "evidence": [
+        "evidence/browser/pages.json#overview",
+        "evidence/browser/interactions.json"
+      ],
+      "note": "State/DOM verified; submit deliberately not exercised (paid run)."
+    },
+    {
+      "id": "T05",
+      "name": "Analyze prompt (prompt analyst)",
+      "page": "Overview",
+      "controls": [
+        "Analyze prompt"
+      ],
+      "verdict": "UNVERIFIED",
+      "verifiedLevel": "READ",
+      "hops": {
+        "render": {
+          "file": "web/src/components/RunComposer.tsx",
+          "line": "173-176",
+          "detail": "disabled when brief <8 chars or busy"
+        },
+        "handler": {
+          "file": "web/src/components/RunComposer.tsx",
+          "line": "81-101",
+          "detail": "analyze() -> analyzePrompt(brief)"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "297-303",
+          "detail": "POST /api/prompt/analyze body {prompt}"
+        },
+        "request": {
+          "method": "POST",
+          "path": "/api/prompt/analyze",
+          "body": "{prompt}",
+          "headers": "Content-Type: application/json"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "225-259",
+          "detail": "8..8000 chars, secret-pattern refusal, key required, analyst call, refusal mapping"
+        },
+        "service": {
+          "file": "src/server/prompt/analyst.ts",
+          "line": "1-260",
+          "detail": "DeepSeek Flash call + one repair on invalid exact quote; E_PROMPT_ANALYSIS_INVALID"
+        },
+        "store": {
+          "detail": "read-only: no ledger/reservation row for analyst calls (RECEIPT.md notes this)"
+        },
+        "provider": {
+          "detail": "DeepSeek API; key server-side only; no browser key"
+        },
+        "response": {
+          "detail": "200 {schema,analysis,repairAttempted,model,promptChars}"
+        },
+        "renderBack": {
+          "file": "web/src/components/PromptAnalysisCard.tsx",
+          "line": "1-145",
+          "detail": "quotes/labels/acceptance proof/limitations; Apply rewrites brief"
+        },
+        "reentry": {
+          "detail": "Repair banner at RunComposer.tsx:194-199"
+        }
+      },
+      "evidence": [
+        "evidence/logs/short-prompt-response.txt"
+      ],
+      "note": "Not clicked: paid provider call. Validation path probed with a 3-char prompt."
+    },
+    {
+      "id": "T06",
+      "name": "Start run",
+      "page": "Overview",
+      "controls": [
+        "Start run"
+      ],
+      "verdict": "UNVERIFIED",
+      "verifiedLevel": "READ",
+      "hops": {
+        "render": {
+          "file": "web/src/components/RunComposer.tsx",
+          "line": "279-283",
+          "detail": "submit disabled until brief >=8 chars and not busy"
+        },
+        "handler": {
+          "file": "web/src/components/RunComposer.tsx",
+          "line": "103-136",
+          "detail": "submit() client validation then startRun"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "334-346",
+          "detail": "Idempotency-Key from crypto.randomUUID (276-279)"
+        },
+        "request": {
+          "method": "POST",
+          "path": "/api/runs",
+          "body": "{brief,preset,model,thinking,effort,maxCostUsd}",
+          "headers": "Content-Type, Idempotency-Key"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "734-785",
+          "detail": "202 on create; 422 refusals for enum/idempotency/budget"
+        },
+        "service": {
+          "file": "src/server/runs/manager.ts",
+          "line": "80-165",
+          "detail": "createRun + queueMicrotask executor"
+        },
+        "store": {
+          "file": "src/server/runs/recorder.ts",
+          "line": "76-105",
+          "detail": "runs row status=queued, phase=intake"
+        },
+        "provider": {
+          "detail": "executor pipeline; paid"
+        },
+        "response": {
+          "detail": "202 {runId,replayed}"
+        },
+        "renderBack": {
+          "file": "web/src/pages/OverviewPage.tsx",
+          "line": "70",
+          "detail": "navigate to /runs/:id"
+        },
+        "reentry": {
+          "detail": "Idempotent replay returns the same runId (manager.ts:91-96)"
+        }
+      },
+      "evidence": [
+        "evidence/browser/pages.json#overview"
+      ],
+      "note": "Not clicked: starts a paid run. Exact blocker recorded; static chain complete."
+    },
+    {
+      "id": "T07",
+      "name": "Provider key status surfaces",
+      "page": "Overview/Settings",
+      "controls": [
+        "Provider card",
+        "Provider key panel"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/OverviewPage.tsx",
+          "line": "75-130",
+          "detail": "key.loading/error/configured branches; balance \"Not reported\""
+        },
+        "handler": {
+          "file": "web/src/pages/OverviewPage.tsx",
+          "line": "38",
+          "detail": "useApiResource(getKeyStatus)"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "293-295",
+          "detail": "GET /api/settings/key-status"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/settings/key-status"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "223",
+          "detail": "returns keyStatus() only"
+        },
+        "service": {
+          "file": "src/server/security/keys.ts",
+          "line": "1-200",
+          "detail": "configured/source/fingerprint; no key material"
+        },
+        "store": {
+          "detail": "env/.env.local or data/secrets; not read by browser"
+        },
+        "provider": {
+          "detail": "no provider call for status"
+        },
+        "response": {
+          "detail": "{\"configured\":true,\"source\":\"environment\",\"fingerprint\":\"c30cfdbc\"} - no checkedAt/balance"
+        },
+        "renderBack": {
+          "file": "web/src/pages/SettingsPage.tsx",
+          "line": "42-75",
+          "detail": "Configured Yes / Source / Fingerprint / Checked Not reported / Balance Not reported"
+        },
+        "reentry": {
+          "detail": "Refresh re-fetches both key-status and settings (verified)"
+        }
+      },
+      "evidence": [
+        "evidence/api/key-status.json",
+        "evidence/browser/navigation.json#refreshes"
+      ]
+    },
+    {
+      "id": "T08",
+      "name": "Overview stat cards",
+      "page": "Overview",
+      "controls": [
+        "Registered agents",
+        "Runs recorded",
+        "Prompt/completion tokens",
+        "Estimated spend"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/OverviewPage.tsx",
+          "line": "165-196",
+          "detail": "four StatCards; \"Not available\" on error, never zero"
+        },
+        "handler": {
+          "file": "web/src/pages/OverviewPage.tsx",
+          "line": "36",
+          "detail": "useApiResource(getStats)"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "289-291",
+          "detail": "GET /api/stats"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/stats"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "943-955",
+          "detail": "COUNT runs, SUM usage, REGISTRY.length"
+        },
+        "service": {
+          "detail": "direct SQL aggregates; COALESCE(...,0)"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "7-30,101-118",
+          "detail": "runs + usage tables"
+        },
+        "response": {
+          "detail": "{\"agentCount\":37,\"runCount\":25,\"totalPromptTokens\":1367744,\"totalCompletionTokens\":524716,\"totalCostUsd\":0.924624168}"
+        },
+        "renderBack": {
+          "file": "web/src/pages/OverviewPage.tsx",
+          "line": "169-194",
+          "detail": "formatInteger/formatUsd"
+        },
+        "reentry": {
+          "detail": "Reload refetches; totals include failed-run usage that the run rows show as — (F2)"
+        }
+      },
+      "evidence": [
+        "evidence/api/stats.json",
+        "evidence/browser/pages.json#overview"
+      ]
+    },
+    {
+      "id": "T09",
+      "name": "Run links (recent + ledger rows)",
+      "page": "Overview/Runs",
+      "controls": [
+        "row brief link",
+        "Open run icon"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/components/RunTable.tsx",
+          "line": "22-45",
+          "detail": "2 links per row; aria-label Open run <id>"
+        },
+        "handler": {
+          "detail": "react-router Link"
+        },
+        "client": {
+          "detail": "no API call until RunDetailPage mounts"
+        },
+        "request": {
+          "detail": "snapshot/events GETs after navigation"
+        },
+        "route": {
+          "file": "web/src/App.tsx",
+          "line": "36",
+          "detail": "/runs/:runId -> RunDetailPage"
+        },
+        "service": {
+          "detail": "route reads DB via recorder.getRun/getSteps/..."
+        },
+        "store": {
+          "file": "src/server/runs/recorder.ts",
+          "line": "128-163,266-324",
+          "detail": "runs/steps/checks/artifacts"
+        },
+        "response": {
+          "detail": "run_95 snapshot 200 with 19 steps / 20 artifacts"
+        },
+        "renderBack": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "127-139,262-310",
+          "detail": "header + overview from snapshot"
+        },
+        "reentry": {
+          "detail": "Direct URL and row click both render; reload verified"
+        }
+      },
+      "evidence": [
+        "evidence/browser/navigation.json#runRowClick",
+        "evidence/browser/run-95-detail.json"
+      ]
+    },
+    {
+      "id": "T10",
+      "name": "Runs status filter",
+      "page": "Runs",
+      "controls": [
+        "select STATUS",
+        "shown count"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/RunsPage.tsx",
+          "line": "45-59",
+          "detail": "8 options (RUN_STATUSES minus interrupted)"
+        },
+        "handler": {
+          "file": "web/src/pages/RunsPage.tsx",
+          "line": "20,22-25",
+          "detail": "useState + client filter over runs.data"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "309-314",
+          "detail": "listRuns(100) already loaded"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/runs?limit=100"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "727-732",
+          "detail": "status query param supported by API but unused by UI"
+        },
+        "service": {
+          "file": "src/server/runs/recorder.ts",
+          "line": "158-163",
+          "detail": "listRuns(limit, status)"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "7-30",
+          "detail": "runs.status"
+        },
+        "response": {
+          "detail": "25 runs"
+        },
+        "renderBack": {
+          "file": "web/src/pages/RunsPage.tsx",
+          "line": "56-58,76-80",
+          "detail": "3 of 25 for failed; empty state otherwise"
+        },
+        "reentry": {
+          "detail": "Filter resets on reload (local state); not in URL"
+        }
+      },
+      "evidence": [
+        "evidence/browser/runs-filter.json"
+      ],
+      "note": "Only the first 100 runs are filtered client-side; >100 runs would cap the ledger silently."
+    },
+    {
+      "id": "T11",
+      "name": "Runs/Vault/Agents/Settings Refresh buttons",
+      "page": "Runs/Vault/Agents/Settings",
+      "controls": [
+        "Refresh"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/RunsPage.tsx",
+          "line": "38-40",
+          "detail": "spinner while loading; disabled while loading"
+        },
+        "handler": {
+          "file": "web/src/hooks/useApi.ts",
+          "line": "66",
+          "detail": "reload() increments nonce"
+        },
+        "client": {
+          "file": "web/src/hooks/useApi.ts",
+          "line": "24-64",
+          "detail": "effect refetches loader on nonce"
+        },
+        "request": {
+          "detail": "same GET as initial load"
+        },
+        "route": {
+          "detail": "see each family"
+        },
+        "service": {
+          "detail": "see each family"
+        },
+        "store": {
+          "detail": "see each family"
+        },
+        "response": {
+          "detail": "200"
+        },
+        "renderBack": {
+          "detail": "data replaced; loading spinner shown"
+        },
+        "reentry": {
+          "detail": "Verified one click per page: /agents, /runs, /vault, /settings"
+        }
+      },
+      "evidence": [
+        "evidence/browser/navigation.json#refreshes"
+      ],
+      "note": "Overview has no Refresh control (probe correction)."
+    },
+    {
+      "id": "T12",
+      "name": "Run detail Refresh",
+      "page": "RunDetail",
+      "controls": [
+        "Refresh (header)"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "274-276",
+          "detail": "spinner while loading"
+        },
+        "handler": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "113-114",
+          "detail": "reloadRef -> snapshot.reload"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "316-325",
+          "detail": "GET /api/runs/:id/snapshot (falls back to /runs/:id on 404)"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/runs/run_abf5fe78aab1e932ff/snapshot"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "802-816",
+          "detail": "run + steps + checks + artifacts(200) + lastEventId + truncated(artifacts)"
+        },
+        "service": {
+          "detail": "recorder getRun/getSteps/getChecks/getArtifacts"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "7-30,35-100",
+          "detail": "runs/steps/checks/artifacts"
+        },
+        "response": {
+          "detail": "200; keys run,lastEventId,steps,checks,artifacts,truncated - NO limits"
+        },
+        "renderBack": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "320-342",
+          "detail": "badges/facts/CostMeter update"
+        },
+        "reentry": {
+          "detail": "Stale-while-error banner at 312-318 keeps last snapshot truthfully"
+        }
+      },
+      "evidence": [
+        "evidence/browser/run-detail-controls.json",
+        "evidence/browser/interactions.json#runRefresh"
+      ]
+    },
+    {
+      "id": "T13",
+      "name": "Run terminal actions (Stop/Revise/Audit/Download/Open folder)",
+      "page": "RunDetail",
+      "controls": [
+        "Stop",
+        "Revise",
+        "Audit",
+        "Download",
+        "Open folder"
+      ],
+      "verdict": "UNVERIFIED",
+      "verifiedLevel": "READ",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "277-307,358-383",
+          "detail": "Stop only while non-terminal; Revise/Audit only terminal+artifacts; Download disabled otherwise; Open folder always"
+        },
+        "handler": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "206-260",
+          "detail": "confirmStop/submitRevision/startAudit/openFolder"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "348-397",
+          "detail": "POST /cancel, /revise, /runs {preset:audit}, GET /download, POST /open-folder"
+        },
+        "request": {
+          "detail": "cancel: POST /api/runs/:id/cancel Idempotency-Key; revise: POST /revise {feedback,files}; audit: POST /api/runs {brief,preset:audit,sourceRunId}; open-folder: POST /open-folder"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "695-725,867-916",
+          "detail": "download zip (E_ZIP_EMPTY if 0 artifacts), open-folder spawns explorer, cancel E_RUN_NOT_CANCELLABLE, revise E_INVALID_PARENT"
+        },
+        "service": {
+          "file": "src/server/runs/manager.ts",
+          "line": "167-190",
+          "detail": "cancelRun aborts controller or marks no-controller run cancelled"
+        },
+        "store": {
+          "detail": "cancel updates runs.status; revise/audit create child runs; download reads artifacts + workspace files"
+        },
+        "provider": {
+          "detail": "revise/audit would spend provider budget"
+        },
+        "response": {
+          "detail": "abf5: Download disabled with truthful title; completed: anchor href /api/runs/run_95.../download"
+        },
+        "renderBack": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "282-307,362-382",
+          "detail": "buttons/links per state"
+        },
+        "reentry": {
+          "detail": "No exercise: prohibited read-only audit actions; no active run for Stop."
+        }
+      },
+      "evidence": [
+        "evidence/browser/run-abf5-detail.json",
+        "evidence/browser/run-detail-controls.json"
+      ],
+      "note": "Rendered state verified; effects deliberately not executed."
+    },
+    {
+      "id": "T14",
+      "name": "Run detail tabs (8) + keyboard",
+      "page": "RunDetail",
+      "controls": [
+        "Overview",
+        "Files",
+        "Checks",
+        "Routing",
+        "Context",
+        "Repairs",
+        "Confidence",
+        "Events"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "79-88,392-394; web/src/components/ui.tsx:333-371",
+          "detail": "role=tablist/tab, aria-selected, roving tabIndex, disabled support"
+        },
+        "handler": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "98",
+          "detail": "setTab(id); panel rendered at 396-421"
+        },
+        "client": {
+          "detail": "tab panels fetch their own resource on mount"
+        },
+        "request": {
+          "detail": "routing/context/failures/retries/confidence/events GETs"
+        },
+        "route": {
+          "detail": "see T18-T23"
+        },
+        "service": {
+          "detail": "see T18-T23"
+        },
+        "store": {
+          "detail": "see T18-T23"
+        },
+        "response": {
+          "detail": "all 200"
+        },
+        "renderBack": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "396-421",
+          "detail": "single role=tabpanel swaps content"
+        },
+        "reentry": {
+          "detail": "ArrowRight from Events wraps to Overview (verified); ArrowLeft code at ui.tsx:354-366; no aria-controls/tabpanel id (F9)"
+        }
+      },
+      "evidence": [
+        "evidence/browser/run-detail-controls.json#a11y",
+        "evidence/browser/run-abf5-detail.json#tabResults"
+      ]
+    },
+    {
+      "id": "T15",
+      "name": "Run Overview tab (timeline/brief/checks-artifacts counts)",
+      "page": "RunDetail",
+      "controls": [
+        "Execution timeline",
+        "Brief",
+        "Checks & artifacts"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "472-548",
+          "detail": "steps sorted by seq; failedChecks = fail|unverified"
+        },
+        "handler": {
+          "detail": "props from snapshot (no extra fetch)"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "316-325",
+          "detail": "snapshot"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/runs/:id/snapshot"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "802-816",
+          "detail": "same snapshot"
+        },
+        "service": {
+          "detail": "getSteps/getChecks/getArtifacts"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "35-100",
+          "detail": "steps/checks/artifacts"
+        },
+        "response": {
+          "detail": "abf5: 20 steps, 16 checks, 0 artifacts; 95: 19/5/20"
+        },
+        "renderBack": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "489-544",
+          "detail": "timeline rows show per-step tokens/cost; run-level facts use run.promptTokens/costUsd"
+        },
+        "reentry": {
+          "detail": "Reload matches; run-level tokens/cost are null on failed runs (F2) while every step shows measured usage"
+        }
+      },
+      "evidence": [
+        "evidence/browser/run-abf5-detail.json",
+        "evidence/logs/db-usage-probe.txt"
+      ],
+      "defect": "F2"
+    },
+    {
+      "id": "T16",
+      "name": "Files tab + artifact viewer",
+      "page": "RunDetail",
+      "controls": [
+        "artifact rows",
+        "CodeViewer"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "550-623",
+          "detail": "empty state when 0; first artifact auto-selected; badges kind/language/redaction"
+        },
+        "handler": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "551-556",
+          "detail": "setSelectedPath; ArtifactView fetch"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "399-404",
+          "detail": "requestText GET /files/content?path="
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/runs/run_95c11797b4923b4277/files/content?path=docs%2Faudit-method.md",
+          "headers": "Accept: text/plain"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "924-941",
+          "detail": "safePath under run.workspacePath; 404 E_FILE_NOT_FOUND; text/plain + nosniff"
+        },
+        "service": {
+          "file": "src/server/security/paths.ts",
+          "line": "1-200",
+          "detail": "safePath normalizes and blocks traversal"
+        },
+        "store": {
+          "detail": "workspace files + artifacts table metadata"
+        },
+        "response": {
+          "detail": "200 text; 20 artifacts in snapshot; bytes 7,828 for docs/audit-method.md"
+        },
+        "renderBack": {
+          "file": "web/src/components/CodeViewer.tsx",
+          "line": "1-84",
+          "detail": "syntax-highlighted code + Copy + path/bytes"
+        },
+        "reentry": {
+          "detail": "Artifact switching refetches per path; abf5 shows truthful empty state (0 artifacts)"
+        }
+      },
+      "evidence": [
+        "evidence/browser/run-95-detail.json#tabResults",
+        "evidence/browser/run-95-detail.json#responses"
+      ]
+    },
+    {
+      "id": "T17",
+      "name": "Checks tab",
+      "page": "RunDetail",
+      "controls": [
+        "checks table"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "625-668",
+          "detail": "table Check/Status/Mandatory/Detail/File/Time; empty state"
+        },
+        "handler": {
+          "detail": "snapshot.checks prop"
+        },
+        "client": {
+          "detail": "no dedicated call; snapshot includes checks"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/runs/:id/snapshot"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "802-816",
+          "detail": "getChecks(id)"
+        },
+        "service": {
+          "file": "src/server/runs/recorder.ts",
+          "line": "284-303",
+          "detail": "insertCheck stores id,status,detail,mandatory,file,line only"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "88-99",
+          "detail": "checks table has no code/duration"
+        },
+        "response": {
+          "detail": "abf5 16 rows incl. 4 stub.scan fails; 95 5 rows all pass"
+        },
+        "renderBack": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "649-660",
+          "detail": "status badge; File falls back to check.code; Time uses durationMs"
+        },
+        "reentry": {
+          "detail": "TIME always — (durationMs never produced/persisted); code fallback unreachable (F12)"
+        }
+      },
+      "evidence": [
+        "evidence/browser/run-abf5-detail.json#tabResults",
+        "evidence/logs/db-probe.txt"
+      ],
+      "defect": "F12"
+    },
+    {
+      "id": "T18",
+      "name": "Routing tab",
+      "page": "RunDetail",
+      "controls": [
+        "routing decisions",
+        "candidate table",
+        "Raw decision"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "670-762",
+          "detail": "one card per decision; 8 candidate columns; refusals block; Raw decision JSON"
+        },
+        "handler": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "671",
+          "detail": "useApiResource(getRouting) + Refresh"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "452-454",
+          "detail": "GET /api/runs/:id/routing"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/runs/run_abf5fe78aab1e932ff/routing"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "359-443",
+          "detail": "route_decisions + route_candidates join; hardcoded reason/qualitySource/sampleSize fallbacks"
+        },
+        "service": {
+          "file": "src/server/routing/ccr.ts",
+          "line": "1-200",
+          "detail": "routing writes route_decisions/candidates during pipeline"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "200-235",
+          "detail": "route_decisions.score,features_json,rejected_json; route_candidates"
+        },
+        "response": {
+          "detail": "14 decisions / 42 candidates / 0 refusals / allocated .0301056 / reserve .1; reason=\"static prior route\" on all"
+        },
+        "renderBack": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "719-760",
+          "detail": "reason line; quality \"prior · n=0\"; Raw decision JSON"
+        },
+        "reentry": {
+          "detail": "Refresh re-fetches (verified 200); reason is constant regardless of decision features (F5)"
+        }
+      },
+      "evidence": [
+        "evidence/api/run_abf5fe78aab1e932ff_routing.json",
+        "evidence/browser/run-abf5-detail.json#tabResults",
+        "evidence/browser/micro.json"
+      ],
+      "defect": "F5"
+    },
+    {
+      "id": "T19",
+      "name": "Context tab (packs load)",
+      "page": "RunDetail",
+      "controls": [
+        "context packs",
+        "items tables"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "764-844",
+          "detail": "pack cards with usedTokens/prefixHash; items table"
+        },
+        "handler": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "765",
+          "detail": "useApiResource(getContext) + Refresh"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "456-458",
+          "detail": "GET /api/runs/:id/context"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/runs/run_abf5fe78aab1e932ff/context"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "445-470",
+          "detail": "reads context_packs.included_json; hardcodes agentId:null,maxTokens:null; ignores excluded_json"
+        },
+        "service": {
+          "file": "src/server/pipeline/run.ts",
+          "line": "627-669",
+          "detail": "packContext -> context_packs row (included items id/kind/path/tokens/mandatory; excluded_json=pack.excluded)"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "245-258",
+          "detail": "context_packs.included_json/excluded_json"
+        },
+        "response": {
+          "detail": "14 packs / 61 items; item tokens all null; no chars/reason/included; no maxTokens/agentId"
+        },
+        "renderBack": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "801-843",
+          "detail": "4 of 7 item columns structurally empty; pack usedTokens renders"
+        },
+        "reentry": {
+          "detail": "Refresh verified 200; layout stable"
+        }
+      },
+      "evidence": [
+        "evidence/api/run_abf5fe78aab1e932ff_context.json",
+        "evidence/logs/db-context-probe.txt",
+        "evidence/browser/run-abf5-detail.json#tabResults"
+      ]
+    },
+    {
+      "id": "T20",
+      "name": "Context item projection (chars/tokens/reason/included/excluded)",
+      "page": "RunDetail",
+      "controls": [
+        "items table columns",
+        "excluded items"
+      ],
+      "verdict": "WIRED-BUT-DEAD",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "823-843",
+          "detail": "render Chars, Reason, Included; copy at 768 claims excluded items and reasons"
+        },
+        "handler": {
+          "detail": "no data to render: route never supplies those keys"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "456-458",
+          "detail": "GET /api/runs/:id/context"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/runs/:id/context"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "455-467",
+          "detail": "items map {id,path,kind,tokens,mandatory}; excluded_json never read"
+        },
+        "service": {
+          "file": "src/server/pipeline/run.ts",
+          "line": "661",
+          "detail": "included_json stores tokens: item.tokens ?? null (packer emits null for brief/task/interfaces)"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "245-258",
+          "detail": "excluded_json exists but unused by route"
+        },
+        "response": {
+          "detail": "0/129 items have tokens/chars/reason/included; 0 excluded arrays non-empty in these runs"
+        },
+        "renderBack": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "833-837",
+          "detail": "Tokens —, Chars —, Reason —, Included \"Not reported\" on every row"
+        },
+        "reentry": {
+          "detail": "No state change can populate these columns; dead projection"
+        }
+      },
+      "evidence": [
+        "evidence/logs/db-context-probe.txt",
+        "evidence/browser/run-abf5-detail.json#tabResults"
+      ],
+      "defect": "F4"
+    },
+    {
+      "id": "T21",
+      "name": "Repairs tab (failures + retries)",
+      "page": "RunDetail",
+      "controls": [
+        "failure clusters",
+        "retry attempts"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "846-911",
+          "detail": "two cards; empty states; signature/category/count/severity/repair"
+        },
+        "handler": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "847-848",
+          "detail": "useApiResource(getFailures/getRetries)"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "460-466",
+          "detail": "GET failures + retries"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/runs/:id/failures and /retries"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "472-486",
+          "detail": "failure_signatures x occurrences GROUP BY; retry_attempts rows"
+        },
+        "service": {
+          "file": "src/server/pipeline/run.ts",
+          "line": "837-847",
+          "detail": "failure_memory inserts signatures/occurrences during repair"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "272-293,316-327",
+          "detail": "failure_signatures/occurrences/retry_attempts"
+        },
+        "response": {
+          "detail": "abf5 2 clusters (stub.scan), 0 retries; 95 0 clusters, 0 retries"
+        },
+        "renderBack": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "870-909",
+          "detail": "REPAIR column always ? because route omits repairStatus; retries empty state"
+        },
+        "reentry": {
+          "detail": "Refresh verified 200"
+        }
+      },
+      "evidence": [
+        "evidence/api/run_abf5fe78aab1e932ff_failures.json",
+        "evidence/browser/micro.json"
+      ]
+    },
+    {
+      "id": "T22",
+      "name": "Confidence tab",
+      "page": "RunDetail",
+      "controls": [
+        "confidence record"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "913-989",
+          "detail": "decision badge, score, provisional, components, reasons, raw JSON"
+        },
+        "handler": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "914",
+          "detail": "useApiResource(getConfidence)"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "468-470",
+          "detail": "GET /api/runs/:id/confidence"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/runs/run_abf5fe78aab1e932ff/confidence"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "494-500",
+          "detail": "latest confidence_records row or none_measured default; omits mandatoryFailed/Unverified"
+        },
+        "service": {
+          "file": "src/server/pipeline/run.ts",
+          "line": "793-810",
+          "detail": "computeConfidence components; INSERT confidence_records"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "303-315",
+          "detail": "confidence_records"
+        },
+        "response": {
+          "detail": "abf5 {decision:needs_review,score:.786667,provisional:true,components{verification:.6667,...}}"
+        },
+        "renderBack": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "925-987",
+          "detail": "NEEDS REVIEW / score 0.787 / components; contradiction banner unreachable (route omits mandatory lists)"
+        },
+        "reentry": {
+          "detail": "Refresh verified 200; \"No green badge\" behavior intact"
+        }
+      },
+      "evidence": [
+        "evidence/api/run_abf5fe78aab1e932ff_confidence.json",
+        "evidence/browser/micro.json"
+      ]
+    },
+    {
+      "id": "T23",
+      "name": "Events tab (terminal persisted ledger)",
+      "page": "RunDetail",
+      "controls": [
+        "Events tab",
+        "Inspect details"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "991-1054",
+          "detail": "terminal title \"Persisted events\"; latest 500 copy; empty state prints lastEventId"
+        },
+        "handler": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "129-133",
+          "detail": "persistedEvents useApiResource only when terminal; visibleEvents honors live buffer first"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "327-332",
+          "detail": "GET /events -> mapPersistedRunEvents"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/runs/run_abf5fe78aab1e932ff/events"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "818-833",
+          "detail": "eventReplayWindow=500 slice; truncated flag computed from global seq"
+        },
+        "service": {
+          "file": "src/server/runs/recorder.ts",
+          "line": "58-69",
+          "detail": "SELECT seq,run_id,type,payload_json,created_at WHERE seq>after LIMIT"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "54-61",
+          "detail": "events table (autoincrement seq global across runs)"
+        },
+        "response": {
+          "detail": "abf5 108 events (seq 552-659), lastEventId 659, truncated true; 95 102 events, truncated true"
+        },
+        "renderBack": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "1031-1049",
+          "detail": "rows reversed (latest first); Inspect shows payload"
+        },
+        "reentry": {
+          "detail": "No /stream request for terminal runs (D09 verified); truncated flag ignored by client (F6)"
+        }
+      },
+      "evidence": [
+        "evidence/browser/run-abf5-detail.json#tabResults",
+        "evidence/api/run_abf5fe78aab1e932ff_events.json"
+      ],
+      "defect": "F6"
+    },
+    {
+      "id": "T24",
+      "name": "Live SSE subscription (non-terminal run)",
+      "page": "RunDetail",
+      "controls": [
+        "stream badge",
+        "live events"
+      ],
+      "verdict": "WIRED-BUT-DEAD",
+      "verifiedLevel": "READ",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "135-162",
+          "detail": "live stream label only when !terminal && live; reconnecting label"
+        },
+        "handler": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "135-139",
+          "detail": "useRunStream(runId, onEvent) -> buffer 100 + 250ms reload"
+        },
+        "client": {
+          "file": "web/src/hooks/useApi.ts",
+          "line": "106-157",
+          "detail": "EventSource + STREAM_EVENT_TYPES listeners"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/runs/:id/stream",
+          "headers": "Accept: text/event-stream; Last-Event-ID optional"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "835-865",
+          "detail": "writes id/event/data frames; heartbeat comment; replay window"
+        },
+        "service": {
+          "file": "src/server/runs/recorder.ts",
+          "line": "36-56",
+          "detail": "emitEvent persists + EventEmitter push"
+        },
+        "store": {
+          "detail": "events table; emitter in-process (no cross-process bus)"
+        },
+        "response": {
+          "detail": "108 SSE frames captured for abf5 incl. run.queued + repair.stalled; frame shape {schema,type,data,meta}"
+        },
+        "renderBack": {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "line": "1006-1049",
+          "detail": "Events tab rows; missing 5 emitted types (F1)"
+        },
+        "reentry": {
+          "detail": "No live run exists to exercise end-to-end; classification READ plus raw SSE transport evidence"
+        }
+      },
+      "evidence": [
+        "evidence/logs/sse_abf5.txt",
+        "payloads.json",
+        "web/src/hooks/useApi.ts:72-100"
+      ],
+      "defect": "F1"
+    },
+    {
+      "id": "T25",
+      "name": "Agents refresh/search/filters",
+      "page": "Agents",
+      "controls": [
+        "Refresh",
+        "SearchField",
+        "GROUP",
+        "OUTPUT"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/AgentsPage.tsx",
+          "line": "73-126",
+          "detail": "search input, two selects, shown count"
+        },
+        "handler": {
+          "file": "web/src/pages/AgentsPage.tsx",
+          "line": "49-64",
+          "detail": "client filtering by name/id/role/group/outputKind"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "406-409",
+          "detail": "GET /api/agents"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/agents"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "261-268",
+          "detail": "REGISTRY.map(toAgentView) with evidence + stepped badges"
+        },
+        "service": {
+          "file": "src/server/agents/registry.ts",
+          "line": "1-200",
+          "detail": "37 agent definitions; prompt text included"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "186-199",
+          "detail": "agent_evidence; steps join for representative-live"
+        },
+        "response": {
+          "detail": "37 agents (94KB payload incl. full prompts)"
+        },
+        "renderBack": {
+          "file": "web/src/pages/AgentsPage.tsx",
+          "line": "131-136",
+          "detail": "37 cards; python search 1 of 37; Control 5; files 28"
+        },
+        "reentry": {
+          "detail": "Refresh refetches 200; filters reset on reload"
+        }
+      },
+      "evidence": [
+        "evidence/browser/interactions.json#agents",
+        "evidence/api/agents.json"
+      ]
+    },
+    {
+      "id": "T26",
+      "name": "Agent card -> drawer (+ Escape/close)",
+      "page": "Agents",
+      "controls": [
+        "37 cards",
+        "Close",
+        "Close dialog"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/AgentsPage.tsx",
+          "line": "151-183",
+          "detail": "button.agent-card with aria-label Open <name>"
+        },
+        "handler": {
+          "file": "web/src/pages/AgentsPage.tsx",
+          "line": "133",
+          "detail": "setSelected(agent.id) -> AgentDrawer Modal"
+        },
+        "client": {
+          "file": "web/src/pages/AgentsPage.tsx",
+          "line": "200-203",
+          "detail": "getAgent(id) via useApiResource"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/agents/router"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "270-279",
+          "detail": "single agent + evidence + stepped badges"
+        },
+        "service": {
+          "detail": "registry.getAgent"
+        },
+        "store": {
+          "detail": "agent_evidence rows"
+        },
+        "response": {
+          "detail": "200 agent view (same shape as list)"
+        },
+        "renderBack": {
+          "file": "web/src/pages/AgentsPage.tsx",
+          "line": "310-508",
+          "detail": "contract, evidence, prompt and adhoc form; Escape closes"
+        },
+        "reentry": {
+          "detail": "Escape closes drawer (verified); opening a second agent resets form state (222-228)"
+        }
+      },
+      "evidence": [
+        "evidence/browser/agents-drawer.json"
+      ]
+    },
+    {
+      "id": "T27",
+      "name": "Agent prompt edit/save/reset",
+      "page": "Agents",
+      "controls": [
+        "Edit prompt",
+        "Save",
+        "Reset"
+      ],
+      "verdict": "UNVERIFIED",
+      "verifiedLevel": "READ",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/AgentsPage.tsx",
+          "line": "399-420",
+          "detail": "editor textarea maxLength 20000; Reset opens ConfirmDialog; Save disabled on empty/busy"
+        },
+        "handler": {
+          "file": "web/src/pages/AgentsPage.tsx",
+          "line": "235-267",
+          "detail": "savePrompt/confirmReset"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "421-436",
+          "detail": "PUT/DELETE /api/agents/:id/prompt with Idempotency-Key"
+        },
+        "request": {
+          "method": "PUT/DELETE",
+          "path": "/api/agents/:id/prompt",
+          "body": "{prompt}",
+          "headers": "Content-Type, Idempotency-Key"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "281-304",
+          "detail": "trim, length<=20000, secret refusal, settings upsert/delete, E_UNSUPPORTED_AGENT"
+        },
+        "service": {
+          "detail": "settings table prompt_override:<id>; snapshot.ts:35-50 pins prompt into run snapshot"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "119-124",
+          "detail": "settings key/value_json"
+        },
+        "response": {
+          "detail": "{agentId,saved,chars} / {agentId,reset}"
+        },
+        "renderBack": {
+          "file": "web/src/pages/AgentsPage.tsx",
+          "line": "240-242,257-259",
+          "detail": "editing=false + agent.reload; CodeViewer shows new prompt"
+        },
+        "reentry": {
+          "detail": "Not executed: writes production DB. Dialog open/Escape verified only."
+        }
+      },
+      "evidence": [
+        "evidence/browser/agents-drawer.json"
+      ],
+      "defect": "F7",
+      "note": "Save/Reset effects unverified by mandate; nested Escape bug observed."
+    },
+    {
+      "id": "T28",
+      "name": "Agent ad-hoc run",
+      "page": "Agents",
+      "controls": [
+        "Input",
+        "Mode",
+        "Max cost",
+        "Target path",
+        "Run agent"
+      ],
+      "verdict": "UNVERIFIED",
+      "verifiedLevel": "READ",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/AgentsPage.tsx",
+          "line": "430-483",
+          "detail": "file-writing agents require target; live badge; mock option disabled"
+        },
+        "handler": {
+          "file": "web/src/pages/AgentsPage.tsx",
+          "line": "269-308",
+          "detail": "submitRun validates cap/target/key then runAgent"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "438-450",
+          "detail": "POST /api/agents/:id/run Idempotency-Key"
+        },
+        "request": {
+          "method": "POST",
+          "path": "/api/agents/router/run",
+          "body": "{input,mode,maxCostUsd,targetPath}",
+          "headers": "Content-Type, Idempotency-Key"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "306-357",
+          "detail": "E_AGENT_MOCK_UNAVAILABLE, key required, E_AGENT_TARGET_REQUIRED, path safety, budget, 202"
+        },
+        "service": {
+          "file": "src/server/runs/manager.ts",
+          "line": "340-350",
+          "detail": "createRun runKind=adhoc with metadata agentId/input/targetPath"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "119-124",
+          "detail": "run_meta:<id> settings row"
+        },
+        "provider": {
+          "detail": "paid DeepSeek call"
+        },
+        "response": {
+          "detail": "202 {runId,replayed}"
+        },
+        "renderBack": {
+          "file": "web/src/pages/AgentsPage.tsx",
+          "line": "300",
+          "detail": "navigate to /runs/:id"
+        },
+        "reentry": {
+          "detail": "Not executed: paid run. Run agent disabled with empty input (verified DOM)."
+        }
+      },
+      "evidence": [
+        "evidence/browser/agents-drawer.json"
+      ],
+      "note": "No live run exercised; all inputs rendered correctly."
+    },
+    {
+      "id": "T29",
+      "name": "Vault tree + file preview",
+      "page": "Vault",
+      "controls": [
+        "Refresh",
+        "150 tree rows",
+        "file preview"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/VaultPage.tsx",
+          "line": "23-73",
+          "detail": "5 roots, expandable dirs, 150 rows; preview card"
+        },
+        "handler": {
+          "file": "web/src/pages/VaultPage.tsx",
+          "line": "87,92-116,119-130",
+          "detail": "open state, setSelected, VaultFile fetch"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "522-528",
+          "detail": "GET /vault/tree; GET /vault/file?path="
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/vault/tree"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "681-693",
+          "detail": "buildVaultTree recursive, safePath, text/plain"
+        },
+        "service": {
+          "file": "src/server/app.ts",
+          "line": "1025-1043",
+          "detail": "readdir walk (dotfiles skipped, dirs first)"
+        },
+        "store": {
+          "detail": "vault/ directory on disk"
+        },
+        "response": {
+          "detail": "tree 15.7KB / 5 roots; file 200 markdown"
+        },
+        "renderBack": {
+          "file": "web/src/pages/VaultPage.tsx",
+          "line": "124-129",
+          "detail": "ReactMarkdown + path; raw HTML not enabled"
+        },
+        "reentry": {
+          "detail": "Dir toggle 150->67->150; file click rendered Log_007238d763_architect.md"
+        }
+      },
+      "evidence": [
+        "evidence/browser/vault.json",
+        "evidence/browser/micro.json#vault",
+        "evidence/api/vault-tree.json"
+      ]
+    },
+    {
+      "id": "T30",
+      "name": "Learning refusal state",
+      "page": "Learning",
+      "controls": [
+        "8 disabled tabs",
+        "Reason",
+        "Open settings",
+        "Refresh status"
+      ],
+      "verdict": "REFUSED-BY-NAME",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/LearningPage.tsx",
+          "line": "88-97,150-203",
+          "detail": "disabled branch: tabs disabled with hint; title \"Learning is unavailable\"; reason code chip"
+        },
+        "handler": {
+          "file": "web/src/pages/LearningPage.tsx",
+          "line": "67-73",
+          "detail": "disabled when enabled===false or E_LEARNING_DISABLED/CONSENT_REQUIRED"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "472-474",
+          "detail": "GET /api/learning/overview"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/learning/overview"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "538-541",
+          "detail": "buildLearningOverview(db, phase)"
+        },
+        "service": {
+          "file": "src/server/learning/overview.ts",
+          "line": "1-200",
+          "detail": "enabled false when pool exhausted; consent scopes; counts"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "341-380",
+          "detail": "consent_records, traces, sealed_pool"
+        },
+        "response": {
+          "detail": "{\"enabled\":false,\"reason\":\"E_LEARNING_POOL_EXHAUSTED\",\"consentRequired\":true,counts{traces:16,failures:2,audit:11,...}}"
+        },
+        "renderBack": {
+          "file": "web/src/pages/LearningPage.tsx",
+          "line": "150-203",
+          "detail": "only reason + consent-required + settings link; counts/scopes not rendered"
+        },
+        "reentry": {
+          "detail": "All 8 tabs aria-disabled=true; Refresh status is window.location.reload()"
+        }
+      },
+      "evidence": [
+        "evidence/api/learning-overview.json",
+        "evidence/browser/learning.json"
+      ]
+    },
+    {
+      "id": "T31",
+      "name": "Learning approvals/promotions/rollback",
+      "page": "Learning",
+      "controls": [
+        "Approve & promote",
+        "Rollback",
+        "ApprovalDialog"
+      ],
+      "verdict": "UNVERIFIED",
+      "verifiedLevel": "READ",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/LearningPage.tsx",
+          "line": "458-547",
+          "detail": "action buttons only for pending/active promotion rows"
+        },
+        "handler": {
+          "file": "web/src/pages/LearningPage.tsx",
+          "line": "583-612",
+          "detail": "typed APPROVE -> requestApproval -> promote/rollback"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "484-520",
+          "detail": "POST /learning/approvals /promotions /rollback + HiveAuthorization header"
+        },
+        "request": {
+          "method": "POST",
+          "path": "/api/learning/approvals|promotions|rollback",
+          "body": "{action,candidateId,evaluationId,promotionId,typedPhrase}",
+          "headers": "Authorization: HiveApproval <token>"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "560-679",
+          "detail": "approval gate + real learning services; refusals E_LEARNING_*"
+        },
+        "service": {
+          "file": "src/server/learning/index.ts",
+          "line": "1-200",
+          "detail": "approval/promotion/rollback services"
+        },
+        "store": {
+          "file": "src/server/db/migrations.ts",
+          "line": "403-556",
+          "detail": "variants/eval_runs/promotions/approval_tokens"
+        },
+        "response": {
+          "detail": "promotions list is empty (0 rows); approvals/promotions refused E_LEARNING_DATASET_EMPTY / APPROVAL_REQUIRED per W5 receipt"
+        },
+        "renderBack": {
+          "detail": "no pending/active row exists, so no approval control is rendered"
+        },
+        "reentry": {
+          "detail": "Not executed: approval/promotion mutations prohibited; dataset empty."
+        }
+      },
+      "evidence": [
+        "evidence/api/learning-promotions.json",
+        "docs/BUGFIX-WAVE-5/RECEIPT.md:32"
+      ],
+      "note": "Reachable only after sealed pool + consent + data; currently unreachable."
+    },
+    {
+      "id": "T32",
+      "name": "Settings key/status/runtime",
+      "page": "Settings",
+      "controls": [
+        "Refresh",
+        "key panel",
+        "runtime settings",
+        "Open Learning status"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/SettingsPage.tsx",
+          "line": "40-109",
+          "detail": "key panel + factory stage + runtime scalar rows"
+        },
+        "handler": {
+          "file": "web/src/pages/SettingsPage.tsx",
+          "line": "24-25,34",
+          "detail": "useApiResource(getKeyStatus/getSettings); Refresh both"
+        },
+        "client": {
+          "file": "web/src/api.ts",
+          "line": "293-307",
+          "detail": "GET key-status + settings"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/api/settings + /api/settings/key-status"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "212-223",
+          "detail": "settings payload {model,thinking,limits,features,key}; key POST/PUT refused at 220-221"
+        },
+        "service": {
+          "detail": "config values; keyStatus()"
+        },
+        "store": {
+          "detail": "data/secrets or env; not returned"
+        },
+        "response": {
+          "detail": "settings 200 incl. limits.maxRunCostUsd .5; key-status 200 (no checkedAt/balance)"
+        },
+        "renderBack": {
+          "file": "web/src/pages/SettingsPage.tsx",
+          "line": "134-158",
+          "detail": "knownKeys filter drops nested limits -> runtime shows only MODEL/THINKING (F3); key panel shows Not reported truthfully"
+        },
+        "reentry": {
+          "detail": "Refresh triggers both GETs (verified); provider-key POST/PUT 403 FORBIDDEN_PROVIDER_KEY_ACCESS (curl)"
+        }
+      },
+      "evidence": [
+        "evidence/api/settings.json",
+        "evidence/browser/navigation.json#refreshes",
+        "evidence/logs/key-refusal.txt"
+      ],
+      "defect": "F3"
+    },
+    {
+      "id": "T33",
+      "name": "Not found route",
+      "page": "NotFound",
+      "controls": [
+        "Return to overview"
+      ],
+      "verdict": "WIRED-AND-WORKS",
+      "verifiedLevel": "VERIFIED",
+      "hops": {
+        "render": {
+          "file": "web/src/pages/NotFoundPage.tsx",
+          "line": "1-17",
+          "detail": "Page not found + Return to overview"
+        },
+        "handler": {
+          "detail": "react-router * route"
+        },
+        "client": {
+          "detail": "none"
+        },
+        "request": {
+          "method": "GET",
+          "path": "/no-such-page",
+          "headers": "Accept: text/html"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "969-989",
+          "detail": "known SPA routes 200; unknown HTML 404 index.html; unknown API 404 JSON"
+        },
+        "service": {
+          "detail": "none"
+        },
+        "store": {
+          "detail": "none"
+        },
+        "response": {
+          "detail": "HTTP 404 text/html for /no-such-page; HTTP 404 E_RUN_NOT_FOUND JSON for /api/nope (F11)"
+        },
+        "renderBack": {
+          "file": "web/src/pages/NotFoundPage.tsx",
+          "line": "9-16",
+          "detail": "rendered inside AppShell"
+        },
+        "reentry": {
+          "detail": "Return link verified; /missing HTML 404; /runs 200"
+        }
+      },
+      "evidence": [
+        "evidence/browser/run-detail-controls.json#http",
+        "evidence/logs/unknown-api.txt"
+      ],
+      "defect": "F11"
+    },
+    {
+      "id": "T34",
+      "name": "Served routes with no UI consumer (census)",
+      "page": "API",
+      "controls": [
+        "n/a"
+      ],
+      "verdict": "UNVERIFIED",
+      "verifiedLevel": "READ",
+      "hops": {
+        "render": {
+          "detail": "no component"
+        },
+        "handler": {
+          "detail": "no handler"
+        },
+        "client": {
+          "detail": "no client function in web/src/api.ts"
+        },
+        "request": {
+          "detail": "none from browser"
+        },
+        "route": {
+          "file": "src/server/app.ts",
+          "line": "502-536,918-922,957-964",
+          "detail": "/api/stats/router, /api/ops/reports/:kind, /api/scripts, /api/scripts/:id/dry-run, /api/runs/:id/files, /api/runs/:id/checks, /api/ops/system"
+        },
+        "service": {
+          "detail": "CLI/ops/API surface only"
+        },
+        "store": {
+          "detail": "n/a"
+        },
+        "response": {
+          "detail": "not exercised from UI"
+        },
+        "renderBack": {
+          "detail": "none"
+        },
+        "reentry": {
+          "detail": "census note only; not a defect"
+        }
+      },
+      "evidence": [
+        "src/server/app.ts",
+        "web/src/api.ts"
+      ],
+      "note": "48-route baseline vs 45 app.ts declarations / 42 OpenAPI paths - counting basis not documented."
+    }
+  ],
+  "confirmedDefects": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "F10",
+    "F11",
+    "F12"
+  ],
+  "evidenceRoots": [
+    "docs/AUDIT-WAVE-6/weaver/evidence/api",
+    "docs/AUDIT-WAVE-6/weaver/evidence/browser",
+    "docs/AUDIT-WAVE-6/weaver/evidence/logs",
+    "docs/AUDIT-WAVE-6/weaver/evidence/screens"
+  ]
+}

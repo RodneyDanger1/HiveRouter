@@ -1,0 +1,64 @@
+{
+  "order": [
+    {
+      "tag": "A",
+      "id": "",
+      "label": null,
+      "text": "Skip to content"
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "label": "Open navigation",
+      "text": ""
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "label": "HiveRouter overview",
+      "text": "Hive ROUTER"
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "label": null,
+      "text": "Overview"
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "label": null,
+      "text": "Agents"
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "label": null,
+      "text": "Runs"
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "label": null,
+      "text": "Vault"
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "label": null,
+      "text": "Learning"
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "label": null,
+      "text": "Settings"
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "label": null,
+      "text": "Trust & status"
+    }
+  ]
+}

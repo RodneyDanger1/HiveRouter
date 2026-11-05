@@ -1,0 +1,50 @@
+{
+  "agents": {
+    "total": 37,
+    "shownBefore": "37 of 37 shown",
+    "pythonCards": 1,
+    "shownPython": "1 of 37 shown",
+    "emptyText": "No agents match those filters\n\nClear the search or filter to see the registry.",
+    "controlCards": 5,
+    "shownControl": "5 of 37 shown",
+    "filesCards": 28,
+    "shownFiles": "28 of 37 shown"
+  },
+  "shell": {
+    "before": {
+      "expanded": "false",
+      "sidebarClass": "sidebar"
+    },
+    "opened": {
+      "expanded": "true",
+      "label": "Close navigation",
+      "sidebarClass": "sidebar sidebar-open"
+    },
+    "afterEscape": {
+      "expanded": "false",
+      "sidebarClass": "sidebar"
+    },
+    "firstFocus": {
+      "tag": "A",
+      "text": "Hive\nROUTER",
+      "href": "/"
+    },
+    "afterSkip": {
+      "hash": "",
+      "activeTag": "A",
+      "activeId": "",
+      "mainTabIndex": null,
+      "scrolled": 0
+    }
+  },
+  "runRefresh": {
+    "requested": [
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8787/api/runs/run_abf5fe78aab1e932ff/snapshot",
+        "status": 200
+      }
+    ],
+    "totalResponses": 5
+  }
+}

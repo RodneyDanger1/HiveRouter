@@ -1,0 +1,97 @@
+
+> hive-router@0.1.0 test
+> vitest run
+
+
+ RUN  v5.1.0 C:/Users/Riley/Desktop/HiveRouter
+
+ ✓ test/unit/learning-pool.test.ts (4 tests) 2273ms
+   ✓ sealed pool and single-use suites (4)
+     ✓ requires six complete 65-case blocks before P7 can evaluate 778ms
+     ✓ freezes a 15-dev/50-holdout suite and protects holdout reads 766ms
+     ✓ refuses a block whose suite was already frozen 535ms
+ ✓ test/unit/learning-promotion.test.ts (2 tests) 2461ms
+   ✓ learning promotion and rollback (2)
+     ✓ gates a live evaluation, promotes only with a token, and rolls back 1494ms
+     ✓ refuses tampered evidence before any promotion 963ms
+ ✓ test/scripts.test.ts (10 tests) 18742ms
+   ✓ preflight (3)
+     ✓ refuses a low RAM floor through the real CLI with exit 7 6319ms
+     ✓ passes the real host preflight (Chrome, Node, npm, free port) 4750ms
+   ✓ stub-sweep (2)
+     ✓ finds a planted TODO in source and exits 4 505ms
+     ✓ passes clean source and classifies test-double markers when requested 1375ms
+   ✓ check-secrets (3)
+     ✓ passes a clean source file 958ms
+     ✓ classifies a clearly synthetic test fixture instead of failing the gate 1108ms
+   ✓ assert-stage (2)
+     ✓ passes a compliant A manifest and refuses a planted P7 path/table/script 2373ms
+     ✓ falls back to the bootstrap allowlist when manifests are absent 1056ms
+{"level":30,"time":1793766962730,"pid":22752,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","req":{"method":"GET","url":"/api/agents","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793766962754,"pid":22752,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","res":{"statusCode":200},"responseTime":22.725399999999354,"msg":"request completed"}
+{"level":30,"time":1793766962757,"pid":22752,"hostname":"DESKTOP-5GATL9H","reqId":"req-2","req":{"method":"GET","url":"/api/agents/architect","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793766962759,"pid":22752,"hostname":"DESKTOP-5GATL9H","reqId":"req-2","res":{"statusCode":200},"responseTime":1.2232999999996537,"msg":"request completed"}
+{"level":30,"time":1793766962763,"pid":22752,"hostname":"DESKTOP-5GATL9H","reqId":"req-3","req":{"method":"GET","url":"/api/runs/run_trace_route/routing","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793766962765,"pid":22752,"hostname":"DESKTOP-5GATL9H","reqId":"req-3","res":{"statusCode":200},"responseTime":2.257999999999811,"msg":"request completed"}
+{"level":30,"time":1793766962784,"pid":22752,"hostname":"DESKTOP-5GATL9H","reqId":"req-4","req":{"method":"POST","url":"/api/runs","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793766962791,"pid":22752,"hostname":"DESKTOP-5GATL9H","reqId":"req-4","res":{"statusCode":422},"responseTime":6.50249999999869,"msg":"request completed"}
+{"level":30,"time":1793766962792,"pid":22752,"hostname":"DESKTOP-5GATL9H","reqId":"req-5","req":{"method":"POST","url":"/api/runs","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793766962795,"pid":22752,"hostname":"DESKTOP-5GATL9H","reqId":"req-5","res":{"statusCode":422},"responseTime":2.938900000001013,"msg":"request completed"}
+ ✓ test/unit/trace-fixes.test.ts (7 tests) 3912ms
+ ✓ test/unit/logic-core.test.ts (11 tests) 619ms
+ ✓ test/unit/learning-cli.test.ts (1 test) 23745ms
+   ✓ learn CLI refusal (1)
+     ✓ reports E_LEARNING_POOL_EXHAUSTED for six empty blocks, not a misleading sample refusal 23741ms
+ ✓ test/unit/routing.test.ts (18 tests) 335ms
+ ✓ test/unit/llm.client.test.ts (11 tests) 322ms
+ ✓ test/unit/run-timeout.test.ts (1 test) 343ms
+   ✓ run wall-clock timeout (1)
+     ✓ aborts a non-settling executor and records E_RUN_TIMEOUT 335ms
+ ✓ test/unit/scripts-agents.test.ts (7 tests) 28224ms
+   ✓ bench-suite exits 7, not 3, when live is requested without a key 4178ms
+   ✓ owned P6a scripts — usage refusals (6)
+     ✓ scripts/build-repo-map.ts exits 2 when --run is absent, even with --json 3412ms
+     ✓ scripts/context-pack-report.ts exits 2 when --run is absent, even with --json 2558ms
+     ✓ scripts/integrity-check.ts exits 2 when --run is absent, even with --json 3764ms
+     ✓ scripts/build-repo-map.ts exits 2 when --run has no value 5645ms
+     ✓ scripts/context-pack-report.ts exits 2 when --run has no value 4677ms
+     ✓ scripts/integrity-check.ts exits 2 when --run has no value 3985ms
+ ✓ test/unit/learning-mining-repair-guard.test.ts (9 tests) 348ms
+ ✓ test/unit/learning-stats.test.ts (12 tests) 132ms
+ ✓ test/unit/learning-candidates.test.ts (6 tests) 140ms
+ ✓ test/pipeline-qa.test.ts (8 tests) 362ms
+ ✓ test/unit/logic-run-state.test.ts (10 tests) 153ms
+ ✓ test/unit/learning-consent-trace.test.ts (5 tests) 154ms
+{"level":30,"time":1793766976245,"pid":19936,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","req":{"method":"GET","url":"/openapi.json","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793766976287,"pid":19936,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","res":{"statusCode":200},"responseTime":40.80249999999978,"msg":"request completed"}
+ ✓ test/unit/openapi-schema.test.ts (2 tests) 274ms
+ ✓ test/unit/context.test.ts (7 tests) 147ms
+ ✓ test/unit/learning-approval.test.ts (5 tests) 150ms
+ ✓ test/unit/quality.test.ts (11 tests) 123ms
+ ✓ test/unit/learning-overview.test.ts (3 tests) 137ms
+ ✓ test/unit/agents.registry.test.ts (9 tests) 119ms
+ ✓ test/unit/logic-repair-plan.test.ts (11 tests) 112ms
+ ✓ test/unit/repair.test.ts (6 tests) 129ms
+ ✓ test/unit/http-attempt-hooks.test.ts (1 test) 127ms
+ ✓ test/unit/llm-budget-repair.test.ts (1 test) 116ms
+ ✓ test/unit/publish.test.ts (4 tests) 42ms
+ ✓ test/unit/logic-gate-decision.test.ts (11 tests) 156ms
+ ✓ test/unit/error-log.test.ts (2 tests) 77ms
+ ✓ test/unit/agents.schemas.test.ts (6 tests) 78ms
+ ✓ test/unit/agents.engine.test.ts (14 tests) 80ms
+ ✓ test/unit/retry.test.ts (9 tests) 35ms
+ ✓ test/unit/route-candidate-backfill.test.ts (1 test) 20ms
+ ✓ test/unit/prompt-analysis.test.ts (6 tests) 26ms
+ ✓ test/unit/logic-budget-policy.test.ts (8 tests) 109ms
+ ✓ test/unit/stub-scan.test.ts (3 tests) 11ms
+ ✓ test/unit/agent-runtime.test.ts (4 tests) 28ms
+ ✓ test/unit/agents.hash.test.ts (3 tests) 37ms
+
+ Test Files  38 passed (38)
+      Tests  249 passed (249)
+   Start at  22:35:39
+   Duration  54.94s (tests 54%, import 43%, worker 1%, transform 1%)
+
+    Isolate  38 workers spawned · ~1.50s startup each (spawn + environment, per file)
+             at least ~12.77s faster with isolate: false — reuses workers across files instead of one per file
+

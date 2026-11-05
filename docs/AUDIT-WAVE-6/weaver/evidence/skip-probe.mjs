@@ -1,0 +1,15 @@
+﻿import { chromium } from 'playwright';
+const browser = await chromium.launch({ channel: 'chrome', headless: true });
+const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
+const page = await context.newPage();
+await page.goto('http://127.0.0.1:8787/', { waitUntil: 'networkidle', timeout: 45000 });
+await page.waitForTimeout(400);
+const log = [];
+log.push({ step: 'initial', active: await page.evaluate(() => ({ tag: document.activeElement?.tagName, text: document.activeElement?.innerText?.trim().slice(0,40) })) });
+await page.keyboard.press('Tab');
+log.push({ step: 'tab1', active: await page.evaluate(() => ({ tag: document.activeElement?.tagName, cls: document.activeElement?.className, text: document.activeElement?.innerText?.trim().slice(0,40), href: document.activeElement?.getAttribute?.('href') })) });
+await page.keyboard.press('Enter');
+await page.waitForTimeout(500);
+log.push({ step: 'enter', active: await page.evaluate(() => ({ tag: document.activeElement?.tagName, id: document.activeElement?.id ?? null, text: document.activeElement?.innerText?.trim().slice(0,40) })), hash: await page.evaluate(() => location.hash), scrollY: await page.evaluate(() => window.scrollY) });
+console.log(JSON.stringify(log, null, 2));
+await browser.close();

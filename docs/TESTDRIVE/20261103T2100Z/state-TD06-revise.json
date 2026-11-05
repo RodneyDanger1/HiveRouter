@@ -1,0 +1,2096 @@
+﻿{
+  "content_refs": [
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "HiveRouter — AI Agent Coding Router",
+      "ref": "p67:0",
+      "role": "rootwebarea",
+      "states": {
+        "focusable": true,
+        "focused": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Revise this run",
+      "ref": "p67:1",
+      "role": "dialog",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:5",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:6",
+      "role": "main",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:7",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Estimated spend",
+      "ref": "p67:8",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "$0.0076",
+      "ref": "p67:9",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:10",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Revise this run",
+      "ref": "p67:11",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:12",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "A revision creates a child run from the accepted artifacts. The parent is never mutated. Describe the change; only targeted files should be revised.",
+      "ref": "p67:13",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:14",
+      "role": "labeltext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "REVISION FEEDBACK",
+      "ref": "p67:15",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Start revision",
+      "ref": "p67:16",
+      "role": "button",
+      "states": {
+        "disabled": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Primary navigation",
+      "ref": "p67:42",
+      "role": "complementary",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:43",
+      "role": "navigation",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:44",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Screening-grade by design.",
+      "ref": "p67:45",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:46",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Local, single-user factory. No learned routing. No generated-code execution. No provider key in the browser.",
+      "ref": "p67:47",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "HIVEROUTER v",
+      "ref": "p67:48",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "0.1.0",
+      "ref": "p67:49",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:50",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Run actions",
+      "ref": "p67:51",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:52",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Actions are real API calls; unavailable actions are not rendered.",
+      "ref": "p67:53",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:54",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "ACCEPTED TREE",
+      "ref": "p67:55",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:56",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "C:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_063580525bb149f98d",
+      "ref": "p67:57",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:58",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Downloads are available only for terminal runs that have stored artifacts.",
+      "ref": "p67:59",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Run sections",
+      "ref": "p67:60",
+      "role": "tablist",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:61",
+      "role": "tabpanel",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:62",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Execution timeline",
+      "ref": "p67:63",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:64",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Steps are read from the persisted snapshot; the live stream refreshes this view.",
+      "ref": "p67:65",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:66",
+      "role": "list",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:67",
+      "role": "listitem",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "#",
+      "ref": "p67:68",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "1",
+      "ref": "p67:69",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "PLANNING",
+      "ref": "p67:70",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "architect",
+      "ref": "p67:71",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "SUCCEEDED",
+      "ref": "p67:72",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "8s",
+      "ref": "p67:73",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:74",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "{\"projectName\":\"math-td-unittest\",\"coreParadigm\":\"Single pure addition function with a standard-library unittest suite.\",\"storageTarget\":\"filesystem\",\"files\":[{\"path\":\"src/math_td.py\",\"engine\":\"python-engine\",\"language\":\"python\",\"duty\":\"Pro…",
+      "ref": "p67:75",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:76",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "555",
+      "ref": "p67:77",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "in /",
+      "ref": "p67:78",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "1,357",
+      "ref": "p67:79",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "out /",
+      "ref": "p67:80",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "$0.0009",
+      "ref": "p67:81",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:82",
+      "role": "listitem",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "#",
+      "ref": "p67:83",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "2",
+      "ref": "p67:84",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "GENERATING",
+      "ref": "p67:85",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "python-engine",
+      "ref": "p67:86",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "SUCCEEDED",
+      "ref": "p67:87",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "2s",
+      "ref": "p67:88",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:89",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "{\"path\":\"src/math_td.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nFilename: src/math_td.py\\nDependencies: Python 3.11+ standard library only\\nRun command: python -c \\\"from src.math_td import add; print(add(1, 2))\\\"\\n\\nProvides a pure add(a, b…",
+      "ref": "p67:90",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:91",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "701",
+      "ref": "p67:92",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "in /",
+      "ref": "p67:93",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "453",
+      "ref": "p67:94",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "out /",
+      "ref": "p67:95",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "$0.0004",
+      "ref": "p67:96",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:97",
+      "role": "listitem",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "#",
+      "ref": "p67:98",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "3",
+      "ref": "p67:99",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "GENERATING",
+      "ref": "p67:100",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "python-engine",
+      "ref": "p67:101",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "SUCCEEDED",
+      "ref": "p67:102",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "4s",
+      "ref": "p67:103",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:104",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "{\"path\":\"tests/test_math_td.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nFilename: tests/test_math_td.py\\nDependencies: Python 3.11+ standard library only (unittest)\\nRun command: python -m unittest tests.test_math_td -v\\n\\nUnittest suite val…",
+      "ref": "p67:105",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:106",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "1,044",
+      "ref": "p67:107",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "in /",
+      "ref": "p67:108",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "1,104",
+      "ref": "p67:109",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "out /",
+      "ref": "p67:110",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "$0.0008",
+      "ref": "p67:111",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:112",
+      "role": "listitem",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "#",
+      "ref": "p67:113",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "4",
+      "ref": "p67:114",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "CLEANING",
+      "ref": "p67:115",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "cleaner",
+      "ref": "p67:116",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "SUCCEEDED",
+      "ref": "p67:117",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "11s",
+      "ref": "p67:118",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:119",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "{\"verdict\":\"changes_required\",\"summary\":\"Logic is correct and tests are intact; src/math_td.py carries dead error-handling around the addition and a redundant value-restricted TypeVar that should be flattened.\",\"findings\":[{\"severity\":\"warn…",
+      "ref": "p67:120",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:121",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "2,994",
+      "ref": "p67:122",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "in /",
+      "ref": "p67:123",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "2,130",
+      "ref": "p67:124",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "out /",
+      "ref": "p67:125",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "$0.0017",
+      "ref": "p67:126",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:127",
+      "role": "listitem",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "#",
+      "ref": "p67:128",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "5",
+      "ref": "p67:129",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "HARDENING",
+      "ref": "p67:130",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "sentinel",
+      "ref": "p67:131",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "SUCCEEDED",
+      "ref": "p67:132",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "23s",
+      "ref": "p67:133",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:134",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "{\"verdict\":\"pass\",\"summary\":\"No security defects found; the addition function uses standard-library numeric validation and the unittest suite remains intact.\",\"findings\":[{\"severity\":\"info\",\"file\":\"src/math_td.py\",\"issue\":\"The static type a…",
+      "ref": "p67:135",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:136",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "2,875",
+      "ref": "p67:137",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "in /",
+      "ref": "p67:138",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "3,908",
+      "ref": "p67:139",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "out /",
+      "ref": "p67:140",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "$0.0028",
+      "ref": "p67:141",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:143",
+      "role": "listitem",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "#",
+      "ref": "p67:144",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "6",
+      "ref": "p67:145",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "TESTING",
+      "ref": "p67:146",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "gatekeeper",
+      "ref": "p67:147",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "SUCCEEDED",
+      "ref": "p67:148",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "4s",
+      "ref": "p67:149",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:150",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "{\"summary\":\"Complete unittest suite for src/math_td.add covering positive, negative, zero, mixed types, complex numbers, bools, and TypeError cases for non-numeric inputs.\",\"testCommand\":\"python -m unittest tests.test_math_td -v\",\"files\":[{…",
+      "ref": "p67:151",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:152",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "2,824",
+      "ref": "p67:153",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "in /",
+      "ref": "p67:154",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "1,131",
+      "ref": "p67:155",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "out /",
+      "ref": "p67:156",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "$0.0011",
+      "ref": "p67:157",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:158",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Brief",
+      "ref": "p67:159",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:160",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "The exact input that was planned. It is treated as untrusted data.",
+      "ref": "p67:161",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:162",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Create src/math_td.py with add(a,b) and tests/test_math_td.py using unittest; standard library only",
+      "ref": "p67:163",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:164",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "RUN SUMMARY",
+      "ref": "p67:165",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:166",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "# HiveRouter Run Report - Run: `run_063580525bb149f98d` - Project: Create src/math_td.py with add(a,b) and tests/test_math_td.py using unittest; st - Status: **completed** - Generated: 2026-11-03T21:37:20.275Z - Snapshot: `19f380f5d23d93213c8e5e48cd905c93f14791372e7ee4c209c99de4c3e9a3f2` ## Files | Path | Engine | Bytes | SHA-256 | |---|---|---|---| | `src/math_td.py` | python-engine | 983 | `e0f5615bcdb153be…` | | `tests/test_math_td.py` | gatekeeper | 3194 | `9403d3df267ac472…` | ## Checks",
+      "ref": "p67:167",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:168",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Checks & artifacts",
+      "ref": "p67:169",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:170",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Counts are facts; a passing count is not a quality guarantee.",
+      "ref": "p67:171",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:172",
+      "role": "descriptionlist",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "CHECKS",
+      "ref": "p67:173",
+      "role": "term",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:174",
+      "role": "definition",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "5 total · 0 fail/unverified",
+      "ref": "p67:175",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "ARTIFACTS",
+      "ref": "p67:176",
+      "role": "term",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:177",
+      "role": "definition",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "2",
+      "ref": "p67:178",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "TRACE COMPLETE",
+      "ref": "p67:179",
+      "role": "term",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:180",
+      "role": "definition",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Yes",
+      "ref": "p67:181",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "POLICY VERSION",
+      "ref": "p67:182",
+      "role": "term",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:183",
+      "role": "definition",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "pol_36a0bb4e631533c9",
+      "ref": "p67:184",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:185",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Use the Checks and Files tabs above to inspect the persisted verification and artifacts.",
+      "ref": "p67:186",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:187",
+      "role": "contentinfo",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Local factory · 127.0.0.1",
+      "ref": "p67:188",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Independent local tool. Not affiliated with the U.S. Government or the National Design Studio.",
+      "ref": "p67:189",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "NO AUTO-PROMOTION · NO SHELL · NO GENERATED-CODE EXECUTION",
+      "ref": "p67:190",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    }
+  ],
+  "mode": "snapshot",
+  "oopif": {
+    "frames": 0,
+    "status": "attached"
+  },
+  "outline": "- generic\n- link \"Skip to content\" [focusable=true]\n- complementary \"Primary navigation\"\n  - navigation\n    - link \"Overview\" [focusable=true]\n- statictext \"Overview\"\n    - link \"Agents\" [focusable=true]\n- statictext \"Agents\"\n    - link \"Runs\" [focusable=true]\n- statictext \"Runs\"\n    - link \"Vault\" [focusable=true]\n- statictext \"Vault\"\n    - link \"Learning\" [focusable=true]\n- statictext \"Learning\"\n    - link \"Settings\" [focusable=true]\n- statictext \"Settings\"\n- paragraph\n  - statictext \"Screening-grade by design.\"\n- paragraph\n  - statictext \"Local, single-user factory. No learned routing. No generated-code execution. No provider key in the browser.\"\n- statictext \"HIVEROUTER v\"\n- statictext \"0.1.0\"\n- link \"Trust & status\" [focusable=true]\n- main\n- generic\n- statictext \"Estimated spend\"\n- statictext \"$0.0076\"\n- generic\n- heading \"Run actions\"\n- paragraph\n  - statictext \"Actions are real API calls; unavailable actions are not rendered.\"\n- button \"Open folder\" [focusable=true]\n- button \"Revise accepted files\" [focusable=true]\n- button \"Audit this run\" [focusable=true]\n- paragraph\n  - statictext \"ACCEPTED TREE\"\n- paragraph\n  - statictext \"C:\\\\Users\\\\Riley\\\\Desktop\\\\HiveRouter\\\\workspace\\\\runs\\\\run_063580525bb149f98d\"\n  - paragraph\n    - statictext \"Downloads are available only for terminal runs that have stored artifacts.\"\n- tablist \"Run sections\"\n  - tab \"Overview\" [focusable=true,selected=true]\n  - tab \"Files\" [focusable=true,selected=false]\n  - tab \"Checks\" [focusable=true,selected=false]\n  - tab \"Routing\" [focusable=true,selected=false]\n  - tab \"Context\" [focusable=true,selected=false]\n  - tab \"Repairs\" [focusable=true,selected=false]\n  - tab \"Confidence\" [focusable=true,selected=false]\n  - tab \"Events\" [focusable=true,selected=false]\n- tabpanel\n- generic\n- heading \"Execution timeline\"\n- paragraph\n  - statictext \"Steps are read from the persisted snapshot; the live stream refreshes this view.\"\n- list\n  - listitem\n- statictext \"#\"\n- statictext \"1\"\n- statictext \"PLANNING\"\n- statictext \"architect\"\n- statictext \"SUCCEEDED\"\n- statictext \"8s\"\n- paragraph\n  - statictext \"{\\\"projectName\\\":\\\"math-td-unittest\\\",\\\"coreParadigm\\\":\\\"Single pure addition function with a standard-library unittest suite.\\\",\\\"storageTarget\\\":\\\"filesystem\\\",\\\"files\\\":[{\\\"path\\\":\\\"src/math_td.py\\\",\\\"engine\\\":\\\"python-engine\\\",\\\"language\\\":\\\"python\\\",\\\"duty\\\":\\\"Pro…\"\n- paragraph\n  - statictext \"555\"\n  - statictext \"in /\"\n  - statictext \"1,357\"\n  - statictext \"out /\"\n  - statictext \"$0.0009\"\n  - listitem\n- statictext \"#\"\n- statictext \"2\"\n- statictext \"GENERATING\"\n- statictext \"python-engine\"\n- statictext \"SUCCEEDED\"\n- statictext \"2s\"\n- paragraph\n  - statictext \"{\\\"path\\\":\\\"src/math_td.py\\\",\\\"language\\\":\\\"python\\\",\\\"content\\\":\\\"\\\\\\\"\\\\\\\"\\\\\\\"\\\\nFilename: src/math_td.py\\\\nDependencies: Python 3.11+ standard library only\\\\nRun command: python -c \\\\\\\"from src.math_td import add; print(add(1, 2))\\\\\\\"\\\\n\\\\nProvides a pure add(a, b…\"\n- paragraph\n  - statictext \"701\"\n  - statictext \"in /\"\n  - statictext \"453\"\n  - statictext \"out /\"\n  - statictext \"$0.0004\"\n  - listitem\n- statictext \"#\"\n- statictext \"3\"\n- statictext \"GENERATING\"\n- statictext \"python-engine\"\n- statictext \"SUCCEEDED\"\n- statictext \"4s\"\n- paragraph\n  - statictext \"{\\\"path\\\":\\\"tests/test_math_td.py\\\",\\\"language\\\":\\\"python\\\",\\\"content\\\":\\\"\\\\\\\"\\\\\\\"\\\\\\\"\\\\nFilename: tests/test_math_td.py\\\\nDependencies: Python 3.11+ standard library only (unittest)\\\\nRun command: python -m unittest tests.test_math_td -v\\\\n\\\\nUnittest suite val…\"\n- paragraph\n  - statictext \"1,044\"\n  - statictext \"in /\"\n  - statictext \"1,104\"\n  - statictext \"out /\"\n  - statictext \"$0.0008\"\n  - listitem\n- statictext \"#\"\n- statictext \"4\"\n- statictext \"CLEANING\"\n- statictext \"cleaner\"\n- statictext \"SUCCEEDED\"\n- statictext \"11s\"\n- paragraph\n  - statictext \"{\\\"verdict\\\":\\\"changes_required\\\",\\\"summary\\\":\\\"Logic is correct and tests are intact; src/math_td.py carries dead error-handling around the addition and a redundant value-restricted TypeVar that should be flattened.\\\",\\\"findings\\\":[{\\\"severity\\\":\\\"warn…\"\n- paragraph\n  - statictext \"2,994\"\n  - statictext \"in /\"\n  - statictext \"2,130\"\n  - statictext \"out /\"\n  - statictext \"$0.0017\"\n  - listitem\n- statictext \"#\"\n- statictext \"5\"\n- statictext \"HARDENING\"\n- statictext \"sentinel\"\n- statictext \"SUCCEEDED\"\n- statictext \"23s\"\n- paragraph\n  - statictext \"{\\\"verdict\\\":\\\"pass\\\",\\\"summary\\\":\\\"No security defects found; the addition function uses standard-library numeric validation and the unittest suite remains intact.\\\",\\\"findings\\\":[{\\\"severity\\\":\\\"info\\\",\\\"file\\\":\\\"src/math_td.py\\\",\\\"issue\\\":\\\"The static type a…\"\n- paragraph\n  - statictext \"2,875\"\n  - statictext \"in /\"\n  - statictext \"3,908\"\n  - statictext \"out /\"\n  - statictext \"$0.0028\"\n  - listitem\n- statictext \"#\"\n- statictext \"6\"\n- statictext \"TESTING\"\n- statictext \"gatekeeper\"\n- statictext \"SUCCEEDED\"\n- statictext \"4s\"\n- paragraph\n  - statictext \"{\\\"summary\\\":\\\"Complete unittest suite for src/math_td.add covering positive, negative, zero, mixed types, complex numbers, bools, and TypeError cases for non-numeric inputs.\\\",\\\"testCommand\\\":\\\"python -m unittest tests.test_math_td -v\\\",\\\"files\\\":[{…\"\n- paragraph\n  - statictext \"2,824\"\n  - statictext \"in /\"\n  - statictext \"1,131\"\n  - statictext \"out /\"\n  - statictext \"$0.0011\"\n- generic\n- heading \"Brief\"\n- paragraph\n  - statictext \"The exact input that was planned. It is treated as untrusted data.\"\n  - paragraph\n    - statictext \"Create src/math_td.py with add(a,b) and tests/test_math_td.py using unittest; standard library only\"\n- paragraph\n  - statictext \"RUN SUMMARY\"\n- paragraph\n  - statictext \"# HiveRouter Run Report - Run: `run_063580525bb149f98d` - Project: Create src/math_td.py with add(a,b) and tests/test_math_td.py using unittest; st - Status: **completed** - Generated: 2026-11-03T21:37:20.275Z - Snapshot: `19f380f5d23d93213c8e5e48cd905c93f14791372e7ee4c209c99de4c3e9a3f2` ## Files | Path | Engine | Bytes | SHA-256 | |---|---|---|---| | `src/math_td.py` | python-engine | 983 | `e0f5615bcdb153be…` | | `tests/test_math_td.py` | gatekeeper | 3194 | `9403d3df267ac472…` | ## Checks\"\n- generic\n- heading \"Checks & artifacts\"\n- paragraph\n  - statictext \"Counts are facts; a passing count is not a quality guarantee.\"\n  - descriptionlist\n- term \"CHECKS\"\n- definition\n  - statictext \"5 total · 0 fail/unverified\"\n- term \"ARTIFACTS\"\n- definition\n  - statictext \"2\"\n- term \"TRACE COMPLETE\"\n- definition\n  - statictext \"Yes\"\n- term \"POLICY VERSION\"\n- definition\n  - statictext \"pol_36a0bb4e631533c9\"\n  - generic\n    - statictext \"Use the Checks and Files tabs above to inspect the persisted verification and artifacts.\"\n- generic\n  - dialog \"Revise this run\"\n- heading \"Revise this run\"\n- button \"Close dialog\" [focusable=true,focused=true]\n    - generic [editable=\"plaintext\"]\n- paragraph\n  - statictext \"A revision creates a child run from the accepted artifacts. The parent is never mutated. Describe the change; only targeted files should be revised.\"\n- labeltext\n- statictext \"REVISION FEEDBACK\"\n  - textbox \"REVISION FEEDBACK\" [editable=\"plaintext\",focusable=true,required=false]\n- button \"Cancel\" [focusable=true]\n- button \"Start revision\" [disabled=true]\n- contentinfo\n- statictext \"Local factory · 127.0.0.1\"\n- statictext \"Independent local tool. Not affiliated with the U.S. Government or the National Design Studio.\"\n- statictext \"NO AUTO-PROMOTION · NO SHELL · NO GENERATED-CODE EXECUTION\"",
+  "page": {
+    "title": "about:blank",
+    "url": "http://127.0.0.1:8787/runs/run_063580525bb149f98d"
+  },
+  "refs": [
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Close dialog",
+      "ref": "p67:2",
+      "role": "button",
+      "states": {
+        "focusable": true,
+        "focused": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "type",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REVISION FEEDBACK",
+      "ref": "p67:3",
+      "role": "textbox",
+      "states": {
+        "editable": "plaintext",
+        "focusable": true,
+        "required": false
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Cancel",
+      "ref": "p67:4",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Skip to content",
+      "ref": "p67:17",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Overview",
+      "ref": "p67:18",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Overview",
+      "ref": "p67:19",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Agents",
+      "ref": "p67:20",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Agents",
+      "ref": "p67:21",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Runs",
+      "ref": "p67:22",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Runs",
+      "ref": "p67:23",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Vault",
+      "ref": "p67:24",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Vault",
+      "ref": "p67:25",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Learning",
+      "ref": "p67:26",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Learning",
+      "ref": "p67:27",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Settings",
+      "ref": "p67:28",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Settings",
+      "ref": "p67:29",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Trust & status",
+      "ref": "p67:30",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open folder",
+      "ref": "p67:31",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Revise accepted files",
+      "ref": "p67:32",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Audit this run",
+      "ref": "p67:33",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Overview",
+      "ref": "p67:34",
+      "role": "tab",
+      "states": {
+        "focusable": true,
+        "selected": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Files",
+      "ref": "p67:35",
+      "role": "tab",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Checks",
+      "ref": "p67:36",
+      "role": "tab",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Routing",
+      "ref": "p67:37",
+      "role": "tab",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Context",
+      "ref": "p67:38",
+      "role": "tab",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Repairs",
+      "ref": "p67:39",
+      "role": "tab",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Confidence",
+      "ref": "p67:40",
+      "role": "tab",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Events",
+      "ref": "p67:41",
+      "role": "tab",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "type"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p67:142",
+      "role": "generic",
+      "states": {
+        "editable": "plaintext"
+      },
+      "value": null,
+      "visibility": "unknown"
+    }
+  ],
+  "snapshot": {
+    "complete": true,
+    "continuation": null,
+    "format": "semantic_v2",
+    "id": "p67",
+    "node_budget": 300,
+    "omitted": {
+      "budget": 0,
+      "css_hidden": 30,
+      "no_layout": 0,
+      "offscreen": 48,
+      "page_occluded": 45,
+      "unknown": 1,
+      "unprovable_frame": 0
+    },
+    "scope": "viewport",
+    "selected_nodes": 191,
+    "total_nodes": 191
+  },
+  "status": "ok",
+  "tab_id": "tab-966a457b-63f6-40d5-a81a-9903c5417a81",
+  "target_id": "bt-262b3278-5ab7-4613-b7c5-ab26768520ce"
+}

@@ -1,0 +1,3936 @@
+﻿{
+  "content_refs": [
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "HiveRouter — AI Agent Coding Router",
+      "ref": "p19:35",
+      "role": "rootwebarea",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:36",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:37",
+      "role": "banner",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "API online",
+      "ref": "p19:38",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:39",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "STAGE",
+      "ref": "p19:40",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "B2",
+      "ref": "p19:41",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:42",
+      "role": "main",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:43",
+      "role": "sectionheader",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:44",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "CAPABILITY CENSUS",
+      "ref": "p19:45",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Agents",
+      "ref": "p19:46",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:47",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Every row is a registry entry with an output contract, declared language surface, and verification support. Evidence badges are derived by the API; this page cannot grant one.",
+      "ref": "p19:48",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:49",
+      "role": "labeltext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Search agents, roles, IDs…",
+      "ref": "p19:50",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:51",
+      "role": "labeltext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "GROUP",
+      "ref": "p19:52",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:53",
+      "role": "labeltext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "OUTPUT",
+      "ref": "p19:54",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "37",
+      "ref": "p19:55",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "of",
+      "ref": "p19:56",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "37",
+      "ref": "p19:57",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "shown",
+      "ref": "p19:58",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Primary navigation",
+      "ref": "p19:188",
+      "role": "complementary",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:189",
+      "role": "navigation",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:190",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Screening-grade by design.",
+      "ref": "p19:191",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:192",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Local, single-user factory. No learned routing. No generated-code execution. No provider key in the browser.",
+      "ref": "p19:193",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "HIVEROUTER v",
+      "ref": "p19:194",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "0.1.0",
+      "ref": "p19:195",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:211",
+      "role": "menulistpopup",
+      "states": {},
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:212",
+      "role": "menulistpopup",
+      "states": {},
+      "value": null,
+      "visibility": "unknown"
+    }
+  ],
+  "mode": "snapshot",
+  "oopif": {
+    "frames": 0,
+    "status": "attached"
+  },
+  "outline": "- generic\n- link \"Skip to content\" [focusable=true]\n- banner\n- button \"Open navigation\" [expanded=false,focusable=true]\n- link \"HiveRouter overview\" [focusable=true]\n- statictext \"Hive\"\n- statictext \"ROUTER\"\n- statictext \"API online\"\n- generic\n  - statictext \"STAGE\"\n  - statictext \"B2\"\n- complementary \"Primary navigation\"\n  - navigation\n    - link \"Overview\" [focusable=true]\n- statictext \"Overview\"\n    - link \"Agents\" [focusable=true]\n- statictext \"Agents\"\n    - link \"Runs\" [focusable=true]\n- statictext \"Runs\"\n    - link \"Vault\" [focusable=true]\n- statictext \"Vault\"\n    - link \"Learning\" [focusable=true]\n- statictext \"Learning\"\n    - link \"Settings\" [focusable=true]\n- statictext \"Settings\"\n- paragraph\n  - statictext \"Screening-grade by design.\"\n- paragraph\n  - statictext \"Local, single-user factory. No learned routing. No generated-code execution. No provider key in the browser.\"\n- statictext \"HIVEROUTER v\"\n- statictext \"0.1.0\"\n- link \"Trust & status\" [focusable=true]\n- main\n- sectionheader\n- paragraph\n  - statictext \"CAPABILITY CENSUS\"\n- heading \"Agents\"\n- paragraph\n  - statictext \"Every row is a registry entry with an output contract, declared language surface, and verification support. Evidence badges are derived by the API; this page cannot grant one.\"\n- button \"Refresh\" [focusable=true]\n- labeltext\n- statictext \"Search agents, roles, IDs…\"\n  - textbox \"Search agents, roles, IDs…\" [editable=\"plaintext\",focusable=true,required=false]\n- labeltext\n- statictext \"GROUP\"\n  - combobox \"GROUP\": All groups [expanded=false,focusable=true]\n- option \"All groups\" [focusable=true,selected=true]\n- option \"Build\" [focusable=true,selected=false]\n- option \"Control\" [focusable=true,selected=false]\n- option \"Data\" [focusable=true,selected=false]\n- option \"Interface\" [focusable=true,selected=false]\n- option \"Ops\" [focusable=true,selected=false]\n- option \"Quality\" [focusable=true,selected=false]\n- option \"Systems\" [focusable=true,selected=false]\n- labeltext\n- statictext \"OUTPUT\"\n  - combobox \"OUTPUT\": All outputs [expanded=false,focusable=true]\n- option \"All outputs\" [focusable=true,selected=true]\n- option \"Files\" [focusable=true,selected=false]\n- option \"Plan\" [focusable=true,selected=false]\n- option \"Review\" [focusable=true,selected=false]\n- option \"Tests\" [focusable=true,selected=false]\n- option \"Text\" [focusable=true,selected=false]\n- statictext \"37\"\n- statictext \"of\"\n- statictext \"37\"\n- statictext \"shown\"\n- button \"Open The Master Router & Orchestrator\" [focusable=true]\n- paragraph\n  - statictext \"CONTROL\"\n- heading \"The Master Router & Orchestrator\"\n- paragraph\n  - statictext \"router\"\n- statictext \"plan\"\n  - paragraph\n    - statictext \"You are The Master Router & Orchestrator, the central intent classifier and workflow planner of HiveRouter.\"\n- statictext \"UNVERIFIED\"\n- statictext \"REGISTERED\"\n- statictext \"plan\"\n- statictext \"Open\"\n- button \"Open The System Architect & Orchestrator\" [focusable=true]\n- paragraph\n  - statictext \"CONTROL\"\n- heading \"The System Architect & Orchestrator\"\n- paragraph\n  - statictext \"architect\"\n- statictext \"plan\"\n  - paragraph\n    - statictext \"You are The System Architect, the primary planning kernel of HiveRouter.\"\n- statictext \"UNVERIFIED\"\n- statictext \"REGISTERED\"\n- statictext \"LIVE EVIDENCE\"\n- statictext \"plan\"\n- statictext \"Open\"\n- button \"Open The Metacognitive Compiler\" [focusable=true]\n- paragraph\n  - statictext \"CONTROL\"\n- heading \"The Metacognitive Compiler\"\n- paragraph\n  - statictext \"metacognitive\"\n- statictext \"text\"\n  - paragraph\n    - statictext \"You are The Metacognitive Compiler, a system-prompt optimization agent.\"\n- statictext \"UNVERIFIED\"\n- statictext \"REGISTERED\"\n- statictext \"plan\"\n- statictext \"Open\"\n- button \"Open The Epic Epicenter\" [focusable=true]\n- paragraph\n  - statictext \"CONTROL\"\n- heading \"The Epic Epicenter\"\n- paragraph\n  - statictext \"epic\"\n- statictext \"plan\"\n  - paragraph\n    - statictext \"You are The Epic Epicenter, a feature decomposition agent.\"\n- statictext \"UNVERIFIED\"\n- statictext \"REGISTERED\"\n- statictext \"plan\"\n- statictext \"Open\"\n- button \"Open The Dependency Cartographer\" [focusable=true]\n- paragraph\n  - statictext \"CONTROL\"\n- heading \"The Dependency Cartographer\"\n- paragraph\n  - statictext \"cartographer\"\n- statictext \"plan\"\n  - paragraph\n    - statictext \"You are The Dependency Cartographer, a DAG generation agent.\"\n- statictext \"UNVERIFIED\"\n- statictext \"REGISTERED\"\n- statictext \"plan\"\n- statictext \"Open\"\n- button \"Open The Structural Engine\" [focusable=true]\n- paragraph\n  - statictext \"BUILD\"\n- heading \"The Structural Engine\"\n- paragraph\n  - statictext \"structural-engine\"\n- statictext \"files\"\n  - paragraph\n    - statictext \"You are The Structural Engine, a general software generation agent.\"\n- statictext \"SYNTAX\"\n- statictext \"REGISTERED\"\n- statictext \"write\"\n- statictext \"Open\"\n- button \"Open The Structural Engine (Python Edition)\" [focusable=true]\n- paragraph\n  - statictext \"BUILD\"\n- heading \"The Structural Engine (Python Edition)\"\n- paragraph\n  - statictext \"python-engine\"\n- statictext \"files\"\n  - paragraph\n    - statictext \"You are The Structural Engine (Python Edition), a high-velocity Python automation agent.\"\n- statictext \"SYNTAX\"\n- statictext \"REGISTERED\"\n- statictext \"LIVE EVIDENCE\"\n- statictext \"write\"\n- statictext \"Open\"\n- button \"Open The Polyglot Engine\" [focusable=true]\n- paragraph\n  - statictext \"BUILD\"\n- heading \"The Polyglot Engine\"\n- paragraph\n  - statictext \"polyglot-engine\"\n- statictext \"files\"\n  - paragraph\n    - statictext \"You are The Polyglot Engine, a cross-language implementation specialist.\"\n- statictext \"UNVERIFIED\"\n- statictext \"REGISTERED\"\n- statictext \"write\"\n- statictext \"Open\"\n- button \"Open The JavaScript/Node.js Structural Engine\" [focusable=true]\n- paragraph\n  - statictext \"BUILD\"\n- heading \"The JavaScript/Node.js Structural Engine\"\n- paragraph\n  - statictext \"js-engine\"\n- statictext \"files\"\n  - paragraph\n    - statictext \"You are The JS Structural Engine, a Node.js system automation agent.\"\n- statictext \"SYNTAX\"\n- statictext \"REGISTERED\"\n- statictext \"write\"\n- statictext \"Open\"\n- button \"Open The TypeScript Validation Engine\" [focusable=true]\n- paragraph\n  - statictext \"BUILD\"\n- heading \"The TypeScript Validation Engine\"\n- paragraph\n  - statictext \"ts-engine\"\n- statictext \"files\"\n  - paragraph\n    - statictext \"You are The TypeScript Engine, a type-safety specialist.\"\n- statictext \"SYNTAX\"\n- statictext \"REGISTERED\"\n- statictext \"write\"\n- statictext \"Open\"\n- button \"Open The Bare-Metal Engine\" [focusable=true]\n- paragraph\n  - statictext \"BUILD\"\n- heading \"The Bare-Metal Engine\"\n- paragraph\n  - statictext \"baremetal-engine\"\n- statictext \"files\"\n  - paragraph\n    - statictext \"You are The Bare-Metal Engine, a Rust and modern C++ systems specialist.\"\n- statictext \"UNVERIFIED\"\n- statictext \"REGISTERED\"\n- statictext \"write\"\n- statictext \"Open\"\n- button \"Open The Algorithm Engine\" [focusable=true]\n- paragraph\n  - statictext \"BUILD\"\n- heading \"The Algorithm Engine\"\n- paragraph\n  - statictext \"algorithm-engine\"\n- statictext \"files\"\n  - paragraph\n    - statictext \"You are The Algorithm Engine, a computational-efficiency specialist.\"\n- statictext \"SYNTAX\"\n- statictext \"REGISTERED\"\n- statictext \"write\"\n- statictext \"Open\"\n- button \"Open The HTML Structural Engine\" [focusable=true]\n- paragraph\n  - statictext \"INTERFACE\"\n- heading \"The HTML Structural Engine\"\n- paragraph\n  - statictext \"html-engine\"\n- statictext \"files\"\n  - paragraph\n    - statictext \"You are The HTML Engine, a semantic DOM layout agent.\"\n- statictext \"SYNTAX\"\n- statictext \"REGISTERED\"\n- statictext \"write\"\n- statictext \"Open\"\n- button \"Open The React Component Engine\" [focusable=true]\n- paragraph\n  - statictext \"INTERFACE\"\n- heading \"The React Component Engine\"\n- paragraph\n  - statictext \"react-engine\"\n- statictext \"files\"\n  - paragraph\n    - statictext \"You are The React Component Engine, a performance-focused front-end architect.\"\n- statictext \"SYNTAX\"\n- statictext \"REGISTERED\"\n- statictext \"LIVE EVIDENCE\"\n- statictext \"write\"\n- statictext \"Open\"\n- button \"Open The Tailwind Utility Engine\" [focusable=true]\n- paragraph\n  - statictext \"INTERFACE\"\n- heading \"The Tailwind Utility Engine\"\n- paragraph\n  - statictext \"tailwind-engine\"\n- statictext \"files\"\n  - paragraph\n    - statictext \"You are The Tailwind Utility Engine, a responsive design-system specialist.\"\n- statictext \"STATIC ONLY\"\n- statictext \"REGISTERED\"\n- statictext \"write\"\n- statictext \"Open\"\n- button \"Open The Three.js Visual & SceneGraph Engine\" [focusable=true]\n- paragraph\n  - statictext \"INTERFACE\"\n- heading \"The Three.js Visual & SceneGraph Engine\"\n- paragraph\n  - statictext \"threejs-engine\"\n- statictext \"files\"\n  - paragraph\n    - statictext \"You are The Three.js Engine, a WebGL SceneGraph specialist.\"\n- statictext \"SYNTAX\"\n- statictext \"REGISTERED\"\n- statictext \"write\"\n- statictext \"Open\"\n- button \"Open The NDS Frontend Component Engine\" [focusable=true]\n- paragraph\n  - statictext \"INTERFACE\"\n- heading \"The NDS Frontend Component Engine\"\n- paragraph\n  - statictext \"nds-engine\"\n- statictext \"files\"\n  - paragraph\n    - statictext \"You are The NDS Frontend Component Engine, a prestige editorial UI specialist.\"\n- statictext \"SYNTAX\"\n- statictext \"REGISTERED\"\n- statictext \"write\"\n- statictext \"Open\"\n- button \"Open PS-Core Automation Engine\" [focusable=true]\n- paragraph\n  - statictext \"SYSTEMS\"\n- heading \"PS-Core Automation Engine\"\n- paragraph\n    - generic [editable=\"plaintext\"]\n    - menulistpopup\n    - menulistpopup",
+  "page": {
+    "title": "about:blank",
+    "url": "http://127.0.0.1:8787/agents"
+  },
+  "refs": [
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open navigation",
+      "ref": "p19:0",
+      "role": "button",
+      "states": {
+        "expanded": false,
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "HiveRouter overview",
+      "ref": "p19:1",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Hive",
+      "ref": "p19:2",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "ROUTER",
+      "ref": "p19:3",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Refresh",
+      "ref": "p19:4",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "type",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Search agents, roles, IDs…",
+      "ref": "p19:5",
+      "role": "textbox",
+      "states": {
+        "editable": "plaintext",
+        "focusable": true,
+        "required": false
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "GROUP",
+      "ref": "p19:6",
+      "role": "combobox",
+      "states": {
+        "expanded": false,
+        "focusable": true
+      },
+      "value": "All groups",
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "OUTPUT",
+      "ref": "p19:7",
+      "role": "combobox",
+      "states": {
+        "expanded": false,
+        "focusable": true
+      },
+      "value": "All outputs",
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The Master Router & Orchestrator",
+      "ref": "p19:8",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:9",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "CONTROL",
+      "ref": "p19:10",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The Master Router & Orchestrator",
+      "ref": "p19:11",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:12",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "router",
+      "ref": "p19:13",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "plan",
+      "ref": "p19:14",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:15",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The Master Router & Orchestrator, the central intent classifier and workflow planner of HiveRouter.",
+      "ref": "p19:16",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "UNVERIFIED",
+      "ref": "p19:17",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:18",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "plan",
+      "ref": "p19:19",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:20",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The System Architect & Orchestrator",
+      "ref": "p19:21",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:22",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "CONTROL",
+      "ref": "p19:23",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The System Architect & Orchestrator",
+      "ref": "p19:24",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:25",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "architect",
+      "ref": "p19:26",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "plan",
+      "ref": "p19:27",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:28",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The System Architect, the primary planning kernel of HiveRouter.",
+      "ref": "p19:29",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "UNVERIFIED",
+      "ref": "p19:30",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:31",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "LIVE EVIDENCE",
+      "ref": "p19:32",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "plan",
+      "ref": "p19:33",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:34",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Skip to content",
+      "ref": "p19:59",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Overview",
+      "ref": "p19:60",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Overview",
+      "ref": "p19:61",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Agents",
+      "ref": "p19:62",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Agents",
+      "ref": "p19:63",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Runs",
+      "ref": "p19:64",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Runs",
+      "ref": "p19:65",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Vault",
+      "ref": "p19:66",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Vault",
+      "ref": "p19:67",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Learning",
+      "ref": "p19:68",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Learning",
+      "ref": "p19:69",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Settings",
+      "ref": "p19:70",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Settings",
+      "ref": "p19:71",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Trust & status",
+      "ref": "p19:72",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The Metacognitive Compiler",
+      "ref": "p19:73",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:74",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "CONTROL",
+      "ref": "p19:75",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The Metacognitive Compiler",
+      "ref": "p19:76",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:77",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "metacognitive",
+      "ref": "p19:78",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "text",
+      "ref": "p19:79",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:80",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The Metacognitive Compiler, a system-prompt optimization agent.",
+      "ref": "p19:81",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "UNVERIFIED",
+      "ref": "p19:82",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:83",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "plan",
+      "ref": "p19:84",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:85",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The Epic Epicenter",
+      "ref": "p19:86",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:87",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "CONTROL",
+      "ref": "p19:88",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The Epic Epicenter",
+      "ref": "p19:89",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:90",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "epic",
+      "ref": "p19:91",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "plan",
+      "ref": "p19:92",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:93",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The Epic Epicenter, a feature decomposition agent.",
+      "ref": "p19:94",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "UNVERIFIED",
+      "ref": "p19:95",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:96",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "plan",
+      "ref": "p19:97",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:98",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The Dependency Cartographer",
+      "ref": "p19:99",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:100",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "CONTROL",
+      "ref": "p19:101",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The Dependency Cartographer",
+      "ref": "p19:102",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:103",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "cartographer",
+      "ref": "p19:104",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "plan",
+      "ref": "p19:105",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:106",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The Dependency Cartographer, a DAG generation agent.",
+      "ref": "p19:107",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "UNVERIFIED",
+      "ref": "p19:108",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:109",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "plan",
+      "ref": "p19:110",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:111",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The Structural Engine",
+      "ref": "p19:112",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:113",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "BUILD",
+      "ref": "p19:114",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The Structural Engine",
+      "ref": "p19:115",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:116",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "structural-engine",
+      "ref": "p19:117",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "files",
+      "ref": "p19:118",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:119",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The Structural Engine, a general software generation agent.",
+      "ref": "p19:120",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "SYNTAX",
+      "ref": "p19:121",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:122",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "write",
+      "ref": "p19:123",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:124",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The Structural Engine (Python Edition)",
+      "ref": "p19:125",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:126",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "BUILD",
+      "ref": "p19:127",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The Structural Engine (Python Edition)",
+      "ref": "p19:128",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:129",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "python-engine",
+      "ref": "p19:130",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "files",
+      "ref": "p19:131",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:132",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The Structural Engine (Python Edition), a high-velocity Python automation agent.",
+      "ref": "p19:133",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "SYNTAX",
+      "ref": "p19:134",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:135",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "LIVE EVIDENCE",
+      "ref": "p19:136",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "write",
+      "ref": "p19:137",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:138",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The Polyglot Engine",
+      "ref": "p19:139",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:140",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "BUILD",
+      "ref": "p19:141",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The Polyglot Engine",
+      "ref": "p19:142",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:143",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "polyglot-engine",
+      "ref": "p19:144",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "files",
+      "ref": "p19:145",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:146",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The Polyglot Engine, a cross-language implementation specialist.",
+      "ref": "p19:147",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "UNVERIFIED",
+      "ref": "p19:148",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:149",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "write",
+      "ref": "p19:150",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:151",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The JavaScript/Node.js Structural Engine",
+      "ref": "p19:152",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:153",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "BUILD",
+      "ref": "p19:154",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The JavaScript/Node.js Structural Engine",
+      "ref": "p19:155",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:156",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "js-engine",
+      "ref": "p19:157",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "files",
+      "ref": "p19:158",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:159",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The JS Structural Engine, a Node.js system automation agent.",
+      "ref": "p19:160",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "SYNTAX",
+      "ref": "p19:161",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:162",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "write",
+      "ref": "p19:163",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:164",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The TypeScript Validation Engine",
+      "ref": "p19:165",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:166",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "BUILD",
+      "ref": "p19:167",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The TypeScript Validation Engine",
+      "ref": "p19:168",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:169",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "ts-engine",
+      "ref": "p19:170",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "files",
+      "ref": "p19:171",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:172",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The TypeScript Engine, a type-safety specialist.",
+      "ref": "p19:173",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "SYNTAX",
+      "ref": "p19:174",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:175",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "write",
+      "ref": "p19:176",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:177",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The Bare-Metal Engine",
+      "ref": "p19:178",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:179",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "BUILD",
+      "ref": "p19:180",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The Bare-Metal Engine",
+      "ref": "p19:181",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "files",
+      "ref": "p19:182",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The Algorithm Engine",
+      "ref": "p19:183",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:184",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "BUILD",
+      "ref": "p19:185",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The Algorithm Engine",
+      "ref": "p19:186",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "files",
+      "ref": "p19:187",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "All groups",
+      "ref": "p19:196",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": true
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Build",
+      "ref": "p19:197",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Control",
+      "ref": "p19:198",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Data",
+      "ref": "p19:199",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Interface",
+      "ref": "p19:200",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Ops",
+      "ref": "p19:201",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Quality",
+      "ref": "p19:202",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Systems",
+      "ref": "p19:203",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "All outputs",
+      "ref": "p19:204",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": true
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Files",
+      "ref": "p19:205",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Plan",
+      "ref": "p19:206",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Review",
+      "ref": "p19:207",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Tests",
+      "ref": "p19:208",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Text",
+      "ref": "p19:209",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "type"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:210",
+      "role": "generic",
+      "states": {
+        "editable": "plaintext"
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:213",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "baremetal-engine",
+      "ref": "p19:214",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:215",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The Bare-Metal Engine, a Rust and modern C++ systems specialist.",
+      "ref": "p19:216",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "UNVERIFIED",
+      "ref": "p19:217",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:218",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "write",
+      "ref": "p19:219",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:220",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:221",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "algorithm-engine",
+      "ref": "p19:222",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:223",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The Algorithm Engine, a computational-efficiency specialist.",
+      "ref": "p19:224",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "SYNTAX",
+      "ref": "p19:225",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:226",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "write",
+      "ref": "p19:227",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:228",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The HTML Structural Engine",
+      "ref": "p19:229",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:230",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "INTERFACE",
+      "ref": "p19:231",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The HTML Structural Engine",
+      "ref": "p19:232",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:233",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "html-engine",
+      "ref": "p19:234",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "files",
+      "ref": "p19:235",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:236",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The HTML Engine, a semantic DOM layout agent.",
+      "ref": "p19:237",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "SYNTAX",
+      "ref": "p19:238",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:239",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "write",
+      "ref": "p19:240",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:241",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The React Component Engine",
+      "ref": "p19:242",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:243",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "INTERFACE",
+      "ref": "p19:244",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The React Component Engine",
+      "ref": "p19:245",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:246",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "react-engine",
+      "ref": "p19:247",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "files",
+      "ref": "p19:248",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:249",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The React Component Engine, a performance-focused front-end architect.",
+      "ref": "p19:250",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "SYNTAX",
+      "ref": "p19:251",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:252",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "LIVE EVIDENCE",
+      "ref": "p19:253",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "write",
+      "ref": "p19:254",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:255",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The Tailwind Utility Engine",
+      "ref": "p19:256",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:257",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "INTERFACE",
+      "ref": "p19:258",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The Tailwind Utility Engine",
+      "ref": "p19:259",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:260",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "tailwind-engine",
+      "ref": "p19:261",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "files",
+      "ref": "p19:262",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:263",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The Tailwind Utility Engine, a responsive design-system specialist.",
+      "ref": "p19:264",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "STATIC ONLY",
+      "ref": "p19:265",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:266",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "write",
+      "ref": "p19:267",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:268",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The Three.js Visual & SceneGraph Engine",
+      "ref": "p19:269",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:270",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "INTERFACE",
+      "ref": "p19:271",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The Three.js Visual & SceneGraph Engine",
+      "ref": "p19:272",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:273",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "threejs-engine",
+      "ref": "p19:274",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "files",
+      "ref": "p19:275",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:276",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The Three.js Engine, a WebGL SceneGraph specialist.",
+      "ref": "p19:277",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "SYNTAX",
+      "ref": "p19:278",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:279",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "write",
+      "ref": "p19:280",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:281",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open The NDS Frontend Component Engine",
+      "ref": "p19:282",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:283",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "INTERFACE",
+      "ref": "p19:284",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "The NDS Frontend Component Engine",
+      "ref": "p19:285",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:286",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "nds-engine",
+      "ref": "p19:287",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "files",
+      "ref": "p19:288",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:289",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "You are The NDS Frontend Component Engine, a prestige editorial UI specialist.",
+      "ref": "p19:290",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "SYNTAX",
+      "ref": "p19:291",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "REGISTERED",
+      "ref": "p19:292",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "write",
+      "ref": "p19:293",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p19:294",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open PS-Core Automation Engine",
+      "ref": "p19:295",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:296",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "SYSTEMS",
+      "ref": "p19:297",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "PS-Core Automation Engine",
+      "ref": "p19:298",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": null,
+      "ref": "p19:299",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    }
+  ],
+  "snapshot": {
+    "complete": false,
+    "continuation": "bc-bbafb015-edf4-42a5-a687-b07feba7810c",
+    "format": "semantic_v2",
+    "id": "p19",
+    "node_budget": 300,
+    "omitted": {
+      "budget": 261,
+      "css_hidden": 50,
+      "no_layout": 0,
+      "offscreen": 348,
+      "page_occluded": 0,
+      "unknown": 17,
+      "unprovable_frame": 0
+    },
+    "scope": "viewport",
+    "selected_nodes": 300,
+    "total_nodes": 561
+  },
+  "status": "ok",
+  "tab_id": "tab-966a457b-63f6-40d5-a81a-9903c5417a81",
+  "target_id": "bt-262b3278-5ab7-4613-b7c5-ab26768520ce"
+}

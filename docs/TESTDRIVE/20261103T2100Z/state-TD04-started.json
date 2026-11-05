@@ -1,0 +1,1631 @@
+﻿{
+  "content_refs": [
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "HiveRouter — AI Agent Coding Router",
+      "ref": "p56:0",
+      "role": "rootwebarea",
+      "states": {
+        "focusable": true,
+        "focused": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:8",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:9",
+      "role": "banner",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "API online",
+      "ref": "p56:10",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:11",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "STAGE",
+      "ref": "p56:12",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "B2",
+      "ref": "p56:13",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:14",
+      "role": "main",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:15",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:16",
+      "role": "sectionheader",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:17",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "RUN_063580525BB149F98D · USER RUN",
+      "ref": "p56:18",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Create src/math_td.py with add(a,b) and tests/test_math_td.py using unittest; standard library only",
+      "ref": "p56:19",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:20",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Full Build · deepseek-flash · thinking disabled",
+      "ref": "p56:21",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Download",
+      "ref": "p56:22",
+      "role": "button",
+      "states": {
+        "disabled": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:23",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "RUNNING",
+      "ref": "p56:24",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "PLANNING",
+      "ref": "p56:25",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "1",
+      "ref": "p56:26",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "STEPS",
+      "ref": "p56:27",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "LIVE STREAM",
+      "ref": "p56:28",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:29",
+      "role": "descriptionlist",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "CREATED",
+      "ref": "p56:30",
+      "role": "term",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:31",
+      "role": "definition",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Nov 03, 2026, 03:36 PM",
+      "ref": "p56:32",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "DURATION",
+      "ref": "p56:33",
+      "role": "term",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:34",
+      "role": "definition",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "—",
+      "ref": "p56:35",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "PROMPT TOKENS",
+      "ref": "p56:36",
+      "role": "term",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:37",
+      "role": "definition",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "—",
+      "ref": "p56:38",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "COMPLETION TOKENS",
+      "ref": "p56:39",
+      "role": "term",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:40",
+      "role": "definition",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "—",
+      "ref": "p56:41",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "SNAPSHOT",
+      "ref": "p56:42",
+      "role": "term",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:43",
+      "role": "definition",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "19f380f5d23d9321…",
+      "ref": "p56:44",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "PARENT",
+      "ref": "p56:45",
+      "role": "term",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:46",
+      "role": "definition",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "None",
+      "ref": "p56:47",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Estimated spend",
+      "ref": "p56:48",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Not measured",
+      "ref": "p56:49",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Primary navigation",
+      "ref": "p56:74",
+      "role": "complementary",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:75",
+      "role": "navigation",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:76",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Screening-grade by design.",
+      "ref": "p56:77",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:78",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Local, single-user factory. No learned routing. No generated-code execution. No provider key in the browser.",
+      "ref": "p56:79",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "HIVEROUTER v",
+      "ref": "p56:80",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "0.1.0",
+      "ref": "p56:81",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:82",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "The provider has not reported a cost yet.",
+      "ref": "p56:83",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:84",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Run actions",
+      "ref": "p56:85",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:86",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Actions are real API calls; unavailable actions are not rendered.",
+      "ref": "p56:87",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Revision requires a terminal run with artifacts.",
+      "ref": "p56:88",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:89",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "ACCEPTED TREE",
+      "ref": "p56:90",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:91",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "C:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_063580525bb149f98d",
+      "ref": "p56:92",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:93",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Downloads are available only for terminal runs that have stored artifacts.",
+      "ref": "p56:94",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Run sections",
+      "ref": "p56:95",
+      "role": "tablist",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:96",
+      "role": "tabpanel",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:97",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Execution timeline",
+      "ref": "p56:98",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:99",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Steps are read from the persisted snapshot; the live stream refreshes this view.",
+      "ref": "p56:100",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:101",
+      "role": "list",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:102",
+      "role": "listitem",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "#",
+      "ref": "p56:103",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "1",
+      "ref": "p56:104",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "PLANNING",
+      "ref": "p56:105",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "architect",
+      "ref": "p56:106",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "STARTED",
+      "ref": "p56:107",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "—",
+      "ref": "p56:108",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:109",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "—",
+      "ref": "p56:110",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "in /",
+      "ref": "p56:111",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "—",
+      "ref": "p56:112",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "out /",
+      "ref": "p56:113",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "—",
+      "ref": "p56:114",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:115",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Brief",
+      "ref": "p56:116",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:117",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "The exact input that was planned. It is treated as untrusted data.",
+      "ref": "p56:118",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:119",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Create src/math_td.py with add(a,b) and tests/test_math_td.py using unittest; standard library only",
+      "ref": "p56:120",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:121",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Checks & artifacts",
+      "ref": "p56:122",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:123",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Counts are facts; a passing count is not a quality guarantee.",
+      "ref": "p56:124",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:125",
+      "role": "descriptionlist",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "CHECKS",
+      "ref": "p56:126",
+      "role": "term",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:127",
+      "role": "definition",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "0 total · 0 fail/unverified",
+      "ref": "p56:128",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "ARTIFACTS",
+      "ref": "p56:129",
+      "role": "term",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:130",
+      "role": "definition",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "0",
+      "ref": "p56:131",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "TRACE COMPLETE",
+      "ref": "p56:132",
+      "role": "term",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:133",
+      "role": "definition",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "No",
+      "ref": "p56:134",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "POLICY VERSION",
+      "ref": "p56:135",
+      "role": "term",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:136",
+      "role": "definition",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "pol_36a0bb4e631533c9",
+      "ref": "p56:137",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:138",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Use the Checks and Files tabs above to inspect the persisted verification and artifacts.",
+      "ref": "p56:139",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p56:140",
+      "role": "contentinfo",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Local factory · 127.0.0.1",
+      "ref": "p56:141",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Independent local tool. Not affiliated with the U.S. Government or the National Design Studio.",
+      "ref": "p56:142",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "NO AUTO-PROMOTION · NO SHELL · NO GENERATED-CODE EXECUTION",
+      "ref": "p56:143",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "offscreen"
+    }
+  ],
+  "mode": "snapshot",
+  "oopif": {
+    "frames": 0,
+    "status": "attached"
+  },
+  "outline": "- generic\n- link \"Skip to content\" [focusable=true]\n- banner\n- button \"Open navigation\" [expanded=false,focusable=true]\n- link \"HiveRouter overview\" [focusable=true]\n- statictext \"Hive\"\n- statictext \"ROUTER\"\n- statictext \"API online\"\n- generic\n  - statictext \"STAGE\"\n  - statictext \"B2\"\n- complementary \"Primary navigation\"\n  - navigation\n    - link \"Overview\" [focusable=true]\n- statictext \"Overview\"\n    - link \"Agents\" [focusable=true]\n- statictext \"Agents\"\n    - link \"Runs\" [focusable=true]\n- statictext \"Runs\"\n    - link \"Vault\" [focusable=true]\n- statictext \"Vault\"\n    - link \"Learning\" [focusable=true]\n- statictext \"Learning\"\n    - link \"Settings\" [focusable=true]\n- statictext \"Settings\"\n- paragraph\n  - statictext \"Screening-grade by design.\"\n- paragraph\n  - statictext \"Local, single-user factory. No learned routing. No generated-code execution. No provider key in the browser.\"\n- statictext \"HIVEROUTER v\"\n- statictext \"0.1.0\"\n- link \"Trust & status\" [focusable=true]\n- main\n- generic\n  - link \"All runs\" [focusable=true]\n- sectionheader\n- paragraph\n  - statictext \"RUN_063580525BB149F98D · USER RUN\"\n- heading \"Create src/math_td.py with add(a,b) and tests/test_math_td.py using unittest; standard library only\"\n- paragraph\n  - statictext \"Full Build · deepseek-flash · thinking disabled\"\n- button \"Refresh\" [focusable=true]\n- button \"Stop\" [focusable=true]\n- button \"Download\" [disabled=true]\n- generic\n- statictext \"RUNNING\"\n- statictext \"PLANNING\"\n- statictext \"1\"\n- statictext \"STEPS\"\n- statictext \"LIVE STREAM\"\n  - descriptionlist\n- term \"CREATED\"\n- definition\n  - statictext \"Nov 03, 2026, 03:36 PM\"\n- term \"DURATION\"\n- definition\n  - statictext \"—\"\n- term \"PROMPT TOKENS\"\n- definition\n  - statictext \"—\"\n- term \"COMPLETION TOKENS\"\n- definition\n  - statictext \"—\"\n- term \"SNAPSHOT\"\n- definition\n  - statictext \"19f380f5d23d9321…\"\n- term \"PARENT\"\n- definition\n  - statictext \"None\"\n- statictext \"Estimated spend\"\n- statictext \"Not measured\"\n- paragraph\n  - statictext \"The provider has not reported a cost yet.\"\n- generic\n- heading \"Run actions\"\n- paragraph\n  - statictext \"Actions are real API calls; unavailable actions are not rendered.\"\n- button \"Open folder\" [focusable=true]\n- button \"Stop run\" [focusable=true]\n- statictext \"Revision requires a terminal run with artifacts.\"\n- paragraph\n  - statictext \"ACCEPTED TREE\"\n- paragraph\n  - statictext \"C:\\\\Users\\\\Riley\\\\Desktop\\\\HiveRouter\\\\workspace\\\\runs\\\\run_063580525bb149f98d\"\n  - paragraph\n    - statictext \"Downloads are available only for terminal runs that have stored artifacts.\"\n- tablist \"Run sections\"\n  - tab \"Overview\" [focusable=true,selected=true]\n  - tab \"Files\" [focusable=true,selected=false]\n  - tab \"Checks\" [focusable=true,selected=false]\n  - tab \"Routing\" [focusable=true,selected=false]\n  - tab \"Context\" [focusable=true,selected=false]\n  - tab \"Repairs\" [focusable=true,selected=false]\n  - tab \"Confidence\" [focusable=true,selected=false]\n  - tab \"Events\" [focusable=true,selected=false]\n- tabpanel\n- generic\n- heading \"Execution timeline\"\n- paragraph\n  - statictext \"Steps are read from the persisted snapshot; the live stream refreshes this view.\"\n- list\n  - listitem\n- statictext \"#\"\n- statictext \"1\"\n- statictext \"PLANNING\"\n- statictext \"architect\"\n- statictext \"STARTED\"\n- statictext \"—\"\n- paragraph\n  - statictext \"—\"\n  - statictext \"in /\"\n  - statictext \"—\"\n  - statictext \"out /\"\n  - statictext \"—\"\n- generic\n- heading \"Brief\"\n- paragraph\n  - statictext \"The exact input that was planned. It is treated as untrusted data.\"\n  - paragraph\n    - statictext \"Create src/math_td.py with add(a,b) and tests/test_math_td.py using unittest; standard library only\"\n- generic\n- heading \"Checks & artifacts\"\n- paragraph\n  - statictext \"Counts are facts; a passing count is not a quality guarantee.\"\n  - descriptionlist\n- term \"CHECKS\"\n- definition\n  - statictext \"0 total · 0 fail/unverified\"\n- term \"ARTIFACTS\"\n- definition\n  - statictext \"0\"\n- term \"TRACE COMPLETE\"\n- definition\n  - statictext \"No\"\n- term \"POLICY VERSION\"\n- definition\n  - statictext \"pol_36a0bb4e631533c9\"\n  - generic\n    - statictext \"Use the Checks and Files tabs above to inspect the persisted verification and artifacts.\"\n- contentinfo\n- statictext \"Local factory · 127.0.0.1\"\n- statictext \"Independent local tool. Not affiliated with the U.S. Government or the National Design Studio.\"\n- statictext \"NO AUTO-PROMOTION · NO SHELL · NO GENERATED-CODE EXECUTION\"",
+  "page": {
+    "title": "about:blank",
+    "url": "http://127.0.0.1:8787/runs/run_063580525bb149f98d"
+  },
+  "refs": [
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open navigation",
+      "ref": "p56:1",
+      "role": "button",
+      "states": {
+        "expanded": false,
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "HiveRouter overview",
+      "ref": "p56:2",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Hive",
+      "ref": "p56:3",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "ROUTER",
+      "ref": "p56:4",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "All runs",
+      "ref": "p56:5",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Refresh",
+      "ref": "p56:6",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Stop",
+      "ref": "p56:7",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Skip to content",
+      "ref": "p56:50",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Overview",
+      "ref": "p56:51",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Overview",
+      "ref": "p56:52",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Agents",
+      "ref": "p56:53",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Agents",
+      "ref": "p56:54",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Runs",
+      "ref": "p56:55",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Runs",
+      "ref": "p56:56",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Vault",
+      "ref": "p56:57",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Vault",
+      "ref": "p56:58",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Learning",
+      "ref": "p56:59",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Learning",
+      "ref": "p56:60",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Settings",
+      "ref": "p56:61",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Settings",
+      "ref": "p56:62",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Trust & status",
+      "ref": "p56:63",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open folder",
+      "ref": "p56:64",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Stop run",
+      "ref": "p56:65",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Overview",
+      "ref": "p56:66",
+      "role": "tab",
+      "states": {
+        "focusable": true,
+        "selected": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Files",
+      "ref": "p56:67",
+      "role": "tab",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Checks",
+      "ref": "p56:68",
+      "role": "tab",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Routing",
+      "ref": "p56:69",
+      "role": "tab",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Context",
+      "ref": "p56:70",
+      "role": "tab",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Repairs",
+      "ref": "p56:71",
+      "role": "tab",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Confidence",
+      "ref": "p56:72",
+      "role": "tab",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Events",
+      "ref": "p56:73",
+      "role": "tab",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    }
+  ],
+  "snapshot": {
+    "complete": true,
+    "continuation": null,
+    "format": "semantic_v2",
+    "id": "p56",
+    "node_budget": 300,
+    "omitted": {
+      "budget": 0,
+      "css_hidden": 21,
+      "no_layout": 0,
+      "offscreen": 4,
+      "page_occluded": 0,
+      "unknown": 0,
+      "unprovable_frame": 0
+    },
+    "scope": "viewport",
+    "selected_nodes": 144,
+    "total_nodes": 144
+  },
+  "status": "ok",
+  "tab_id": "tab-966a457b-63f6-40d5-a81a-9903c5417a81",
+  "target_id": "bt-262b3278-5ab7-4613-b7c5-ab26768520ce"
+}

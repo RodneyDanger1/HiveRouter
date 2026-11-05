@@ -1,0 +1,97 @@
+{
+  "schema": "hive.live-smoke.v1",
+  "ok": true,
+  "at": "2026-11-03T16:06:50.747Z",
+  "model": "deepseek-flash",
+  "finishReason": "stop",
+  "parsed": {
+    "ok": true,
+    "product": "HiveRouter"
+  },
+  "usage": {
+    "promptTokens": 63,
+    "completionTokens": 11,
+    "cacheHitTokens": 0,
+    "cacheMissTokens": 63,
+    "reasoningTokens": 0,
+    "costUsd": 0.000016049999999999997,
+    "source": "provider",
+    "model": "deepseek-flash"
+  },
+  "key": {
+    "configured": true,
+    "source": "environment",
+    "fingerprint": "d7bb4549"
+  },
+  "models": [
+    {
+      "id": "deepseek-flash",
+      "object": "model",
+      "owned_by": "deepseek",
+      "name": "DeepSeek-V4.1-Flash",
+      "context_window": 1048576,
+      "max_output_tokens": 393216,
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "effort": {
+        "supported_levels": [
+          "low",
+          "high",
+          "max"
+        ],
+        "default_level": "high"
+      },
+      "api_capabilities": {
+        "anthropic_messages": {
+          "system_prompt_update": "in-history",
+          "tool_update": "addition-only"
+        }
+      }
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "object": "model",
+      "owned_by": "deepseek",
+      "name": "DeepSeek-V4-Pro",
+      "context_window": 1048576,
+      "max_output_tokens": 393216,
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "effort": {
+        "supported_levels": [
+          "low",
+          "high",
+          "max"
+        ],
+        "default_level": "high"
+      },
+      "api_capabilities": {
+        "anthropic_messages": {
+          "system_prompt_update": "leading-only",
+          "tool_update": "leading-only"
+        }
+      }
+    }
+  ],
+  "balance": {
+    "is_available": true,
+    "balance_infos": [
+      {
+        "currency": "USD",
+        "total_balance": "1.94",
+        "granted_balance": "0.00",
+        "topped_up_balance": "1.94"
+      }
+    ]
+  },
+  "durationMs": 1815
+}

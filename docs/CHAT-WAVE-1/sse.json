@@ -1,0 +1,37 @@
+{
+  "status": "ok",
+  "events": [
+    {
+      "seq": 1,
+      "type": "chat.thread.updated"
+    },
+    {
+      "seq": 2,
+      "type": "chat.message.created"
+    },
+    {
+      "seq": 3,
+      "type": "chat.message.created"
+    },
+    {
+      "seq": 4,
+      "type": "chat.job.queued"
+    },
+    {
+      "seq": 5,
+      "type": "chat.thread.updated"
+    },
+    {
+      "seq": 6,
+      "type": "chat.job.started"
+    },
+    {
+      "seq": 7,
+      "type": "chat.message.completed"
+    },
+    {
+      "seq": 8,
+      "type": "chat.job.succeeded"
+    }
+  ]
+}

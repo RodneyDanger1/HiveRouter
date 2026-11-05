@@ -1,0 +1,589 @@
+{
+  "schema": "hive.audit.gate.v1",
+  "task": "W6-AUD-05",
+  "seat": "logic-gatekeeper",
+  "repo": "C:\\Users\\Riley\\Desktop\\HiveRouter",
+  "capturedAt": "2026-11-04T05:00:00Z",
+  "directive": "docs/AUDIT-WAVE-6/capability/FORGEWRIGHT-DIRECTIVE.md",
+  "gateRecord": "docs/AUDIT-WAVE-6/gate/gate.md",
+  "writeScope": {
+    "allowed": ["docs/AUDIT-WAVE-6/gate/**"],
+    "notWritten": ["src/**", "web/src/**", "test/**", "e2e/**", "config/**", "package.json", "data/**", "workspace/**", "logs/**", "vault/**", "skills/**"]
+  },
+  "baseline": {
+    "manifest": "docs/AUDIT-WAVE-6/baseline.sha256",
+    "entries": 150,
+    "match": 150,
+    "mismatched": 0,
+    "missing": 0,
+    "verifiedBy": "PowerShell Get-FileHash over every manifest entry",
+    "stageCensus": {
+      "command": "node scripts\\assert-stage.mjs --stage=p7 --json",
+      "ok": true,
+      "files": 150,
+      "tables": 45,
+      "routes": 48,
+      "scripts": 24,
+      "violations": []
+    },
+    "unitBaseline": {
+      "evidence": "docs/AUDIT-WAVE-6/capability/evidence-test-baseline.txt",
+      "files": 38,
+      "tests": 249,
+      "result": "all passed"
+    }
+  },
+  "inputs": {
+    "forgeFilesPresent": true,
+    "forgeFileEvidence": "Get-ChildItem docs/AUDIT-WAVE-6/forge -> handoff.md 16992, patch-proposals.json 35950, red-evidence.md 36074, root-causes.md 36932, evidence/, probes/; Test-Path both true; patch-proposals.json valid JSON with P-1..P-7; mtimes 10:32-10:33 PM, before the 10:39-10:40 PM directive/audit",
+    "staleDirectiveClaim": "FORGEWRIGHT-DIRECTIVE.md:13 and capability-audit.md:104 claim patch-proposals.json and handoff.md are absent; both exist. This does not invalidate any AF because every source premise was independently re-verified.",
+    "otherPremiseNotes": [
+      "AF-01 says 'both gate paths'; there are three markTerminal gate call sites (run.ts:341,432,857). All three inherit the fix; AF-01 conditions enumerate three emits.",
+      "AF-08 route opens at app.ts:445 and maps items at :466; the 449-469 projection range is correct.",
+      "AF-05 snapshot provenance is correctly corrected in the directive: runBudgetUsd is the per-run source; run_snapshots.limits is the global cap."
+    ]
+  },
+  "invariants": {
+    "noNewRouteTableMigrationScript": true,
+    "stageMustRemain": {"routes": 48, "tables": 45, "scripts": 24, "violations": []},
+    "additiveApiOnly": {
+      "value": true,
+      "exception": "AF-11 conditionally omits the fabricated routing decision.reason key when no rationale is derivable. No other key is removed or renamed. This is explicitly approved and must be stated in the receipt."
+    },
+    "noHistoricalBackfill": true,
+    "historicalNullCostRunsRemainNull": 7,
+    "preserveR1": true,
+    "preserveR2": true,
+    "preserveR3": true,
+    "preserveE2eApiContractPin": "e2e/api-contract.spec.ts:62-64",
+    "preserveE2eTerminalNoSsePin": "e2e/ui-audit.spec.ts:127-147",
+    "p7LearningRemainsRefused": true,
+    "noSecretsNoFakeDataNoPaidCalls": true
+  },
+  "gateSummary": {
+    "approvedTotal": 11,
+    "approvedClean": 1,
+    "approvedWithConditions": 10,
+    "rejected": 0,
+    "cleanApprovals": ["AF-03"],
+    "rejectedFixes": [],
+    "rejectedRecipes": ["forge P-4 (ASC LIMIT window+1)"],
+    "newTestFiles": 12,
+    "existingTestFilesModifiedForIsolationOnly": ["test/unit/logic-core.test.ts"]
+  },
+  "writerOrder": ["AF-01", "AF-02", "AF-03", "AF-04", "AF-05", "AF-06", "AF-07", "AF-08", "AF-09", "AF-10", "AF-11"],
+  "writerRules": [
+    "Single writer only; implement in writerOrder; do not parallelize.",
+    "Later fixes must preserve earlier edits in shared files.",
+    "One commit-sized change per AF, with its tests, before the next AF."
+  ],
+  "overlaps": {
+    "src/server/pipeline/run.ts": ["AF-01", "AF-06", "AF-09"],
+    "src/server/runs/manager.ts": ["AF-01", "AF-06", "AF-07"],
+    "src/server/runs/recorder.ts": ["AF-01", "AF-04", "AF-10"],
+    "src/server/app.ts": ["AF-04", "AF-05", "AF-08", "AF-11"],
+    "src/shared/run-events.ts": ["AF-02", "AF-03", "AF-07"],
+    "src/shared/refusals.ts": ["AF-06", "AF-07"],
+    "web/src/pages/RunDetailPage.tsx": ["AF-03", "AF-04", "AF-08", "AF-10"],
+    "web/src/hooks/useApi.ts": ["AF-02"],
+    "src/server/agents/registry.ts": ["AF-09"],
+    "src/shared/types.ts": ["AF-10"],
+    "web/src/pages/AgentsPage.tsx": ["AF-09"],
+    "test/unit/logic-core.test.ts": ["AF-07"],
+    "note": "The directive example 'run.ts touched by AF-01/06/07' is slightly off: AF-07 touches manager.ts, not run.ts. The triples are run.ts (01/06/09) and manager.ts (01/06/07)."
+  },
+  "approved": [
+    {
+      "id": "AF-01",
+      "priority": "P1",
+      "verdict": "APPROVED-WITH-CONDITIONS",
+      "order": 1,
+      "title": "Terminal runs record the usage they actually spent",
+      "rootCause": "Only finalize() copies usageTotals into the run row, so the gate-fail (markTerminal), executeRun catch, executor-rejection and no-controller-cancel writers leave runs.cost_usd/prompt_tokens/completion_tokens NULL although provider usage rows exist; the run detail then prints 'Not measured' for measured spend.",
+      "files": [
+        {"path": "src/server/runs/recorder.ts", "anchor": "after usageTotals (355-378)", "change": "Add and export usageFields(runId): {cost_usd, prompt_tokens, completion_tokens} as a thin mapping of usageTotals; no new SQL, no change to usageTotals."},
+        {"path": "src/server/runs/manager.ts", "anchor": "import at :6; markTerminal :250-258", "change": "Add ...usageFields(runId) to markTerminal's updateRun patch."},
+        {"path": "src/server/runs/manager.ts", "anchor": "executor catch :145-157", "change": "Add ...usageFields(id) to the updateRun patch; add costUsd and a human message to the run.failed emit."},
+        {"path": "src/server/runs/manager.ts", "anchor": "no-controller cancel :179-185", "change": "Add ...usageFields(runId) to the updateRun patch; add costUsd and a human message to the run.cancelled emit."},
+        {"path": "src/server/pipeline/run.ts", "anchor": "catch :868-888 (updateRun :884, emit :885)", "change": "Add ...usageFields(runId) to the catch updateRun; before emitting, if message === code use REFUSALS[code].message when registered, else a status-aware human sentence; keep redaction/500 slice; add costUsd."},
+        {"path": "src/server/pipeline/run.ts", "anchor": "gate emits :342,433,858", "change": "Add message (the same sentence passed to markTerminal at :341/:432/:857) and costUsd: usageFields(runId).cost_usd to each run.failed payload."},
+        {"path": "test/unit/terminal-usage.test.ts", "anchor": "new", "change": "New test file; see tests."}
+      ],
+      "semantics": [
+        "Every terminal run row's costUsd/promptTokens/completionTokens equals usageTotals(runId) at terminal time: NULL when there are no usage rows; all three NULL when any row has source='unknown'; otherwise the SUM.",
+        "Every terminal run.failed/run.cancelled payload from the touched paths carries costUsd (number or null) and a human message that is never identical to code.",
+        "run.completed is unchanged; historical rows stay NULL; no backfill."
+      ],
+      "entryValidation": "No new untrusted input. usageFields queries by run id; unknown runs are handled by the existing route 404. usageTotals already normalizes unknown usage.",
+      "callersStable": "markTerminal signature unchanged; updateRun patch additive; run.completed payload unchanged; finalize unchanged; executor status/timedOut unchanged.",
+      "failClosed": "Unknown or absent usage remains NULL, never 0; no terminal row claims spend it does not know.",
+      "tests": [
+        {"file": "test/unit/terminal-usage.test.ts", "asserts": [
+          "two provider usage rows + markTerminal('failed') -> row fields equal the SUM (toBeCloseTo)",
+          "one source='unknown' row -> all three NULL",
+          "no usage rows -> all three NULL",
+          "markTerminal called twice -> values unchanged, one terminal state",
+          "app.inject GET /api/runs/:id/snapshot (host 127.0.0.1:${config.port}) -> run.costUsd equals the SUM",
+          "a real run.failed event payload has costUsd and message !== code (drive createRun + executeRun revise/no-parent and/or a rejecting executor; do not hand-emit)",
+          "bare Error('E_PROVIDER_EMPTY') -> message is human, not the code",
+          "temp config.dataDir/config.workspaceDir with restore in finally"
+        ]},
+        {"file": "test/unit/terminal-usage.test.ts", "asserts": ["a historical failed row with cost_usd NULL is not updated by the new code (no backfill)"]}
+      ],
+      "conditions": [
+        "usageFields must be a thin mapping of usageTotals and live in recorder.ts; do not duplicate the SQL or change usageTotals semantics.",
+        "Apply usage fields to all four terminal writers (markTerminal, run.ts catch, manager executor catch, manager no-controller cancel), not only the directive's bullet list.",
+        "Add costUsd and a human message to all terminal events on the touched paths (run.ts:342,433,858,885; manager.ts:157,186). Gate emits reuse the markTerminal sentence. If raw message === code: use REFUSALS[code].message when registered; otherwise use a status-aware sentence ('The run failed with <code>.' / 'The run was cancelled.'). Never emit the code alone for E_PROVIDER_EMPTY/E_PROVIDER_TRUNCATED/E_CANCELLED.",
+        "Preserve status mapping, run.completed, budget_reservations, /api/stats, historical rows, and the usageTotals contract.",
+        "Test #6 must drive a real production path without a paid call (createRun + executeRun revise/no-parent; and/or createRun + rejecting executor). Do not call emitEvent by hand. The three gate emits are code-inspection only; the receipt must mark the gate-event runtime as unverified.",
+        "New tests redirect config.dataDir and config.workspaceDir to fs.mkdtempSync and restore in finally; do not write data/**, workspace/**, or logs/**.",
+        "Use approximate float assertions.",
+        "No new source file, dependency, route, table, migration, or script."
+      ],
+      "risks": ["gate-event payload is not runtime-tested without a provider call (unverified by mandate)", "costUsd in the event is computed after the row write; at terminal time no in-flight usage writer exists on these paths"],
+      "rollback": ["Revert recorder.ts usageFields", "Revert manager.ts three patches", "Revert run.ts catch + three gate emits", "Delete test/unit/terminal-usage.test.ts"],
+      "forbidden": ["Do not write 0 for unknown usage", "Do not change run.completed", "Do not backfill historical rows", "Do not route the catch through markTerminal in a way that emits twice"]
+    },
+    {
+      "id": "AF-02",
+      "priority": "P1",
+      "verdict": "APPROVED-WITH-CONDITIONS",
+      "order": 2,
+      "title": "One event vocabulary: subscribe to everything the server emits, and deliver the payload",
+      "rootCause": "The client's hard-coded subscription list omits five emitted types (run.queued, agent.failed, phase.skipped, context.skipped, repair.stalled) and the live handler stores the whole SSE envelope instead of the inner payload, so live pages drop those rows and use a different data shape than the persisted ledger.",
+      "files": [
+        {"path": "src/shared/run-events.ts", "anchor": "new exports after mapPersistedRunEvents", "change": "Add RUN_EVENT_TYPES (all emitted types; 16 now + run.interrupted after AF-07), RESERVED_EVENT_TYPES (the 16 subscribed-never-emitted names incl. heartbeat), STREAM_EVENT_TYPES = [...RUN_EVENT_TYPES, ...RESERVED_EVENT_TYPES], and normaliseStreamEvent(rawType, rawData)."},
+        {"path": "web/src/hooks/useApi.ts", "anchor": "72-100 and 124-144", "change": "Delete the local STREAM_EVENT_TYPES array; import the shared constants/helper; parse JSON, call normaliseStreamEvent(event.type, parsed), keep the heartbeat filter, keep receivedAt, keep source.onmessage, and keep the 'message' -> 'run.event' mapping."},
+        {"path": "test/unit/event-contract.test.ts", "anchor": "new", "change": "New test file; see tests."}
+      ],
+      "semantics": [
+        "All server-emitted event types are subscribed; the 16 reserved listeners remain registered.",
+        "A live event's data has the same inner-payload shape as the persisted row's data.",
+        "Only records with schema === 'hive.api.v1' and a data property are unwrapped."
+      ],
+      "entryValidation": "normaliseStreamEvent accepts unknown; non-record/null/array/string are returned as-is and never throw; JSON parse retains the raw-text fallback.",
+      "callersStable": "useRunStream(runId,onEvent) unchanged; mapPersistedRunEvents unchanged; /stream route unchanged; 5 s poll unchanged.",
+      "failClosed": "An emitted type missing from RUN_EVENT_TYPES fails the static contract test instead of being silently dropped; a payload without the schema marker is not unwrapped.",
+      "tests": [
+        {"file": "test/unit/event-contract.test.ts", "asserts": [
+          "every emitEvent type literal in src/server/**/*.ts is in RUN_EVENT_TYPES, including the run.ts:885 ternary and manager literals",
+          "every RUN_EVENT_TYPES member is in STREAM_EVENT_TYPES; no duplicates across the union",
+          "the five previously-missing names are in STREAM_EVENT_TYPES",
+          "normaliseStreamEvent('agent.failed', {schema:'hive.api.v1',type:'agent.failed',data:{code:'E_LLM_RATE_LIMIT'},meta:{}}) -> {type:'agent.failed',data:{code:'E_LLM_RATE_LIMIT'}}",
+          "plain {code:'x'} and non-record unchanged; string input does not throw; payload with a data key but no schema is not unwrapped"
+        ]}
+      ],
+      "conditions": [
+        "RUN_EVENT_TYPES is the authoritative emitted set and includes run.interrupted after AF-07; the final comment must not claim 16.",
+        "RESERVED_EVENT_TYPES keeps the 16 names incl. heartbeat; STREAM_EVENT_TYPES is the concatenation with no duplicates (D-24: do not delete listeners).",
+        "normaliseStreamEvent unwraps only records with schema === 'hive.api.v1' AND a data property; no React/Node-only imports.",
+        "The handler keeps JSON parse/raw fallback, the heartbeat filter, receivedAt, source.onmessage, and the event.type === 'message' -> 'run.event' mapping.",
+        "The static test must extract all emitEvent type literals including the ternary; a second-argument string-only regex is insufficient.",
+        "No new event type in AF-02; no change to mapPersistedRunEvents, the SSE route, or the poll.",
+        "Do not add emitters for the reserved names; do not delete them.",
+        "No new dependency/file; no API change."
+      ],
+      "risks": ["a payload with type/data keys but no schema is now treated as a raw payload (intentional anti-spoofing)", "live delivery is proven by listener counts, not by a live run watched in this gate"],
+      "rollback": ["Revert run-events.ts additions", "Revert useApi.ts handler/list", "Delete test/unit/event-contract.test.ts"],
+      "forbidden": ["Do not change the persisted mapping", "Do not delete reserved listeners", "Do not add a new event type", "Do not remove onmessage"]
+    },
+    {
+      "id": "AF-03",
+      "priority": "P1",
+      "verdict": "APPROVED",
+      "order": 3,
+      "title": "The terminal Events tab shows the persisted ledger",
+      "rootCause": "visibleEvents = events.length > 0 ? events : persistedEvents.data ?? [] keeps the 100-row live buffer even after the run is terminal, so the fetched 108-row ledger is discarded while the heading says 'Persisted events'.",
+      "files": [
+        {"path": "src/shared/run-events.ts", "anchor": "after mapPersistedRunEvents", "change": "Add selectVisibleEvents({terminal, live, persisted}): terminal ? persisted : live; no mutation."},
+        {"path": "web/src/pages/RunDetailPage.tsx", "anchor": ":133", "change": "const visibleEvents = selectVisibleEvents({terminal, live: events, persisted: persistedEvents.data ?? []}); do not clear setEvents at terminal."},
+        {"path": "test/unit/run-events-selection.test.ts", "anchor": "new", "change": "New truth-table test file."}
+      ],
+      "semantics": ["Terminal -> exactly the /events ledger (up to the server window), including types the live feed dropped; non-terminal -> the live buffer (bounded to 100).", "Loading/error/empty branches keep their current behaviour; a fresh terminal load is unchanged."],
+      "entryValidation": "Typed arrays; caller passes ?? []; no untrusted input.",
+      "callersStable": "No API change; useRunStream/getRunEvents unchanged; terminal stream disabled (:135).",
+      "failClosed": "At terminal the persisted ledger (or its honest empty/error state) wins; a stale live buffer cannot masquerade as the persisted ledger.",
+      "tests": [
+        {"file": "test/unit/run-events-selection.test.ts", "asserts": ["(true,100,108)->108", "(true,100,0)->0", "(false,100,108)->100", "(false,0,0)->0"]},
+        {"file": "e2e/trace-fixes.spec.ts", "asserts": ["existing fresh-terminal test stays green; do not edit it"]}
+      ],
+      "conditions": [],
+      "receiptRequirements": ["State that the live->terminal transition remains unverified; do not fake it with a live run, route interception, or seed data. The forge P-2 e2e route-interception proposal is not approved."],
+      "risks": ["live->terminal transition is unverified by mandate (no non-terminal run; paid runs forbidden)"],
+      "rollback": ["Revert the selector export/import and the one-line call site", "Delete test/unit/run-events-selection.test.ts"],
+      "forbidden": ["Do not clear setEvents([]) at terminal", "Do not edit e2e/trace-fixes.spec.ts", "Do not add a route-interception test"]
+    },
+    {
+      "id": "AF-04",
+      "priority": "P2",
+      "verdict": "APPROVED-WITH-CONDITIONS",
+      "order": 4,
+      "title": "/events truncation means this run's events were dropped",
+      "rootCause": "The route derives the replay window from the global AUTOINCREMENT seq instead of counting this run's rows, so short runs report truncated:true while returning every row (24/25 runs; abf5 108/108).",
+      "files": [
+        {"path": "src/server/runs/recorder.ts", "anchor": "after getEvents (58-69)", "change": "Add countEventsAfter(runId, after) and getRecentEvents(runId, after, limit) (ORDER BY seq DESC LIMIT ? then reverse; same mapping as getEvents)."},
+        {"path": "src/server/app.ts", "anchor": "818-833", "change": "Keep the after clamp; compute total/truncated and rows from a consistent snapshot; truncated = total > returned; events = newest window (or all); lastEventId = last returned seq else lastEventId(id)."},
+        {"path": "web/src/pages/RunDetailPage.tsx", "anchor": ":330", "change": "Rename the badge to 'Artifacts truncated' (driven by snapshot.truncated, the 200-artifact cap)."},
+        {"path": "test/unit/events-window.test.ts", "anchor": "new", "change": "New test file; see tests."}
+      ],
+      "semantics": ["truncated=true iff at least one of this run's events with seq > after was not returned.", "Rows are always the newest window (or all of them).", "Response keys remain {events,truncated,lastEventId}."],
+      "entryValidation": "Keep Math.max(0, Number(query.after ?? 0) || 0); unknown run 404 E_RUN_NOT_FOUND unchanged; window from config.",
+      "callersStable": "Response keys unchanged; web/src/api.ts:327-332 unchanged; GET /stream untouched; no new route.",
+      "failClosed": "A complete replay cannot report truncation; a real truncation cannot report all rows; no global-seq dependence.",
+      "tests": [
+        {"file": "test/unit/events-window.test.ts", "asserts": [
+          "patch config.limits.eventReplayWindow=3 (save/restore); app.inject with host header",
+          "0 events -> 0 rows, truncated=false",
+          "2 events -> 2 rows, false",
+          "exactly 3 -> 3 rows, false",
+          "4 events -> 3 rows, true, and the returned seqs are the newest 3",
+          "after cursor -> forward window and flag correct",
+          "after = last seq -> [], false, lastEventId=current",
+          "negative/NaN after -> treated as 0"
+        ]}
+      ],
+      "conditions": [
+        "Add the two recorder helpers; getRecentEvents uses DESC then reverse with the same mapping as getEvents.",
+        "Compute truncation and rows from a consistent snapshot: one SQL statement using COUNT(*) OVER (), or a read transaction covering count+fetch. A plain count-then-ASC-fetch can under-report truncation on concurrent append; that violates the stated invariant.",
+        "Keep the after clamp, the response keys, unknown-run 404, and /stream unchanged.",
+        "Badge text exactly 'Artifacts truncated'; do not add an events badge in this batch; no client getRunEvents change.",
+        "Do not implement forge P-4 (ASC getEvents(id, after, window+1)+slice); it returns the oldest window for >window runs.",
+        "Tests must assert the newest seqs, not merely the count, for the 4-event case."
+      ],
+      "risks": ["count/fetch consistency is a hardening condition; the page calls /events only for terminal runs today, but the API contract is general"],
+      "rollback": ["Revert app.ts events block", "Remove the two recorder helpers", "Revert the badge text", "Delete test/unit/events-window.test.ts"],
+      "forbidden": ["Do not change GET /stream", "Do not change web/src/api.ts getRunEvents", "Do not use global-seq window math"]
+    },
+    {
+      "id": "AF-05",
+      "priority": "P2",
+      "verdict": "APPROVED-WITH-CONDITIONS",
+      "order": 5,
+      "title": "Snapshot serves the per-run cost cap",
+      "rootCause": "The snapshot route never serves the cap the UI reads, and run_snapshots.limits is the global config cap, so the run detail can never display the truthful per-run cap.",
+      "files": [
+        {"path": "src/server/app.ts", "anchor": "snapshot :802-816", "change": "Add limits: { maxCostUsd: runBudgetUsd(id) } to the snapshot response; runBudgetUsd is already imported at :14."},
+        {"path": "test/unit/snapshot-limits.test.ts", "anchor": "new", "change": "New test file; see tests."}
+      ],
+      "semantics": ["The run detail shows $spent / $cap cap for every run; a run_limit of 0.03 shows 0.03, not 0.5.", "Additive field; existing keys unchanged."],
+      "entryValidation": "runBudgetUsd validates stored JSON, requires finite >0, and clamps to the global cap; missing/invalid falls back to the global cap; unknown run 404.",
+      "callersStable": "Additive key; no route/method change; Settings unchanged (D-20).",
+      "failClosed": "The cap is never null/undefined; the global cap is never presented as a per-run cap.",
+      "tests": [
+        {"file": "test/unit/snapshot-limits.test.ts", "asserts": [
+          "insert run_limit:<id> 0.03 -> snapshot.limits.maxCostUsd === 0.03",
+          "no run_limit -> config.limits.maxRunCostUsd",
+          "run_limit above global -> clamped to global",
+          "the six pre-existing snapshot keys are still present",
+          "unknown run -> 404 E_RUN_NOT_FOUND"
+        ]}
+      ],
+      "conditions": [
+        "Use runBudgetUsd(id) only. Serving run_snapshots.snapshot_json.limits / the global config cap is rejected (CA-04 provenance correction).",
+        "Add exactly limits: { maxCostUsd: runBudgetUsd(id) }; keep all existing keys; no route/method change; no Settings change.",
+        "The value must never be null/undefined; malformed run_limit falls back to the global cap; above-global is clamped.",
+        "Do not modify e2e/ui-audit.spec.ts:127-147. The unit test is the required proof; the optional e2e may be skipped.",
+        "Additive only: no other snapshot key change and no Settings-page change."
+      ],
+      "risks": ["optional e2e is a temptation to edit the pinned test; skip it"],
+      "rollback": ["Revert the one limits line", "Delete test/unit/snapshot-limits.test.ts"],
+      "forbidden": ["Do not read run_snapshots.limits", "Do not change the Settings page", "Do not add a route"]
+    },
+    {
+      "id": "AF-06",
+      "priority": "P2",
+      "verdict": "APPROVED-WITH-CONDITIONS",
+      "order": 6,
+      "title": "Preserve the provider error code through every terminal writer",
+      "rootCause": "The mappers read the human message (message.startsWith('E_')) instead of LlmError.code, so a provider failure with a prose message is persisted and emitted as E_INTERNAL, losing the provider identity in runs.error_code, steps.error_code, and the run.failed/agent.failed payloads.",
+      "files": [
+        {"path": "src/shared/refusals.ts", "anchor": "after isRefusalCode (103-105)", "change": "Add and export codeOfError(error): prefer a string .code matching /^E_[A-Z0-9_]+$/, else the message prefix /^(E_[A-Z0-9_]+)/, else E_INTERNAL."},
+        {"path": "src/server/pipeline/run.ts", "anchor": "agentStep :231-235 and catch :868-888", "change": "Use codeOfError(error) for steps.error_code and agent.failed, and in the catch; keep the signal.reason E_RUN_TIMEOUT check first and preserve the status mapping."},
+        {"path": "src/server/runs/manager.ts", "anchor": "executor catch :145-157", "change": "Use codeOfError(error) after the timedOut check; keep status failed and the message/redaction."},
+        {"path": "test/unit/error-code.test.ts", "anchor": "new", "change": "New pure table test."},
+        {"path": "test/unit/terminal-error-code.test.ts", "anchor": "new", "change": "New throwaway-DB integration test."}
+      ],
+      "semantics": ["A run that dies on a provider rate limit persists E_LLM_RATE_LIMIT in runs.error_code, steps.error_code, and the run.failed/agent.failed payloads; the human message is unchanged and redacted.", "Unknown code shapes still map to E_INTERNAL."],
+      "entryValidation": "codeOfError accepts unknown; null/non-string .code ignored; non-Error throw stringified; never throws.",
+      "callersStable": "Helper only; three mapper signatures unchanged; HTTP error mapping untouched; recordError behaviour untouched.",
+      "failClosed": "A code that does not match E_* falls back to the message prefix then E_INTERNAL; status classification is unchanged.",
+      "tests": [
+        {"file": "test/unit/error-code.test.ts", "asserts": [
+          "LlmError('E_LLM_RATE_LIMIT', prose) -> E_LLM_RATE_LIMIT",
+          "Error('E_PROVIDER_EMPTY') -> E_PROVIDER_EMPTY",
+          "Error('E_AGENT_OUTPUT_MISMATCH: x') -> E_AGENT_OUTPUT_MISMATCH",
+          "lowercase/non-matching code -> prefix -> E_INTERNAL",
+          "AbortError with prose -> E_INTERNAL",
+          "non-Error throw -> prefix or E_INTERNAL",
+          "object {code:'ENOENT'} -> E_INTERNAL (not a run code)"
+        ]},
+        {"file": "test/unit/terminal-error-code.test.ts", "asserts": [
+          "initDb(':memory:'); setExecutor(() => Promise.reject(new LlmError('E_LLM_RATE_LIMIT','DeepSeek rate limit reached after 3 attempts.'))); createRun; await a tick",
+          "getRun(id).errorCode === 'E_LLM_RATE_LIMIT' and the run.failed payload code matches",
+          "restore executor and temp config.dataDir/config.workspaceDir in finally"
+        ]}
+      ],
+      "conditions": [
+        "codeOfError's first branch must require the E_ prefix (/^E_[A-Z0-9_]+$/) so Node errno codes (ENOENT/ECONNREFUSED/ENOSPC) do not become run error codes; the directive's looser uppercase-only regex is not approved.",
+        "Use the helper in exactly the three mappers; preserve precedence (E_RUN_TIMEOUT first, timedOut first) and the status mapping.",
+        "Do not expand REFUSALS; do not register E_LLM_*/GATE_FAILED/E_CANCELLED; do not change messages or redaction.",
+        "Do not change recordError, app.ts:992-1004, or HTTP classification.",
+        "The run.ts mapper is runtime-unverified (provider failure needs a paid call); the manager mapper is covered by the executor rejection test; state this.",
+        "No new file/dependency; steps.error_code now persists the code, not the full prefixed message."
+      ],
+      "risks": ["an LlmError whose message prefix names a different E_* code is now classified by .code (correct)", "E_LLM_* remain non-HTTP/registry codes; the UI chip displays the truthful code"],
+      "rollback": ["Revert refusals.ts codeOfError", "Revert the three mapper call sites", "Delete the two test files"],
+      "forbidden": ["Do not expand REFUSALS", "Do not change the status mapping", "Do not change the HTTP error handler", "Do not use the uppercase-only regex"]
+    },
+    {
+      "id": "AF-07",
+      "priority": "P2",
+      "verdict": "APPROVED-WITH-CONDITIONS",
+      "order": 7,
+      "title": "interrupted is an explained terminal state",
+      "rootCause": "markStartupInterrupted writes the interrupted status with a bare UPDATE, so the run is terminal but carries no error_code/error_message, emits no event, and leaves no error-log record; a page opened after a restart shows 'Interrupted' with no explanation.",
+      "files": [
+        {"path": "src/shared/refusals.ts", "anchor": "after E_RUN_NOT_TERMINAL / near E_RUN_NOT_CANCELLABLE", "change": "Add E_RUN_INTERRUPTED {http:409, exit:4, retryable:false, message:'The run was interrupted by a server restart.'}."},
+        {"path": "src/shared/run-events.ts", "anchor": "RUN_EVENT_TYPES", "change": "Add 'run.interrupted' to RUN_EVENT_TYPES (AF-02's constant)."},
+        {"path": "src/server/runs/manager.ts", "anchor": "markStartupInterrupted :192-204", "change": "For each row actually transitioned: updateRun(status interrupted, phase done, finished_at, error_code E_RUN_INTERRUPTED, error_message, plus usageFields), emit exactly one run.interrupted with code/message/costUsd, recordError({source:'run',...}), then releaseReservationsForRun. Preserve the WHERE status IN (...) guard and return the number transitioned."},
+        {"path": "test/unit/startup-interrupt.test.ts", "anchor": "new", "change": "New throwaway-DB test."},
+        {"path": "test/unit/logic-core.test.ts", "anchor": "175-196", "change": "Isolation only: redirect config.dataDir to a temp dir and restore; assertions unchanged."}
+      ],
+      "semantics": ["Every run interrupted by a restart is terminal, explained, has exactly one run.interrupted event, and appears in errors.jsonl.", "Spend measured before the crash is recorded (AF-01 helper)."],
+      "entryValidation": "No untrusted input; run ids from the DB; the message is a REFUSALS constant.",
+      "callersStable": "index.ts:43 unchanged; return count semantics unchanged; release still after the terminal write; no route change.",
+      "failClosed": "Every transitioned row is explained and logged; a row not actually transitioned is not rewritten; zero active runs returns 0 with no writes.",
+      "tests": [
+        {"file": "test/unit/startup-interrupt.test.ts", "asserts": [
+          "create one queued + one running run (1 usage row); temp config.dataDir; call markStartupInterrupted()",
+          "both rows status=interrupted, error_code=E_RUN_INTERRUPTED, error_message set",
+          "exactly one run.interrupted event per run with code and costUsd",
+          "temp/logs/errors.jsonl has two records with source='run'",
+          "second call returns 0 and writes nothing"
+        ]},
+        {"file": "test/unit/logic-core.test.ts", "asserts": ["existing interrupt test still returns 1, status interrupted, reservation released; config.dataDir isolated"]}
+      ],
+      "conditions": [
+        "Add only E_RUN_INTERRUPTED and run.interrupted; no other registry/event changes.",
+        "Preserve the conditional status guard (WHERE status IN (...)); do not use an unconditional per-id update that can downgrade a run that finished between SELECT and UPDATE. Emit/log/release only rows actually transitioned. Return the transitioned count.",
+        "Per-row order: terminal row write -> exactly one run.interrupted event (code, message, costUsd) -> recordError(source:'run') -> releaseReservationsForRun.",
+        "Use REFUSALS.E_RUN_INTERRUPTED.message for error_message and the event/log; costUsd from usageFields(id).cost_usd (null when unknown); do not emit run.failed.",
+        "Isolate the existing logic-core.test.ts interrupt test from the product log (temp config.dataDir, restore in finally) without weakening assertions.",
+        "Do not change getActiveRunId, index.ts, or learning/P7 code."
+      ],
+      "risks": ["the SELECT->UPDATE race is closed by the conditional guard; markStartupInterrupted is exported, so the guard is required even though the current call site is pre-listen"],
+      "rollback": ["Revert the REFUSALS entry, the run-events entry, and markStartupInterrupted", "Delete test/unit/startup-interrupt.test.ts", "Revert the isolation-only logic-core edit"],
+      "forbidden": ["Do not emit run.failed for interrupted runs", "Do not add a new event type", "Do not release reservations before the terminal write", "Do not touch learning/P7"]
+    },
+    {
+      "id": "AF-08",
+      "priority": "P2",
+      "verdict": "APPROVED-WITH-CONDITIONS",
+      "order": 8,
+      "title": "Context tab shows what the data actually contains",
+      "rootCause": "The context route never reads context_packs.excluded_json (which the packer does write as {id,reason}) and the included items never carry real token/char values, so the Context tab advertises four columns that can never be populated and claims to show exclusions it never fetches.",
+      "files": [
+        {"path": "src/server/app.ts", "anchor": "context route :445-470 (mapping :466)", "change": "Parse excluded_json in try/catch; included items get included:true; append excluded rows {id, path:null, kind:'excluded', tokens:null, mandatory:false, reason:String(item.reason ?? 'excluded'), included:false}; keep packs/items shapes and usedTokens."},
+        {"path": "web/src/pages/RunDetailPage.tsx", "anchor": ":768 and ContextItems :823-844", "change": "Drop the Tokens and Chars columns; keep Path/Kind/Mandatory/Reason/Included; change the description to exactly 'Included and excluded items are listed; exclusions carry a reason. No raw context is dumped here.'"},
+        {"path": "test/unit/context-excluded.test.ts", "anchor": "new", "change": "New test file; see tests."}
+      ],
+      "semantics": ["Excluded items appear as rows with included:false and a reason; included rows show included:true; no column claims a value that is never produced."],
+      "entryValidation": "excluded_json parse in try/catch -> []; reason coerced to string; no raw context text in the response.",
+      "callersStable": "packs[].items, usedTokens, prefixHash preserved; top-level items remains packs.flatMap; ContextItemView already has optional reason/included.",
+      "failClosed": "Malformed excluded JSON produces no fabricated rows and no 500; absent reasons get 'excluded'; no never-produced column remains.",
+      "tests": [
+        {"file": "test/unit/context-excluded.test.ts", "asserts": [
+          "insert a context_packs row with included_json and excluded_json; app.inject GET /api/runs/<id>/context with host header",
+          "excluded row present with included:false and its reason",
+          "included rows have included:true",
+          "packs[0].usedTokens unchanged",
+          "malformed excluded_json -> no 500"
+        ]}
+      ],
+      "conditions": [
+        "Route: parse excluded_json; included:true on included items; exact excluded row shape; keep packs/items shapes, usedTokens, prefixHash; no raw context text.",
+        "UI: drop Tokens and Chars only; exact description; keep Path/Kind/Mandatory/Reason/Included; no packer/DB/est_tokens change.",
+        "Do not fix the pre-existing duplicate aggregate looseItems card in this batch; report it as an observation.",
+        "Tests use the host header and the malformed case; fixtures must not contain raw secrets/context.",
+        "Additive fields/rows only; no new route/table."
+      ],
+      "risks": ["excluded rows render in both the pack table and the existing aggregate table (pre-existing duplication); accepted for this batch"],
+      "rollback": ["Revert the app.ts context projection", "Revert the UI columns/description", "Delete test/unit/context-excluded.test.ts"],
+      "forbidden": ["Do not change the packer or DB", "Do not change est_tokens/usedTokens", "Do not dump raw context", "Do not fix the aggregate duplicate card"]
+    },
+    {
+      "id": "AF-09",
+      "priority": "P2",
+      "verdict": "APPROVED-WITH-CONDITIONS",
+      "order": 9,
+      "title": "Make the advertised plan contract callable",
+      "rootCause": "The registry advertises the AgentPlanSchema union for every plan agent and the runtime contract tells router/epic/cartographer to return kind-discriminated payloads, but the only plan consumer validates ProjectPlanSchema, so a documented router/epic/cartographer payload fails validation; the UI's blanket validation claim is also false for the text path.",
+      "files": [
+        {"path": "src/server/agents/registry.ts", "anchor": "after AgentPlanSchema (753-788)", "change": "Add PLAN_AGENT_IDS = ['architect','router','epic','cartographer'] as const and planOutputSchemaFor(agentId: AgentId): z.ZodType returning AgentPlanSchema; keep ProjectPlanSchema."},
+        {"path": "src/server/pipeline/run.ts", "anchor": "adhoc plan branch :404-407", "change": "Validate with planOutputSchemaFor(agent.id) instead of ProjectPlanSchema; keep the write/planned logic. Full-build architect :470-471 stays ProjectPlanSchema."},
+        {"path": "web/src/pages/AgentsPage.tsx", "anchor": ":477", "change": "Hint text exactly 'Structured JSON outputs are schema-validated before they are stored; text output is stored as text.'"},
+        {"path": "test/unit/agent-plan-contract.test.ts", "anchor": "new", "change": "New test file; see tests."}
+      ],
+      "semantics": ["An adhoc run of router/epic/cartographer accepts its documented kind payload; architect is still accepted through the union's ProjectPlan variant; the full-build plan path is unchanged; the UI validation claim is literally true for every output kind."],
+      "entryValidation": "Zod safeParse at chatJson (client.ts:628); invalid payload -> E_LLM_SCHEMA_INVALID through the repair loop; no silent acceptance.",
+      "callersStable": "callAgentJson signature unchanged; full-build architect path unchanged; write path unchanged; no prompt/hash/schemaId change.",
+      "failClosed": "A payload matching none of the union variants fails with the existing schema error; the UI claim is true.",
+      "tests": [
+        {"file": "test/unit/agent-plan-contract.test.ts", "asserts": [
+          "for each of the four plan agents, planOutputSchemaFor(id).safeParse(documented payload) succeeds (reuse test/fixtures/agents/fixtures.ts)",
+          "router payload missing summary fails",
+          "planOutputSchemaFor('router') accepts a ProjectPlan payload (union fallback)",
+          "static source assertion: the adhoc plan branch uses planOutputSchemaFor(agent.id) and the full-build architect call still uses ProjectPlanSchema",
+          "existing agents.schemas.test.ts and agents.registry.test.ts remain green"
+        ]}
+      ],
+      "conditions": [
+        "Add PLAN_AGENT_IDS and planOutputSchemaFor to registry.ts; return AgentPlanSchema for the four plan agents; keep ProjectPlanSchema unchanged.",
+        "Use the selector only at run.ts:404-407; keep the full-build architect call at :470-471 on ProjectPlanSchema; do not change the write/planned logic.",
+        "Change the UI hint to the exact text; do not add candidate-draft validation (truth-telling only).",
+        "Do not change schemaId, outputKind, prompt text, PROMPT_SOURCE_MAP, PROMPT_HASHES, or the model output format.",
+        "The tests must include the static wiring assertion, not only the schema unit tests.",
+        "No paid run; plan-agent runtime remains unverified and must be stated. No new file/dependency."
+      ],
+      "risks": ["the union accepts a kind payload for architect and a ProjectPlan for router (intentional leniency consistent with the advertised agent-plan schema)"],
+      "rollback": ["Revert the registry selector", "Revert the one call-site change", "Revert the UI hint", "Delete test/unit/agent-plan-contract.test.ts"],
+      "forbidden": ["Do not change the full-build architect path", "Do not add candidate-draft validation", "Do not change prompts/hashes/schemaId", "Do not run a paid plan agent"]
+    },
+    {
+      "id": "AF-10",
+      "priority": "P3",
+      "verdict": "APPROVED-WITH-CONDITIONS",
+      "order": 10,
+      "title": "Checks: unique row identity and no dead columns",
+      "rootCause": "getChecks replaces the unique DB row id with the repeated verifier check_id, so a run with multiple verification passes renders duplicate React keys and cannot distinguish passes; the Time column and check.code fallback read fields that are never persisted or returned.",
+      "files": [
+        {"path": "src/shared/types.ts", "anchor": "CheckResult :206-217", "change": "Add optional rowId?: string (additive)."},
+        {"path": "src/server/runs/recorder.ts", "anchor": "getChecks :293-303", "change": "Add rowId: String(row.id) to each mapped check; no migration."},
+        {"path": "web/src/pages/RunDetailPage.tsx", "anchor": "ChecksTab :640-660", "change": "key={check.rowId ?? check.id}; delete the Time th/cell; File cell uses check.file + optional ':'+line, else '—'; drop the check.code fallback; keep Check/Status/Mandatory/Detail/File and the badge."},
+        {"path": "test/unit/checks-identity.test.ts", "anchor": "new", "change": "New test file; see tests."}
+      ],
+      "semantics": ["Each persisted check pass renders as its own row; no duplicate keys; no column claims a never-produced value; snapshot.checks and GET /checks carry rowId."],
+      "entryValidation": "rowId is derived from the DB, not user input; optional in the shared type; old payloads without rowId remain valid.",
+      "callersStable": "CheckResult additive; insertCheck unchanged; snapshot.checks/GET /checks automatically carry rowId; no route change.",
+      "failClosed": "Every persisted check row gets a unique key; missing rowId falls back to the old key; no fake Time/code value.",
+      "tests": [
+        {"file": "test/unit/checks-identity.test.ts", "asserts": [
+          "insert two checks with the same check_id and different detail -> getChecks returns 2 rows with distinct rowId",
+          "GET /api/runs/:id/checks returns both (host header)",
+          "if asserting order, use explicit distinct created_at values; do not rely on millisecond ties"
+        ]}
+      ],
+      "conditions": [
+        "Add optional rowId; getChecks adds rowId: String(row.id); no migration; insertCheck unchanged.",
+        "UI key on check.rowId ?? check.id; delete the Time th/cell; File cell drops check.code; keep the other columns/badge.",
+        "Do not modify e2e/ui-audit.spec.ts; the Checks tab visit stays green; no new route/table/migration.",
+        "Tests must not rely on created_at tie order; no raw context/secret fixtures.",
+        "Preserve all persisted check fields and ordering; the snapshot and GET /checks both carry rowId."
+      ],
+      "risks": ["the duplicate checked row order is not guaranteed when created_at ties; the test must not assert tie order"],
+      "rollback": ["Revert the optional rowId", "Revert getChecks mapping", "Revert the UI key/column changes", "Delete test/unit/checks-identity.test.ts"],
+      "forbidden": ["Do not add a migration", "Do not change insertCheck", "Do not edit e2e/ui-audit.spec.ts"]
+    },
+    {
+      "id": "AF-11",
+      "priority": "P3",
+      "verdict": "APPROVED-WITH-CONDITIONS",
+      "order": 11,
+      "title": "Routing reason derives from the decision, not a literal",
+      "rootCause": "The routing route returns the constant string 'static prior route' for every decision instead of a value composed from that decision's persisted features, so the UI presents a hard-coded claim as per-decision evidence.",
+      "files": [
+        {"path": "src/server/app.ts", "anchor": "routing decision object :409-427 (:423 literal)", "change": "Compose reasonText from features: string features.reason wins; else non-empty string qualitySource -> '<source>-based selection (n=<finite sampleSize or 0>)' + optional model/thinking when non-empty strings; omit the key when nothing is known (conditional spread)."},
+        {"path": "test/unit/routing-reason.test.ts", "anchor": "new", "change": "New test file; see tests."}
+      ],
+      "semantics": ["The displayed reason is composed of the same fields the API returns for that decision; a future real reason wins; if nothing is known the field is absent and nothing is shown."],
+      "entryValidation": "features_json is already parsed in try/catch -> {}; the derivation checks typeof/finiteness and never throws.",
+      "callersStable": "reason remains optional in the client type; no other decision/candidate key changes; ordering/allocatedCostUsd/reserveUsd unchanged.",
+      "failClosed": "Unknown rationale -> key absent (nothing shown), never a fabricated literal; invalid qualitySource/model/thinking -> omitted.",
+      "tests": [
+        {"file": "test/unit/routing-reason.test.ts", "asserts": [
+          "features {qualitySource:'prior',sampleSize:0,model:'deepseek-flash',thinking:'disabled'} -> reason contains 'prior', 'n=0', model",
+          "features {} -> 'reason' in decision === false",
+          "features {reason:'learned v2'} -> 'learned v2'",
+          "non-string/empty qualitySource -> no composed reason; no 'NaN'/'[object Object]'"
+        ]}
+      ],
+      "conditions": [
+        "Derive only from the decision's own features; prefer a string reason; require a non-empty string qualitySource; n = finite sampleSize else 0; model/thinking only when non-empty strings.",
+        "Omit the reason key entirely when nothing is known (conditional spread). This is the single approved exception to additive API only; no other key may be removed or renamed, and the receipt must state it.",
+        "Keep every other decision/candidate key, ordering, allocatedCostUsd, reserveUsd; no UI change; no DB writer change; no backfill.",
+        "Never output NaN, [object Object], undefined, or a literal fallback.",
+        "Tests must include the empty-features absence assertion and the persisted-reason precedence."
+      ],
+      "risks": ["current data will display 'prior-based selection (n=0) · model … · thinking …' instead of 'static prior route'; truthful and composed from the API fields"],
+      "rollback": ["Revert the one reason expression", "Delete test/unit/routing-reason.test.ts"],
+      "forbidden": ["Do not keep the 'static prior route' literal", "Do not remove any other key", "Do not change the UI", "Do not backfill historical features"]
+    }
+  ],
+  "rejected": [],
+  "rejectedRecipes": [
+    {
+      "id": "forge-P-4",
+      "reason": "getEvents(id, after, window+1) is ASC LIMIT, so it returns the oldest window+1 rows after the cursor; slicing the tail does not return the newest window for a run with more than window events (CA-05; same flaw as root-causes.md:184).",
+      "reopenEvidence": "A recipe that provably returns the newest window rows for a >window run after the cursor and passes the AF-04 boundary tests (0, 2, exactly 3, 4 with window=3, after cursor, newest-seq assertion)."
+    }
+  ],
+  "deferred": [
+    {"id": "D-01", "item": "nested-modal Escape", "disposition": "deferred"},
+    {"id": "D-02", "item": "skip-link focus", "disposition": "deferred"},
+    {"id": "D-03", "item": "tab aria-controls", "disposition": "deferred"},
+    {"id": "D-04", "item": "favicon 404", "disposition": "deferred"},
+    {"id": "D-05", "item": "unknown-route E_RUN_NOT_FOUND", "disposition": "deferred; pinned by e2e/api-contract.spec.ts:62-64"},
+    {"id": "D-06", "item": "refusal-code split", "disposition": "deferred"},
+    {"id": "D-07", "item": "learning inspect UI", "disposition": "deferred; P7 honesty"},
+    {"id": "D-08", "item": "stale vault root", "disposition": "deferred; data hygiene"},
+    {"id": "D-09", "item": "runs filter >100 / interrupted option", "disposition": "deferred"},
+    {"id": "D-10", "item": "Accepted tree label", "disposition": "deferred"},
+    {"id": "D-11", "item": "dead reviews path", "disposition": "deferred"},
+    {"id": "D-12", "item": "gate logging + GATE_FAILED registration", "disposition": "deferred; AF-01 adds only the message"},
+    {"id": "D-13", "item": "trace_complete invariant", "disposition": "deferred"},
+    {"id": "D-14", "item": "learning variant machine", "disposition": "deferred"},
+    {"id": "D-15", "item": "full state guard", "disposition": "rejected"},
+    {"id": "D-16", "item": "410 reconnect loop", "disposition": "deferred; unverified"},
+    {"id": "D-17", "item": "cancel ack race", "disposition": "deferred; unreproduced"},
+    {"id": "D-18", "item": "full failure-payload vocabulary / run.budget_exceeded", "disposition": "deferred"},
+    {"id": "D-19", "item": "receivedAt semantics", "disposition": "deferred"},
+    {"id": "D-20", "item": "Settings nested limits display", "disposition": "deferred"},
+    {"id": "D-21", "item": "wire PHASE_TRANSITIONS", "disposition": "rejected"},
+    {"id": "D-22", "item": "historical cost/trace backfill", "disposition": "rejected"},
+    {"id": "D-23", "item": "seed runs/events for proof", "disposition": "rejected"},
+    {"id": "D-24", "item": "delete the 16 reserved listeners", "disposition": "deferred; keep"},
+    {"id": "R-1", "item": "abf5 Running/7 steps convergence", "disposition": "refuted; do not fix"},
+    {"id": "R-2", "item": "cancelled not subscribed", "disposition": "refuted; preserved"},
+    {"id": "R-3", "item": "Wave-5 stub-scan false positive", "disposition": "refuted; do not re-tighten"},
+    {"id": "U-1", "item": "SSE 410 reconnect loop", "disposition": "unverified; do not implement"},
+    {"id": "U-2", "item": "run state guard", "disposition": "unverified/deferred; do not implement"}
+  ],
+  "forbiddenChanges": [
+    "No new route, table, migration, or package script; stage must stay routes:48, tables:45, scripts:24, violations:[].",
+    "No new dependency, no package.json/playwright.config.ts edit.",
+    "No edit to src/server/learning/**, src/server/security/**, src/server/vault/**, src/server/verify/** semantics, scripts/**, config/**, data/**, workspace/**, logs/**, vault/**, .env*, web/dist/** (except by running the build).",
+    "No historical backfill of runs.cost_usd, traces, agent_evidence, checks, or events.",
+    "No seed/fake run/event/agent evidence; no test double as production proof.",
+    "No paid calls: no test:live, bench, live provider path, or plan-agent run.",
+    "No test weakening or deletion; e2e/api-contract.spec.ts:62-64 and e2e/ui-audit.spec.ts:127-147 are pinned.",
+    "No new event type except run.interrupted (AF-07); no run.budget_exceeded.",
+    "Do not expand REFUSALS for the 31 unregistered codes; do not register GATE_FAILED/E_CANCELLED/E_RUN_TIMEOUT.",
+    "Do not serve run_snapshots.limits / the global cap as the per-run cap (AF-05).",
+    "Do not implement forge P-4 (ASC window+1) or P-2's route-interception e2e or P-5's column-header e2e.",
+    "No TODO/FIXME/placeholder/mock/stub in changed production files; no secret in code/logs/fixtures/events.",
+    "One writer per file; strict AF order; no parallel implementation of overlapping files."
+  ],
+  "reopenEvidence": {
+    "note": "No AF was rejected. If a condition is disputed, the gate reopens only with the evidence named here.",
+    "AF-01": "Evidence that the gate-event payload cannot be made truthful without a provider call, or that the unregistered-code message fallback is unnecessary because no bare-code error can reach a terminal path.",
+    "AF-02": "A demonstrated EventSource client that delivers unlisted named frames (contradicting the browser probe), or a product requirement to keep a local list instead of the shared registry.",
+    "AF-04": "A recipe that returns the newest window for >window runs after the cursor and passes the boundary tests; or evidence that concurrent appends cannot occur on /events in any supported client.",
+    "AF-05": "A source-of-truth change that makes run_snapshots.limits per-run instead of global (would require a new snapshot design and evidence).",
+    "AF-06": "Evidence that a Node errno code must be persisted as a run error code, or that the 31 unregistered codes must be registered (a separate registry decision).",
+    "AF-07": "Evidence that markStartupInterrupted can never race (so the conditional guard can be dropped) and that test-side log writes to data/logs are acceptable.",
+    "AF-08": "A product decision that the aggregate looseItems card should be fixed in this batch (it is out of scope here).",
+    "AF-09": "A paid plan-agent run proving the runtime contract, or a product decision to validate text/candidate-draft (out of scope here).",
+    "AF-10": "A requirement to persist check.code/durationMs (would need a migration; out of scope here).",
+    "AF-11": "A consumer that requires reason to always be present (would require a truthful default sentence and a contract change)."
+  }
+}

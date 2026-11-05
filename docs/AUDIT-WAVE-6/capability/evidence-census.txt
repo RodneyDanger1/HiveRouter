@@ -1,0 +1,165 @@
+﻿{
+  "appTsRegistrations": 45,
+  "appTsDistinctPaths": 42,
+  "methodsByPath": {
+    "/api/agents": [
+      "GET"
+    ],
+    "/api/agents/:id": [
+      "GET"
+    ],
+    "/api/agents/:id/prompt": [
+      "DELETE",
+      "PUT"
+    ],
+    "/api/agents/:id/run": [
+      "POST"
+    ],
+    "/api/health": [
+      "GET"
+    ],
+    "/api/learning/:kind": [
+      "GET"
+    ],
+    "/api/learning/approvals": [
+      "POST"
+    ],
+    "/api/learning/overview": [
+      "GET"
+    ],
+    "/api/learning/promotions": [
+      "POST"
+    ],
+    "/api/learning/rollback": [
+      "POST"
+    ],
+    "/api/meta": [
+      "GET"
+    ],
+    "/api/ops/reports/:kind": [
+      "GET"
+    ],
+    "/api/ops/system": [
+      "GET"
+    ],
+    "/api/prompt/analyze": [
+      "POST"
+    ],
+    "/api/runs": [
+      "GET",
+      "POST"
+    ],
+    "/api/runs/:id": [
+      "GET"
+    ],
+    "/api/runs/:id/cancel": [
+      "POST"
+    ],
+    "/api/runs/:id/checks": [
+      "GET"
+    ],
+    "/api/runs/:id/confidence": [
+      "GET"
+    ],
+    "/api/runs/:id/context": [
+      "GET"
+    ],
+    "/api/runs/:id/download": [
+      "GET"
+    ],
+    "/api/runs/:id/events": [
+      "GET"
+    ],
+    "/api/runs/:id/failures": [
+      "GET"
+    ],
+    "/api/runs/:id/files": [
+      "GET"
+    ],
+    "/api/runs/:id/files/content": [
+      "GET"
+    ],
+    "/api/runs/:id/open-folder": [
+      "POST"
+    ],
+    "/api/runs/:id/retries": [
+      "GET"
+    ],
+    "/api/runs/:id/revise": [
+      "POST"
+    ],
+    "/api/runs/:id/routing": [
+      "GET"
+    ],
+    "/api/runs/:id/snapshot": [
+      "GET"
+    ],
+    "/api/runs/:id/stream": [
+      "GET"
+    ],
+    "/api/runs/active": [
+      "GET"
+    ],
+    "/api/scripts": [
+      "GET"
+    ],
+    "/api/scripts/:id/dry-run": [
+      "POST"
+    ],
+    "/api/settings": [
+      "GET"
+    ],
+    "/api/settings/key": [
+      "POST",
+      "PUT"
+    ],
+    "/api/settings/key-status": [
+      "GET"
+    ],
+    "/api/stats": [
+      "GET"
+    ],
+    "/api/stats/router": [
+      "GET"
+    ],
+    "/api/vault/file": [
+      "GET"
+    ],
+    "/api/vault/tree": [
+      "GET"
+    ],
+    "/openapi.json": [
+      "GET"
+    ]
+  },
+  "p7": {
+    "routes": 48,
+    "tables": 45,
+    "scripts": 24,
+    "uiRoutes": [
+      "/",
+      "/agents",
+      "/runs",
+      "/runs/:id",
+      "/vault",
+      "/settings",
+      "/learning"
+    ]
+  },
+  "p7ApiRouteStrings": 42,
+  "p7UiRouteStrings": 6,
+  "p7UiList": [
+    "/agents",
+    "/learning",
+    "/runs",
+    "/runs/:runId",
+    "/settings",
+    "/vault"
+  ],
+  "inCodeNotManifest": [],
+  "inManifestNotCode": [],
+  "clientPaths": [],
+  "clientPathsNotInCode": [],
+  "openapiPaths": 42,
+  "openapiOperations": 45
+}

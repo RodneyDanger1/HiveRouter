@@ -1,0 +1,185 @@
+{
+  "result": {
+    "pages": {
+      "/": {
+        "title": "Build with a routed factory, not a single bot.",
+        "bodyLength": 3499
+      },
+      "/runs": {
+        "title": "Runs",
+        "bodyLength": 6025
+      },
+      "/agents": {
+        "title": "Agents",
+        "bodyLength": 6918
+      },
+      "/vault": {
+        "title": "Vault",
+        "bodyLength": 5840
+      },
+      "/learning": {
+        "title": "Learning",
+        "bodyLength": 1169
+      },
+      "/settings": {
+        "title": "Settings",
+        "bodyLength": 1831
+      }
+    },
+    "run_8c4a59741cebc8c94f": {
+      "tabs": {
+        "Overview": {
+          "visible": true,
+          "text": "All runs\n\nRUN_8C4A59741CEBC8C94F · ADHOC RUN\n\nEvaluate HiveRouter itself using only your available context. Explicitly inspect/consider all Runs records and every app…\n\nAdhoc · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n1 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:23 PM\nDURATION\n4s\nPROMPT TOKENS\n455\nCOMPLETION TOKENS\n324\nSNAPSHOT\n6889c5fd3d01e51e…\nPARENT\nNone\nEstimated spend\n$0.0003 / $0.0300 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_8c4a59741cebc8c94f\n\nDownloads are available only for ter"
+        },
+        "Files": {
+          "visible": true,
+          "text": "All runs\n\nRUN_8C4A59741CEBC8C94F · ADHOC RUN\n\nEvaluate HiveRouter itself using only your available context. Explicitly inspect/consider all Runs records and every app…\n\nAdhoc · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n1 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:23 PM\nDURATION\n4s\nPROMPT TOKENS\n455\nCOMPLETION TOKENS\n324\nSNAPSHOT\n6889c5fd3d01e51e…\nPARENT\nNone\nEstimated spend\n$0.0003 / $0.0300 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_8c4a59741cebc8c94f\n\nDownloads are available only for ter"
+        },
+        "Checks": {
+          "visible": true,
+          "text": "All runs\n\nRUN_8C4A59741CEBC8C94F · ADHOC RUN\n\nEvaluate HiveRouter itself using only your available context. Explicitly inspect/consider all Runs records and every app…\n\nAdhoc · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n1 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:23 PM\nDURATION\n4s\nPROMPT TOKENS\n455\nCOMPLETION TOKENS\n324\nSNAPSHOT\n6889c5fd3d01e51e…\nPARENT\nNone\nEstimated spend\n$0.0003 / $0.0300 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_8c4a59741cebc8c94f\n\nDownloads are available only for ter"
+        },
+        "Routing": {
+          "visible": true,
+          "text": "All runs\n\nRUN_8C4A59741CEBC8C94F · ADHOC RUN\n\nEvaluate HiveRouter itself using only your available context. Explicitly inspect/consider all Runs records and every app…\n\nAdhoc · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n1 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:23 PM\nDURATION\n4s\nPROMPT TOKENS\n455\nCOMPLETION TOKENS\n324\nSNAPSHOT\n6889c5fd3d01e51e…\nPARENT\nNone\nEstimated spend\n$0.0003 / $0.0300 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_8c4a59741cebc8c94f\n\nDownloads are available only for ter"
+        },
+        "Context": {
+          "visible": true,
+          "text": "All runs\n\nRUN_8C4A59741CEBC8C94F · ADHOC RUN\n\nEvaluate HiveRouter itself using only your available context. Explicitly inspect/consider all Runs records and every app…\n\nAdhoc · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n1 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:23 PM\nDURATION\n4s\nPROMPT TOKENS\n455\nCOMPLETION TOKENS\n324\nSNAPSHOT\n6889c5fd3d01e51e…\nPARENT\nNone\nEstimated spend\n$0.0003 / $0.0300 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_8c4a59741cebc8c94f\n\nDownloads are available only for ter"
+        },
+        "Repairs": {
+          "visible": true,
+          "text": "All runs\n\nRUN_8C4A59741CEBC8C94F · ADHOC RUN\n\nEvaluate HiveRouter itself using only your available context. Explicitly inspect/consider all Runs records and every app…\n\nAdhoc · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n1 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:23 PM\nDURATION\n4s\nPROMPT TOKENS\n455\nCOMPLETION TOKENS\n324\nSNAPSHOT\n6889c5fd3d01e51e…\nPARENT\nNone\nEstimated spend\n$0.0003 / $0.0300 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_8c4a59741cebc8c94f\n\nDownloads are available only for ter"
+        },
+        "Confidence": {
+          "visible": true,
+          "text": "All runs\n\nRUN_8C4A59741CEBC8C94F · ADHOC RUN\n\nEvaluate HiveRouter itself using only your available context. Explicitly inspect/consider all Runs records and every app…\n\nAdhoc · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n1 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:23 PM\nDURATION\n4s\nPROMPT TOKENS\n455\nCOMPLETION TOKENS\n324\nSNAPSHOT\n6889c5fd3d01e51e…\nPARENT\nNone\nEstimated spend\n$0.0003 / $0.0300 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_8c4a59741cebc8c94f\n\nDownloads are available only for ter"
+        },
+        "Events": {
+          "visible": true,
+          "text": "All runs\n\nRUN_8C4A59741CEBC8C94F · ADHOC RUN\n\nEvaluate HiveRouter itself using only your available context. Explicitly inspect/consider all Runs records and every app…\n\nAdhoc · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n1 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:23 PM\nDURATION\n4s\nPROMPT TOKENS\n455\nCOMPLETION TOKENS\n324\nSNAPSHOT\n6889c5fd3d01e51e…\nPARENT\nNone\nEstimated spend\n$0.0003 / $0.0300 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_8c4a59741cebc8c94f\n\nDownloads are available only for ter"
+        }
+      },
+      "header": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-user factory. No learned routing. No generated-code execution. No provider key in the browser.\n\nHIVEROUTER v0.1.0\nTrust & status\nAll runs\n\nRUN_8C4A59741CEBC8C94F · ADHOC RUN\n\nEvaluate HiveRouter itself using only your available context. Explicitly inspect/consider all Runs records and every app…\n\nAdhoc · deepseek-flash · thinking disabled\n"
+    },
+    "run_bb9d241e1f94b6703a": {
+      "tabs": {
+        "Overview": {
+          "visible": true,
+          "text": "All runs\n\nRUN_BB9D241E1F94B6703A · USER RUN\n\nCreate a small local Word-like desktop app in Python 3 using only the standard library and Tkinter. Requirements: new/op…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n21 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:24 PM\nDURATION\n4m 35s\nPROMPT TOKENS\n224,591\nCOMPLETION TOKENS\n78,311\nSNAPSHOT\n5dc13099e26d6055…\nPARENT\nNone\nEstimated spend\n$0.0784 / $0.2000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_bb9d241e1f94b6703a\n\nDownloads are availa"
+        },
+        "Files": {
+          "visible": true,
+          "text": "All runs\n\nRUN_BB9D241E1F94B6703A · USER RUN\n\nCreate a small local Word-like desktop app in Python 3 using only the standard library and Tkinter. Requirements: new/op…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n21 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:24 PM\nDURATION\n4m 35s\nPROMPT TOKENS\n224,591\nCOMPLETION TOKENS\n78,311\nSNAPSHOT\n5dc13099e26d6055…\nPARENT\nNone\nEstimated spend\n$0.0784 / $0.2000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_bb9d241e1f94b6703a\n\nDownloads are availa"
+        },
+        "Checks": {
+          "visible": true,
+          "text": "All runs\n\nRUN_BB9D241E1F94B6703A · USER RUN\n\nCreate a small local Word-like desktop app in Python 3 using only the standard library and Tkinter. Requirements: new/op…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n21 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:24 PM\nDURATION\n4m 35s\nPROMPT TOKENS\n224,591\nCOMPLETION TOKENS\n78,311\nSNAPSHOT\n5dc13099e26d6055…\nPARENT\nNone\nEstimated spend\n$0.0784 / $0.2000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_bb9d241e1f94b6703a\n\nDownloads are availa"
+        },
+        "Routing": {
+          "visible": true,
+          "text": "All runs\n\nRUN_BB9D241E1F94B6703A · USER RUN\n\nCreate a small local Word-like desktop app in Python 3 using only the standard library and Tkinter. Requirements: new/op…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n21 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:24 PM\nDURATION\n4m 35s\nPROMPT TOKENS\n224,591\nCOMPLETION TOKENS\n78,311\nSNAPSHOT\n5dc13099e26d6055…\nPARENT\nNone\nEstimated spend\n$0.0784 / $0.2000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_bb9d241e1f94b6703a\n\nDownloads are availa"
+        },
+        "Context": {
+          "visible": true,
+          "text": "All runs\n\nRUN_BB9D241E1F94B6703A · USER RUN\n\nCreate a small local Word-like desktop app in Python 3 using only the standard library and Tkinter. Requirements: new/op…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n21 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:24 PM\nDURATION\n4m 35s\nPROMPT TOKENS\n224,591\nCOMPLETION TOKENS\n78,311\nSNAPSHOT\n5dc13099e26d6055…\nPARENT\nNone\nEstimated spend\n$0.0784 / $0.2000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_bb9d241e1f94b6703a\n\nDownloads are availa"
+        },
+        "Repairs": {
+          "visible": true,
+          "text": "All runs\n\nRUN_BB9D241E1F94B6703A · USER RUN\n\nCreate a small local Word-like desktop app in Python 3 using only the standard library and Tkinter. Requirements: new/op…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n21 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:24 PM\nDURATION\n4m 35s\nPROMPT TOKENS\n224,591\nCOMPLETION TOKENS\n78,311\nSNAPSHOT\n5dc13099e26d6055…\nPARENT\nNone\nEstimated spend\n$0.0784 / $0.2000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_bb9d241e1f94b6703a\n\nDownloads are availa"
+        },
+        "Confidence": {
+          "visible": true,
+          "text": "All runs\n\nRUN_BB9D241E1F94B6703A · USER RUN\n\nCreate a small local Word-like desktop app in Python 3 using only the standard library and Tkinter. Requirements: new/op…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n21 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:24 PM\nDURATION\n4m 35s\nPROMPT TOKENS\n224,591\nCOMPLETION TOKENS\n78,311\nSNAPSHOT\n5dc13099e26d6055…\nPARENT\nNone\nEstimated spend\n$0.0784 / $0.2000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_bb9d241e1f94b6703a\n\nDownloads are availa"
+        },
+        "Events": {
+          "visible": true,
+          "text": "All runs\n\nRUN_BB9D241E1F94B6703A · USER RUN\n\nCreate a small local Word-like desktop app in Python 3 using only the standard library and Tkinter. Requirements: new/op…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n21 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:24 PM\nDURATION\n4m 35s\nPROMPT TOKENS\n224,591\nCOMPLETION TOKENS\n78,311\nSNAPSHOT\n5dc13099e26d6055…\nPARENT\nNone\nEstimated spend\n$0.0784 / $0.2000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_bb9d241e1f94b6703a\n\nDownloads are availa"
+        }
+      },
+      "header": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-user factory. No learned routing. No generated-code execution. No provider key in the browser.\n\nHIVEROUTER v0.1.0\nTrust & status\nAll runs\n\nRUN_BB9D241E1F94B6703A · USER RUN\n\nCreate a small local Word-like desktop app in Python 3 using only the standard library and Tkinter. Requirements: new/op…\n\nFull Build · deepseek-flash · thinking disab"
+    },
+    "run_12be61a462973c5d69": {
+      "tabs": {
+        "Overview": {
+          "visible": true,
+          "text": "All runs\n\nRUN_12BE61A462973C5D69 · USER RUN\n\nCreate a small local calculator desktop app in Python 3 using only the standard library and Tkinter. Requirements: numbe…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n17 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:29 PM\nDURATION\n2m 16s\nPROMPT TOKENS\n110,838\nCOMPLETION TOKENS\n33,944\nSNAPSHOT\nc25c01fbb33a7817…\nPARENT\nNone\nEstimated spend\n$0.0354 / $0.1000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_12be61a462973c5d69\n\nDownloads are availa"
+        },
+        "Files": {
+          "visible": true,
+          "text": "All runs\n\nRUN_12BE61A462973C5D69 · USER RUN\n\nCreate a small local calculator desktop app in Python 3 using only the standard library and Tkinter. Requirements: numbe…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n17 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:29 PM\nDURATION\n2m 16s\nPROMPT TOKENS\n110,838\nCOMPLETION TOKENS\n33,944\nSNAPSHOT\nc25c01fbb33a7817…\nPARENT\nNone\nEstimated spend\n$0.0354 / $0.1000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_12be61a462973c5d69\n\nDownloads are availa"
+        },
+        "Checks": {
+          "visible": true,
+          "text": "All runs\n\nRUN_12BE61A462973C5D69 · USER RUN\n\nCreate a small local calculator desktop app in Python 3 using only the standard library and Tkinter. Requirements: numbe…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n17 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:29 PM\nDURATION\n2m 16s\nPROMPT TOKENS\n110,838\nCOMPLETION TOKENS\n33,944\nSNAPSHOT\nc25c01fbb33a7817…\nPARENT\nNone\nEstimated spend\n$0.0354 / $0.1000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_12be61a462973c5d69\n\nDownloads are availa"
+        },
+        "Routing": {
+          "visible": true,
+          "text": "All runs\n\nRUN_12BE61A462973C5D69 · USER RUN\n\nCreate a small local calculator desktop app in Python 3 using only the standard library and Tkinter. Requirements: numbe…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n17 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:29 PM\nDURATION\n2m 16s\nPROMPT TOKENS\n110,838\nCOMPLETION TOKENS\n33,944\nSNAPSHOT\nc25c01fbb33a7817…\nPARENT\nNone\nEstimated spend\n$0.0354 / $0.1000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_12be61a462973c5d69\n\nDownloads are availa"
+        },
+        "Context": {
+          "visible": true,
+          "text": "All runs\n\nRUN_12BE61A462973C5D69 · USER RUN\n\nCreate a small local calculator desktop app in Python 3 using only the standard library and Tkinter. Requirements: numbe…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n17 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:29 PM\nDURATION\n2m 16s\nPROMPT TOKENS\n110,838\nCOMPLETION TOKENS\n33,944\nSNAPSHOT\nc25c01fbb33a7817…\nPARENT\nNone\nEstimated spend\n$0.0354 / $0.1000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_12be61a462973c5d69\n\nDownloads are availa"
+        },
+        "Repairs": {
+          "visible": true,
+          "text": "All runs\n\nRUN_12BE61A462973C5D69 · USER RUN\n\nCreate a small local calculator desktop app in Python 3 using only the standard library and Tkinter. Requirements: numbe…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n17 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:29 PM\nDURATION\n2m 16s\nPROMPT TOKENS\n110,838\nCOMPLETION TOKENS\n33,944\nSNAPSHOT\nc25c01fbb33a7817…\nPARENT\nNone\nEstimated spend\n$0.0354 / $0.1000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_12be61a462973c5d69\n\nDownloads are availa"
+        },
+        "Confidence": {
+          "visible": true,
+          "text": "All runs\n\nRUN_12BE61A462973C5D69 · USER RUN\n\nCreate a small local calculator desktop app in Python 3 using only the standard library and Tkinter. Requirements: numbe…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n17 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:29 PM\nDURATION\n2m 16s\nPROMPT TOKENS\n110,838\nCOMPLETION TOKENS\n33,944\nSNAPSHOT\nc25c01fbb33a7817…\nPARENT\nNone\nEstimated spend\n$0.0354 / $0.1000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_12be61a462973c5d69\n\nDownloads are availa"
+        },
+        "Events": {
+          "visible": true,
+          "text": "All runs\n\nRUN_12BE61A462973C5D69 · USER RUN\n\nCreate a small local calculator desktop app in Python 3 using only the standard library and Tkinter. Requirements: numbe…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n17 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:29 PM\nDURATION\n2m 16s\nPROMPT TOKENS\n110,838\nCOMPLETION TOKENS\n33,944\nSNAPSHOT\nc25c01fbb33a7817…\nPARENT\nNone\nEstimated spend\n$0.0354 / $0.1000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_12be61a462973c5d69\n\nDownloads are availa"
+        }
+      },
+      "header": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-user factory. No learned routing. No generated-code execution. No provider key in the browser.\n\nHIVEROUTER v0.1.0\nTrust & status\nAll runs\n\nRUN_12BE61A462973C5D69 · USER RUN\n\nCreate a small local calculator desktop app in Python 3 using only the standard library and Tkinter. Requirements: numbe…\n\nFull Build · deepseek-flash · thinking disab"
+    },
+    "run_c41f1fb4779d302af7": {
+      "tabs": {
+        "Overview": {
+          "visible": true,
+          "text": "All runs\n\nRUN_C41F1FB4779D302AF7 · USER RUN\n\nCreate a small self-contained browser prototype of a Veemon tamagotchi using Three.js. Deliver a plain HTML/CSS/JavaScri…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n14 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:31 PM\nDURATION\n3m 15s\nPROMPT TOKENS\n157,754\nCOMPLETION TOKENS\n55,288\nSNAPSHOT\nb856e7375c4c0620…\nPARENT\nNone\nEstimated spend\n$0.0511 / $0.3000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_c41f1fb4779d302af7\n\nDownloads are availa"
+        },
+        "Files": {
+          "visible": true,
+          "text": "All runs\n\nRUN_C41F1FB4779D302AF7 · USER RUN\n\nCreate a small self-contained browser prototype of a Veemon tamagotchi using Three.js. Deliver a plain HTML/CSS/JavaScri…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n14 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:31 PM\nDURATION\n3m 15s\nPROMPT TOKENS\n157,754\nCOMPLETION TOKENS\n55,288\nSNAPSHOT\nb856e7375c4c0620…\nPARENT\nNone\nEstimated spend\n$0.0511 / $0.3000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_c41f1fb4779d302af7\n\nDownloads are availa"
+        },
+        "Checks": {
+          "visible": true,
+          "text": "All runs\n\nRUN_C41F1FB4779D302AF7 · USER RUN\n\nCreate a small self-contained browser prototype of a Veemon tamagotchi using Three.js. Deliver a plain HTML/CSS/JavaScri…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n14 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:31 PM\nDURATION\n3m 15s\nPROMPT TOKENS\n157,754\nCOMPLETION TOKENS\n55,288\nSNAPSHOT\nb856e7375c4c0620…\nPARENT\nNone\nEstimated spend\n$0.0511 / $0.3000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_c41f1fb4779d302af7\n\nDownloads are availa"
+        },
+        "Routing": {
+          "visible": true,
+          "text": "All runs\n\nRUN_C41F1FB4779D302AF7 · USER RUN\n\nCreate a small self-contained browser prototype of a Veemon tamagotchi using Three.js. Deliver a plain HTML/CSS/JavaScri…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n14 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:31 PM\nDURATION\n3m 15s\nPROMPT TOKENS\n157,754\nCOMPLETION TOKENS\n55,288\nSNAPSHOT\nb856e7375c4c0620…\nPARENT\nNone\nEstimated spend\n$0.0511 / $0.3000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_c41f1fb4779d302af7\n\nDownloads are availa"
+        },
+        "Context": {
+          "visible": true,
+          "text": "All runs\n\nRUN_C41F1FB4779D302AF7 · USER RUN\n\nCreate a small self-contained browser prototype of a Veemon tamagotchi using Three.js. Deliver a plain HTML/CSS/JavaScri…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n14 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:31 PM\nDURATION\n3m 15s\nPROMPT TOKENS\n157,754\nCOMPLETION TOKENS\n55,288\nSNAPSHOT\nb856e7375c4c0620…\nPARENT\nNone\nEstimated spend\n$0.0511 / $0.3000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_c41f1fb4779d302af7\n\nDownloads are availa"
+        },
+        "Repairs": {
+          "visible": true,
+          "text": "All runs\n\nRUN_C41F1FB4779D302AF7 · USER RUN\n\nCreate a small self-contained browser prototype of a Veemon tamagotchi using Three.js. Deliver a plain HTML/CSS/JavaScri…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n14 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:31 PM\nDURATION\n3m 15s\nPROMPT TOKENS\n157,754\nCOMPLETION TOKENS\n55,288\nSNAPSHOT\nb856e7375c4c0620…\nPARENT\nNone\nEstimated spend\n$0.0511 / $0.3000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_c41f1fb4779d302af7\n\nDownloads are availa"
+        },
+        "Confidence": {
+          "visible": true,
+          "text": "All runs\n\nRUN_C41F1FB4779D302AF7 · USER RUN\n\nCreate a small self-contained browser prototype of a Veemon tamagotchi using Three.js. Deliver a plain HTML/CSS/JavaScri…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n14 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:31 PM\nDURATION\n3m 15s\nPROMPT TOKENS\n157,754\nCOMPLETION TOKENS\n55,288\nSNAPSHOT\nb856e7375c4c0620…\nPARENT\nNone\nEstimated spend\n$0.0511 / $0.3000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_c41f1fb4779d302af7\n\nDownloads are availa"
+        },
+        "Events": {
+          "visible": true,
+          "text": "All runs\n\nRUN_C41F1FB4779D302AF7 · USER RUN\n\nCreate a small self-contained browser prototype of a Veemon tamagotchi using Three.js. Deliver a plain HTML/CSS/JavaScri…\n\nFull Build · deepseek-flash · thinking disabled\n\nRefresh\nRevise\nAudit\nDownload\nCOMPLETED\nDONE\n14 STEPS\nCOMPLETE · SNAPSHOT\nCREATED\nNov 03, 2026, 11:31 PM\nDURATION\n3m 15s\nPROMPT TOKENS\n157,754\nCOMPLETION TOKENS\n55,288\nSNAPSHOT\nb856e7375c4c0620…\nPARENT\nNone\nEstimated spend\n$0.0511 / $0.3000 cap\nRun actions\n\nActions are real API calls; unavailable actions are not rendered.\n\nOpen folder\nRevise accepted files\nAudit this run\n\nACCEPTED TREE\n\nC:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_c41f1fb4779d302af7\n\nDownloads are availa"
+        }
+      },
+      "header": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-user factory. No learned routing. No generated-code execution. No provider key in the browser.\n\nHIVEROUTER v0.1.0\nTrust & status\nAll runs\n\nRUN_C41F1FB4779D302AF7 · USER RUN\n\nCreate a small self-contained browser prototype of a Veemon tamagotchi using Three.js. Deliver a plain HTML/CSS/JavaScri…\n\nFull Build · deepseek-flash · thinking disab"
+    }
+  },
+  "errors": [
+    {
+      "id": "console",
+      "tab": "",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ]
+}

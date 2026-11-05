@@ -1,0 +1,28 @@
+﻿Listing tests:
+  api-contract.spec.ts:6:3 › @qa-api API contract pins › openapi.json is JSON and advertises /api/health
+  api-contract.spec.ts:15:3 › @qa-api API contract pins › every OpenAPI operation has typed 2xx and 4xx response content
+  api-contract.spec.ts:36:3 › @qa-api API contract pins › agent list is the documented 37-item array shape
+  api-contract.spec.ts:44:3 › @qa-api API contract pins › unknown HTML routes return 404 while known SPA routes stay 200
+  api-contract.spec.ts:67:3 › @qa-api API contract pins › run list normalizes invalid limits instead of 500 or unbounded reads
+  api-contract.spec.ts:77:3 › @qa-api API contract pins › planned checks subresource is wired and names a missing run
+  api-contract.spec.ts:93:3 › @qa-api API contract pins › bodyless DELETE mutation is not rejected as a JSON content-type error
+  api-contract.spec.ts:102:3 › @qa-api API contract pins › learning overview refuses honestly when the sealed pool is absent
+  api-contract.spec.ts:111:3 › @qa-api API contract pins › provider-key HTTP route refuses by name
+  app.spec.ts:14:1 › overview, agents, runs, learning, vault and settings render against the live API
+  app.spec.ts:40:1 › run detail shows live steps, checks, files and P6a tabs
+  app.spec.ts:60:1 › approval controls refuse honestly when no candidate exists
+  trace-fixes.spec.ts:4:3 › @trace persisted event and agent-detail contracts › terminal Events tab renders the persisted ledger instead of an empty live state
+  trace-fixes.spec.ts:25:3 › @trace persisted event and agent-detail contracts › agent detail returns the same evidence surface as the list
+  ui-audit.spec.ts:29:3 › @ui-audit routes and visible contract › all seven routes render a heading, console-clean
+  ui-audit.spec.ts:50:3 › @ui-audit routes and visible contract › overview composer exposes every control and never submits in this audit
+  ui-audit.spec.ts:91:3 › @ui-audit routes and visible contract › agents page: 37 cards, search, drawer contract, edit and run controls
+  ui-audit.spec.ts:127:3 › @ui-audit run detail contract › terminal run tabs, file viewer, dialogs, actions and live stream state
+  ui-audit.spec.ts:198:3 › @ui-audit run detail contract › missing run surfaces backend refusal in the UI
+  ui-audit.spec.ts:214:3 › @ui-audit learning, vault, settings and backend seam › learning is honestly disabled with no pool and tabs are inert
+  ui-audit.spec.ts:234:3 › @ui-audit learning, vault, settings and backend seam › vault tree exposes a file preview or an honest empty state
+  ui-audit.spec.ts:249:3 › @ui-audit learning, vault, settings and backend seam › settings reports key source, stage and trust without key material
+  ui-audit.spec.ts:263:3 › @ui-audit learning, vault, settings and backend seam › backend seam keeps named refusals and provider-key route closed
+  ui-audit.spec.ts:296:3 › @ui-audit learning, vault, settings and backend seam › composer draft survives a page reload (local persistent memory)
+  ui-audit.spec.ts:308:3 › @ui-audit agent-facing blockers › ad-hoc tests agents do not require a target path
+  ui-audit.spec.ts:338:3 › @ui-audit agent-facing blockers › terminal run with no artifacts does not offer Audit
+Total: 26 tests in 4 files

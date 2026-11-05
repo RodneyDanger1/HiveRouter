@@ -1,0 +1,217 @@
+
+> hive-router@0.1.0 verify
+> npm run typecheck && npm run test && npm run build && npm run stub-sweep && npm run secret-scan
+
+
+> hive-router@0.1.0 typecheck
+> tsc --noEmit
+
+
+> hive-router@0.1.0 test
+> vitest run
+
+
+ RUN  v5.1.0 C:/Users/Riley/Desktop/HiveRouter
+
+{"level":30,"time":1793829650434,"pid":2776,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","req":{"method":"GET","url":"/api/runs/run_routing_reason/routing","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829650442,"pid":2776,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","res":{"statusCode":200},"responseTime":6.935899999999947,"msg":"request completed"}
+{"level":30,"time":1793829650450,"pid":2776,"hostname":"DESKTOP-5GATL9H","reqId":"req-2","req":{"method":"GET","url":"/api/runs/run_routing_reason/routing","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829650452,"pid":2776,"hostname":"DESKTOP-5GATL9H","reqId":"req-2","res":{"statusCode":200},"responseTime":1.4809999999997672,"msg":"request completed"}
+{"level":30,"time":1793829650453,"pid":2776,"hostname":"DESKTOP-5GATL9H","reqId":"req-3","req":{"method":"GET","url":"/api/runs/run_routing_reason/routing","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829650454,"pid":2776,"hostname":"DESKTOP-5GATL9H","reqId":"req-3","res":{"statusCode":200},"responseTime":0.9513999999999214,"msg":"request completed"}
+{"level":30,"time":1793829650455,"pid":2776,"hostname":"DESKTOP-5GATL9H","reqId":"req-4","req":{"method":"GET","url":"/api/runs/run_routing_reason/routing","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829650456,"pid":2776,"hostname":"DESKTOP-5GATL9H","reqId":"req-4","res":{"statusCode":200},"responseTime":0.8791999999998552,"msg":"request completed"}
+ ✓ test/unit/routing-reason.test.ts (4 tests) 887ms
+{"level":30,"time":1793829653241,"pid":12628,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","req":{"method":"GET","url":"/api/runs/run_limit_small/snapshot","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829653279,"pid":12628,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","res":{"statusCode":200},"responseTime":36.434499999999844,"msg":"request completed"}
+{"level":30,"time":1793829653282,"pid":12628,"hostname":"DESKTOP-5GATL9H","reqId":"req-2","req":{"method":"GET","url":"/api/runs/run_limit_none/snapshot","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829653283,"pid":12628,"hostname":"DESKTOP-5GATL9H","reqId":"req-2","res":{"statusCode":200},"responseTime":1.0039000000001579,"msg":"request completed"}
+{"level":30,"time":1793829653284,"pid":12628,"hostname":"DESKTOP-5GATL9H","reqId":"req-3","req":{"method":"GET","url":"/api/runs/run_limit_above/snapshot","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829653285,"pid":12628,"hostname":"DESKTOP-5GATL9H","reqId":"req-3","res":{"statusCode":200},"responseTime":0.8369999999999891,"msg":"request completed"}
+{"level":30,"time":1793829653286,"pid":12628,"hostname":"DESKTOP-5GATL9H","reqId":"req-4","req":{"method":"GET","url":"/api/runs/run_limit_malformed/snapshot","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829653287,"pid":12628,"hostname":"DESKTOP-5GATL9H","reqId":"req-4","res":{"statusCode":200},"responseTime":0.7894000000001142,"msg":"request completed"}
+{"level":30,"time":1793829653288,"pid":12628,"hostname":"DESKTOP-5GATL9H","reqId":"req-5","req":{"method":"GET","url":"/api/runs/run_limit_small/snapshot","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829653289,"pid":12628,"hostname":"DESKTOP-5GATL9H","reqId":"req-5","res":{"statusCode":200},"responseTime":0.814900000000307,"msg":"request completed"}
+{"level":30,"time":1793829653292,"pid":12628,"hostname":"DESKTOP-5GATL9H","reqId":"req-6","req":{"method":"GET","url":"/api/runs/run_limit_missing/snapshot","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829653293,"pid":12628,"hostname":"DESKTOP-5GATL9H","reqId":"req-6","res":{"statusCode":404},"responseTime":0.7647000000001754,"msg":"request completed"}
+ ✓ test/unit/snapshot-limits.test.ts (6 tests) 1310ms
+ ✓ test/unit/learning-cli.test.ts (1 test) 4430ms
+   ✓ learn CLI refusal (1)
+     ✓ reports E_LEARNING_POOL_EXHAUSTED for six empty blocks, not a misleading sample refusal 4428ms
+ ✓ test/scripts.test.ts (10 tests) 4896ms
+   ✓ preflight (3)
+     ✓ refuses a low RAM floor through the real CLI with exit 7 1388ms
+     ✓ passes the real host preflight (Chrome, Node, npm, free port) 1506ms
+   ✓ stub-sweep (2)
+     ✓ passes clean source and classifies test-double markers when requested 497ms
+   ✓ assert-stage (2)
+     ✓ passes a compliant A manifest and refuses a planted P7 path/table/script 517ms
+ ✓ test/unit/learning-pool.test.ts (4 tests) 1087ms
+   ✓ sealed pool and single-use suites (4)
+     ✓ requires six complete 65-case blocks before P7 can evaluate 319ms
+     ✓ freezes a 15-dev/50-holdout suite and protects holdout reads 428ms
+{"level":30,"time":1793829656132,"pid":12332,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","req":{"method":"GET","url":"/api/runs/run_context_excluded/context","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829656140,"pid":12332,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","res":{"statusCode":200},"responseTime":7.043300000000272,"msg":"request completed"}
+{"level":30,"time":1793829656146,"pid":12332,"hostname":"DESKTOP-5GATL9H","reqId":"req-2","req":{"method":"GET","url":"/api/runs/run_context_malformed/context","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829656147,"pid":12332,"hostname":"DESKTOP-5GATL9H","reqId":"req-2","res":{"statusCode":200},"responseTime":0.9470999999998639,"msg":"request completed"}
+{"level":30,"time":1793829656148,"pid":12332,"hostname":"DESKTOP-5GATL9H","reqId":"req-3","req":{"method":"GET","url":"/api/runs/run_context_missing/context","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829656149,"pid":12332,"hostname":"DESKTOP-5GATL9H","reqId":"req-3","res":{"statusCode":404},"responseTime":0.6859999999996944,"msg":"request completed"}
+ ✓ test/unit/context-excluded.test.ts (3 tests) 1003ms
+ ✓ test/unit/scripts-agents.test.ts (7 tests) 7887ms
+   ✓ bench-suite exits 7, not 3, when live is requested without a key 1095ms
+   ✓ owned P6a scripts — usage refusals (6)
+     ✓ scripts/build-repo-map.ts exits 2 when --run is absent, even with --json 822ms
+     ✓ scripts/context-pack-report.ts exits 2 when --run is absent, even with --json 1025ms
+     ✓ scripts/integrity-check.ts exits 2 when --run is absent, even with --json 1373ms
+     ✓ scripts/build-repo-map.ts exits 2 when --run has no value 1117ms
+     ✓ scripts/context-pack-report.ts exits 2 when --run has no value 1387ms
+     ✓ scripts/integrity-check.ts exits 2 when --run has no value 1064ms
+{"level":30,"time":1793829656718,"pid":3000,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","req":{"method":"GET","url":"/api/runs/run_usage_snapshot/snapshot","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829656727,"pid":3000,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","res":{"statusCode":200},"responseTime":7.5405000000000655,"msg":"request completed"}
+ ✓ test/unit/terminal-usage.test.ts (8 tests) 1129ms
+   ✓ AF-01 terminal usage aggregation (8)
+     ✓ serves the summed cost from GET /api/runs/:id/snapshot 738ms
+{"level":30,"time":1793829657698,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","req":{"method":"GET","url":"/api/runs/run_events_zero/events","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829657706,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","res":{"statusCode":200},"responseTime":6.70010000000002,"msg":"request completed"}
+{"level":30,"time":1793829657712,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-2","req":{"method":"GET","url":"/api/runs/run_events_two/events","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829657713,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-2","res":{"statusCode":200},"responseTime":1.140400000000227,"msg":"request completed"}
+{"level":30,"time":1793829657715,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-3","req":{"method":"GET","url":"/api/runs/run_events_three/events","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829657716,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-3","res":{"statusCode":200},"responseTime":0.8461000000002059,"msg":"request completed"}
+{"level":30,"time":1793829657718,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-4","req":{"method":"GET","url":"/api/runs/run_events_four/events","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829657719,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-4","res":{"statusCode":200},"responseTime":0.9630999999999403,"msg":"request completed"}
+{"level":30,"time":1793829657720,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-5","req":{"method":"GET","url":"/api/runs/run_events_five/events?after=10","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829657721,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-5","res":{"statusCode":200},"responseTime":0.907799999999952,"msg":"request completed"}
+{"level":30,"time":1793829657723,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-6","req":{"method":"GET","url":"/api/runs/run_events_four/events?after=4","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829657724,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-6","res":{"statusCode":200},"responseTime":0.7865000000001601,"msg":"request completed"}
+{"level":30,"time":1793829657725,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-7","req":{"method":"GET","url":"/api/runs/run_events_two/events?after=-5","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829657726,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-7","res":{"statusCode":200},"responseTime":0.7604999999998654,"msg":"request completed"}
+{"level":30,"time":1793829657727,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-8","req":{"method":"GET","url":"/api/runs/run_events_two/events?after=NaN","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829657728,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-8","res":{"statusCode":200},"responseTime":1.2687000000000808,"msg":"request completed"}
+{"level":30,"time":1793829657729,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-9","req":{"method":"GET","url":"/api/runs/run_events_missing/events","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829657730,"pid":4464,"hostname":"DESKTOP-5GATL9H","reqId":"req-9","res":{"statusCode":404},"responseTime":0.7017000000000735,"msg":"request completed"}
+ ✓ test/unit/events-window.test.ts (8 tests) 733ms
+ ✓ test/unit/learning-promotion.test.ts (2 tests) 489ms
+{"level":30,"time":1793829658373,"pid":13572,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","req":{"method":"GET","url":"/api/runs/run_checks_identity/checks","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829658383,"pid":13572,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","res":{"statusCode":200},"responseTime":8.436199999999644,"msg":"request completed"}
+{"level":30,"time":1793829658385,"pid":13572,"hostname":"DESKTOP-5GATL9H","reqId":"req-2","req":{"method":"GET","url":"/api/runs/run_checks_identity/snapshot","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829658387,"pid":13572,"hostname":"DESKTOP-5GATL9H","reqId":"req-2","res":{"statusCode":200},"responseTime":1.950199999999768,"msg":"request completed"}
+ ✓ test/unit/checks-identity.test.ts (4 tests) 976ms
+ ✓ test/unit/logic-core.test.ts (11 tests) 489ms
+{"level":30,"time":1793829659512,"pid":14056,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","req":{"method":"GET","url":"/api/agents","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829659525,"pid":14056,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","res":{"statusCode":200},"responseTime":10.207000000000335,"msg":"request completed"}
+{"level":30,"time":1793829659528,"pid":14056,"hostname":"DESKTOP-5GATL9H","reqId":"req-2","req":{"method":"GET","url":"/api/agents/architect","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829659530,"pid":14056,"hostname":"DESKTOP-5GATL9H","reqId":"req-2","res":{"statusCode":200},"responseTime":1.448699999999917,"msg":"request completed"}
+{"level":30,"time":1793829659535,"pid":14056,"hostname":"DESKTOP-5GATL9H","reqId":"req-3","req":{"method":"GET","url":"/api/runs/run_trace_route/routing","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829659537,"pid":14056,"hostname":"DESKTOP-5GATL9H","reqId":"req-3","res":{"statusCode":200},"responseTime":2.2695000000003347,"msg":"request completed"}
+{"level":30,"time":1793829659545,"pid":14056,"hostname":"DESKTOP-5GATL9H","reqId":"req-4","req":{"method":"POST","url":"/api/runs","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829659557,"pid":14056,"hostname":"DESKTOP-5GATL9H","reqId":"req-4","res":{"statusCode":422},"responseTime":11.201200000000426,"msg":"request completed"}
+{"level":30,"time":1793829659559,"pid":14056,"hostname":"DESKTOP-5GATL9H","reqId":"req-5","req":{"method":"POST","url":"/api/runs","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+ ✓ test/unit/routing.test.ts (18 tests) 203ms
+{"level":30,"time":1793829659562,"pid":14056,"hostname":"DESKTOP-5GATL9H","reqId":"req-5","res":{"statusCode":422},"responseTime":2.2463000000002467,"msg":"request completed"}
+ ✓ test/unit/trace-fixes.test.ts (7 tests) 692ms
+ ✓ test/unit/run-timeout.test.ts (1 test) 299ms
+ ✓ test/unit/llm.client.test.ts (11 tests) 226ms
+ ✓ test/unit/terminal-error-code.test.ts (1 test) 162ms
+ ✓ test/unit/learning-mining-repair-guard.test.ts (9 tests) 176ms
+ ✓ test/unit/chat-store.test.ts (8 tests) 172ms
+stdout | test/unit/chat-worker.test.ts > chat job worker > claims and completes one job with a measured answer
+{"at":"2026-11-04T22:01:01.882Z","level":"info","message":"chat job succeeded","jobId":"cjob_f8f9a15799f5391381","threadId":"chat_5ad5140e68fa731a47","status":"succeeded"}
+
+stdout | test/unit/chat-worker.test.ts > chat job worker > requeues a retryable failure, then exhausts at maxAttempts with an honest code
+{"at":"2026-11-04T22:01:01.909Z","level":"warn","message":"chat job failed an attempt","jobId":"cjob_fac4d9c65364bbf82d","threadId":"chat_5261d383947e0434ba","status":"queued","code":"E_LLM_NETWORK","attempts":1}
+
+stdout | test/unit/chat-worker.test.ts > chat job worker > requeues a retryable failure, then exhausts at maxAttempts with an honest code
+{"at":"2026-11-04T22:01:01.911Z","level":"warn","message":"chat job failed an attempt","jobId":"cjob_fac4d9c65364bbf82d","threadId":"chat_5261d383947e0434ba","status":"queued","code":"E_LLM_NETWORK","attempts":2}
+
+stdout | test/unit/chat-worker.test.ts > chat job worker > requeues a retryable failure, then exhausts at maxAttempts with an honest code
+{"at":"2026-11-04T22:01:01.913Z","level":"warn","message":"chat job failed an attempt","jobId":"cjob_fac4d9c65364bbf82d","threadId":"chat_5261d383947e0434ba","status":"failed","code":"E_LLM_NETWORK","attempts":3}
+
+stdout | test/unit/chat-worker.test.ts > chat job worker > fails a deterministic provider error on the first attempt without a false retry
+{"at":"2026-11-04T22:01:01.928Z","level":"warn","message":"chat job failed an attempt","jobId":"cjob_09da417f1ca2ad7225","threadId":"chat_a9a2c8e9bbf7b08fe3","status":"failed","code":"E_LLM_BAD_REQUEST","attempts":1}
+
+ ✓ test/unit/learning-consent-trace.test.ts (5 tests) 122ms
+ ✓ test/unit/chat-worker.test.ts (5 tests) 107ms
+{"level":30,"time":1793829662401,"pid":12872,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","req":{"method":"GET","url":"/openapi.json","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793829662427,"pid":12872,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","res":{"statusCode":200},"responseTime":24.27430000000004,"msg":"request completed"}
+ ✓ test/unit/openapi-schema.test.ts (2 tests) 119ms
+ ✓ test/unit/agents.registry.test.ts (9 tests) 49ms
+ ✓ test/unit/learning-candidates.test.ts (6 tests) 130ms
+ ✓ test/pipeline-qa.test.ts (8 tests) 141ms
+ ✓ test/unit/learning-approval.test.ts (5 tests) 85ms
+ ✓ test/unit/run-transition-guard.test.ts (5 tests) 78ms
+ ✓ test/unit/learning-stats.test.ts (12 tests) 86ms
+ ✓ test/unit/logic-run-state.test.ts (10 tests) 86ms
+ ✓ test/unit/quality.test.ts (11 tests) 60ms
+ ✓ test/unit/event-contract.test.ts (8 tests) 72ms
+ ✓ test/unit/learning-overview.test.ts (3 tests) 59ms
+ ✓ test/unit/llm-budget-repair.test.ts (1 test) 52ms
+ ✓ test/unit/http-attempt-hooks.test.ts (1 test) 69ms
+ ✓ test/unit/context.test.ts (7 tests) 76ms
+ ✓ test/unit/startup-interrupt.test.ts (1 test) 52ms
+ ✓ test/unit/repair.test.ts (6 tests) 56ms
+ ✓ test/unit/logic-gate-decision.test.ts (11 tests) 34ms
+ ✓ test/unit/logic-repair-plan.test.ts (11 tests) 42ms
+ ✓ test/unit/publish.test.ts (4 tests) 39ms
+ ✓ test/unit/error-log.test.ts (2 tests) 20ms
+ ✓ test/unit/retry.test.ts (9 tests) 41ms
+ ✓ test/unit/agent-plan-contract.test.ts (6 tests) 26ms
+ ✓ test/unit/agents.engine.test.ts (14 tests) 39ms
+ ✓ test/unit/prompt-analysis.test.ts (6 tests) 24ms
+ ✓ test/unit/logic-budget-policy.test.ts (8 tests) 35ms
+ ✓ test/unit/agents.schemas.test.ts (6 tests) 31ms
+ ✓ test/unit/route-candidate-backfill.test.ts (1 test) 20ms
+ ✓ test/unit/run-events-selection.test.ts (5 tests) 12ms
+ ✓ test/unit/agent-runtime.test.ts (4 tests) 19ms
+ ✓ test/unit/agents.hash.test.ts (3 tests) 18ms
+ ✓ test/unit/stub-scan.test.ts (3 tests) 9ms
+ ✓ test/unit/error-code.test.ts (9 tests) 14ms
+
+ Test Files  53 passed (53)
+      Tests  330 passed (330)
+   Start at  16:00:48
+   Duration  21.53s (import 51%, tests 47%, worker 2%, transform 1%)
+
+    Isolate  53 workers spawned · ~407ms startup each (spawn + environment, per file)
+             at least ~4.98s faster with isolate: false — reuses workers across files instead of one per file
+
+
+> hive-router@0.1.0 build
+> npm run typecheck && vite build --config web/vite.config.ts
+
+
+> hive-router@0.1.0 typecheck
+> tsc --noEmit
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 2332 modules transformed.
+rendering chunks...
+computing gzip size...
+web/dist/index.html                                                     0.52 kB │ gzip:   0.31 kB
+web/dist/assets/instrument-serif-latin-ext-400-normal-CFCUzsTy.woff     9.86 kB
+web/dist/assets/instrument-serif-latin-ext-400-italic-D7-lnxEk.woff    10.50 kB
+web/dist/assets/instrument-serif-latin-ext-400-normal-C2je3j2s.woff2   11.60 kB
+web/dist/assets/instrument-serif-latin-ext-400-italic-C9HzH3YL.woff2   12.38 kB
+web/dist/assets/instrument-serif-latin-400-normal-BVbkICAY.woff        18.33 kB
+web/dist/assets/instrument-serif-latin-400-italic-u__WvvIK.woff        19.26 kB
+web/dist/assets/instrument-serif-latin-400-normal-DnYpCC2O.woff2       21.03 kB
+web/dist/assets/instrument-serif-latin-400-italic-DKMiL14s.woff2       22.12 kB
+web/dist/assets/index-CHwmaddm.css                                     37.59 kB │ gzip:   9.23 kB
+web/dist/assets/index-CzWRi4A5.js                                     678.47 kB │ gzip: 202.92 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 1.29s
+
+> hive-router@0.1.0 stub-sweep
+> node scripts/stub-sweep.mjs
+
+stub-sweep: clean (93 files)
+
+> hive-router@0.1.0 secret-scan
+> node scripts/check-secrets.mjs
+
+secret-scan: clean (171 files)

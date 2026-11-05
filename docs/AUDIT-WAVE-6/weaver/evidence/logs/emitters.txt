@@ -1,0 +1,89 @@
+﻿# emitEvent call sites in src/ (read-only grep, 2026-11-03)
+src\server\pipeline\run.ts:224: emitEvent(runId, 'agent.started', { stepId: step.id, agentId, phase });
+src\server\pipeline\run.ts:229: emitEvent(runId, 'agent.completed', { stepId: step.id, agentId, phase, usage: result.usage });
+src\server\pipeline\run.ts:234: emitEvent(runId, 'agent.failed', { stepId: step.id, agentId, phase, code: message.startsWith('E_') ? message : 'E_INTERNAL', message: redactString(message).slice(0, 500) });
+src\server\pipeline\run.ts:293: emitEvent(runId, 'phase.started', { phase: 'cleaning' });
+src\server\pipeline\run.ts:300: emitEvent(runId, 'phase.completed', { phase: 'cleaning', revised: cleaned.files.length, findings: cleaned.findings.length });
+src\server\pipeline\run.ts:304: emitEvent(runId, 'phase.started', { phase: 'hardening' });
+src\server\pipeline\run.ts:310: emitEvent(runId, 'phase.completed', { phase: 'hardening', revised: hardened.files.length, findings: hardened.findings.length });
+src\server\pipeline\run.ts:316: emitEvent(runId, 'phase.started', { phase: 'testing' });
+src\server\pipeline\run.ts:327: emitEvent(runId, 'phase.completed', { phase: 'testing', tests: tests.files.length });
+src\server\pipeline\run.ts:332: emitEvent(runId, 'phase.started', { phase: 'verifying' });
+src\server\pipeline\run.ts:336: emitEvent(runId, 'phase.completed', { phase: 'verifying', status, checks: checks.length });
+src\server\pipeline\run.ts:342: emitEvent(runId, 'run.failed', { code: 'GATE_FAILED' });
+src\server\pipeline\run.ts:367: emitEvent(runId, 'phase.started', { phase: 'generating', agentId: agent.id, adhoc: true });
+src\server\pipeline\run.ts:423: emitEvent(runId, 'phase.completed', { phase: 'generating', agentId: agent.id, adhoc: true });
+src\server\pipeline\run.ts:426: emitEvent(runId, 'phase.started', { phase: 'verifying' });
+src\server\pipeline\run.ts:430: emitEvent(runId, 'phase.completed', { phase: 'verifying', status, checks: checks.length });
+src\server\pipeline\run.ts:433: emitEvent(runId, 'run.failed', { code: 'GATE_FAILED' });
+src\server\pipeline\run.ts:451: emitEvent(runId, 'run.started', { runId, preset: run.preset });
+src\server\pipeline\run.ts:464: emitEvent(runId, 'phase.started', { phase: 'planning' });
+src\server\pipeline\run.ts:481: emitEvent(runId, 'phase.completed', { phase: 'planning', files: plan.files.length });
+src\server\pipeline\run.ts:497: emitEvent(runId, 'phase.skipped', { phase: 'routing', reason: 'E_ROUTING_DISABLED', fallback: pipelineCaps.fallback });
+src\server\pipeline\run.ts:501: emitEvent(runId, 'phase.started', { phase: 'routing' });
+src\server\pipeline\run.ts:601: emitEvent(runId, 'route.decided', { taskId: route.taskId, agentId: route.agentId, model: route.model, thinking: route.thinking, score: route.score });
+src\server\pipeline\run.ts:603: emitEvent(runId, 'phase.completed', { phase: 'routing', routes: routeResult.routes.length, allocatedCostUsd: routeResult.allocatedCostUsd, reserveUsd: routeResult.reserveUsd });
+src\server\pipeline\run.ts:608: emitEvent(runId, 'phase.started', { phase: 'generating' });
+src\server\pipeline\run.ts:669: emitEvent(runId, 'context.packed', { taskId: file.path, tokens: pack.estimatedTokens, prefixHash: pack.prefixHash, degraded: pack.degraded });
+src\server\pipeline\run.ts:679: emitEvent(runId, 'context.skipped', { taskId: file.path, reason: 'E_ROUTING_DISABLED', fallback: 'direct-dependencies' });
+src\server\pipeline\run.ts:717: emitEvent(runId, 'file.written', { path: file.path, agentId: engine, bytes: Buffer.byteLength(content) });
+src\server\pipeline\run.ts:719: emitEvent(runId, 'phase.completed', { phase: 'generating', files: generated.length, chars: generatedChars });
+src\server\pipeline\run.ts:724: emitEvent(runId, 'phase.started', { phase: 'cleaning' });
+src\server\pipeline\run.ts:731: emitEvent(runId, 'phase.completed', { phase: 'cleaning', findings: cleaned.findings.length, revised: cleaned.files.length });
+src\server\pipeline\run.ts:735: emitEvent(runId, 'phase.started', { phase: 'hardening' });
+src\server\pipeline\run.ts:742: emitEvent(runId, 'phase.completed', { phase: 'hardening', findings: hardened.findings.length, revised: hardened.files.length });
+src\server\pipeline\run.ts:749: emitEvent(runId, 'phase.started', { phase: 'testing' });
+src\server\pipeline\run.ts:762: emitEvent(runId, 'phase.completed', { phase: 'testing', tests: tests.files.length, command: tests.testCommand });
+src\server\pipeline\run.ts:767: emitEvent(runId, 'phase.started', { phase: 'verifying' });
+src\server\pipeline\run.ts:788: emitEvent(runId, 'phase.skipped', { phase: 'verification.plan', reason: 'E_ROUTING_DISABLED', fallback: 'full-static-verification' });
+src\server\pipeline\run.ts:811: emitEvent(runId, 'phase.completed', { phase: 'verifying', status, checks: checks.length, failed: checks.filter((c) => c.status === 'fail').length, ...(confidence ? { confidence: confidence.decision } : {}), ...(verifyPlan ? { verifyPlanChecks: verifyPlan.checks.length } : {}) });
+src\server\pipeline\run.ts:820: emitEvent(runId, 'repair.stalled', { signature });
+src\server\pipeline\run.ts:825: emitEvent(runId, 'phase.started', { phase: 'repairing', attempt: repairAttempts, signature });
+src\server\pipeline\run.ts:831: emitEvent(runId, 'phase.completed', { phase: 'repairing', attempt: repairAttempts, revised: repaired.files.length, findings: repaired.findings.length });
+src\server\pipeline\run.ts:833: emitEvent(runId, 'phase.started', { phase: 'verifying', attempt: repairAttempts });
+src\server\pipeline\run.ts:848: emitEvent(runId, 'phase.completed', { phase: 'verifying', status, attempt: repairAttempts, failed: checks.filter((c) => c.status === 'fail').length });
+src\server\pipeline\run.ts:851: emitEvent(runId, 'repair.stalled', { reason: 'attempt budget exhausted', attempts: repairAttempts });
+src\server\pipeline\run.ts:858: emitEvent(runId, 'run.failed', { code: 'GATE_FAILED', checks: checks.filter((c) => c.mandatory && c.status !== 'pass').slice(0, 5) });
+src\server\pipeline\run.ts:885: emitEvent(runId, status === 'cancelled' ? 'run.cancelled' : 'run.failed', { code, message: redactString(message).slice(0, 500) });
+src\server\pipeline\run.ts:978: emitEvent(runId, 'phase.started', { phase: 'finalizing' });
+src\server\pipeline\run.ts:1087: emitEvent(runId, 'phase.completed', { phase: 'finalizing', files: generated.length });
+src\server\pipeline\run.ts:1088: emitEvent(runId, 'run.completed', { runId, status: finalStatus, files: generated.length, costUsd: usage.costUsd });
+src\server\runs\manager.ts:135: emitEvent(id, 'run.queued', { runId: id, preset: run.preset });
+src\server\runs\manager.ts:157: emitEvent(id, 'run.failed', { code, message: message.slice(0, 500), timedOut });
+src\server\runs\manager.ts:186: emitEvent(runId, 'run.cancelled', { code: 'E_CANCELLED', source: 'no-controller' });
+src\server\runs\recorder.ts:36: export function emitEvent(runId: string, type: string, payload: Record<string, unknown> = {}): RunEvent {
+
+# Client STREAM_EVENT_TYPES (web/src/hooks/useApi.ts:72-100)
+const STREAM_EVENT_TYPES = [
+  'run.started',
+  'run.updated',
+  'run.paused',
+  'run.cancelled',
+  'run.completed',
+  'run.failed',
+  'run.needs_review',
+  'phase.started',
+  'phase.completed',
+  'step.started',
+  'step.completed',
+  'agent.started',
+  'agent.delta',
+  'agent.completed',
+  'file.written',
+  'file.revised',
+  'check.completed',
+  'review.completed',
+  'route.decided',
+  'context.packed',
+  'failure.clustered',
+  'repair.completed',
+  'confidence.recorded',
+  'learning.trace',
+  'learning.eval',
+  'learning.promotion',
+  'heartbeat',
+];
+
+# Server types with no client listener / client types with no server emitter
+server-emitted: run.queued run.started run.failed run.cancelled run.completed agent.started agent.completed agent.failed phase.started phase.completed phase.skipped route.decided context.packed context.skipped file.written repair.stalled
+client-subscribed-not-emitted: run.updated run.paused run.needs_review step.started step.completed agent.delta file.revised check.completed review.completed failure.clustered repair.completed confidence.recorded learning.trace learning.eval learning.promotion heartbeat

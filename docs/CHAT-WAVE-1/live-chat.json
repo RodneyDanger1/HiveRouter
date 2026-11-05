@@ -1,0 +1,12 @@
+{
+  "liveThreadVisible": true,
+  "liveJobFields": 1,
+  "liveStatusMentions": 4,
+  "newThreadVisible": true,
+  "assistantCount": 1,
+  "pendingCount": 1,
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+}

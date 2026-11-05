@@ -1,0 +1,53 @@
+{
+  "vault": {
+    "rowsBefore": 150,
+    "rowsCollapsed": 67,
+    "rowsExpanded": 150
+  },
+  "tabRefresh": [
+    {
+      "tabName": "Routing",
+      "refreshButtons": 1,
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/runs/run_abf5fe78aab1e932ff/routing",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "tabName": "Context",
+      "refreshButtons": 1,
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/runs/run_abf5fe78aab1e932ff/context",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "tabName": "Repairs",
+      "refreshButtons": 1,
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/runs/run_abf5fe78aab1e932ff/failures",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "tabName": "Confidence",
+      "refreshButtons": 1,
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/runs/run_abf5fe78aab1e932ff/confidence",
+          "status": 200
+        }
+      ]
+    }
+  ]
+}

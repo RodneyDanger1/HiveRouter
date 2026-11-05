@@ -1,0 +1,110 @@
+﻿matrixSummary: {"total": 100, "mismatches": [], "legalPairs": 33, "illegalPairs": 67}
+matrixMismatches: 0
+
+results: 100
+- None | outcome=None
+- completed->queued | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed to=queued | row=completed/done | unchanged=True
+- completed->running | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed to=running | row=completed/done | unchanged=True
+- completed->paused | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed to=paused | row=completed/done | unchanged=True
+- completed->needs_review | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed to=needs_review | row=completed/done | unchanged=True
+- same completed | outcome=ok | row=completed/done
+- completed->completed_with_warnings | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed to=completed_with_warnings | row=completed/done | unchanged=True
+- completed->failed | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed to=failed | row=completed/done | unchanged=True
+- completed->cancelled | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed to=cancelled | row=completed/done | unchanged=True
+- completed->budget_exceeded | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed to=budget_exceeded | row=completed/done | unchanged=True
+- completed->interrupted | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed to=interrupted | row=completed/done | unchanged=True
+- phase planning | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=phase from=done to=planning | row=completed/done | unchanged=True
+- phase done | outcome=ok | row=completed/done
+- summary | outcome=ok | row=completed/done
+- completed_with_warnings->queued | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed_with_warnings to=queued | row=completed_with_warnings/done | unchanged=True
+- completed_with_warnings->running | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed_with_warnings to=running | row=completed_with_warnings/done | unchanged=True
+- completed_with_warnings->paused | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed_with_warnings to=paused | row=completed_with_warnings/done | unchanged=True
+- completed_with_warnings->needs_review | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed_with_warnings to=needs_review | row=completed_with_warnings/done | unchanged=True
+- completed_with_warnings->completed | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed_with_warnings to=completed | row=completed_with_warnings/done | unchanged=True
+- same completed_with_warnings | outcome=ok | row=completed_with_warnings/done
+- completed_with_warnings->failed | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed_with_warnings to=failed | row=completed_with_warnings/done | unchanged=True
+- completed_with_warnings->cancelled | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed_with_warnings to=cancelled | row=completed_with_warnings/done | unchanged=True
+- completed_with_warnings->budget_exceeded | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed_with_warnings to=budget_exceeded | row=completed_with_warnings/done | unchanged=True
+- completed_with_warnings->interrupted | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=completed_with_warnings to=interrupted | row=completed_with_warnings/done | unchanged=True
+- phase planning | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=phase from=done to=planning | row=completed_with_warnings/done | unchanged=True
+- phase done | outcome=ok | row=completed_with_warnings/done
+- summary | outcome=ok | row=completed_with_warnings/done
+- failed->queued | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=failed to=queued | row=failed/done | unchanged=True
+- failed->running | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=failed to=running | row=failed/done | unchanged=True
+- failed->paused | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=failed to=paused | row=failed/done | unchanged=True
+- failed->needs_review | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=failed to=needs_review | row=failed/done | unchanged=True
+- failed->completed | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=failed to=completed | row=failed/done | unchanged=True
+- failed->completed_with_warnings | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=failed to=completed_with_warnings | row=failed/done | unchanged=True
+- same failed | outcome=ok | row=failed/done
+- failed->cancelled | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=failed to=cancelled | row=failed/done | unchanged=True
+- failed->budget_exceeded | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=failed to=budget_exceeded | row=failed/done | unchanged=True
+- failed->interrupted | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=failed to=interrupted | row=failed/done | unchanged=True
+- phase planning | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=phase from=done to=planning | row=failed/done | unchanged=True
+- phase done | outcome=ok | row=failed/done
+- summary | outcome=ok | row=failed/done
+- cancelled->queued | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=cancelled to=queued | row=cancelled/done | unchanged=True
+- cancelled->running | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=cancelled to=running | row=cancelled/done | unchanged=True
+- cancelled->paused | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=cancelled to=paused | row=cancelled/done | unchanged=True
+- cancelled->needs_review | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=cancelled to=needs_review | row=cancelled/done | unchanged=True
+- cancelled->completed | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=cancelled to=completed | row=cancelled/done | unchanged=True
+- cancelled->completed_with_warnings | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=cancelled to=completed_with_warnings | row=cancelled/done | unchanged=True
+- cancelled->failed | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=cancelled to=failed | row=cancelled/done | unchanged=True
+- same cancelled | outcome=ok | row=cancelled/done
+- cancelled->budget_exceeded | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=cancelled to=budget_exceeded | row=cancelled/done | unchanged=True
+- cancelled->interrupted | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=cancelled to=interrupted | row=cancelled/done | unchanged=True
+- phase planning | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=phase from=done to=planning | row=cancelled/done | unchanged=True
+- phase done | outcome=ok | row=cancelled/done
+- summary | outcome=ok | row=cancelled/done
+- budget_exceeded->queued | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=budget_exceeded to=queued | row=budget_exceeded/done | unchanged=True
+- budget_exceeded->running | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=budget_exceeded to=running | row=budget_exceeded/done | unchanged=True
+- budget_exceeded->paused | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=budget_exceeded to=paused | row=budget_exceeded/done | unchanged=True
+- budget_exceeded->needs_review | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=budget_exceeded to=needs_review | row=budget_exceeded/done | unchanged=True
+- budget_exceeded->completed | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=budget_exceeded to=completed | row=budget_exceeded/done | unchanged=True
+- budget_exceeded->completed_with_warnings | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=budget_exceeded to=completed_with_warnings | row=budget_exceeded/done | unchanged=True
+- budget_exceeded->failed | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=budget_exceeded to=failed | row=budget_exceeded/done | unchanged=True
+- budget_exceeded->cancelled | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=budget_exceeded to=cancelled | row=budget_exceeded/done | unchanged=True
+- same budget_exceeded | outcome=ok | row=budget_exceeded/done
+- budget_exceeded->interrupted | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=budget_exceeded to=interrupted | row=budget_exceeded/done | unchanged=True
+- phase planning | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=phase from=done to=planning | row=budget_exceeded/done | unchanged=True
+- phase done | outcome=ok | row=budget_exceeded/done
+- summary | outcome=ok | row=budget_exceeded/done
+- interrupted->queued | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=interrupted to=queued | row=interrupted/done | unchanged=True
+- interrupted->running | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=interrupted to=running | row=interrupted/done | unchanged=True
+- interrupted->paused | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=interrupted to=paused | row=interrupted/done | unchanged=True
+- interrupted->needs_review | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=interrupted to=needs_review | row=interrupted/done | unchanged=True
+- interrupted->completed | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=interrupted to=completed | row=interrupted/done | unchanged=True
+- interrupted->completed_with_warnings | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=interrupted to=completed_with_warnings | row=interrupted/done | unchanged=True
+- interrupted->failed | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=interrupted to=failed | row=interrupted/done | unchanged=True
+- interrupted->cancelled | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=interrupted to=cancelled | row=interrupted/done | unchanged=True
+- interrupted->budget_exceeded | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=status from=interrupted to=budget_exceeded | row=interrupted/done | unchanged=True
+- same interrupted | outcome=ok | row=interrupted/done
+- phase planning | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=phase from=done to=planning | row=interrupted/done | unchanged=True
+- phase done | outcome=ok | row=interrupted/done
+- summary | outcome=ok | row=interrupted/done
+- completed with no phase (current intake) | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=phase from=intake to=intake | row=running/intake
+- completed with phase intake | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=phase from=intake to=intake | row=running/intake
+- completed with phase done | outcome=ok | row=completed/done
+- completed_with_warnings with no phase (current intake) | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=phase from=intake to=intake | row=running/intake
+- completed_with_warnings with phase intake | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=phase from=intake to=intake | row=running/intake
+- completed_with_warnings with phase done | outcome=ok | row=completed_with_warnings/done
+- needs_review completed | outcome=ok | row=completed/done
+- same status | outcome=ok | row=queued/intake
+- same status | outcome=ok | row=running/intake
+- same status | outcome=ok | row=paused/intake
+- same status | outcome=ok | row=needs_review/intake
+- planning | outcome=ok | row=running/planning
+- done | outcome=ok | row=running/done
+- planning | outcome=threw | code=E_ILLEGAL_RUN_TRANSITION kind=phase from=done to=planning | row=completed/done
+- done | outcome=ok | row=completed/done
+- invalid | outcome=threw | code=None kind=None from=None to=None | row=queued/intake | unchanged=True
+- missing | outcome=ok
+- CAS: running->paused vs concurrent running->failed | outcome=threw (CAS failed closed) | code=E_ILLEGAL_RUN_TRANSITION kind=status from=running to=paused | row=failed/done | injected=True competitorChanges=1 preserved=True codeMatches=True
+- CAS: same-status running write vs concurrent running->completed | outcome=threw (CAS failed closed) | code=E_ILLEGAL_RUN_TRANSITION kind=status from=running to=running | row=completed/done | injected=True competitorChanges=1 preserved=True codeMatches=True
+- CAS: phase-only running write vs concurrent running->failed | outcome=threw (CAS failed closed) | code=E_ILLEGAL_RUN_TRANSITION kind=status from=running to=None | row=failed/done | injected=True competitorChanges=1 preserved=True codeMatches=True
+- control paused | outcome=ok | row=paused/intake | injected=False competitorChanges=None preserved=None codeMatches=None
+
+KEY ASSERTIONS
+PASS status-edge matrix 100/100 :: total=100 mismatches=0
+PASS CAS: running->paused vs concurrent running->failed :: outcome=threw (CAS failed closed) preserved=True code=E_ILLEGAL_RUN_TRANSITION injected=True
+PASS CAS: same-status running write vs concurrent running->completed :: outcome=threw (CAS failed closed) preserved=True code=E_ILLEGAL_RUN_TRANSITION injected=True
+PASS CAS: phase-only running write vs concurrent running->failed :: outcome=threw (CAS failed closed) preserved=True code=E_ILLEGAL_RUN_TRANSITION injected=True

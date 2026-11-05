@@ -1,0 +1,667 @@
+{
+  "capturedAt": "2026-11-04T04:17:44.013Z",
+  "runs": 25,
+  "falsePositiveTruncationCount": 24,
+  "falseNegativeTruncationCount": 0,
+  "runsLosingLiveRows": 25,
+  "runsOver100Subscribed": [
+    "run_abf5fe78aab1e932ff",
+    "run_95c11797b4923b4277"
+  ],
+  "lossTypes": [
+    "agent.failed",
+    "repair.stalled",
+    "run.queued"
+  ],
+  "rows": [
+    {
+      "runId": "run_007238d763a3956e74",
+      "dbCount": 9,
+      "dbFirstSeq": 1,
+      "dbLastSeq": 9,
+      "httpStatus": 200,
+      "returnedCount": 9,
+      "firstSeq": 1,
+      "lastSeq": 9,
+      "apiTruncated": false,
+      "reportedLastEventId": 9,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": false,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 8
+    },
+    {
+      "runId": "run_9c4659ee2d4fbb40bf",
+      "dbCount": 32,
+      "dbFirstSeq": 10,
+      "dbLastSeq": 41,
+      "httpStatus": 200,
+      "returnedCount": 32,
+      "firstSeq": 10,
+      "lastSeq": 41,
+      "apiTruncated": true,
+      "reportedLastEventId": 41,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 31
+    },
+    {
+      "runId": "run_1e5add0b6ba2e3c736",
+      "dbCount": 19,
+      "dbFirstSeq": 42,
+      "dbLastSeq": 60,
+      "httpStatus": 200,
+      "returnedCount": 19,
+      "firstSeq": 42,
+      "lastSeq": 60,
+      "apiTruncated": true,
+      "reportedLastEventId": 60,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "agent.failed",
+          "n": 1
+        },
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 2,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 17
+    },
+    {
+      "runId": "run_01581fa22ff57a5f5e",
+      "dbCount": 37,
+      "dbFirstSeq": 61,
+      "dbLastSeq": 97,
+      "httpStatus": 200,
+      "returnedCount": 37,
+      "firstSeq": 61,
+      "lastSeq": 97,
+      "apiTruncated": true,
+      "reportedLastEventId": 97,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 36
+    },
+    {
+      "runId": "run_f08c679f9075ac230d",
+      "dbCount": 43,
+      "dbFirstSeq": 98,
+      "dbLastSeq": 140,
+      "httpStatus": 200,
+      "returnedCount": 43,
+      "firstSeq": 98,
+      "lastSeq": 140,
+      "apiTruncated": true,
+      "reportedLastEventId": 140,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 42
+    },
+    {
+      "runId": "run_e5853ec6f585b0b657",
+      "dbCount": 15,
+      "dbFirstSeq": 141,
+      "dbLastSeq": 155,
+      "httpStatus": 200,
+      "returnedCount": 15,
+      "firstSeq": 141,
+      "lastSeq": 155,
+      "apiTruncated": true,
+      "reportedLastEventId": 155,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 14
+    },
+    {
+      "runId": "run_582bf88992c0ee98ae",
+      "dbCount": 19,
+      "dbFirstSeq": 156,
+      "dbLastSeq": 174,
+      "httpStatus": 200,
+      "returnedCount": 19,
+      "firstSeq": 156,
+      "lastSeq": 174,
+      "apiTruncated": true,
+      "reportedLastEventId": 174,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 18
+    },
+    {
+      "runId": "run_094ae10475a8f3ea01",
+      "dbCount": 42,
+      "dbFirstSeq": 175,
+      "dbLastSeq": 216,
+      "httpStatus": 200,
+      "returnedCount": 42,
+      "firstSeq": 175,
+      "lastSeq": 216,
+      "apiTruncated": true,
+      "reportedLastEventId": 216,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 41
+    },
+    {
+      "runId": "run_3bf07c4861e786f1e7",
+      "dbCount": 11,
+      "dbFirstSeq": 217,
+      "dbLastSeq": 227,
+      "httpStatus": 200,
+      "returnedCount": 11,
+      "firstSeq": 217,
+      "lastSeq": 227,
+      "apiTruncated": true,
+      "reportedLastEventId": 227,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 10
+    },
+    {
+      "runId": "run_23af9b7837448cb24a",
+      "dbCount": 58,
+      "dbFirstSeq": 228,
+      "dbLastSeq": 285,
+      "httpStatus": 200,
+      "returnedCount": 58,
+      "firstSeq": 228,
+      "lastSeq": 285,
+      "apiTruncated": true,
+      "reportedLastEventId": 285,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "agent.failed",
+          "n": 1
+        },
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 2,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 56
+    },
+    {
+      "runId": "run_b8a8e239a57052f146",
+      "dbCount": 37,
+      "dbFirstSeq": 286,
+      "dbLastSeq": 322,
+      "httpStatus": 200,
+      "returnedCount": 37,
+      "firstSeq": 286,
+      "lastSeq": 322,
+      "apiTruncated": true,
+      "reportedLastEventId": 322,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 36
+    },
+    {
+      "runId": "run_9b144184491ce0f41b",
+      "dbCount": 9,
+      "dbFirstSeq": 323,
+      "dbLastSeq": 331,
+      "httpStatus": 200,
+      "returnedCount": 9,
+      "firstSeq": 323,
+      "lastSeq": 331,
+      "apiTruncated": true,
+      "reportedLastEventId": 331,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 8
+    },
+    {
+      "runId": "run_063580525bb149f98d",
+      "dbCount": 37,
+      "dbFirstSeq": 332,
+      "dbLastSeq": 368,
+      "httpStatus": 200,
+      "returnedCount": 37,
+      "firstSeq": 332,
+      "lastSeq": 368,
+      "apiTruncated": true,
+      "reportedLastEventId": 368,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 36
+    },
+    {
+      "runId": "run_faf2600e5bf180b0dc",
+      "dbCount": 11,
+      "dbFirstSeq": 369,
+      "dbLastSeq": 379,
+      "httpStatus": 200,
+      "returnedCount": 11,
+      "firstSeq": 369,
+      "lastSeq": 379,
+      "apiTruncated": true,
+      "reportedLastEventId": 379,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 10
+    },
+    {
+      "runId": "run_32b087305f87bfa8bf",
+      "dbCount": 15,
+      "dbFirstSeq": 380,
+      "dbLastSeq": 394,
+      "httpStatus": 200,
+      "returnedCount": 15,
+      "firstSeq": 380,
+      "lastSeq": 394,
+      "apiTruncated": true,
+      "reportedLastEventId": 394,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 14
+    },
+    {
+      "runId": "run_9c1e2390e875e16eb3",
+      "dbCount": 37,
+      "dbFirstSeq": 395,
+      "dbLastSeq": 431,
+      "httpStatus": 200,
+      "returnedCount": 37,
+      "firstSeq": 395,
+      "lastSeq": 431,
+      "apiTruncated": true,
+      "reportedLastEventId": 431,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 36
+    },
+    {
+      "runId": "run_066581ff6b793a7aa9",
+      "dbCount": 37,
+      "dbFirstSeq": 432,
+      "dbLastSeq": 468,
+      "httpStatus": 200,
+      "returnedCount": 37,
+      "firstSeq": 432,
+      "lastSeq": 468,
+      "apiTruncated": true,
+      "reportedLastEventId": 468,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 36
+    },
+    {
+      "runId": "run_3a4578fa7b6ffebae1",
+      "dbCount": 37,
+      "dbFirstSeq": 469,
+      "dbLastSeq": 505,
+      "httpStatus": 200,
+      "returnedCount": 37,
+      "firstSeq": 469,
+      "lastSeq": 505,
+      "apiTruncated": true,
+      "reportedLastEventId": 505,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 36
+    },
+    {
+      "runId": "run_a5202415c602bd8320",
+      "dbCount": 37,
+      "dbFirstSeq": 506,
+      "dbLastSeq": 542,
+      "httpStatus": 200,
+      "returnedCount": 37,
+      "firstSeq": 506,
+      "lastSeq": 542,
+      "apiTruncated": true,
+      "reportedLastEventId": 542,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 36
+    },
+    {
+      "runId": "run_2e6935e48bb8fa74a2",
+      "dbCount": 9,
+      "dbFirstSeq": 543,
+      "dbLastSeq": 551,
+      "httpStatus": 200,
+      "returnedCount": 9,
+      "firstSeq": 543,
+      "lastSeq": 551,
+      "apiTruncated": true,
+      "reportedLastEventId": 551,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 8
+    },
+    {
+      "runId": "run_abf5fe78aab1e932ff",
+      "dbCount": 108,
+      "dbFirstSeq": 552,
+      "dbLastSeq": 659,
+      "httpStatus": 200,
+      "returnedCount": 108,
+      "firstSeq": 552,
+      "lastSeq": 659,
+      "apiTruncated": true,
+      "reportedLastEventId": 659,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "repair.stalled",
+          "n": 1
+        },
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 2,
+      "liveLedgerWouldCap": true,
+      "subscribedRows": 106
+    },
+    {
+      "runId": "run_2bb2f8edf3043fe89e",
+      "dbCount": 55,
+      "dbFirstSeq": 660,
+      "dbLastSeq": 714,
+      "httpStatus": 200,
+      "returnedCount": 55,
+      "firstSeq": 660,
+      "lastSeq": 714,
+      "apiTruncated": true,
+      "reportedLastEventId": 714,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "agent.failed",
+          "n": 1
+        },
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 2,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 53
+    },
+    {
+      "runId": "run_65da49c3948f9d8f5c",
+      "dbCount": 59,
+      "dbFirstSeq": 715,
+      "dbLastSeq": 773,
+      "httpStatus": 200,
+      "returnedCount": 59,
+      "firstSeq": 715,
+      "lastSeq": 773,
+      "apiTruncated": true,
+      "reportedLastEventId": 773,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "agent.failed",
+          "n": 1
+        },
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 2,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 57
+    },
+    {
+      "runId": "run_26e2456caef4b8be0c",
+      "dbCount": 97,
+      "dbFirstSeq": 774,
+      "dbLastSeq": 870,
+      "httpStatus": 200,
+      "returnedCount": 97,
+      "firstSeq": 774,
+      "lastSeq": 870,
+      "apiTruncated": true,
+      "reportedLastEventId": 870,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "agent.failed",
+          "n": 1
+        },
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 2,
+      "liveLedgerWouldCap": false,
+      "subscribedRows": 95
+    },
+    {
+      "runId": "run_95c11797b4923b4277",
+      "dbCount": 102,
+      "dbFirstSeq": 871,
+      "dbLastSeq": 972,
+      "httpStatus": 200,
+      "returnedCount": 102,
+      "firstSeq": 871,
+      "lastSeq": 972,
+      "apiTruncated": true,
+      "reportedLastEventId": 972,
+      "rowsActuallyDropped": 0,
+      "falsePositiveTruncation": true,
+      "falseNegativeTruncation": false,
+      "returnedTypesMatchDb": true,
+      "liveLedgerMissedTypes": [
+        {
+          "type": "run.queued",
+          "n": 1
+        }
+      ],
+      "liveLedgerMissedCount": 1,
+      "liveLedgerWouldCap": true,
+      "subscribedRows": 101
+    }
+  ]
+}

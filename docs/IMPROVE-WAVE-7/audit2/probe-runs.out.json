@@ -1,0 +1,115 @@
+﻿{"level":30,"time":1793774034901,"pid":21604,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","req":{"method":"GET","url":"/api/runs?limit=100","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{
+  "phase1": {
+    "totalRows": 150,
+    "unfiltered100": 100,
+    "unfiltered100Statuses": [
+      "completed"
+    ],
+    "oldClientSideFailedVisible": 0,
+    "serverFilteredFailed": 30,
+    "serverFilteredAllFailedRows": true,
+    "serverFilteredFailedIds": [
+      "probe_failed_029",
+      "probe_failed_028",
+      "probe_failed_027"
+    ]
+  },
+  "phase2": {
+    "failedRowsInDb": 150,
+    "serverFilteredFailedPage": 100,
+    "rowsBeyondPageCap": 50,
+    "uiCountWouldRender": 100,
+    "serverFilteredAllFailedRows": true
+  },
+  "routes": [
+    {
+      "name": "all",
+      "url": "/api/runs?limit=100",
+      "statusCode": 200,
+      "rows": 100,
+      "statuses": [
+        "completed"
+      ],
+      "responseKeys": [
+        "runs"
+      ],
+      "hasTotal": false
+    },
+    {
+      "name": "failed",
+      "url": "/api/runs?limit=100&status=failed",
+      "statusCode": 200,
+      "rows": 100,
+      "statuses": [
+        "failed"
+      ],
+      "responseKeys": [
+        "runs"
+      ],
+      "hasTotal": false,
+      "allRowsMatchFilter": true
+    },
+    {
+      "name": "completed",
+      "url": "/api/runs?limit=100&status=completed",
+      "statusCode": 200,
+      "rows": 100,
+      "statuses": [
+        "completed"
+      ],
+      "responseKeys": [
+        "runs"
+      ],
+      "hasTotal": false,
+      "allRowsMatchFilter": true
+    },
+    {
+      "name": "completed_with_warnings",
+      "url": "/api/runs?limit=100&status=completed_with_warnings",
+      "statusCode": 200,
+      "rows": 0,
+      "statuses": [],
+      "responseKeys": [
+        "runs"
+      ],
+      "hasTotal": false,
+      "allRowsMatchFilter": true
+    },
+    {
+      "name": "encoded-space",
+      "url": "/api/runs?limit=100&status=completed%20with%20warnings",
+      "statusCode": 200,
+      "rows": 0,
+      "statuses": [],
+      "responseKeys": [
+        "runs"
+      ],
+      "hasTotal": false,
+      "allRowsMatchFilter": true
+    },
+    {
+      "name": "injection-shaped",
+      "url": "/api/runs?limit=100&status=failed%26status%3Drunning",
+      "statusCode": 200,
+      "rows": 0,
+      "statuses": [],
+      "responseKeys": [
+        "runs"
+      ],
+      "hasTotal": false,
+      "allRowsMatchFilter": true
+    }
+  ]
+}
+{"level":30,"time":1793774034921,"pid":21604,"hostname":"DESKTOP-5GATL9H","reqId":"req-1","res":{"statusCode":200},"responseTime":18.82490000000007,"msg":"request completed"}
+{"level":30,"time":1793774034923,"pid":21604,"hostname":"DESKTOP-5GATL9H","reqId":"req-2","req":{"method":"GET","url":"/api/runs?limit=100&status=failed","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793774034936,"pid":21604,"hostname":"DESKTOP-5GATL9H","reqId":"req-2","res":{"statusCode":200},"responseTime":13.11239999999998,"msg":"request completed"}
+{"level":30,"time":1793774034937,"pid":21604,"hostname":"DESKTOP-5GATL9H","reqId":"req-3","req":{"method":"GET","url":"/api/runs?limit=100&status=completed","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793774034949,"pid":21604,"hostname":"DESKTOP-5GATL9H","reqId":"req-3","res":{"statusCode":200},"responseTime":11.282500000000255,"msg":"request completed"}
+{"level":30,"time":1793774034950,"pid":21604,"hostname":"DESKTOP-5GATL9H","reqId":"req-4","req":{"method":"GET","url":"/api/runs?limit=100&status=completed_with_warnings","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793774034950,"pid":21604,"hostname":"DESKTOP-5GATL9H","reqId":"req-4","res":{"statusCode":200},"responseTime":0.5270000000000437,"msg":"request completed"}
+{"level":30,"time":1793774034951,"pid":21604,"hostname":"DESKTOP-5GATL9H","reqId":"req-5","req":{"method":"GET","url":"/api/runs?limit=100&status=completed%20with%20warnings","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793774034952,"pid":21604,"hostname":"DESKTOP-5GATL9H","reqId":"req-5","res":{"statusCode":200},"responseTime":0.9388999999996486,"msg":"request completed"}
+{"level":30,"time":1793774034953,"pid":21604,"hostname":"DESKTOP-5GATL9H","reqId":"req-6","req":{"method":"GET","url":"/api/runs?limit=100&status=failed%26status%3Drunning","host":"127.0.0.1:8787","remoteAddress":"127.0.0.1"},"msg":"incoming request"}
+{"level":30,"time":1793774034954,"pid":21604,"hostname":"DESKTOP-5GATL9H","reqId":"req-6","res":{"statusCode":200},"responseTime":0.741099999999733,"msg":"request completed"}

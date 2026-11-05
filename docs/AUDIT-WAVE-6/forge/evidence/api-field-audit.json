@@ -1,0 +1,107 @@
+{
+  "capturedAt": "2026-11-04T04:27:31.931Z",
+  "snapshotKeys": [
+    "artifacts",
+    "checks",
+    "lastEventId",
+    "run",
+    "steps",
+    "truncated"
+  ],
+  "runKeys": [
+    "brief",
+    "completionTokens",
+    "costUsd",
+    "createdAt",
+    "effort",
+    "errorCode",
+    "errorMessage",
+    "finishedAt",
+    "id",
+    "model",
+    "parentRunId",
+    "phase",
+    "policyVersionId",
+    "preset",
+    "promptTokens",
+    "runKind",
+    "snapshotHash",
+    "startedAt",
+    "status",
+    "summary",
+    "thinking",
+    "traceComplete",
+    "workspacePath"
+  ],
+  "snapshotHasLimits": false,
+  "stats": {
+    "agentCount": 37,
+    "runCount": 25,
+    "totalPromptTokens": 1367744,
+    "totalCompletionTokens": 524716,
+    "totalCostUsd": 0.9246241679999999
+  },
+  "db": {
+    "runsSumCostUsd": 0.31777197599999996,
+    "usageSumCostUsd": 0.9246241679999999,
+    "abf5Run": {
+      "id": "run_abf5fe78aab1e932ff",
+      "status": "failed",
+      "cost_usd": null,
+      "prompt_tokens": null,
+      "completion_tokens": null
+    },
+    "abf5Usage": {
+      "n": 20,
+      "cost": 0.299980656,
+      "p": 547696,
+      "c": 124569
+    },
+    "checksTableColumns": [
+      "id:TEXT",
+      "run_id:TEXT",
+      "check_id:TEXT",
+      "status:TEXT",
+      "detail:TEXT",
+      "mandatory:INTEGER",
+      "file:TEXT",
+      "line:INTEGER",
+      "created_at:TEXT"
+    ],
+    "firstCheckRow": {
+      "id": "chk_218864165912c7b66d",
+      "run_id": "run_abf5fe78aab1e932ff",
+      "check_id": "plan.coverage",
+      "status": "pass",
+      "detail": "15 planned files present",
+      "mandatory": 1,
+      "file": null,
+      "line": null,
+      "created_at": "2026-11-04T03:14:52.309Z"
+    },
+    "nonTerminalOtherCount": 0
+  },
+  "uiReads": {
+    "capReadPath": "RunDetailPage.tsx:199-201 reads snapshot.data.limits.maxCostUsd",
+    "checkReadPath": "RunDetailPage.tsx:655-658 reads check.file/check.code/check.durationMs",
+    "routeProvides": {
+      "snapshotLimits": false,
+      "checkFileAny": true,
+      "checkCodeAny": false,
+      "checkDurationMsAny": false
+    },
+    "checkSample": {
+      "id": "plan.coverage",
+      "status": "pass",
+      "detail": "15 planned files present",
+      "mandatory": true
+    }
+  },
+  "spendContradiction": {
+    "statsTotalCostUsd": 0.9246241679999999,
+    "sumOfRunRowsUsd": 0.31777197599999996,
+    "differenceUsd": 0.606852192,
+    "abf5RunCostUsd": null,
+    "abf5MeasuredUsageUsd": 0.299980656
+  }
+}

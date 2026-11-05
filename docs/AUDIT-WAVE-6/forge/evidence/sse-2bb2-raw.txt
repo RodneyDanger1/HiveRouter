@@ -1,0 +1,220 @@
+id: 660
+event: run.queued
+data: {"schema":"hive.api.v1","type":"run.queued","data":{"runId":"run_2bb2f8edf3043fe89e","preset":"full-build"},"meta":{"seq":660,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 661
+event: run.started
+data: {"schema":"hive.api.v1","type":"run.started","data":{"runId":"run_2bb2f8edf3043fe89e","preset":"full-build"},"meta":{"seq":661,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 662
+event: phase.started
+data: {"schema":"hive.api.v1","type":"phase.started","data":{"phase":"planning"},"meta":{"seq":662,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 663
+event: agent.started
+data: {"schema":"hive.api.v1","type":"agent.started","data":{"stepId":"stp_78c917862c7d02a2cd","agentId":"architect","phase":"planning"},"meta":{"seq":663,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 664
+event: agent.completed
+data: {"schema":"hive.api.v1","type":"agent.completed","data":{"stepId":"stp_78c917862c7d02a2cd","agentId":"architect","phase":"planning","usage":{"promptTokens":604,"completionTokens":2115,"cacheHitTokens":0,"cacheMissTokens":604,"reasoningTokens":0,"costUsd":0.0027191999999999997,"source":"provider","model":"deepseek-flash"}},"meta":{"seq":664,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 665
+event: phase.completed
+data: {"schema":"hive.api.v1","type":"phase.completed","data":{"phase":"planning","files":14},"meta":{"seq":665,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 666
+event: phase.started
+data: {"schema":"hive.api.v1","type":"phase.started","data":{"phase":"routing"},"meta":{"seq":666,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 667
+event: route.decided
+data: {"schema":"hive.api.v1","type":"route.decided","data":{"taskId":"README.md","agentId":"markdown-engine","model":"deepseek-flash","thinking":"disabled","score":0.7073999999999999},"meta":{"seq":667,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 668
+event: route.decided
+data: {"schema":"hive.api.v1","type":"route.decided","data":{"taskId":"src/audit/__init__.py","agentId":"python-engine","model":"deepseek-flash","thinking":"disabled","score":0.791},"meta":{"seq":668,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 669
+event: route.decided
+data: {"schema":"hive.api.v1","type":"route.decided","data":{"taskId":"src/audit/claim_model.py","agentId":"python-engine","model":"deepseek-flash","thinking":"disabled","score":0.9109999999999999},"meta":{"seq":669,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 670
+event: route.decided
+data: {"schema":"hive.api.v1","type":"route.decided","data":{"taskId":"src/audit/artifact_reader.py","agentId":"python-engine","model":"deepseek-flash","thinking":"disabled","score":0.9109999999999999},"meta":{"seq":670,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 671
+event: route.decided
+data: {"schema":"hive.api.v1","type":"route.decided","data":{"taskId":"src/audit/capability_probe.py","agentId":"python-engine","model":"deepseek-flash","thinking":"disabled","score":0.9109999999999999},"meta":{"seq":671,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 672
+event: route.decided
+data: {"schema":"hive.api.v1","type":"route.decided","data":{"taskId":"src/audit/learning_loop_check.py","agentId":"python-engine","model":"deepseek-flash","thinking":"disabled","score":0.9109999999999999},"meta":{"seq":672,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 673
+event: route.decided
+data: {"schema":"hive.api.v1","type":"route.decided","data":{"taskId":"src/audit/persona_persistence_check.py","agentId":"python-engine","model":"deepseek-flash","thinking":"disabled","score":0.9109999999999999},"meta":{"seq":673,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 674
+event: route.decided
+data: {"schema":"hive.api.v1","type":"route.decided","data":{"taskId":"src/audit/self_report_guard.py","agentId":"python-engine","model":"deepseek-flash","thinking":"disabled","score":0.791},"meta":{"seq":674,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 675
+event: route.decided
+data: {"schema":"hive.api.v1","type":"route.decided","data":{"taskId":"src/audit/report_builder.py","agentId":"python-engine","model":"deepseek-flash","thinking":"disabled","score":0.9109999999999999},"meta":{"seq":675,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 676
+event: route.decided
+data: {"schema":"hive.api.v1","type":"route.decided","data":{"taskId":"src/main.py","agentId":"python-engine","model":"deepseek-flash","thinking":"disabled","score":0.9109999999999999},"meta":{"seq":676,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 677
+event: route.decided
+data: {"schema":"hive.api.v1","type":"route.decided","data":{"taskId":"tests/test_capability_probe.py","agentId":"python-engine","model":"deepseek-flash","thinking":"disabled","score":0.791},"meta":{"seq":677,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 678
+event: route.decided
+data: {"schema":"hive.api.v1","type":"route.decided","data":{"taskId":"tests/test_claim_model.py","agentId":"python-engine","model":"deepseek-flash","thinking":"disabled","score":0.791},"meta":{"seq":678,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 679
+event: route.decided
+data: {"schema":"hive.api.v1","type":"route.decided","data":{"taskId":"tests/test_persona_persistence.py","agentId":"python-engine","model":"deepseek-flash","thinking":"disabled","score":0.791},"meta":{"seq":679,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 680
+event: route.decided
+data: {"schema":"hive.api.v1","type":"route.decided","data":{"taskId":"tests/test_self_report_guard.py","agentId":"python-engine","model":"deepseek-flash","thinking":"disabled","score":0.791},"meta":{"seq":680,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 681
+event: phase.completed
+data: {"schema":"hive.api.v1","type":"phase.completed","data":{"phase":"routing","routes":14,"allocatedCostUsd":0.030106,"reserveUsd":0.01},"meta":{"seq":681,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 682
+event: phase.started
+data: {"schema":"hive.api.v1","type":"phase.started","data":{"phase":"generating"},"meta":{"seq":682,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 683
+event: context.packed
+data: {"schema":"hive.api.v1","type":"context.packed","data":{"taskId":"src/audit/__init__.py","tokens":1303,"prefixHash":"2ced50f2d8cb4c04088b64380f67593921fb465c1587d59650ece89ab9504e6e","degraded":false},"meta":{"seq":683,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 684
+event: agent.started
+data: {"schema":"hive.api.v1","type":"agent.started","data":{"stepId":"stp_83fc38cb980b1a9155","agentId":"python-engine","phase":"generating"},"meta":{"seq":684,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 685
+event: agent.completed
+data: {"schema":"hive.api.v1","type":"agent.completed","data":{"stepId":"stp_83fc38cb980b1a9155","agentId":"python-engine","phase":"generating","usage":{"promptTokens":1256,"completionTokens":930,"cacheHitTokens":0,"cacheMissTokens":1256,"reasoningTokens":0,"costUsd":0.0014927999999999999,"source":"provider","model":"deepseek-flash"}},"meta":{"seq":685,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 686
+event: file.written
+data: {"schema":"hive.api.v1","type":"file.written","data":{"path":"src/audit/__init__.py","agentId":"python-engine","bytes":2929},"meta":{"seq":686,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 687
+event: context.packed
+data: {"schema":"hive.api.v1","type":"context.packed","data":{"taskId":"src/audit/claim_model.py","tokens":1321,"prefixHash":"2ced50f2d8cb4c04088b64380f67593921fb465c1587d59650ece89ab9504e6e","degraded":false},"meta":{"seq":687,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 688
+event: agent.started
+data: {"schema":"hive.api.v1","type":"agent.started","data":{"stepId":"stp_747eed3138d3e49add","agentId":"python-engine","phase":"generating"},"meta":{"seq":688,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 689
+event: agent.completed
+data: {"schema":"hive.api.v1","type":"agent.completed","data":{"stepId":"stp_747eed3138d3e49add","agentId":"python-engine","phase":"generating","usage":{"promptTokens":1270,"completionTokens":3252,"cacheHitTokens":1024,"cacheMissTokens":246,"reasoningTokens":0,"costUsd":0.003982344,"source":"provider","model":"deepseek-flash"}},"meta":{"seq":689,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 690
+event: file.written
+data: {"schema":"hive.api.v1","type":"file.written","data":{"path":"src/audit/claim_model.py","agentId":"python-engine","bytes":11556},"meta":{"seq":690,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 691
+event: context.packed
+data: {"schema":"hive.api.v1","type":"context.packed","data":{"taskId":"src/audit/artifact_reader.py","tokens":4207,"prefixHash":"2ced50f2d8cb4c04088b64380f67593921fb465c1587d59650ece89ab9504e6e","degraded":false},"meta":{"seq":691,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 692
+event: agent.started
+data: {"schema":"hive.api.v1","type":"agent.started","data":{"stepId":"stp_b8fa2c40a3955fda93","agentId":"python-engine","phase":"generating"},"meta":{"seq":692,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 693
+event: agent.completed
+data: {"schema":"hive.api.v1","type":"agent.completed","data":{"stepId":"stp_b8fa2c40a3955fda93","agentId":"python-engine","phase":"generating","usage":{"promptTokens":4017,"completionTokens":3481,"cacheHitTokens":1152,"cacheMissTokens":2865,"reasoningTokens":0,"costUsd":0.005043612,"source":"provider","model":"deepseek-flash"}},"meta":{"seq":693,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 694
+event: file.written
+data: {"schema":"hive.api.v1","type":"file.written","data":{"path":"src/audit/artifact_reader.py","agentId":"python-engine","bytes":12919},"meta":{"seq":694,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 695
+event: context.packed
+data: {"schema":"hive.api.v1","type":"context.packed","data":{"taskId":"src/audit/capability_probe.py","tokens":4553,"prefixHash":"2ced50f2d8cb4c04088b64380f67593921fb465c1587d59650ece89ab9504e6e","degraded":false},"meta":{"seq":695,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 696
+event: agent.started
+data: {"schema":"hive.api.v1","type":"agent.started","data":{"stepId":"stp_2a458e67527ba7a55e","agentId":"python-engine","phase":"generating"},"meta":{"seq":696,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 697
+event: agent.completed
+data: {"schema":"hive.api.v1","type":"agent.completed","data":{"stepId":"stp_2a458e67527ba7a55e","agentId":"python-engine","phase":"generating","usage":{"promptTokens":4166,"completionTokens":4583,"cacheHitTokens":1152,"cacheMissTokens":3014,"reasoningTokens":0,"costUsd":0.006410712,"source":"provider","model":"deepseek-flash"}},"meta":{"seq":697,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 698
+event: file.written
+data: {"schema":"hive.api.v1","type":"file.written","data":{"path":"src/audit/capability_probe.py","agentId":"python-engine","bytes":17903},"meta":{"seq":698,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 699
+event: context.packed
+data: {"schema":"hive.api.v1","type":"context.packed","data":{"taskId":"src/audit/learning_loop_check.py","tokens":4549,"prefixHash":"2ced50f2d8cb4c04088b64380f67593921fb465c1587d59650ece89ab9504e6e","degraded":false},"meta":{"seq":699,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 700
+event: agent.started
+data: {"schema":"hive.api.v1","type":"agent.started","data":{"stepId":"stp_c7888bba5dc8792790","agentId":"python-engine","phase":"generating"},"meta":{"seq":700,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 701
+event: agent.completed
+data: {"schema":"hive.api.v1","type":"agent.completed","data":{"stepId":"stp_c7888bba5dc8792790","agentId":"python-engine","phase":"generating","usage":{"promptTokens":4160,"completionTokens":4504,"cacheHitTokens":1152,"cacheMissTokens":3008,"reasoningTokens":0,"costUsd":0.006314112,"source":"provider","model":"deepseek-flash"}},"meta":{"seq":701,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 702
+event: file.written
+data: {"schema":"hive.api.v1","type":"file.written","data":{"path":"src/audit/learning_loop_check.py","agentId":"python-engine","bytes":15501},"meta":{"seq":702,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 703
+event: context.packed
+data: {"schema":"hive.api.v1","type":"context.packed","data":{"taskId":"src/audit/persona_persistence_check.py","tokens":4555,"prefixHash":"2ced50f2d8cb4c04088b64380f67593921fb465c1587d59650ece89ab9504e6e","degraded":false},"meta":{"seq":703,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 704
+event: agent.started
+data: {"schema":"hive.api.v1","type":"agent.started","data":{"stepId":"stp_b6c3f2e42e4217f3d2","agentId":"python-engine","phase":"generating"},"meta":{"seq":704,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 705
+event: agent.completed
+data: {"schema":"hive.api.v1","type":"agent.completed","data":{"stepId":"stp_b6c3f2e42e4217f3d2","agentId":"python-engine","phase":"generating","usage":{"promptTokens":4163,"completionTokens":5740,"cacheHitTokens":1152,"cacheMissTokens":3011,"reasoningTokens":0,"costUsd":0.007798212,"source":"provider","model":"deepseek-flash"}},"meta":{"seq":705,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 706
+event: file.written
+data: {"schema":"hive.api.v1","type":"file.written","data":{"path":"src/audit/persona_persistence_check.py","agentId":"python-engine","bytes":20988},"meta":{"seq":706,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 707
+event: context.packed
+data: {"schema":"hive.api.v1","type":"context.packed","data":{"taskId":"src/audit/self_report_guard.py","tokens":4206,"prefixHash":"2ced50f2d8cb4c04088b64380f67593921fb465c1587d59650ece89ab9504e6e","degraded":false},"meta":{"seq":707,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 708
+event: agent.started
+data: {"schema":"hive.api.v1","type":"agent.started","data":{"stepId":"stp_303420b75ed0af6e26","agentId":"python-engine","phase":"generating"},"meta":{"seq":708,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 709
+event: agent.completed
+data: {"schema":"hive.api.v1","type":"agent.completed","data":{"stepId":"stp_303420b75ed0af6e26","agentId":"python-engine","phase":"generating","usage":{"promptTokens":4017,"completionTokens":3654,"cacheHitTokens":1152,"cacheMissTokens":2865,"reasoningTokens":0,"costUsd":0.005251212000000001,"source":"provider","model":"deepseek-flash"}},"meta":{"seq":709,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 710
+event: file.written
+data: {"schema":"hive.api.v1","type":"file.written","data":{"path":"src/audit/self_report_guard.py","agentId":"python-engine","bytes":11673},"meta":{"seq":710,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 711
+event: context.packed
+data: {"schema":"hive.api.v1","type":"context.packed","data":{"taskId":"src/audit/report_builder.py","tokens":20719,"prefixHash":"2ced50f2d8cb4c04088b64380f67593921fb465c1587d59650ece89ab9504e6e","degraded":false},"meta":{"seq":711,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 712
+event: agent.started
+data: {"schema":"hive.api.v1","type":"agent.started","data":{"stepId":"stp_cb1623ba3e89c5ed26","agentId":"python-engine","phase":"generating"},"meta":{"seq":712,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 713
+event: agent.failed
+data: {"schema":"hive.api.v1","type":"agent.failed","data":{"stepId":"stp_cb1623ba3e89c5ed26","agentId":"python-engine","phase":"generating","code":"E_BUDGET_UNKNOWN_RESERVATION","message":"E_BUDGET_UNKNOWN_RESERVATION"},"meta":{"seq":713,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+
+id: 714
+event: run.failed
+data: {"schema":"hive.api.v1","type":"run.failed","data":{"code":"E_BUDGET_UNKNOWN_RESERVATION","message":"E_BUDGET_UNKNOWN_RESERVATION"},"meta":{"seq":714,"runId":"run_2bb2f8edf3043fe89e","replay":true}}
+

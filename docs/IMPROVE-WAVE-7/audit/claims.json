@@ -1,0 +1,194 @@
+{
+  "schema": "hive.audit.wave7.v1",
+  "auditor": {
+    "role": "independent read-only auditor",
+    "skill": "auditor",
+    "write_scope": "docs/IMPROVE-WAVE-7/audit/**",
+    "no_git": true,
+    "no_paid_calls": true,
+    "no_server_restart_by_auditor": true,
+    "no_subagents": true
+  },
+  "repo": "C:\\Users\\Riley\\Desktop\\HiveRouter",
+  "generated_at": "2026-11-04T00:33:00-06:00",
+  "snapshot": {
+    "frozen_at": "2026-11-04T00:32:26-06:00",
+    "report": {
+      "path": "docs/IMPROVE-WAVE-7/REPORT.md",
+      "mtime": "2026-11-04T00:24:43-06:00",
+      "sha256": "C2301DDE69BCCB2200450B13427F3FEC409AD9C7207760D2A65F0F5CB24D895A",
+      "version_note": "v2 after the mid-audit phase-invariant edit"
+    },
+    "hashes": {
+      "src/server/runs/recorder.ts": "52C468137695E944072788E3492AED7FE5274FC4B328D23F3ACF2306E7B9833A",
+      "src/server/logic/run-state.ts": "6A6DAAA8BC3794F3C296965666E8E3C35BA932F9FDE5D7BD6EE68FA29B34C310",
+      "test/unit/run-transition-guard.test.ts": "C126A93B6EA3E11876CF4ADF0C6D4E401DF1408268FA3D9B99B329740073529E",
+      "web/src/api.ts": "A67F13477B516069E885DAC69E558567A1028AA5E962AEBB2C65F7F193D303F3",
+      "web/src/pages/RunsPage.tsx": "AC49CCF80312657DA9BC76CF9508318195A11B0CD614675DCCC099C73B40A8D4",
+      "web/src/pages/SettingsPage.tsx": "B02A692E150E9643FF7FA850ADD383F0E3128D864AAE5E4328B8C5364FF0FDE4",
+      "e2e/ui-audit.spec.ts": "295F270545F9E40DA15E32D8767490848EA4B953726E15A2D14CABD46BA57C77"
+    }
+  },
+  "moving_tree": {
+    "detected": true,
+    "events": [
+      "2026-11-04T00:14:06-06:00 REPORT v1: 3/3 targeted, 51 files / 315 tests, phase matrix unwired",
+      "2026-11-04T00:18:54-06:00 targeted v1: Tests 3 passed (3) (not persisted)",
+      "2026-11-04T00:20:49-06:00 src/server/runs/recorder.ts changed 17549 -> 18274 bytes (terminal-phase + completed->done invariants)",
+      "2026-11-04T00:20:56-06:00 test/unit/run-transition-guard.test.ts changed 51 lines/3 tests -> 71 lines/5 tests",
+      "2026-11-04T00:20:32-06:00 full suite started on v1; became mixed-version: 51 files / 317 tests / 2 failed / 315 passed (full-suite.out.txt, discarded)",
+      "2026-11-04T00:22:40-06:00 web/dist rebuilt",
+      "2026-11-04T00:24:14-06:00 server restarted by orchestrator (PID 11168, /api/health ok)",
+      "2026-11-04T00:24:43-06:00 REPORT v2: 5/5, 51 files / 317 tests, status + terminal-phase invariants",
+      "2026-11-04T00:25:26-06:00 E2E on restarted server, 26/26",
+      "2026-11-04T00:28:32-06:00 unrelated docs/IMPROVE-WAVE-7/audit2/ created by another writer; not used as evidence"
+    ],
+    "resolution": "Final snapshot frozen after 00:24:43; source/test/docs did not change during the final suite, E2E, probes, or hash verification."
+  },
+  "overall_verdict": "PASS-WITH-NOTES",
+  "ship_posture": "SHIP-eligible on the frozen snapshot after the stale README/PLAN counts are corrected; no product-behaviour blocker found.",
+  "claims": [
+    {
+      "id": 1,
+      "statement": "updateRun rejects terminal->running and queued->completed, allows queued->running and same-status writes; CAS cannot overwrite a concurrently changed status; legitimate lifecycle writes still work.",
+      "verdict": "PASS-WITH-NOTES",
+      "evidence": [
+        "src/server/runs/recorder.ts:150-188 (guard, terminal-phase/completed-done invariants, CAS)",
+        "docs/IMPROVE-WAVE-7/audit/probe-red.ts -> both pre-fix defects reproduced on verified backup copy",
+        "docs/IMPROVE-WAVE-7/audit/probe-transitions.out.json -> 38 cases; 5 illegal cases throw E_ILLEGAL_RUN_TRANSITION with row unchanged; legal/same-status pass; 3 CAS races fail closed; control passes; markRunning/markTerminal/cancelRun pass",
+        "docs/IMPROVE-WAVE-7/audit/full-suite-2.out.txt -> 51 files / 317 tests passed",
+        "docs/IMPROVE-WAVE-7/audit/e2e.out.txt -> 26/26 passed on restarted server"
+      ],
+      "notes": [
+        "F3: phase-only CAS race throws RunTransitionError with to=undefined (recorder.ts:186).",
+        "F4: missing-run status patch is a silent no-op; invalid status throws ZodError (pre-existing).",
+        "F5: full phase graph still not enforced; only terminal/completed invariants."
+      ]
+    },
+    {
+      "id": 2,
+      "statement": "Runs filtering is server-side through GET /api/runs?status=...; UI includes queued/paused/interrupted; no client-side 100-row blind spot; count is truthful.",
+      "verdict": "PASS-WITH-NOTES",
+      "evidence": [
+        "web/src/api.ts:309-316 sends status via URLSearchParams",
+        "web/src/pages/RunsPage.tsx:16 lists all 10 statuses; :20 reloads on status; no client-side filter",
+        "src/server/app.ts:752-757 clamps limit and passes query.status",
+        "src/server/runs/recorder.ts:204-208 filters with WHERE status = ?",
+        "docs/IMPROVE-WAVE-7/audit/probe-ui.out.json -> /api/runs?limit=100 (30 rows), &status=failed (3 rows), &status=queued (0 rows); labels 30/3 'server-filtered'"
+      ],
+      "notes": [
+        "F2: count is the returned-row count, not a total; /api/runs returns no total and the UI caps at 100, so >100 matches would undercount. The original cross-100 filtering blind spot is fixed."
+      ]
+    },
+    {
+      "id": 3,
+      "statement": "Settings shows nested limits/features scalar values without leaking objects/key material; E2E assertions are additive, not weakened.",
+      "verdict": "PASS",
+      "evidence": [
+        "web/src/pages/SettingsPage.tsx:145-157 flatten (scalars only; depth<=2; arrays skipped); calls for limits and features",
+        "src/server/app.ts:212-218 returns limits/features plus key status; src/server/config.ts:47 retentionDays is second-level",
+        "docs/IMPROVE-WAVE-7/audit/probe-ui.out.json -> 18 limits.* labels incl limits.maxRunCostUsd, limits.eventReplayWindow, limits.retentionDays.events; features.routing/learning; no '[object Object]'; no sk- pattern",
+        "docs/IMPROVE-WAVE-7/audit/live-settings.png",
+        "fc.exe diff backup vs current e2e: exactly +2 lines at e2e/ui-audit.spec.ts:256-257; backup equals Wave 6 final hash",
+        "docs/IMPROVE-WAVE-7/audit/e2e.out.txt -> 26 passed"
+      ],
+      "notes": [
+        "Key card intentionally shows fingerprint c30cfdbc, not key material; the settings key object is never passed to SettingsView.",
+        "E2E pins only 2 labels; the auditor probe covered 18."
+      ]
+    },
+    {
+      "id": 4,
+      "statement": "Test counts/claims are real: 51 files/315 tests; E2E 26/26; stage 163/45/48/24; no unrelated file changes; no historical backfill/no P7 data.",
+      "verdict": "PASS-WITH-NOTES",
+      "evidence": [
+        "docs/IMPROVE-WAVE-7/audit/full-suite-2.out.txt -> 51 files / 317 tests passed (0 failed, 0 skipped), pre/post source hash identical",
+        "docs/IMPROVE-WAVE-7/audit/full-suite.out.txt -> mixed run 315 passed + 2 new phase tests failed against the v1 recorder (status guard only), proving 315 was the pre-move count",
+        "docs/IMPROVE-WAVE-7/audit/targeted-after-move.out.txt -> 5/5",
+        "docs/IMPROVE-WAVE-7/audit/e2e.out.txt -> 26 passed",
+        "docs/IMPROVE-WAVE-7/audit/assert-stage.out.txt -> files 163, tables 45, routes 48, scripts 24, violations []",
+        "docs/IMPROVE-WAVE-7/audit/hash-compare-vs-w6.txt -> 162 W6-final entries: 5 changed, 0 missing, 1 new file in the audited code directories (test/unit/run-transition-guard.test.ts); package-lock/tsconfig/vitest are old files outside the W6 manifest",
+        "docs/IMPROVE-WAVE-7/audit/probe-db.out.json -> 30 runs; consent/sealed/promotions/monitor = 0; hive.db mtime 2026-11-03 23:31:20, -wal 23:34:57"
+      ],
+      "notes": [
+        "F1: README.md:94,120 and docs/PLAN-v3.md:506 still say 315 tests and GREEN 3/3; REPORT v2 and the frozen snapshot are 317 tests / 5/5. Documentation-only staleness.",
+        "The 163 stage file count is exactly Wave 6's 162 + the new unit test; no route/table/script change."
+      ]
+    },
+    {
+      "id": 5,
+      "statement": "The phase-transition matrix remains intentionally unwired (safe scope), not falsely claimed as fixed.",
+      "verdict": "PASS",
+      "evidence": [
+        "grep src/: PHASE_TRANSITIONS / assertPhaseTransition / transitionPhase / allowedNextPhases only in src/server/logic/run-state.ts (definitions/helpers), zero production callers",
+        "docs/IMPROVE-WAVE-7/REPORT.md:33-36,99-101: status edges plus terminal-phase immutability, full PHASE_TRANSITIONS not wired",
+        "src/server/runs/recorder.ts:164-173 uses isTerminalStatus + completed->done, not PHASE_TRANSITIONS"
+      ],
+      "notes": [
+        "The 00:20:49 edit added two narrow phase invariants; it did not wire the phase matrix. REPORT v2 states this accurately."
+      ]
+    }
+  ],
+  "register": [
+    { "claim": "Guard code present at recorder.ts:150-188", "status": "VERIFIED", "evidence": "read current source" },
+    { "claim": "Pre-fix updateRun accepted completed->running and queued->completed", "status": "VERIFIED", "evidence": "probe-red.ts on backup copy; backup sha256 83223417... equals baseline" },
+    { "claim": "Current updateRun rejects the 5 illegal transitions without row mutation", "status": "VERIFIED", "evidence": "probe-transitions.out.json" },
+    { "claim": "CAS fails closed on 3 injected concurrent-status races", "status": "VERIFIED", "evidence": "probe-transitions.out.json (competing second SQLite connection)" },
+    { "claim": "Legitimate production lifecycle helpers still write successfully", "status": "VERIFIED", "evidence": "probe-transitions.out.json; full suite 317 passed" },
+    { "claim": "315 tests was the pre-move count", "status": "INFERRED", "evidence": "mixed run: 315 passed + 2 new phase tests failed against the v1 recorder; REPORT v1 read" },
+    { "claim": "Runs status filter is server-side; live requests/counts match", "status": "VERIFIED", "evidence": "probe-ui.out.json; app.ts:752-757; recorder.ts:204-208" },
+    { "claim": "UI filter list includes queued/paused/interrupted", "status": "VERIFIED", "evidence": "RunsPage.tsx:16 (all 10 statuses)" },
+    { "claim": "Count is a total count above 100 matches", "status": "REFUTED", "evidence": "no total in API; limit=100; page renders list.length" },
+    { "claim": "Settings renders nested scalar limits/features without object/key leakage", "status": "VERIFIED", "evidence": "probe-ui.out.json DOM text; live-settings.png" },
+    { "claim": "E2E additions are additive only (+2 lines, no removals)", "status": "VERIFIED", "evidence": "fc diff; backup hash equals W6 final" },
+    { "claim": "No unrelated code/test/config changes", "status": "VERIFIED", "evidence": "hash-compare-vs-w6.txt: 5 changed, 0 missing, 1 new file" },
+    { "claim": "No historical backfill / no P7 data", "status": "VERIFIED", "evidence": "DB/WAL mtimes; probe-db.out.json counts" },
+    { "claim": "PHASE_TRANSITIONS has zero production callers", "status": "VERIFIED", "evidence": "grep src/" },
+    { "claim": "Build PASS", "status": "UNVERIFIED", "evidence": "not re-run (writes web/dist outside audit scope); rebuilt dist served 26/26 E2E" },
+    { "claim": "True external-process CAS under production load", "status": "UNVERIFIED", "evidence": "simulated with a second SQLite connection; app is single-process" },
+    { "claim": "Non-Chrome browser / mobile filter interaction", "status": "UNVERIFIED", "evidence": "not probed; out of claim scope" }
+  ],
+  "residual_findings": [
+    { "id": "F1", "severity": "low", "area": "docs", "detail": "README.md:94,120 and docs/PLAN-v3.md:506 still say 315 tests / GREEN 3/3; REPORT v2 and frozen snapshot are 317 tests / 5/5." },
+    { "id": "F2", "severity": "low", "area": "product", "detail": "Runs page shows at most 100 returned rows and no total; the 'N runs - server-filtered' label undercounts above 100 matches. The cross-100 filtering blind spot itself is fixed." },
+    { "id": "F3", "severity": "low", "area": "product", "detail": "Phase-only CAS race throws RunTransitionError with to=undefined at recorder.ts:186; correct fail-closed code, imprecise payload." },
+    { "id": "F4", "severity": "low", "area": "product", "detail": "Missing-run status patch silently no-ops; invalid status string throws ZodError (both pre-existing)." },
+    { "id": "F5", "severity": "low", "area": "scope", "detail": "Full phase graph unguarded; only terminal immutability and completed->done enforced (deferred explicitly)." },
+    { "id": "F6", "severity": "medium", "area": "process", "detail": "Product tree moved mid-audit (source/test 00:20:49-56, server restart 00:24:14, REPORT v2 00:24:43); first full suite mixed-version and discarded; freeze required for future audits." },
+    { "id": "F7", "severity": "low", "area": "verification", "detail": "Build exit code not independently re-run; rebuilt dist served green E2E, so build health is inferred." },
+    { "id": "F8", "severity": "low", "area": "environment", "detail": "Sanctioned commands regenerated docs/UI-WAVE-1/shots/* and .qa-api-results/*; full suite appended E_RUN_TIMEOUT records to data/logs/errors.jsonl (pre-existing test log side effect)." }
+  ],
+  "commands": [
+    { "command": "npm.cmd test -- --run test/unit/run-transition-guard.test.ts", "result": "5 tests passed (5)" },
+    { "command": "npm.cmd test", "result": "51 files passed (51); 317 tests passed (317)" },
+    { "command": "npm.cmd run e2e", "result": "26 passed (1.5m)" },
+    { "command": "npm.cmd run typecheck", "result": "exit 0 (no output)" },
+    { "command": "npm.cmd run assert-stage -- --stage=p7 --json", "result": "ok true; files 163, tables 45, routes 48, scripts 24, violations []" },
+    { "command": "npm.cmd run stub-sweep", "result": "clean (86 files)" },
+    { "command": "npm.cmd run secret-scan", "result": "clean (161 files)" },
+    { "command": ".node_modules\\.bin\\tsx.cmd docs\\IMPROVE-WAVE-7\\audit\\probe-transitions.ts", "result": "38 cases; see probe-transitions.out.json" },
+    { "command": ".node_modules\\.bin\\tsx.cmd docs\\IMPROVE-WAVE-7\\audit\\probe-red.ts", "result": "2 pre-fix defects reproduced" },
+    { "command": "node docs\\IMPROVE-WAVE-7\\audit\\probe-db.mjs", "result": "30 runs; P7 tables zero" },
+    { "command": "node docs\\IMPROVE-WAVE-7\\audit\\probe-ui.mjs", "result": "filter requests/counts + settings; see probe-ui.out.json" }
+  ],
+  "artifacts": [
+    "docs/IMPROVE-WAVE-7/audit/AUDIT.md",
+    "docs/IMPROVE-WAVE-7/audit/full-suite-2.out.txt",
+    "docs/IMPROVE-WAVE-7/audit/full-suite.out.txt",
+    "docs/IMPROVE-WAVE-7/audit/targeted-after-move.out.txt",
+    "docs/IMPROVE-WAVE-7/audit/e2e.out.txt",
+    "docs/IMPROVE-WAVE-7/audit/typecheck.out.txt",
+    "docs/IMPROVE-WAVE-7/audit/assert-stage.out.txt",
+    "docs/IMPROVE-WAVE-7/audit/stub-sweep.out.txt",
+    "docs/IMPROVE-WAVE-7/audit/secret-scan.out.txt",
+    "docs/IMPROVE-WAVE-7/audit/probe-transitions.out.json",
+    "docs/IMPROVE-WAVE-7/audit/probe-red.out.json",
+    "docs/IMPROVE-WAVE-7/audit/probe-db.out.json",
+    "docs/IMPROVE-WAVE-7/audit/probe-ui.out.json",
+    "docs/IMPROVE-WAVE-7/audit/hash-compare-vs-w6.txt",
+    "docs/IMPROVE-WAVE-7/audit/snapshot.txt",
+    "docs/IMPROVE-WAVE-7/audit/live-runs-failed.png",
+    "docs/IMPROVE-WAVE-7/audit/live-runs-queued.png",
+    "docs/IMPROVE-WAVE-7/audit/live-settings.png"
+  ]
+}

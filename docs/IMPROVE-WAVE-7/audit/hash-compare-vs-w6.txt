@@ -1,0 +1,10 @@
+﻿W6_final_entries=162
+CHANGED=5
+CHANGED  e2e/ui-audit.spec.ts
+CHANGED  src/server/runs/recorder.ts
+CHANGED  web/src/api.ts
+CHANGED  web/src/pages/RunsPage.tsx
+CHANGED  web/src/pages/SettingsPage.tsx
+MISSING=0
+NOT_IN_W6_SET=1
+NEW-OR-UNTRACKED  test/unit/run-transition-guard.test.ts

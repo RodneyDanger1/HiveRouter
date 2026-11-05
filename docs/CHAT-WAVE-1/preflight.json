@@ -1,0 +1,78 @@
+
+> hive-router@0.1.0 preflight
+> tsx scripts/preflight.ts --port 0 --json
+
+{
+  "schema": "hive.cli.v1",
+  "ok": true,
+  "command": "hive.preflight",
+  "code": null,
+  "data": {
+    "checks": [
+      {
+        "name": "node",
+        "ok": true,
+        "actual": "v26.7.0",
+        "required": "v26.7.0",
+        "code": "E_RESOURCE_INSUFFICIENT"
+      },
+      {
+        "name": "npm",
+        "ok": true,
+        "actual": "11.19.0",
+        "required": "11.19.0",
+        "code": "E_RESOURCE_INSUFFICIENT"
+      },
+      {
+        "name": "disk",
+        "ok": true,
+        "actual": 8.51,
+        "required": 4.5,
+        "code": "E_RESOURCE_INSUFFICIENT"
+      },
+      {
+        "name": "ram",
+        "ok": true,
+        "actual": 2.16,
+        "required": 1.5,
+        "code": "E_RESOURCE_INSUFFICIENT"
+      },
+      {
+        "name": "chrome",
+        "ok": true,
+        "actual": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "required": "installed system Chrome",
+        "code": "E_E2E_BROWSER_MISSING"
+      },
+      {
+        "name": "port",
+        "ok": true,
+        "actual": "free",
+        "required": "free 127.0.0.1:0",
+        "code": "E_RESOURCE_INSUFFICIENT"
+      }
+    ],
+    "measurements": {
+      "nodeVersion": "v26.7.0",
+      "npmVersion": "11.19.0",
+      "freeDiskGb": 8.51,
+      "freeRamGb": 2.16,
+      "chromePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "portFree": true
+    },
+    "constraints": {
+      "minDiskGb": 4.5,
+      "minRamGb": 1.5,
+      "nodeVersion": "26.7.0",
+      "npmVersion": "11.19.0",
+      "port": 0,
+      "host": "127.0.0.1"
+    }
+  },
+  "warnings": [],
+  "meta": {
+    "durationMs": 575,
+    "dryRun": true,
+    "provenance": "human"
+  }
+}

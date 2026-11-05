@@ -1,0 +1,4 @@
+﻿# Unknown API route (read-only probe)
+GET /api/nope -> HTTP 404 {"error":{"code":"E_RUN_NOT_FOUND","message":"Run not found.","retryable":false}}
+GET /xyz (Accept: text/html) -> HTTP 404 text/html (SPA shell -> NotFoundPage)
+GET /runs -> HTTP 200 text/html

@@ -1,0 +1,26 @@
+{
+  "stage": "p6a",
+  "label": "B1",
+  "paths": [
+    "src/shared/", "src/server/config.ts", "src/server/index.ts", "src/server/app.ts",
+    "src/server/env.ts", "src/server/db/", "src/server/llm/", "src/server/pipeline/", "src/server/runs/",
+    "src/server/routes/", "src/server/security/", "src/server/verify/", "src/server/vault/",
+    "src/server/agents/", "src/server/logic/", "src/server/routing/", "src/server/context/",
+    "src/server/repair/", "src/server/quality/", "src/server/retry/", "web/", "public/",
+    "scripts/", "test/", "e2e/", "config/", "docs/", "logs/", "reports/",
+    "package.json", "package-lock.json", "tsconfig.json", ".gitignore", ".env.example",
+    "README.md", "AGENTS.md", "playwright.config.ts", "vitest.config.ts"
+  ],
+  "tables": [
+    "route_decisions", "route_candidates", "agent_stats", "context_packs", "context_manifests",
+    "failure_signatures", "failure_occurrences", "verification_plans", "confidence_records",
+    "retry_attempts", "script_runs"
+  ],
+  "routes": [
+    "/api/runs/:id/routing", "/api/runs/:id/context", "/api/runs/:id/failures",
+    "/api/runs/:id/checks", "/api/runs/:id/retries", "/api/runs/:id/confidence",
+    "/api/stats/router", "/api/ops/reports/:kind", "/api/scripts", "/api/scripts/:id/dry-run"
+  ],
+  "uiRoutes": [],
+  "scripts": ["bench", "replay", "repo-map", "context:report", "integrity"]
+}

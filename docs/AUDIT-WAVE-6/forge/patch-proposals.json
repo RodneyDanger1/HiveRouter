@@ -1,0 +1,724 @@
+{
+  "schema": "hive.audit.forge.patch-proposals.v1",
+  "taskId": "task-3",
+  "auditId": "W6-AUD-03",
+  "generatedAt": "2026-11-04T04:24:00Z",
+  "repo": "C:\\Users\\Riley\\Desktop\\HiveRouter",
+  "baseline": {
+    "phase": "B2",
+    "activeRun": null,
+    "runs": 25,
+    "sourceMatchesBaselineSha256": true,
+    "webDistBuiltAt": "2026-11-04T04:01:15Z",
+    "serverStartedAt": "2026-11-04T03:42:05Z"
+  },
+  "constraints": {
+    "implemented": false,
+    "productEdits": 0,
+    "testEdits": 0,
+    "dbWrites": 0,
+    "paidCalls": 0,
+    "serverRestart": false,
+    "subagents": 0,
+    "git": "no .git in repo"
+  },
+  "proposals": [
+    {
+      "id": "P-1",
+      "title": "Persist measured usage on pipeline terminal paths (failed / budget_exceeded / cancelled; optional startup-interrupted coverage)",
+      "priority": "P1",
+      "status": "SUPPORTED",
+      "confidence": "high",
+      "sharedWith": ["W6-L-02"],
+      "rootCause": [
+        {
+          "file": "src/server/pipeline/run.ts",
+          "lines": "853-861",
+          "why": "gate-fail branch marks the run terminal without cost_usd/prompt_tokens/completion_tokens"
+        },
+        {
+          "file": "src/server/pipeline/run.ts",
+          "lines": "868-888",
+          "why": "catch branch (failed / budget_exceeded / cancelled / timeout) calls updateRun without usage fields"
+        },
+        {
+          "file": "src/server/pipeline/run.ts",
+          "lines": "337-346, 431-437",
+          "why": "review/audit and adhoc gate-fail branches use markTerminal without usage fields"
+        },
+        {
+          "file": "src/server/runs/manager.ts",
+          "lines": "250-258",
+          "why": "markTerminal, the shared terminal writer, never aggregates usage"
+        },
+        {
+          "file": "src/server/pipeline/run.ts",
+          "lines": "1075-1084",
+          "why": "success finalize is the only writer of cost_usd/tokens, proving the asymmetry"
+        }
+      ],
+      "evidence": [
+        "docs/AUDIT-WAVE-6/forge/evidence/cost-truth.json",
+        "docs/AUDIT-WAVE-6/forge/evidence/probe-cost-console.txt",
+        "docs/AUDIT-WAVE-6/forge/evidence/api-field-audit.json",
+        "docs/AUDIT-WAVE-6/forge/evidence/crop-abf5-spend-not-measured.png",
+        "docs/AUDIT-WAVE-6/forge/evidence/peer-logic-probe-rerun.txt"
+      ],
+      "measuredImpact": {
+        "runsAffected": 7,
+        "runsTotal": 25,
+        "unreportedMeasuredCostUsd": 0.606852192,
+        "abf5": {
+          "usageRows": 20,
+          "usageCostUsd": 0.299980656,
+          "usagePromptTokens": 547696,
+          "usageCompletionTokens": 124569,
+          "runCostUsd": null,
+          "traceCostUsd": 0.299980656
+        },
+        "statsVsRunSum": {
+          "statsTotalCostUsd": 0.924624168,
+          "sumRunsCostUsd": 0.317771976,
+          "differenceUsd": 0.606852192
+        }
+      },
+      "fix": {
+        "summary": "Make the single terminal writer copy usageTotals(runId) into the run row; route the catch branch through it.",
+        "edits": [
+          {
+            "file": "src/server/runs/manager.ts",
+            "lines": "6",
+            "before": "import { createRunRow, getRun, updateRun, emitEvent } from './recorder.js';",
+            "after": "import { createRunRow, getRun, updateRun, emitEvent, usageTotals } from './recorder.js';"
+          },
+          {
+            "file": "src/server/runs/manager.ts",
+            "lines": "250-258",
+            "before": "export function markTerminal(runId: string, status: RunStatus, phase: string, error?: { code?: string; message?: string }): void {\n  updateRun(runId, {\n    status,\n    phase,\n    finished_at: nowIso(),\n    error_code: error?.code ?? null,\n    error_message: error?.message ?? null,\n  });\n}",
+            "after": "export function markTerminal(runId: string, status: RunStatus, phase: string, error?: { code?: string; message?: string }): void {\n  const totals = usageTotals(runId);\n  updateRun(runId, {\n    status,\n    phase,\n    finished_at: nowIso(),\n    cost_usd: totals.costUsd,\n    prompt_tokens: totals.promptTokens,\n    completion_tokens: totals.completionTokens,\n    error_code: error?.code ?? null,\n    error_message: error?.message ?? null,\n  });\n}"
+          },
+          {
+            "file": "src/server/pipeline/run.ts",
+            "lines": "884",
+            "before": "updateRun(runId, { status, phase: 'done', finished_at: now(), error_code: code, error_message: redactString(message).slice(0, 1000) });",
+            "after": "markTerminal(runId, status, 'done', { code, message: redactString(message).slice(0, 1000) });"
+          },
+          {
+            "file": "src/server/runs/manager.ts",
+            "lines": "192-204 (optional, unobserved path)",
+            "before": "for (const row of active) releaseReservationsForRun(row.id);",
+            "after": "for (const row of active) {\n  const totals = usageTotals(row.id);\n  updateRun(row.id, { cost_usd: totals.costUsd, prompt_tokens: totals.promptTokens, completion_tokens: totals.completionTokens });\n  releaseReservationsForRun(row.id);\n}",
+            "optional": true,
+            "why": "covers a crashed/interrupted active run that already recorded usage; no such row exists in this DB, so it is not needed for the 7 measured cases"
+          }
+        ],
+        "callersKeptStable": true,
+        "schemaChange": false,
+        "notes": [
+          "markTerminal's signature and all three gate-fail call sites are unchanged.",
+          "The catch branch already imports markTerminal (run.ts:18); only the write call changes.",
+          "usageTotals is already the honest aggregator: NULL when no usage rows, NULL for all three fields when any row has source='unknown' (recorder.ts:355-378).",
+          "Do not fabricate 0 for a zero-call completed run; that is a separate product decision (peer W6-L-02)."
+        ]
+      },
+      "edgeCases": [
+        "no usage rows -> cost/tokens stay NULL (honest unknown)",
+        "any source='unknown' row -> all three fields NULL (existing usageTotals contract)",
+        "timeout with an aborted in-flight call -> only completed calls are summed, same as traces",
+        "double terminal write -> last write wins; all writers converge on the same totals",
+        "idempotent create replay (manager.ts:91-96) returns the same run id and never re-enters markTerminal",
+        "historical 7 runs remain NULL; no backfill in this fix"
+      ],
+      "tests": [
+        {
+          "file": "test/unit/run-terminal-usage.test.ts",
+          "type": "unit",
+          "name": "markTerminal persists provider usage sums and honest nulls",
+          "asserts": [
+            "run with two provider usage rows -> runs.cost_usd/prompt_tokens/completion_tokens equal the sums",
+            "run with an unknown-source usage row -> all three fields NULL",
+            "run with no usage rows -> all three fields NULL",
+            "gate-fail path and catch path both produce the same persisted totals"
+          ]
+        },
+        {
+          "file": "test/unit/run-terminal-usage.test.ts",
+          "type": "integration (app.inject, temp DB)",
+          "name": "failed run snapshot exposes measured cost",
+          "asserts": [
+            "GET /api/runs/:id/snapshot run.costUsd equals SUM(usage.cost_usd) for a failed fixture",
+            "sum(runs.cost_usd) equals SUM(usage.cost_usd) across runs that have usage (removes the stats contradiction)"
+          ]
+        }
+      ],
+      "rollback": {
+        "action": "revert the three edits",
+        "schemaOrDataImpact": "none; rows written by the fixed code keep their values, old rows stay NULL",
+        "risk": "low"
+      },
+      "preservedEvidence": [
+        "cost-truth.json",
+        "probe-cost-console.txt",
+        "api-field-audit.json",
+        "crop-abf5-spend-not-measured.png"
+      ]
+    },
+    {
+      "id": "P-2",
+      "title": "Show the persisted ledger once the run is terminal (fix the live-buffer precedence in the Events tab)",
+      "priority": "P1",
+      "status": "SUPPORTED (static; live->terminal transition not executed)",
+      "confidence": "high on the code path, medium on live UX frequency",
+      "sharedWith": ["W6-L-13"],
+      "rootCause": [
+        {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "lines": "133",
+          "why": "visibleEvents prefers any non-empty live array over the fetched persisted ledger"
+        },
+        {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "lines": "116-119, 135-139",
+          "why": "events is reset only on runId change and is not cleared when the stream closes at terminal"
+        },
+        {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "lines": "129-132",
+          "why": "persisted events are fetched exactly when terminal (and then ignored if live rows exist)"
+        },
+        {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "lines": "1009-1013",
+          "why": "the heading/description already claim the persisted ledger on terminal, so the UI lies about its own source"
+        }
+      ],
+      "evidence": [
+        "docs/AUDIT-WAVE-6/forge/evidence/probe-static.json",
+        "docs/AUDIT-WAVE-6/forge/evidence/probe-static-console.txt",
+        "docs/AUDIT-WAVE-6/forge/evidence/probe-ui.json",
+        "docs/TRACE/20261103T2200Z/03-forgewright-fixes.md line 82 (prior merge claim)",
+        "e2e/trace-fixes.spec.ts:4-23 (fresh-terminal coverage only)"
+      ],
+      "fix": {
+        "summary": "Extract a pure selector and use it: terminal -> persisted ledger (or empty), non-terminal -> live buffer.",
+        "edits": [
+          {
+            "file": "src/shared/run-events.ts",
+            "lines": "after 25 (new export)",
+            "before": "",
+            "after": "export function selectVisibleRunEvents(\n  terminal: boolean,\n  live: MappedRunEvent[],\n  persisted: MappedRunEvent[] | null,\n): MappedRunEvent[] {\n  return terminal ? persisted ?? [] : live;\n}"
+          },
+          {
+            "file": "web/src/pages/RunDetailPage.tsx",
+            "lines": "48 (import)",
+            "before": "import { useApiResource, useRunStream } from '../hooks/useApi';",
+            "after": "import { useApiResource, useRunStream } from '../hooks/useApi';\nimport { selectVisibleRunEvents } from '@shared/run-events';"
+          },
+          {
+            "file": "web/src/pages/RunDetailPage.tsx",
+            "lines": "133",
+            "before": "const visibleEvents = events.length > 0 ? events : persistedEvents.data ?? [];",
+            "after": "const visibleEvents = selectVisibleRunEvents(terminal, events, persistedEvents.data);"
+          }
+        ],
+        "callersKeptStable": true,
+        "apiChange": false,
+        "alternativesConsidered": [
+          "clearing events when terminal: loses the live rows if the persisted fetch fails and still needs the selector to render",
+          "merging by seq: RunStreamEvent has no seq (web/src/api-types.ts:102-106), so this would change the wire type; unnecessary for truthfulness"
+        ]
+      },
+      "edgeCases": [
+        "terminal + persisted still loading -> EventsTab spinner (persistedEvents.loading)",
+        "terminal + persisted error -> ErrorPanel (no silent fallback to a mislabeled live list)",
+        "terminal + zero persisted rows -> honest empty state with snapshot lastEventId",
+        "non-terminal -> unchanged live buffer (bounded to 100)",
+        "runId change -> events reset as today; persisted fetch keyed by runId+terminal",
+        "live watch to terminal -> persisted ledger replaces the incomplete live buffer"
+      ],
+      "tests": [
+        {
+          "file": "test/unit/trace-fixes.test.ts",
+          "type": "unit",
+          "name": "selectVisibleRunEvents prefers persisted on terminal",
+          "asserts": [
+            "terminal=true, live non-empty, persisted 108 -> persisted 108",
+            "terminal=true, persisted null -> []",
+            "terminal=false, live non-empty -> the same live array",
+            "terminal=false, persisted non-empty -> live array (persisted is not fetched for live runs)"
+          ]
+        },
+        {
+          "file": "e2e/trace-fixes.spec.ts",
+          "type": "e2e (test-double allowed for the transition)",
+          "name": "a run page opened live and ended terminal shows the persisted ledger",
+          "asserts": [
+            "route interception returns a running snapshot first, then a failed snapshot and 108 persisted events (HTTP client double, test-only)",
+            "Events tab heading is 'Persisted events' and the row count equals the /events count, including run.queued and repair.stalled"
+          ]
+        }
+      ],
+      "rollback": {
+        "action": "revert the selector export, its import and the one-line call site",
+        "schemaOrDataImpact": "none",
+        "risk": "low"
+      },
+      "preservedEvidence": ["probe-static.json", "probe-static-console.txt", "probe-ui.json"]
+    },
+    {
+      "id": "P-3",
+      "title": "Make the live event vocabulary match the emitted vocabulary and the persisted payload shape",
+      "priority": "P2",
+      "status": "SUPPORTED",
+      "confidence": "high",
+      "sharedWith": ["W6-L-04", "W6-L-13"],
+      "rootCause": [
+        {
+          "file": "web/src/hooks/useApi.ts",
+          "lines": "72-100",
+          "why": "STREAM_EVENT_TYPES is missing run.queued, agent.failed, phase.skipped, context.skipped, repair.stalled"
+        },
+        {
+          "file": "web/src/hooks/useApi.ts",
+          "lines": "124-150",
+          "why": "one listener per listed type; named SSE frames with other types are never dispatched and onmessage stays empty"
+        },
+        {
+          "file": "web/src/hooks/useApi.ts",
+          "lines": "126-139",
+          "why": "the live handler stores the parsed envelope as data while the persisted mapper stores the bare payload"
+        },
+        {
+          "file": "src/shared/run-events.ts",
+          "lines": "19-25",
+          "why": "persisted rows map data=row.payload, proving the shape mismatch with live"
+        }
+      ],
+      "evidence": [
+        "docs/AUDIT-WAVE-6/forge/evidence/probe-api.json",
+        "docs/AUDIT-WAVE-6/forge/evidence/probe-api-console.txt",
+        "docs/AUDIT-WAVE-6/forge/evidence/probe-ui.json",
+        "docs/AUDIT-WAVE-6/forge/evidence/sse-abf5-raw.txt",
+        "docs/AUDIT-WAVE-6/forge/evidence/sse-2bb2-raw.txt"
+      ],
+      "measuredImpact": {
+        "missedRowsLive": {
+          "run_abf5fe78aab1e932ff": 2,
+          "run_2bb2f8edf3043fe89e": 2,
+          "run_95c11797b4923b4277": 1
+        },
+        "productionRows": {
+          "run.queued": 25,
+          "agent.failed": 5,
+          "repair.stalled": 1,
+          "phase.skipped": 0,
+          "context.skipped": 0
+        },
+        "onmessageFrames": 0,
+        "deadListeners": 16
+      },
+      "fix": {
+        "summary": "Add the five emitted names, unwrap the SSE envelope into the same payload shape, and pin the vocabulary with a source contract test.",
+        "edits": [
+          {
+            "file": "web/src/hooks/useApi.ts",
+            "lines": "72-100",
+            "before": "'run.started',\n  'run.updated', … 'phase.completed',\n  'step.started', … 'repair.completed', …",
+            "after": "insert 'run.queued' after 'run.started'; 'phase.skipped' after 'phase.completed'; 'agent.failed' after 'agent.started'; 'context.skipped' after 'context.packed'; 'repair.stalled' after 'repair.completed' (keep the existing 27 entries unchanged)"
+          },
+          {
+            "file": "web/src/hooks/useApi.ts",
+            "lines": "124-140",
+            "before": "let data: unknown = event.data;\ntry { data = JSON.parse(event.data) as unknown; } catch { /* retain raw text */ }\nconst parsedType = isRecord(data) && typeof data.type === 'string' ? data.type : event.type;\nif (parsedType === 'heartbeat') return;\nonEventRef.current({ type: parsedType === 'message' ? 'run.event' : parsedType, data, receivedAt: new Date().toISOString() });",
+            "after": "let parsed: unknown = event.data;\ntry { parsed = JSON.parse(event.data) as unknown; } catch { /* retain raw text */ }\nconst envelope = isRecord(parsed) && typeof parsed.type === 'string' && 'data' in parsed ? parsed : null;\nconst parsedType = envelope && typeof envelope.type === 'string' ? envelope.type : event.type;\nif (parsedType === 'heartbeat') return;\nonEventRef.current({ type: parsedType === 'message' ? 'run.event' : parsedType, data: envelope ? envelope.data : parsed, receivedAt: new Date().toISOString() });"
+          }
+        ],
+        "callersKeptStable": true,
+        "apiChange": false,
+        "notInScope": "emitting the 16 subscribed-but-never-emitted types (step/agent.delta/learning/etc.) or deleting their listeners; separate product decision"
+      },
+      "edgeCases": [
+        "raw non-JSON SSE data -> payload stays the raw string (unchanged fallback)",
+        "JSON payload without a data field -> payload stays the parsed value, type falls back to event.type as today",
+        "heartbeat is an SSE comment (: ping) and is never delivered; the listener remains dead by construction",
+        "duplicate/regenerated listeners: adding names is idempotent per effect; source.close() tears them down",
+        "terminal replay uses the same handler and now receives the 5 types that exist"
+      ],
+      "tests": [
+        {
+          "file": "test/unit/run-event-contract.test.ts",
+          "type": "unit (static source contract)",
+          "name": "every emitted event type is subscribed by the client",
+          "asserts": [
+            "regex every emitEvent literal in src/**/*.ts (including the run.cancelled/run.failed ternary)",
+            "regex STREAM_EVENT_TYPES in web/src/hooks/useApi.ts",
+            "emitted subset of subscribed; failure names the missing type"
+          ]
+        },
+        {
+          "file": "test/unit/run-event-contract.test.ts",
+          "type": "unit",
+          "name": "live and persisted events have the same data shape",
+          "asserts": [
+            "a frame data {schema,type,data:{a:1},meta} normalizes to {a:1}",
+            "a persisted row payload {a:1} maps to {a:1}"
+          ]
+        }
+      ],
+      "rollback": {
+        "action": "remove the five names, restore the handler lines, delete the contract test",
+        "schemaOrDataImpact": "none",
+        "risk": "low"
+      },
+      "preservedEvidence": ["probe-api.json", "probe-ui.json", "sse-abf5-raw.txt", "sse-2bb2-raw.txt"]
+    },
+    {
+      "id": "P-4",
+      "title": "Compute /events truncation from this run's rows, not the global sequence",
+      "priority": "P2",
+      "status": "SUPPORTED",
+      "confidence": "high",
+      "sharedWith": ["W6-L-05"],
+      "rootCause": [
+        {
+          "file": "src/server/app.ts",
+          "lines": "818-833",
+          "why": "start = max(after, current - 500) and truncated = after < start || current - start > events.length mix per-run current with global AUTOINCREMENT seqs"
+        },
+        {
+          "file": "src/server/runs/recorder.ts",
+          "lines": "58-69",
+          "why": "getEvents filters by run_id and seq > after, but the route computes the window boundary outside that query"
+        }
+      ],
+      "evidence": [
+        "docs/AUDIT-WAVE-6/forge/evidence/events-route-census.json",
+        "docs/AUDIT-WAVE-6/forge/evidence/probe-census-console.txt",
+        "docs/AUDIT-WAVE-6/forge/evidence/peer-logic-probe-rerun.txt"
+      ],
+      "measuredImpact": {
+        "runs": 25,
+        "falsePositiveTruncation": 24,
+        "falseNegativeTruncation": 0,
+        "rowsActuallyDropped": 0,
+        "abf5": {"dbCount": 108, "returned": 108, "firstSeq": 552, "lastSeq": 659, "apiTruncated": true},
+        "currentUiConsumer": "web/src/api.ts:327-332 drops the flag, so no current visual falsehood"
+      },
+      "fix": {
+        "summary": "Fetch one extra row after the cursor; truncation is whether more than the window exists, and return the newest window.",
+        "edits": [
+          {
+            "file": "src/server/app.ts",
+            "lines": "818-833",
+            "before": "const query = request.query as { after?: string };\nconst after = Math.max(0, Number(query.after ?? 0) || 0);\nconst current = lastEventId(id);\nconst window = config.limits.eventReplayWindow;\nconst start = Math.max(after, Math.max(0, current - window));\nconst all = getEvents(id, start, config.limits.eventReplayWindow);\nconst events = all.slice(0, window);\nreturn {\n  events,\n  truncated: after < start || current - start > events.length,\n  lastEventId: events.length > 0 ? events[events.length - 1].seq : current,\n};",
+            "after": "const query = request.query as { after?: string };\nconst after = Math.max(0, Number(query.after ?? 0) || 0);\nconst window = config.limits.eventReplayWindow;\nconst rows = getEvents(id, after, window + 1);\nconst truncated = rows.length > window;\nconst events = truncated ? rows.slice(rows.length - window) : rows;\nreturn {\n  events,\n  truncated,\n  lastEventId: events.length > 0 ? events[events.length - 1].seq : lastEventId(id),\n};"
+          }
+        ],
+        "callersKeptStable": true,
+        "apiChange": "none (same response shape; flag semantics corrected)",
+        "notes": [
+          "Do not change getEvents; passing window+1 is the whole windowing change.",
+          "after > last -> 0 rows, truncated=false, lastEventId=current (route caller sees no events after its cursor).",
+          "Optional follow-up: return {events,truncated} from web/src/api.ts:327-332 and show a truncation notice; out of scope here."
+        ]
+      },
+      "edgeCases": [
+        "empty run -> 0 rows, truncated=false, lastEventId=0/current",
+        "exactly window rows -> truncated=false",
+        "window+1 rows -> truncated=true, newest window returned",
+        "first run in the DB (seq starting at 1) and later interleaved runs -> same result, no global-seq dependence",
+        "after cursor mid-run -> correct forward window and flag",
+        "retry: GET is idempotent; no cursor state is mutated server-side",
+        "no dropped rows anymore -> no false 'Replay truncated' badge if the UI later consumes it"
+      ],
+      "tests": [
+        {
+          "file": "test/unit/run-events-window.test.ts",
+          "type": "unit (app.inject with temp DB)",
+          "name": "/events reports truncation from this run's rows",
+          "asserts": [
+            "550-event run -> 500 rows, truncated=true",
+            "20-event run whose first seq is > 500 (the production false positive) -> 20 rows, truncated=false",
+            "0-event run -> 0 rows, truncated=false",
+            "exactly 500 events -> truncated=false; 501 -> truncated=true",
+            "after=cursor -> forward window and flag correct"
+          ]
+        }
+      ],
+      "rollback": {
+        "action": "revert the app.ts hunk",
+        "schemaOrDataImpact": "none",
+        "risk": "low"
+      },
+      "preservedEvidence": ["events-route-census.json", "probe-census-console.txt", "peer-logic-probe-rerun.txt"]
+    },
+    {
+      "id": "P-5",
+      "title": "Stop the run detail from reading fields the API never provides (cost cap, check code/time)",
+      "priority": "P3",
+      "status": "SUPPORTED (static)",
+      "confidence": "high",
+      "sharedWith": ["weaver F3 (cap) / F12 (checks)"],
+      "rootCause": [
+        {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "lines": "199-201, 340-342",
+          "why": "reads snapshot.data.limits.maxCostUsd, but the snapshot route returns no limits key"
+        },
+        {
+          "file": "src/server/app.ts",
+          "lines": "802-816",
+          "why": "snapshot response is {run,lastEventId,steps,checks,artifacts,truncated} only"
+        },
+        {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "lines": "655-658",
+          "why": "renders check.code and check.durationMs; getChecks/insertCheck never persist or return them"
+        },
+        {
+          "file": "src/server/runs/recorder.ts",
+          "lines": "284-303",
+          "why": "checks table mapper exposes id/status/detail/mandatory/file/line only"
+        },
+        {
+          "file": "src/server/db/migrations.ts",
+          "lines": "88-99",
+          "why": "checks schema has no code/duration_ms columns; durationMs has no producer anywhere in src/"
+        }
+      ],
+      "evidence": [
+        "docs/AUDIT-WAVE-6/forge/evidence/api-field-audit.json",
+        "docs/AUDIT-WAVE-6/forge/evidence/probe-field-console.txt",
+        "docs/AUDIT-WAVE-6/forge/evidence/probe-ui.json"
+      ],
+      "fix": {
+        "summary": "Add the effective run cap to the snapshot (runBudgetUsd is already imported) and drop the two never-populated check columns.",
+        "edits": [
+          {
+            "file": "src/server/app.ts",
+            "lines": "802-816",
+            "before": "return {\n  run,\n  lastEventId: lastEventId(id),\n  steps: getSteps(id),\n  checks: getChecks(id),\n  artifacts,\n  truncated: allArtifacts.length > artifacts.length,\n};",
+            "after": "return {\n  run,\n  lastEventId: lastEventId(id),\n  limits: { maxCostUsd: runBudgetUsd(id) },\n  steps: getSteps(id),\n  checks: getChecks(id),\n  artifacts,\n  truncated: allArtifacts.length > artifacts.length,\n};"
+          },
+          {
+            "file": "web/src/pages/RunDetailPage.tsx",
+            "lines": "636-660",
+            "before": "<th>File</th><th>Time</th> … <td>{check.code ?? '—'}</td> … <td>{typeof check.durationMs === 'number' ? … : '—'}</td>",
+            "after": "remove the Code and Time column header and cells; keep Check/Status/Mandatory/Detail/File"
+          }
+        ],
+        "callersKeptStable": true,
+        "apiChange": "additive limits key only; the UI already expects it",
+        "alternativeIfCheckCodeIsRequired": "add a migration group 030_checks_code (ALTER TABLE checks ADD COLUMN code TEXT), persist check.code in insertCheck, map it in getChecks, and add a durationMs producer before exposing Time; larger and out of this proposal"
+      },
+      "edgeCases": [
+        "snapshot for a run with a per-run cap in settings -> limits.maxCostUsd equals runBudgetUsd(id)",
+        "snapshot for a run without a per-run cap -> global MAX_RUN_COST_USD",
+        "old runs -> no data migration needed",
+        "check.code remains available at write time (verifier.ts:118) even though the UI no longer shows an empty column",
+        "no false '—' columns remain"
+      ],
+      "tests": [
+        {
+          "file": "test/unit/run-snapshot-limits.test.ts",
+          "type": "integration (app.inject, temp DB)",
+          "name": "snapshot exposes the effective per-run cap",
+          "asserts": [
+            "a run with a run_limit setting returns limits.maxCostUsd == runBudgetUsd(runId)",
+            "a run without the setting returns the global cap"
+          ]
+        },
+        {
+          "file": "e2e/ui-audit.spec.ts",
+          "type": "e2e",
+          "name": "Checks tab has no permanently empty Code/Time columns",
+          "asserts": ["column headers are exactly Check/Status/Mandatory/Detail/File"]
+        }
+      ],
+      "rollback": {
+        "action": "revert the limits key and restore the two columns",
+        "schemaOrDataImpact": "none",
+        "risk": "low"
+      },
+      "preservedEvidence": ["api-field-audit.json", "probe-field-console.txt"]
+    },
+    {
+      "id": "P-6",
+      "title": "Give every Checks row a unique key and a way to tell verification passes apart",
+      "priority": "P3",
+      "status": "SUPPORTED (key non-uniqueness); the peer's collapse/warning claim is REFUTED by measurement",
+      "confidence": "high",
+      "sharedWith": ["W6-L-14"],
+      "rootCause": [
+        {
+          "file": "src/server/runs/recorder.ts",
+          "lines": "293-303",
+          "why": "getChecks maps the repeated check_id into id and discards the unique checks.id row id"
+        },
+        {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "lines": "650",
+          "why": "ChecksTab renders <tr key={check.id}>; 16 rows share 5 ids (abf5), so the React key is not unique"
+        }
+      ],
+      "evidence": [
+        "docs/AUDIT-WAVE-6/forge/evidence/checks-tab-probe.json",
+        "docs/AUDIT-WAVE-6/forge/evidence/probe-checks-console.txt",
+        "docs/AUDIT-WAVE-6/forge/evidence/ui-abf5-checks.png"
+      ],
+      "measured": {
+        "checkRows": 16,
+        "distinctCheckIds": 5,
+        "checkIdCounts": {"plan.coverage": 3, "secret.scan": 3, "stub.scan": 4, "syntax.all": 3, "verification.plan": 3},
+        "domRowsRendered": 16,
+        "duplicateKeyConsoleWarnings": 0,
+        "correction": "production React suppresses the development duplicate-key warning; no row collapse was observed. The defect is the non-unique key and the inability to distinguish passes, not a broken table."
+      },
+      "fix": {
+        "summary": "Key on a unique identity and show the pass identity (createdAt) or group passes in the route.",
+        "edits": [
+          {
+            "file": "web/src/pages/RunDetailPage.tsx",
+            "lines": "649-650",
+            "before": "{checks.map((check) => (\n  <tr key={check.id}>",
+            "after": "{checks.map((check, index) => (\n  <tr key={`${check.id}-${index}`}>"
+          },
+          {
+            "file": "web/src/pages/RunDetailPage.tsx",
+            "lines": "636-660",
+            "before": "checks table columns do not identify the verification pass",
+            "after": "optional larger change: add a Pass/Recorded column fed by checks.created_at returned from getChecks; group by id if a summary view is preferred"
+          }
+        ],
+        "callersKeptStable": true,
+        "apiChange": "none for the minimal UI key fix; optional additive createdAt if passes are shown"
+      },
+      "edgeCases": [
+        "runs with one verification pass -> index-keyed rows are unique",
+        "runs with 2-3 passes -> each row keeps its own position and detail; no collision",
+        "no check rows -> existing empty state",
+        "createdAt is already in the checks table and can be added additively"
+      ],
+      "tests": [
+        {
+          "file": "e2e/ui-audit.spec.ts",
+          "type": "e2e",
+          "name": "Checks tab renders one row per persisted check row",
+          "asserts": [
+            "DOM row count equals GET /api/runs/:id/checks count for run_abf5 (16)",
+            "no two rows are treated as the same key (assert 16 distinct row texts/positions)"
+          ]
+        }
+      ],
+      "rollback": {
+        "action": "revert the key expression / optional column",
+        "schemaOrDataImpact": "none",
+        "risk": "low"
+      },
+      "preservedEvidence": ["checks-tab-probe.json", "probe-checks-console.txt", "ui-abf5-checks.png"]
+    },
+    {
+      "id": "P-7",
+      "title": "Label the snapshot truncation badge truthfully (artifact list, not event replay)",
+      "priority": "P3",
+      "status": "SUPPORTED (static; never triggered in this DB)",
+      "confidence": "high",
+      "sharedWith": ["W6-L-15"],
+      "rootCause": [
+        {
+          "file": "src/server/app.ts",
+          "lines": "806-814",
+          "why": "snapshot truncated = allArtifacts.length > 200, i.e. artifact list truncation"
+        },
+        {
+          "file": "web/src/pages/RunDetailPage.tsx",
+          "lines": "330",
+          "why": "renders that flag with the text 'Replay truncated', which implies event replay"
+        }
+      ],
+      "evidence": ["docs/AUDIT-WAVE-6/forge/evidence/api-field-audit.json"],
+      "measured": {"maxArtifactsPerRun": 20, "badgeShownOn": [], "snapshotTruncatedForAbf5": false},
+      "fix": {
+        "summary": "Rename the badge to match the flag; if event replay truncation should be visible, add a separate eventsTruncated field.",
+        "edits": [
+          {
+            "file": "web/src/pages/RunDetailPage.tsx",
+            "lines": "330",
+            "before": "{snapshot.data?.truncated ? <span className=\"badge badge-warn\">Replay truncated</span> : null}",
+            "after": "{snapshot.data?.truncated ? <span className=\"badge badge-warn\">Artifact list truncated</span> : null}"
+          }
+        ],
+        "callersKeptStable": true,
+        "apiChange": "none; optional additive eventsTruncated after P-4/UI work"
+      },
+      "edgeCases": [
+        "no >200-artifact run today -> no visible change",
+        "a >200-artifact run -> badge now names the artifact cap",
+        "a genuinely truncated event replay -> would need the separate events flag; not conflated"
+      ],
+      "tests": [
+        {
+          "file": "e2e/ui-audit.spec.ts",
+          "type": "e2e",
+          "name": "snapshot truncation badge text names artifacts",
+          "asserts": ["when snapshot.truncated is forced in a test fixture, the badge text is 'Artifact list truncated'"]
+        }
+      ],
+      "rollback": {
+        "action": "revert the label",
+        "schemaOrDataImpact": "none",
+        "risk": "low"
+      },
+      "preservedEvidence": ["api-field-audit.json"]
+    }
+  ],
+  "notProposed": [
+    {
+      "id": "R-1",
+      "reason": "run_abf5 Running/7 steps is a mid-run capture, not a defect; no fix. Fresh UI matches the API on 3/3 terminal runs and no stream/poll happens on terminal pages.",
+      "evidence": ["probe-ui.json", "lead-ui-abf5.png", "crop-abf5-spend-not-measured.png"]
+    },
+    {
+      "id": "R-2",
+      "reason": "run.cancelled is already subscribed at web/src/hooks/useApi.ts:76 and emitted at run.ts:885 / manager.ts:186; the brief's 'cancelled' candidate is false.",
+      "evidence": ["probe-api.json source.subscribed"]
+    },
+    {
+      "id": "R-3",
+      "reason": "The Wave-5 stub-scan false positive no longer reproduces (current scanText returns 0 findings on the stored abf5 artifact); the historical ledger row is preserved, not a current defect.",
+      "evidence": ["red-evidence.md section 9"]
+    },
+    {
+      "id": "U-1",
+      "reason": "410 SSE reconnect loop is UNVERIFIED at the client half: no run in this DB has a >500-event reconnect gap and paid runs are forbidden. The route half is proven (HTTP 410 JSON) and the client has no status-code access; a fix should be designed with a reproduced loop, not before.",
+      "evidence": ["peer-logic-probe-rerun.txt", "useApi.ts:148-150", "app.ts:843-845"]
+    },
+    {
+      "id": "U-2",
+      "reason": "Dead run state machine is peer W6-L-03; no production illegal transition exists. Wiring or deleting the guard is a product decision.",
+      "evidence": ["peer-logic-probe-rerun.txt"]
+    },
+    {
+      "id": "PEER-L-08/L-09/L-11",
+      "reason": "Read from the peer report but not independently probed by this seat; no proposal duplicated here.",
+      "evidence": ["docs/AUDIT-WAVE-6/logic/findings.md"]
+    }
+  ],
+  "globalVerificationPlan": {
+    "gatesAfterFix": [
+      "npm.cmd run typecheck",
+      "npm.cmd test",
+      "npm.cmd run build",
+      "npm.cmd run e2e",
+      "npm.cmd run assert-stage -- --stage=p7 --json",
+      "npm.cmd run verify"
+    ],
+    "manualAcceptance": [
+      "a failed run with provider usage shows a numeric spend and token counts in run detail and the runs table",
+      "a run watched from running to terminal shows the persisted ledger (108 rows for abf5) and the heading is honest",
+      "GET /events on every persisted run returns truncated=false when row count == per-run DB count",
+      "no UI column is permanently '—' by construction"
+    ],
+    "noBackfill": "Historical rows are left untouched; the 7 affected runs remain a documented data gap. A backfill is a data migration requiring explicit approval and is not part of these patches."
+  }
+}

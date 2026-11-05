@@ -1,0 +1,196 @@
+﻿{
+  "tables": 45,
+  "tableNames": [
+    "agent_evidence",
+    "agent_stats",
+    "approval_tokens",
+    "artifacts",
+    "budget_reservations",
+    "checks",
+    "confidence_records",
+    "consent_records",
+    "context_manifests",
+    "context_packs",
+    "eval_cases",
+    "eval_results",
+    "eval_runs",
+    "eval_suites",
+    "events",
+    "failure_occurrences",
+    "failure_signatures",
+    "feedback",
+    "gate_decisions",
+    "idempotency_keys",
+    "learning_audit",
+    "learning_jobs",
+    "policy_versions",
+    "post_promotion_monitor",
+    "promotions",
+    "prompt_versions",
+    "repair_memory",
+    "retry_attempts",
+    "reviews",
+    "route_candidates",
+    "route_decisions",
+    "run_snapshots",
+    "runs",
+    "schema_migrations",
+    "script_runs",
+    "sealed_pool",
+    "sealed_pool_blocks",
+    "settings",
+    "steps",
+    "suite_uses",
+    "traces",
+    "usage",
+    "user_edits",
+    "variants",
+    "verification_plans"
+  ],
+  "runsByStatus": [
+    {
+      "status": "budget_exceeded",
+      "n": 4
+    },
+    {
+      "status": "completed",
+      "n": 23
+    },
+    {
+      "status": "failed",
+      "n": 3
+    }
+  ],
+  "runsTotal": 30,
+  "latestRuns": [
+    {
+      "id": "run_c41f1fb4779d302af7",
+      "status": "completed",
+      "created_at": "2026-11-04T05:31:42.136Z",
+      "finished_at": "2026-11-04T05:34:57.296Z"
+    },
+    {
+      "id": "run_12be61a462973c5d69",
+      "status": "completed",
+      "created_at": "2026-11-04T05:29:05.161Z",
+      "finished_at": "2026-11-04T05:31:20.977Z"
+    },
+    {
+      "id": "run_bb9d241e1f94b6703a",
+      "status": "completed",
+      "created_at": "2026-11-04T05:24:11.765Z",
+      "finished_at": "2026-11-04T05:28:46.953Z"
+    },
+    {
+      "id": "run_8c4a59741cebc8c94f",
+      "status": "completed",
+      "created_at": "2026-11-04T05:23:35.212Z",
+      "finished_at": "2026-11-04T05:23:38.990Z"
+    },
+    {
+      "id": "run_fca89a75c3b1b917a5",
+      "status": "completed",
+      "created_at": "2026-11-04T04:41:01.515Z",
+      "finished_at": "2026-11-04T04:48:30.249Z"
+    },
+    {
+      "id": "run_95c11797b4923b4277",
+      "status": "completed",
+      "created_at": "2026-11-04T03:50:32.465Z",
+      "finished_at": "2026-11-04T03:57:17.576Z"
+    },
+    {
+      "id": "run_26e2456caef4b8be0c",
+      "status": "budget_exceeded",
+      "created_at": "2026-11-04T03:44:33.258Z",
+      "finished_at": "2026-11-04T03:50:18.428Z"
+    },
+    {
+      "id": "run_65da49c3948f9d8f5c",
+      "status": "budget_exceeded",
+      "created_at": "2026-11-04T03:42:17.882Z",
+      "finished_at": "2026-11-04T03:44:23.154Z"
+    }
+  ],
+  "runsCreatedSinceFreeze": [],
+  "usageSinceFreeze": [
+    {
+      "n": 0,
+      "usd": 0
+    }
+  ],
+  "usageTotal": {
+    "n": 239,
+    "usd": 1.188757662,
+    "latest": "2026-11-04T05:34:56.759Z"
+  },
+  "schemaMigrations": [
+    {
+      "version": "001_a_core",
+      "applied_at": "2026-11-03T15:43:33.636Z"
+    },
+    {
+      "version": "010_p6a_decision",
+      "applied_at": "2026-11-03T15:44:53.344Z"
+    },
+    {
+      "version": "020_p7_learning",
+      "applied_at": "2026-11-03T15:44:53.353Z"
+    }
+  ],
+  "count_sealed_pool": 0,
+  "count_sealed_pool_blocks": 0,
+  "count_learning_jobs": 0,
+  "count_learning_audit": 16,
+  "count_eval_runs": 0,
+  "count_eval_results": 0,
+  "count_promotions": 0,
+  "count_consent_records": 0,
+  "count_approval_tokens": 0,
+  "count_feedback": 0,
+  "count_user_edits": 0,
+  "routeCandidates": {
+    "n": 440,
+    "missing_runtime": 0
+  },
+  "settingsKeys": [
+    "revision_files:run_e5853ec6f585b0b657",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>",
+    "run_<id>"
+  ],
+  "learningAuditLatest": {
+    "n": 16,
+    "latest": "2026-11-04T05:34:57.284Z"
+  },
+  "eventsLatest": {
+    "n": 1394,
+    "latest": "2026-11-04T05:34:57.297Z"
+  },
+  "usageSinceMidnight": {
+    "n": 0
+  },
+  "runsSinceMidnight": {
+    "n": 0
+  }
+}

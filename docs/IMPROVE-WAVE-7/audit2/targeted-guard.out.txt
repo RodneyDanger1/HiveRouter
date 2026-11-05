@@ -1,0 +1,14 @@
+﻿
+> hive-router@0.1.0 test
+> vitest run --run test/unit/run-transition-guard.test.ts
+
+
+ RUN  v5.1.0 C:/Users/Riley/Desktop/HiveRouter
+
+ ✓ test/unit/run-transition-guard.test.ts (5 tests) 159ms
+
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Start at  00:29:24
+   Duration  1.70s (import 76%, tests 14%, transform 9%, worker 1%)
+

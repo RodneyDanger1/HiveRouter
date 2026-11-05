@@ -1,0 +1,12 @@
+schema: hive.audit.baseline.v1
+capturedAt: 2026-11-04T04:06:44.4739408Z
+root: C:\Users\Riley\Desktop\HiveRouter
+filesHashed: 150
+backup: docs/AUDIT-WAVE-6/backup
+dir: backup
+dir: capability
+dir: forge
+dir: forgewright
+dir: gate
+dir: logic
+dir: weaver

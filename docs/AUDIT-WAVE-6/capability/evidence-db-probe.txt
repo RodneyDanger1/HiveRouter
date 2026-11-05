@@ -1,0 +1,1059 @@
+﻿{
+  "runsTotal": 25,
+  "runsByStatus": [
+    {
+      "status": "completed",
+      "n": 18
+    },
+    {
+      "status": "budget_exceeded",
+      "n": 4
+    },
+    {
+      "status": "failed",
+      "n": 3
+    }
+  ],
+  "agents": 212,
+  "runCostVsUsage": [
+    {
+      "id": "run_007238d763a3956e74",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.0005876999999999999,
+      "run_p": 514,
+      "usage_rows": 1,
+      "unknown_rows": 0,
+      "usage_cost": 0.0005877,
+      "trace_rows": 0
+    },
+    {
+      "id": "run_9c4659ee2d4fbb40bf",
+      "status": "failed",
+      "error_code": "GATE_FAILED",
+      "run_cost": null,
+      "run_p": null,
+      "usage_rows": 7,
+      "unknown_rows": 0,
+      "usage_cost": 0.00955884,
+      "trace_rows": 0
+    },
+    {
+      "id": "run_1e5add0b6ba2e3c736",
+      "status": "budget_exceeded",
+      "error_code": "E_BUDGET_EXCEEDED",
+      "run_cost": null,
+      "run_p": null,
+      "usage_rows": 4,
+      "unknown_rows": 0,
+      "usage_cost": 0.002719722,
+      "trace_rows": 0
+    },
+    {
+      "id": "run_01581fa22ff57a5f5e",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.008862707999999999,
+      "run_p": 14466,
+      "usage_rows": 8,
+      "unknown_rows": 0,
+      "usage_cost": 0.008862708,
+      "trace_rows": 0
+    },
+    {
+      "id": "run_f08c679f9075ac230d",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.011352876,
+      "run_p": 15578,
+      "usage_rows": 8,
+      "unknown_rows": 0,
+      "usage_cost": 0.011352876,
+      "trace_rows": 0
+    },
+    {
+      "id": "run_e5853ec6f585b0b657",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.00222945,
+      "run_p": 6819,
+      "usage_rows": 2,
+      "unknown_rows": 0,
+      "usage_cost": 0.00222945,
+      "trace_rows": 0
+    },
+    {
+      "id": "run_582bf88992c0ee98ae",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.008890799999999999,
+      "run_p": 12652,
+      "usage_rows": 3,
+      "unknown_rows": 0,
+      "usage_cost": 0.0088908,
+      "trace_rows": 0
+    },
+    {
+      "id": "run_094ae10475a8f3ea01",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.005854272,
+      "run_p": 15840,
+      "usage_rows": 7,
+      "unknown_rows": 0,
+      "usage_cost": 0.005854272,
+      "trace_rows": 0
+    },
+    {
+      "id": "run_3bf07c4861e786f1e7",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.00034094999999999997,
+      "run_p": 557,
+      "usage_rows": 1,
+      "unknown_rows": 0,
+      "usage_cost": 0.00034095,
+      "trace_rows": 0
+    },
+    {
+      "id": "run_23af9b7837448cb24a",
+      "status": "budget_exceeded",
+      "error_code": "E_BUDGET_EXCEEDED",
+      "run_cost": null,
+      "run_p": null,
+      "usage_rows": 10,
+      "unknown_rows": 0,
+      "usage_cost": 0.01270053,
+      "trace_rows": 1
+    },
+    {
+      "id": "run_b8a8e239a57052f146",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.00422067,
+      "run_p": 6225,
+      "usage_rows": 6,
+      "unknown_rows": 0,
+      "usage_cost": 0.00422067,
+      "trace_rows": 1
+    },
+    {
+      "id": "run_9b144184491ce0f41b",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.00100005,
+      "run_p": 535,
+      "usage_rows": 1,
+      "unknown_rows": 0,
+      "usage_cost": 0.00100005,
+      "trace_rows": 1
+    },
+    {
+      "id": "run_063580525bb149f98d",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.007642301999999999,
+      "run_p": 10993,
+      "usage_rows": 6,
+      "unknown_rows": 0,
+      "usage_cost": 0.007642302,
+      "trace_rows": 1
+    },
+    {
+      "id": "run_faf2600e5bf180b0dc",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.0003135,
+      "run_p": 538,
+      "usage_rows": 1,
+      "unknown_rows": 0,
+      "usage_cost": 0.0003135,
+      "trace_rows": 1
+    },
+    {
+      "id": "run_32b087305f87bfa8bf",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.00300495,
+      "run_p": 5489,
+      "usage_rows": 2,
+      "unknown_rows": 0,
+      "usage_cost": 0.00300495,
+      "trace_rows": 1
+    },
+    {
+      "id": "run_9c1e2390e875e16eb3",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.00367362,
+      "run_p": 9750,
+      "usage_rows": 6,
+      "unknown_rows": 0,
+      "usage_cost": 0.00367362,
+      "trace_rows": 1
+    },
+    {
+      "id": "run_066581ff6b793a7aa9",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.0024878519999999996,
+      "run_p": 6866,
+      "usage_rows": 6,
+      "unknown_rows": 0,
+      "usage_cost": 0.002487852,
+      "trace_rows": 1
+    },
+    {
+      "id": "run_3a4578fa7b6ffebae1",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": null,
+      "run_p": null,
+      "usage_rows": 0,
+      "unknown_rows": 0,
+      "usage_cost": null,
+      "trace_rows": 1
+    },
+    {
+      "id": "run_a5202415c602bd8320",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.005652204,
+      "run_p": 8281,
+      "usage_rows": 6,
+      "unknown_rows": 0,
+      "usage_cost": 0.005652204,
+      "trace_rows": 1
+    },
+    {
+      "id": "run_2e6935e48bb8fa74a2",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.0008763,
+      "run_p": 517,
+      "usage_rows": 1,
+      "unknown_rows": 0,
+      "usage_cost": 0.0008763,
+      "trace_rows": 1
+    },
+    {
+      "id": "run_abf5fe78aab1e932ff",
+      "status": "failed",
+      "error_code": "GATE_FAILED",
+      "run_cost": null,
+      "run_p": null,
+      "usage_rows": 20,
+      "unknown_rows": 0,
+      "usage_cost": 0.299980656,
+      "trace_rows": 1
+    },
+    {
+      "id": "run_2bb2f8edf3043fe89e",
+      "status": "failed",
+      "error_code": "E_BUDGET_UNKNOWN_RESERVATION",
+      "run_cost": null,
+      "run_p": null,
+      "usage_rows": 9,
+      "unknown_rows": 0,
+      "usage_cost": 0.051138816,
+      "trace_rows": 1
+    },
+    {
+      "id": "run_65da49c3948f9d8f5c",
+      "status": "budget_exceeded",
+      "error_code": "E_BUDGET_EXCEEDED",
+      "run_cost": null,
+      "run_p": null,
+      "usage_rows": 9,
+      "unknown_rows": 0,
+      "usage_cost": 0.045521616,
+      "trace_rows": 1
+    },
+    {
+      "id": "run_26e2456caef4b8be0c",
+      "status": "budget_exceeded",
+      "error_code": "E_BUDGET_EXCEEDED",
+      "run_cost": null,
+      "run_p": null,
+      "usage_rows": 18,
+      "unknown_rows": 0,
+      "usage_cost": 0.185232012,
+      "trace_rows": 1
+    },
+    {
+      "id": "run_95c11797b4923b4277",
+      "status": "completed",
+      "error_code": null,
+      "run_cost": 0.25078177199999996,
+      "run_p": 380277,
+      "usage_rows": 19,
+      "unknown_rows": 0,
+      "usage_cost": 0.250781772,
+      "trace_rows": 1
+    }
+  ],
+  "measuredWithNullRunCost": 7,
+  "unreportedMeasuredCostUsd": 0.606852192,
+  "sumRunCost": 0.317771976,
+  "sumUsageCost": 0.924624168,
+  "eventTypes": [
+    {
+      "type": "agent.started",
+      "n": 171
+    },
+    {
+      "type": "agent.completed",
+      "n": 166
+    },
+    {
+      "type": "phase.started",
+      "n": 140
+    },
+    {
+      "type": "phase.completed",
+      "n": 135
+    },
+    {
+      "type": "route.decided",
+      "n": 99
+    },
+    {
+      "type": "file.written",
+      "n": 96
+    },
+    {
+      "type": "context.packed",
+      "n": 84
+    },
+    {
+      "type": "run.started",
+      "n": 25
+    },
+    {
+      "type": "run.queued",
+      "n": 25
+    },
+    {
+      "type": "run.completed",
+      "n": 18
+    },
+    {
+      "type": "run.failed",
+      "n": 7
+    },
+    {
+      "type": "agent.failed",
+      "n": 5
+    },
+    {
+      "type": "repair.stalled",
+      "n": 1
+    }
+  ],
+  "eventCount": 972,
+  "perRunEvents": [
+    {
+      "id": "run_007238d763a3956e74",
+      "status": "completed",
+      "event_count": 9,
+      "first_seq": 1,
+      "last_seq": 9
+    },
+    {
+      "id": "run_9c4659ee2d4fbb40bf",
+      "status": "failed",
+      "event_count": 32,
+      "first_seq": 10,
+      "last_seq": 41
+    },
+    {
+      "id": "run_1e5add0b6ba2e3c736",
+      "status": "budget_exceeded",
+      "event_count": 19,
+      "first_seq": 42,
+      "last_seq": 60
+    },
+    {
+      "id": "run_01581fa22ff57a5f5e",
+      "status": "completed",
+      "event_count": 37,
+      "first_seq": 61,
+      "last_seq": 97
+    },
+    {
+      "id": "run_f08c679f9075ac230d",
+      "status": "completed",
+      "event_count": 43,
+      "first_seq": 98,
+      "last_seq": 140
+    },
+    {
+      "id": "run_e5853ec6f585b0b657",
+      "status": "completed",
+      "event_count": 15,
+      "first_seq": 141,
+      "last_seq": 155
+    },
+    {
+      "id": "run_582bf88992c0ee98ae",
+      "status": "completed",
+      "event_count": 19,
+      "first_seq": 156,
+      "last_seq": 174
+    },
+    {
+      "id": "run_094ae10475a8f3ea01",
+      "status": "completed",
+      "event_count": 42,
+      "first_seq": 175,
+      "last_seq": 216
+    },
+    {
+      "id": "run_3bf07c4861e786f1e7",
+      "status": "completed",
+      "event_count": 11,
+      "first_seq": 217,
+      "last_seq": 227
+    },
+    {
+      "id": "run_23af9b7837448cb24a",
+      "status": "budget_exceeded",
+      "event_count": 58,
+      "first_seq": 228,
+      "last_seq": 285
+    },
+    {
+      "id": "run_b8a8e239a57052f146",
+      "status": "completed",
+      "event_count": 37,
+      "first_seq": 286,
+      "last_seq": 322
+    },
+    {
+      "id": "run_9b144184491ce0f41b",
+      "status": "completed",
+      "event_count": 9,
+      "first_seq": 323,
+      "last_seq": 331
+    },
+    {
+      "id": "run_063580525bb149f98d",
+      "status": "completed",
+      "event_count": 37,
+      "first_seq": 332,
+      "last_seq": 368
+    },
+    {
+      "id": "run_faf2600e5bf180b0dc",
+      "status": "completed",
+      "event_count": 11,
+      "first_seq": 369,
+      "last_seq": 379
+    },
+    {
+      "id": "run_32b087305f87bfa8bf",
+      "status": "completed",
+      "event_count": 15,
+      "first_seq": 380,
+      "last_seq": 394
+    },
+    {
+      "id": "run_9c1e2390e875e16eb3",
+      "status": "completed",
+      "event_count": 37,
+      "first_seq": 395,
+      "last_seq": 431
+    },
+    {
+      "id": "run_066581ff6b793a7aa9",
+      "status": "completed",
+      "event_count": 37,
+      "first_seq": 432,
+      "last_seq": 468
+    },
+    {
+      "id": "run_3a4578fa7b6ffebae1",
+      "status": "completed",
+      "event_count": 37,
+      "first_seq": 469,
+      "last_seq": 505
+    },
+    {
+      "id": "run_a5202415c602bd8320",
+      "status": "completed",
+      "event_count": 37,
+      "first_seq": 506,
+      "last_seq": 542
+    },
+    {
+      "id": "run_2e6935e48bb8fa74a2",
+      "status": "completed",
+      "event_count": 9,
+      "first_seq": 543,
+      "last_seq": 551
+    },
+    {
+      "id": "run_abf5fe78aab1e932ff",
+      "status": "failed",
+      "event_count": 108,
+      "first_seq": 552,
+      "last_seq": 659
+    },
+    {
+      "id": "run_2bb2f8edf3043fe89e",
+      "status": "failed",
+      "event_count": 55,
+      "first_seq": 660,
+      "last_seq": 714
+    },
+    {
+      "id": "run_65da49c3948f9d8f5c",
+      "status": "budget_exceeded",
+      "event_count": 59,
+      "first_seq": 715,
+      "last_seq": 773
+    },
+    {
+      "id": "run_26e2456caef4b8be0c",
+      "status": "budget_exceeded",
+      "event_count": 97,
+      "first_seq": 774,
+      "last_seq": 870
+    },
+    {
+      "id": "run_95c11797b4923b4277",
+      "status": "completed",
+      "event_count": 102,
+      "first_seq": 871,
+      "last_seq": 972
+    }
+  ],
+  "truncationCensus": [
+    {
+      "id": "run_007238d763a3956e74",
+      "dbCount": 9,
+      "firstSeq": 1,
+      "lastSeq": 9,
+      "apiTruncated": false
+    },
+    {
+      "id": "run_9c4659ee2d4fbb40bf",
+      "dbCount": 32,
+      "firstSeq": 10,
+      "lastSeq": 41,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_1e5add0b6ba2e3c736",
+      "dbCount": 19,
+      "firstSeq": 42,
+      "lastSeq": 60,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_01581fa22ff57a5f5e",
+      "dbCount": 37,
+      "firstSeq": 61,
+      "lastSeq": 97,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_f08c679f9075ac230d",
+      "dbCount": 43,
+      "firstSeq": 98,
+      "lastSeq": 140,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_e5853ec6f585b0b657",
+      "dbCount": 15,
+      "firstSeq": 141,
+      "lastSeq": 155,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_582bf88992c0ee98ae",
+      "dbCount": 19,
+      "firstSeq": 156,
+      "lastSeq": 174,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_094ae10475a8f3ea01",
+      "dbCount": 42,
+      "firstSeq": 175,
+      "lastSeq": 216,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_3bf07c4861e786f1e7",
+      "dbCount": 11,
+      "firstSeq": 217,
+      "lastSeq": 227,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_23af9b7837448cb24a",
+      "dbCount": 58,
+      "firstSeq": 228,
+      "lastSeq": 285,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_b8a8e239a57052f146",
+      "dbCount": 37,
+      "firstSeq": 286,
+      "lastSeq": 322,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_9b144184491ce0f41b",
+      "dbCount": 9,
+      "firstSeq": 323,
+      "lastSeq": 331,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_063580525bb149f98d",
+      "dbCount": 37,
+      "firstSeq": 332,
+      "lastSeq": 368,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_faf2600e5bf180b0dc",
+      "dbCount": 11,
+      "firstSeq": 369,
+      "lastSeq": 379,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_32b087305f87bfa8bf",
+      "dbCount": 15,
+      "firstSeq": 380,
+      "lastSeq": 394,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_9c1e2390e875e16eb3",
+      "dbCount": 37,
+      "firstSeq": 395,
+      "lastSeq": 431,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_066581ff6b793a7aa9",
+      "dbCount": 37,
+      "firstSeq": 432,
+      "lastSeq": 468,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_3a4578fa7b6ffebae1",
+      "dbCount": 37,
+      "firstSeq": 469,
+      "lastSeq": 505,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_a5202415c602bd8320",
+      "dbCount": 37,
+      "firstSeq": 506,
+      "lastSeq": 542,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_2e6935e48bb8fa74a2",
+      "dbCount": 9,
+      "firstSeq": 543,
+      "lastSeq": 551,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_abf5fe78aab1e932ff",
+      "dbCount": 108,
+      "firstSeq": 552,
+      "lastSeq": 659,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_2bb2f8edf3043fe89e",
+      "dbCount": 55,
+      "firstSeq": 660,
+      "lastSeq": 714,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_65da49c3948f9d8f5c",
+      "dbCount": 59,
+      "firstSeq": 715,
+      "lastSeq": 773,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_26e2456caef4b8be0c",
+      "dbCount": 97,
+      "firstSeq": 774,
+      "lastSeq": 870,
+      "apiTruncated": true
+    },
+    {
+      "id": "run_95c11797b4923b4277",
+      "dbCount": 102,
+      "firstSeq": 871,
+      "lastSeq": 972,
+      "apiTruncated": true
+    }
+  ],
+  "truncationFalsePositives": 24,
+  "checkDupes": [
+    {
+      "run_id": "run_abf5fe78aab1e932ff",
+      "check_id": "stub.scan",
+      "n": 4
+    },
+    {
+      "run_id": "run_abf5fe78aab1e932ff",
+      "check_id": "plan.coverage",
+      "n": 3
+    },
+    {
+      "run_id": "run_abf5fe78aab1e932ff",
+      "check_id": "secret.scan",
+      "n": 3
+    },
+    {
+      "run_id": "run_abf5fe78aab1e932ff",
+      "check_id": "syntax.all",
+      "n": 3
+    },
+    {
+      "run_id": "run_abf5fe78aab1e932ff",
+      "check_id": "verification.plan",
+      "n": 3
+    },
+    {
+      "run_id": "run_9c4659ee2d4fbb40bf",
+      "check_id": "syntax.py",
+      "n": 2
+    }
+  ],
+  "checksColumns": [
+    {
+      "name": "id",
+      "type": "TEXT"
+    },
+    {
+      "name": "run_id",
+      "type": "TEXT"
+    },
+    {
+      "name": "check_id",
+      "type": "TEXT"
+    },
+    {
+      "name": "status",
+      "type": "TEXT"
+    },
+    {
+      "name": "detail",
+      "type": "TEXT"
+    },
+    {
+      "name": "mandatory",
+      "type": "INTEGER"
+    },
+    {
+      "name": "file",
+      "type": "TEXT"
+    },
+    {
+      "name": "line",
+      "type": "INTEGER"
+    },
+    {
+      "name": "created_at",
+      "type": "TEXT"
+    }
+  ],
+  "checksSample": [
+    {
+      "id": "chk_16f3aa8d7cd0011025",
+      "run_id": "run_9c4659ee2d4fbb40bf",
+      "check_id": "plan.coverage",
+      "status": "pass",
+      "detail": "4 planned files present",
+      "mandatory": 1,
+      "file": null,
+      "line": null,
+      "created_at": "2026-11-03T15:50:23.304Z"
+    },
+    {
+      "id": "chk_b1426392ca3875b825",
+      "run_id": "run_9c4659ee2d4fbb40bf",
+      "check_id": "syntax.py",
+      "status": "fail",
+      "detail": "Command failed: python -B -c import ast,sys; ast.parse(open(sys.argv[1], encoding=\"utf-8\").read(), filename=sys.argv[1]) src/calculator.py\nTraceback (most recent call last):\r\n  File \"<string>\", line 1, in <module>\r\n    import ast,sys; ast.parse(open(sys.argv[1], encoding=\"utf-8\").read(), filename=sys.argv[1])\r\n                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nFileNotFoundError: [Errno 2] No such file or directory: 'src/calculator.py'\r\n",
+      "mandatory": 1,
+      "file": "src/calculator.py",
+      "line": null,
+      "created_at": "2026-11-03T15:50:23.304Z"
+    },
+    {
+      "id": "chk_d10f83e0bc03c24f2c",
+      "run_id": "run_9c4659ee2d4fbb40bf",
+      "check_id": "syntax.py",
+      "status": "fail",
+      "detail": "Command failed: python -B -c import ast,sys; ast.parse(open(sys.argv[1], encoding=\"utf-8\").read(), filename=sys.argv[1]) tests/test_calculator.py\nTraceback (most recent call last):\r\n  File \"<string>\", line 1, in <module>\r\n    import ast,sys; ast.parse(open(sys.argv[1], encoding=\"utf-8\").read(), filename=sys.argv[1])\r\n                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nFileNotFoundError: [Errno 2] No such file or directory: 'tests/test_calculator.py'\r\n",
+      "mandatory": 1,
+      "file": "tests/test_calculator.py",
+      "line": null,
+      "created_at": "2026-11-03T15:50:23.304Z"
+    }
+  ],
+  "contextPackCols": [
+    {
+      "name": "id"
+    },
+    {
+      "name": "run_id"
+    },
+    {
+      "name": "task_id"
+    },
+    {
+      "name": "strategy"
+    },
+    {
+      "name": "included_json"
+    },
+    {
+      "name": "excluded_json"
+    },
+    {
+      "name": "est_tokens"
+    },
+    {
+      "name": "prefix_hash"
+    },
+    {
+      "name": "converged"
+    },
+    {
+      "name": "degraded"
+    },
+    {
+      "name": "created_at"
+    }
+  ],
+  "contextPackCount": 84,
+  "contextItemTotals": {
+    "packs": 84,
+    "items": 343,
+    "withTokens": 0,
+    "nonEmptyExcluded": 0
+  },
+  "runLimitRows": [
+    {
+      "key": "run_limit:run_23af9b7837448cb24a",
+      "value_json": "{\"maxCostUsd\":0.05}"
+    },
+    {
+      "key": "run_limit:run_b8a8e239a57052f146",
+      "value_json": "{\"maxCostUsd\":0.5}"
+    },
+    {
+      "key": "run_limit:run_9b144184491ce0f41b",
+      "value_json": "{\"maxCostUsd\":0.05}"
+    },
+    {
+      "key": "run_limit:run_063580525bb149f98d",
+      "value_json": "{\"maxCostUsd\":0.1}"
+    },
+    {
+      "key": "run_limit:run_faf2600e5bf180b0dc",
+      "value_json": "{\"maxCostUsd\":0.03}"
+    },
+    {
+      "key": "run_limit:run_9c1e2390e875e16eb3",
+      "value_json": "{\"maxCostUsd\":0.03}"
+    },
+    {
+      "key": "run_limit:run_066581ff6b793a7aa9",
+      "value_json": "{\"maxCostUsd\":0.03}"
+    },
+    {
+      "key": "run_limit:run_3a4578fa7b6ffebae1",
+      "value_json": "{\"maxCostUsd\":0.03}"
+    },
+    {
+      "key": "run_limit:run_a5202415c602bd8320",
+      "value_json": "{\"maxCostUsd\":0.03}"
+    },
+    {
+      "key": "run_limit:run_2e6935e48bb8fa74a2",
+      "value_json": "{\"maxCostUsd\":0.01}"
+    },
+    {
+      "key": "run_limit:run_abf5fe78aab1e932ff",
+      "value_json": "{\"maxCostUsd\":0.5}"
+    },
+    {
+      "key": "run_limit:run_2bb2f8edf3043fe89e",
+      "value_json": "{\"maxCostUsd\":0.05}"
+    },
+    {
+      "key": "run_limit:run_65da49c3948f9d8f5c",
+      "value_json": "{\"maxCostUsd\":0.05}"
+    },
+    {
+      "key": "run_limit:run_26e2456caef4b8be0c",
+      "value_json": "{\"maxCostUsd\":0.2}"
+    },
+    {
+      "key": "run_limit:run_95c11797b4923b4277",
+      "value_json": "{\"maxCostUsd\":0.5}"
+    }
+  ],
+  "snapshotHasLimits": {
+    "total": 25,
+    "withLimits": 25,
+    "sampleKeys": [
+      "briefChars",
+      "cycleCostUsd",
+      "evalCostUsd",
+      "eventPayloadMaxBytes",
+      "eventReplayWindow",
+      "maxAttempts",
+      "maxContextChars",
+      "maxFileBytes",
+      "maxFiles",
+      "maxOutputTokens",
+      "maxRepairs",
+      "maxRunCostUsd",
+      "requestTimeoutMs",
+      "retentionDays",
+      "runTimeoutMs"
+    ]
+  },
+  "stepStatus": [
+    {
+      "status": "failed",
+      "n": 5
+    },
+    {
+      "status": "succeeded",
+      "n": 166
+    }
+  ],
+  "stepNullCost": 5,
+  "stepTotal": 171,
+  "agentEvidenceBadges": [
+    {
+      "badge": "representative-live",
+      "n": 113
+    },
+    {
+      "badge": "schema-valid",
+      "n": 99
+    }
+  ],
+  "traceCompleteFlag": [
+    {
+      "trace_complete": 0,
+      "n": 7
+    },
+    {
+      "trace_complete": 1,
+      "n": 18
+    }
+  ],
+  "traceCompleteWithoutRow": [
+    {
+      "id": "run_007238d763a3956e74",
+      "status": "completed",
+      "trace_complete": 1
+    },
+    {
+      "id": "run_01581fa22ff57a5f5e",
+      "status": "completed",
+      "trace_complete": 1
+    },
+    {
+      "id": "run_f08c679f9075ac230d",
+      "status": "completed",
+      "trace_complete": 1
+    },
+    {
+      "id": "run_e5853ec6f585b0b657",
+      "status": "completed",
+      "trace_complete": 1
+    },
+    {
+      "id": "run_582bf88992c0ee98ae",
+      "status": "completed",
+      "trace_complete": 1
+    },
+    {
+      "id": "run_094ae10475a8f3ea01",
+      "status": "completed",
+      "trace_complete": 1
+    },
+    {
+      "id": "run_3bf07c4861e786f1e7",
+      "status": "completed",
+      "trace_complete": 1
+    }
+  ],
+  "terminalWithoutCode": [],
+  "usageSources": [
+    {
+      "source": "provider",
+      "n": 161
+    }
+  ],
+  "usageCols": [
+    {
+      "name": "id"
+    },
+    {
+      "name": "run_id"
+    },
+    {
+      "name": "step_id"
+    },
+    {
+      "name": "agent_id"
+    },
+    {
+      "name": "model"
+    },
+    {
+      "name": "prompt_tokens"
+    },
+    {
+      "name": "completion_tokens"
+    },
+    {
+      "name": "cache_hit_tokens"
+    },
+    {
+      "name": "cache_miss_tokens"
+    },
+    {
+      "name": "reasoning_tokens"
+    },
+    {
+      "name": "cost_usd"
+    },
+    {
+      "name": "source"
+    },
+    {
+      "name": "system_fingerprint"
+    },
+    {
+      "name": "created_at"
+    }
+  ]
+}

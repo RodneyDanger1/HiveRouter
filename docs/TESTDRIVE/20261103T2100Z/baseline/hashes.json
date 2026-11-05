@@ -1,0 +1,37 @@
+﻿[
+    {
+        "path":  "ns 1\\Polsia\\.git\\config",
+        "sha256":  "393C952C05FD4A241BD6646A609679882A2EE54A1FB0478687382FCE64250E91",
+        "bytes":  557
+    },
+    {
+        "path":  "ns 1\\polsia-work\\build\\swarm-2026-10-28\\auditor\\copies\\w4\\.git\\config",
+        "sha256":  "C1CA71B739BA3BE89397C129DF3A561CF1A028173F16DF2076B612C92B5136BE",
+        "bytes":  437
+    },
+    {
+        "path":  "ns 1\\polsia-work\\build\\swarm-2026-10-28\\auditor\\copies\\w5\\.git\\config",
+        "sha256":  "C1CA71B739BA3BE89397C129DF3A561CF1A028173F16DF2076B612C92B5136BE",
+        "bytes":  437
+    },
+    {
+        "path":  "a Research\\13-prior-research\\_scratch\\vps-fetch\\x\\srv\\vaults\\kiln\\.git\\config",
+        "sha256":  "B97D8630FAA6A2F7D8355EB03F9FEC42BD391696735C1126EB31A57321612B05",
+        "bytes":  159
+    },
+    {
+        "path":  "a Research\\13-prior-research\\_scratch\\vps-fetch\\x\\srv\\vaults\\meridian\\.git\\config",
+        "sha256":  "B97D8630FAA6A2F7D8355EB03F9FEC42BD391696735C1126EB31A57321612B05",
+        "bytes":  159
+    },
+    {
+        "path":  "a Research\\13-prior-research\\_scratch\\vps-fetch\\x\\srv\\vaults\\posterpal\\.git\\config",
+        "sha256":  "B97D8630FAA6A2F7D8355EB03F9FEC42BD391696735C1126EB31A57321612B05",
+        "bytes":  159
+    },
+    {
+        "path":  "a Research\\13-prior-research\\_scratch\\vps-fetch\\x\\srv\\vaults\\storefront\\.git\\config",
+        "sha256":  "B97D8630FAA6A2F7D8355EB03F9FEC42BD391696735C1126EB31A57321612B05",
+        "bytes":  159
+    }
+]

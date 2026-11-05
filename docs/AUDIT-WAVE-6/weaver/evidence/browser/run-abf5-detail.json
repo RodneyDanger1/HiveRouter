@@ -1,0 +1,2198 @@
+{
+  "id": "run-abf5",
+  "runId": "run_abf5fe78aab1e932ff",
+  "header": {
+    "badges": [
+      {
+        "text": "FAILED",
+        "cls": "badge badge-error"
+      },
+      {
+        "text": "DONE",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "20 STEPS",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "TERMINAL · SNAPSHOT",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "PLANNING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "GENERATING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "GENERATING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "GENERATING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "GENERATING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "GENERATING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "GENERATING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "GENERATING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "GENERATING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "GENERATING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "GENERATING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "GENERATING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "GENERATING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "GENERATING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "GENERATING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "CLEANING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "HARDENING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "TESTING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "REPAIRING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      },
+      {
+        "text": "REPAIRING",
+        "cls": "badge badge-muted"
+      },
+      {
+        "text": "SUCCEEDED",
+        "cls": "badge badge-success"
+      }
+    ],
+    "actions": [
+      {
+        "tag": "button",
+        "text": "Refresh",
+        "disabled": false,
+        "title": null,
+        "href": null
+      },
+      {
+        "tag": "button",
+        "text": "Download",
+        "disabled": true,
+        "title": "This run has no artifacts to download.",
+        "href": null
+      }
+    ],
+    "facts": [
+      "CREATED Nov 03, 2026, 09:08 PM DURATION 7m 30s PROMPT TOKENS — COMPLETION TOKENS — SNAPSHOT ea9d9a4862033a8d… PARENT None",
+      "CHECKS 16 total · 4 fail/unverified ARTIFACTS 0 TRACE COMPLETE No POLICY VERSION pol_36a0bb4e631533c9"
+    ],
+    "costMeter": [
+      "Estimated spend Not measured The provider has not reported a cost yet."
+    ],
+    "tabs": [
+      {
+        "text": "Overview",
+        "disabled": false,
+        "ariaDisabled": null,
+        "selected": "true"
+      },
+      {
+        "text": "Files",
+        "disabled": false,
+        "ariaDisabled": null,
+        "selected": "false"
+      },
+      {
+        "text": "Checks",
+        "disabled": false,
+        "ariaDisabled": null,
+        "selected": "false"
+      },
+      {
+        "text": "Routing",
+        "disabled": false,
+        "ariaDisabled": null,
+        "selected": "false"
+      },
+      {
+        "text": "Context",
+        "disabled": false,
+        "ariaDisabled": null,
+        "selected": "false"
+      },
+      {
+        "text": "Repairs",
+        "disabled": false,
+        "ariaDisabled": null,
+        "selected": "false"
+      },
+      {
+        "text": "Confidence",
+        "disabled": false,
+        "ariaDisabled": null,
+        "selected": "false"
+      },
+      {
+        "text": "Events",
+        "disabled": false,
+        "ariaDisabled": null,
+        "selected": "false"
+      }
+    ],
+    "h1": "aNALYZE THE SOFTWARE/WHAT DOES AND DOESNT WORK, WHAT TOOLS YOU CANT CALL, DOES LEARNING WORK, CAN YOU SEE PAST RUNS, DOE…",
+    "rawStart": "Skip to content Hive ROUTER AI AGENT CODING ROUTER API online STAGE B2 Overview Agents Runs Vault Learning Settings Screening-grade by design. Local, single-user factory. No learned routing. No generated-code execution. No provider key in the browser. HIVEROUTER v0.1.0 Trust & status All runs RUN_ABF5FE78AAB1E932FF · USER RUN aNALYZE THE SOFTWARE/WHAT DOES AND DOESNT WORK, WHAT TOOLS YOU CANT CALL, DOES LEARNING WORK, CAN YOU SEE PAST RUNS, DOE… Full Build · deepseek-flash · thinking disabled Refresh Download FAILED DONE 20 STEPS TERMINAL · SNAPSHOT CREATED Nov 03, 2026, 09:08 PM DURATION 7m 30s PROMPT TOKENS — COMPLETION TOKENS — SNAPSHOT ea9d9a4862033a8d… PARENT None Estimated spend Not measured The provider has not reported a cost yet. GATE_FAILED Mandatory verification failed Run actions Actions are real API calls; unavailable actions are not rendered. Open folder Revision requires a terminal run with artifacts. Audit requires stored artifacts. ACCEPTED TREE C:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_abf5fe78aab1e932ff Downloads are available only for terminal runs that have stored artifacts. Overview Files Checks Routing Context Repairs Confidence Events Execution timeline Steps are read from the persisted snapshot; active runs also refresh from the stream. Terminal runs are snapshot-only. #1 PLANNING architect SUCCEEDED 11s {\"projectName\":\"hive-self-audit\",\"coreParadigm\":\"Evidence-first introspection harness that probes the running HiveRouter system, records what is verifiable versus unverifiable, and refuses to assert capabilities it cannot demonstrate.\",\"sto… 604 in / 2,002 out / $0.0026 #2 GENERATING python-engine SUCCEEDED 12s {\"path\":\"src/util/evidence.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsrc/util/evidence.py\\n\\nDependencies: Python 3.11+ standard library only (datetime, typing, dataclasses).\\nRun command: python -c \\\"import src.util.evidence as e; print(e… 1,394 in / 2,671 out / $0.0036 #3 GENERATING python-engine SUCCEEDED 14s {\"path\":\"src/probes/identity.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsrc/probes/identity.py\\n\\nDependencies: Python 3.11+ standard library only (os, sys, json, typing).\\nImports the local evidence helper: src.util.evidence.\\nRun command:… 3,554 in / 3,007 out / $0.0043 #4 GENERATING python-engine SUCCEEDED 11s {\"path\":\"src/util/sandbox.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsandbox.py\\n\\nDependencies: Python 3.11+ standard library only (concurrent.futures, threading,\\n time, traceback, dataclasses, typing).\\nRun command: python -… 1,383 in / 2,623 out / $0.0032 #5 GENERATING python-engine SUCCEEDED 18s {\"path\":\"src/probes/tool_access.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsrc/probes/tool_access.py\\n\\nDependencies: Python 3.11+ standard library only (typing, dataclasses, importlib,\\n inspect, json, os, sys).\\n … 5,694 in / 4,643 out / $0.0069 #6 GENERATING python-engine SUCCEEDED 10s {\"path\":\"src/util/fs_scan.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsrc/util/fs_scan.py\\n\\nSafe, read-only filesystem scanning with path allowlisting and size caps.\\nReturns file metadata without reading unbounded content.\\n\\nDependencies:… 1,379 in / 2,707 out / $0.0033 #7 GENERATING python-engine SUCCEEDED 19s {\"path\":\"src/probes/memory.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsrc/probes/memory.py\\n\\nDependencies: Python 3.11+ standard library only (os, json, pathlib, typing).\\n Internal: src.util.evidence, src.util.fs_scan.\\nRun c… 5,791 in / 5,002 out / $0.0074 #8 GENERATING python-engine SUCCEEDED 22s {\"path\":\"src/probes/learning_loop.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsrc/probes/learning_loop.py\\n\\nDependencies: Python 3.11+ standard library only (os, json, pathlib, typing,\\n dataclasses, hashlib, time).\\n … 5,800 in / 5,376 out / $0.0078 #9 GENERATING python-engine SUCCEEDED 10s {\"path\":\"src/report/aggregate.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsrc/report/aggregate.py\\n\\nDependencies: Python 3.11+ standard library only (typing, collections).\\n Imports src.util.ev"
+  },
+  "apiSnapshot": {
+    "status": "failed",
+    "phase": "done",
+    "steps": 20,
+    "checks": 16,
+    "artifacts": 0,
+    "costUsd": null,
+    "promptTokens": null,
+    "completionTokens": null,
+    "snapshotHash": "ea9d9a4862033a8dcbcd7bbadd0524430f8ca34175d3abe1c552d5d01b95bff5",
+    "lastEventId": 659,
+    "truncated": false,
+    "hasLimits": false,
+    "eventsCount": 108,
+    "eventsTruncated": true,
+    "eventsLastId": 659
+  },
+  "tabResults": [
+    {
+      "name": "Overview",
+      "exists": true,
+      "disabled": false,
+      "panel": {
+        "text": "Execution timeline Steps are read from the persisted snapshot; active runs also refresh from the stream. Terminal runs are snapshot-only. #1 PLANNING architect SUCCEEDED 11s {\"projectName\":\"hive-self-audit\",\"coreParadigm\":\"Evidence-first introspection harness that probes the running HiveRouter system, records what is verifiable versus unverifiable, and refuses to assert capabilities it cannot demonstrate.\",\"sto… 604 in / 2,002 out / $0.0026 #2 GENERATING python-engine SUCCEEDED 12s {\"path\":\"src/util/evidence.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsrc/util/evidence.py\\n\\nDependencies: Python 3.11+ standard library only (datetime, typing, dataclasses).\\nRun command: python -c \\\"import src.util.evidence as e; print(e… 1,394 in / 2,671 out / $0.0036 #3 GENERATING python-engine SUCCEEDED 14s {\"path\":\"src/probes/identity.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsrc/probes/identity.py\\n\\nDependencies: Python 3.11+ standard library only (os, sys, json, typing).\\nImports the local evidence helper: src.util.evidence.\\nRun command:… 3,554 in / 3,007 out / $0.0043 #4 GENERATING python-engine SUCCEEDED 11s {\"path\":\"src/util/sandbox.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsandbox.py\\n\\nDependencies: Python 3.11+ standard library only (concurrent.futures, threading,\\n time, traceback, dataclasses, typing).\\nRun command: python -… 1,383 in / 2,623 out / $0.0032 #5 GENERATING python-engine SUCCEEDED 18s {\"path\":\"src/probes/tool_access.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsrc/probes/tool_access.py\\n\\nDependencies: Python 3.11+ standard library only (typing, dataclasses, importlib,\\n inspect, json, os, sys).\\n … 5,694 in / 4,643 out / $0.0069 #6 GENERATING python-engine SUCCEEDED 10s {\"path\":\"src/util/fs_scan.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsrc/util/fs_scan.py\\n\\nSafe, read-only filesystem scanning with path allowlisting and size caps.\\nReturns file metadata without reading unbounded content.\\n\\nDependencies:… 1,379 in / 2,707 out / $0.0033 #7 GENERATING python-engine SUCCEEDED 19s {\"path\":\"src/probes/memory.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsrc/probes/memory.py\\n\\nDependencies: Python 3.11+ standard library only (os, json, pathlib, typing).\\n Internal: src.util.evidence, src.util.fs_scan.\\nRun c… 5,791 in / 5,002 out / $0.0074 #8 GENERATING python-engine SUCCEEDED 22s {\"path\":\"src/probes/learning_loop.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsrc/probes/learning_loop.py\\n\\nDependencies: Python 3.11+ standard library only (os, json, pathlib, typing,\\n dataclasses, hashlib, time).\\n … 5,800 in / 5,376 out / $0.0078 #9 GENERATING python-engine SUCCEEDED 10s {\"path\":\"src/report/aggregate.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsrc/report/aggregate.py\\n\\nDependencies: Python 3.11+ standard library only (typing, collections).\\n Imports src.util.evidence for the honesty contract.\\n… 3,551 in / 2,263 out / $0.0034 #10 GENERATING python-engine SUCCEEDED 14s {\"path\":\"src/report/render.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsrc/report/render.py\\n\\nDependencies: Python 3.11+ standard library only (typing, datetime).\\n Consumes the aggregated findings structure produced by\\n … 3,238 in / 3,669 out / $0.0050 #11 GENERATING python-engine SUCCEEDED 20s {\"path\":\"src/main.py\",\"language\":\"python\",\"content\":\"\\\"\\\"\\\"\\nsrc/main.py\\n\\nDependencies: Python 3.11+ standard library only (argparse, json, os, sys,\\n datetime, typing).\\n Internal: src.probes.identity, src.probe… 21,258 in / 5,391 out / $0.0125 #12 GENERATING python-engine SUC",
+        "tables": [],
+        "details": [],
+        "tableCount": 0
+      },
+      "screenshot": "screens/run-abf5-tab-overview.png"
+    },
+    {
+      "name": "Files",
+      "exists": true,
+      "disabled": false,
+      "panel": {
+        "text": "ARTIFACTS 0 No artifacts have been stored. No file selected Artifacts appear only when the API has stored them.",
+        "tables": [],
+        "details": [],
+        "tableCount": 0
+      },
+      "screenshot": "screens/run-abf5-tab-files.png"
+    },
+    {
+      "name": "Checks",
+      "exists": true,
+      "disabled": false,
+      "panel": {
+        "text": "Verification checks Mandatory checks are never skipped. Unverified is not a pass; a missing tool stays unverified. CHECK STATUS MANDATORY DETAIL FILE TIME plan.coverage PASS Yes 15 planned files present — — secret.scan PASS Yes no secret patterns — — stub.scan FAIL Yes 2 placeholder marker(s), first at line 22 src/probes/tool_access.py:22 — stub.scan FAIL Yes 2 placeholder marker(s), first at line 120 src/report/render.py:120 — syntax.all PASS Yes all 14 verifiable file(s) parse — — verification.plan PASS No RVS planned 4 check(s); 0 syntax check(s) skipped by plan — — plan.coverage PASS Yes 15 planned files present — — secret.scan PASS Yes no secret patterns — — stub.scan FAIL Yes 2 placeholder marker(s), first at line 22 src/probes/tool_access.py:22 — verification.plan PASS No RVS planned 4 check(s); 0 syntax check(s) skipped by plan — — syntax.all PASS Yes all 14 verifiable file(s) parse — — plan.coverage PASS Yes 15 planned files present — — stub.scan FAIL Yes 1 placeholder marker(s), first at line 121 src/probes/tool_access.py:121 — verification.plan PASS No RVS planned 4 check(s); 0 syntax check(s) skipped by plan — — secret.scan PASS Yes no secret patterns — — syntax.all PASS Yes all 14 verifiable file(s) parse — —",
+        "tables": [
+          {
+            "headers": [
+              "CHECK",
+              "STATUS",
+              "MANDATORY",
+              "DETAIL",
+              "FILE",
+              "TIME"
+            ],
+            "rows": [
+              [
+                "plan.coverage",
+                "PASS",
+                "Yes",
+                "15 planned files present",
+                "—",
+                "—"
+              ],
+              [
+                "secret.scan",
+                "PASS",
+                "Yes",
+                "no secret patterns",
+                "—",
+                "—"
+              ],
+              [
+                "stub.scan",
+                "FAIL",
+                "Yes",
+                "2 placeholder marker(s), first at line 22",
+                "src/probes/tool_access.py:22",
+                "—"
+              ],
+              [
+                "stub.scan",
+                "FAIL",
+                "Yes",
+                "2 placeholder marker(s), first at line 120",
+                "src/report/render.py:120",
+                "—"
+              ],
+              [
+                "syntax.all",
+                "PASS",
+                "Yes",
+                "all 14 verifiable file(s) parse",
+                "—",
+                "—"
+              ],
+              [
+                "verification.plan",
+                "PASS",
+                "No",
+                "RVS planned 4 check(s); 0 syntax check(s) skipped by plan",
+                "—",
+                "—"
+              ],
+              [
+                "plan.coverage",
+                "PASS",
+                "Yes",
+                "15 planned files present",
+                "—",
+                "—"
+              ],
+              [
+                "secret.scan",
+                "PASS",
+                "Yes",
+                "no secret patterns",
+                "—",
+                "—"
+              ],
+              [
+                "stub.scan",
+                "FAIL",
+                "Yes",
+                "2 placeholder marker(s), first at line 22",
+                "src/probes/tool_access.py:22",
+                "—"
+              ],
+              [
+                "verification.plan",
+                "PASS",
+                "No",
+                "RVS planned 4 check(s); 0 syntax check(s) skipped by plan",
+                "—",
+                "—"
+              ],
+              [
+                "syntax.all",
+                "PASS",
+                "Yes",
+                "all 14 verifiable file(s) parse",
+                "—",
+                "—"
+              ],
+              [
+                "plan.coverage",
+                "PASS",
+                "Yes",
+                "15 planned files present",
+                "—",
+                "—"
+              ]
+            ],
+            "rowCount": 16
+          }
+        ],
+        "details": [],
+        "tableCount": 1
+      },
+      "screenshot": "screens/run-abf5-tab-checks.png"
+    },
+    {
+      "name": "Routing",
+      "exists": true,
+      "disabled": false,
+      "panel": {
+        "text": "Routing decisions Every factor is shown. A composite score is never displayed without its capability, cost, latency, risk, and evidence inputs. Refresh rtd_e80b06bd26f3be96 README.md MARKDOWN-ENGINE static prior route CANDIDATE MODEL QUALITY EVIDENCE COST LATENCY RISK CHOSEN markdown-engine deepseek-flash · disabled 0.720 prior · n=0 $0.0022 20000 ms 0.1 CHOSEN markdown-engine deepseek-flash · enabled 0.750 prior · n=0 $0.0022 45000 ms 0.1 No markdown-engine deepseek-v4-pro · enabled 0.770 prior · n=0 $0.0081 70000 ms 0.1 No Raw decision rtd_6b21e6e66deb9ae8 src/report/schema.py PYTHON-ENGINE static prior route CANDIDATE MODEL QUALITY EVIDENCE COST LATENCY RISK CHOSEN python-engine deepseek-flash · disabled 0.800 prior · n=0 $0.0022 20000 ms 0.35 CHOSEN python-engine deepseek-flash · enabled 0.830 prior · n=0 $0.0022 45000 ms 0.35 No python-engine deepseek-v4-pro · enabled 0.850 prior · n=0 $0.0081 70000 ms 0.35 No Raw decision rtd_5b5061eb349703af src/util/evidence.py PYTHON-ENGINE static prior route CANDIDATE MODEL QUALITY EVIDENCE COST LATENCY RISK CHOSEN python-engine deepseek-flash · disabled 0.800 prior · n=0 $0.0022 20000 ms 0.1 CHOSEN python-engine deepseek-flash · enabled 0.830 prior · n=0 $0.0022 45000 ms 0.1 No python-engine deepseek-v4-pro · enabled 0.850 prior · n=0 $0.0081 70000 ms 0.1 No Raw decision rtd_e81f68cf8d36812e src/probes/identity.py PYTHON-ENGINE static prior route CANDIDATE MODEL QUALITY EVIDENCE COST LATENCY RISK CHOSEN python-engine deepseek-flash · disabled 0.800 prior · n=0 $0.0022 20000 ms 0.1 CHOSEN python-engine deepseek-flash · enabled 0.830 prior · n=0 $0.0022 45000 ms 0.1 No python-engine deepseek-v4-pro · enabled 0.850 prior · n=0 $0.0081 70000 ms 0.1 No Raw decision rtd_ad7e6e842bd8260f src/report/aggregate.py PYTHON-ENGINE static prior route CANDIDATE MODEL QUALITY EVIDENCE COST LATENCY RISK CHOSEN python-engine deepseek-flash · disabled 0.800 prior · n=0 $0.0022 20000 ms 0.1 CHOSEN python-engine deepseek-flash · enabled 0.830 prior · n=0 $0.0022 45000 ms 0.1 No python-engine deepseek-v4-pro · enabled 0.850 prior · n=0 $0.0081 70000 ms 0.1 No Raw decision rtd_ae94f791d1bddf9d src/report/render.py PYTHON-ENGINE static prior route CANDIDATE MODEL QUALITY EVIDENCE COST LATENCY RISK CHOSEN python-engine deepseek-flash · disabled 0.800 prior · n=0 $0.0022 20000 ms 0.1 CHOSEN python-engine deepseek-flash · enabled 0.830 prior · n=0 $0.0022 45000 ms 0.1 No python-engine deepseek-v4-pro · enabled 0.850 prior · n=0 $0.0081 70000 ms 0.1 No Raw decision rtd_0f2a09b18197c596 src/util/fs_scan.py PYTHON-ENGINE static prior route CANDIDATE MODEL QUALITY EVIDENCE COST LATENCY RISK CHOSEN python-engine deepseek-flash · disabled 0.800 prior · n=0 $0.0022 20000 ms 0.1 CHOSEN python-engine deepseek-flash · enabled 0.830 prior · n=0 $0.0022 45000 ms 0.1 No python-engine deepseek-v4-pro · enabled 0.850 prior · n=0 $0.0081 70000 ms 0.1 No Raw decision rtd_9c2022990c411d09 src/probes/learning_loop.py PYTHON-ENGINE static prior route CANDIDATE MODEL QUALITY EVIDENCE COST LATENCY RISK CHOSEN python-engine deepseek-flash · disabled 0.800 prior · n=0 $0.0022 20000 ms 0.1 CHOSEN python-engine deepseek-flash · enabled 0.830 prior · n=0 $0.0022 45000 ms 0.1 No python-engine deepseek-v4-pro · enabled 0.850 prior · n=0 $0.0081 70000 ms 0.1 No Raw decision rtd_470d889192d0a6a9 src/probes/memory.py PYTHON-ENGINE static prior route CANDIDATE MODEL QUALITY EVIDENCE COST LATENCY RISK CHOSEN python-engine deepseek-flash · disabled 0.80",
+        "tables": [
+          {
+            "headers": [
+              "CANDIDATE",
+              "MODEL",
+              "QUALITY",
+              "EVIDENCE",
+              "COST",
+              "LATENCY",
+              "RISK",
+              "CHOSEN"
+            ],
+            "rows": [
+              [
+                "markdown-engine",
+                "deepseek-flash · disabled",
+                "0.720",
+                "prior · n=0",
+                "$0.0022",
+                "20000 ms",
+                "0.1",
+                "CHOSEN"
+              ],
+              [
+                "markdown-engine",
+                "deepseek-flash · enabled",
+                "0.750",
+                "prior · n=0",
+                "$0.0022",
+                "45000 ms",
+                "0.1",
+                "No"
+              ],
+              [
+                "markdown-engine",
+                "deepseek-v4-pro · enabled",
+                "0.770",
+                "prior · n=0",
+                "$0.0081",
+                "70000 ms",
+                "0.1",
+                "No"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "CANDIDATE",
+              "MODEL",
+              "QUALITY",
+              "EVIDENCE",
+              "COST",
+              "LATENCY",
+              "RISK",
+              "CHOSEN"
+            ],
+            "rows": [
+              [
+                "python-engine",
+                "deepseek-flash · disabled",
+                "0.800",
+                "prior · n=0",
+                "$0.0022",
+                "20000 ms",
+                "0.35",
+                "CHOSEN"
+              ],
+              [
+                "python-engine",
+                "deepseek-flash · enabled",
+                "0.830",
+                "prior · n=0",
+                "$0.0022",
+                "45000 ms",
+                "0.35",
+                "No"
+              ],
+              [
+                "python-engine",
+                "deepseek-v4-pro · enabled",
+                "0.850",
+                "prior · n=0",
+                "$0.0081",
+                "70000 ms",
+                "0.35",
+                "No"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "CANDIDATE",
+              "MODEL",
+              "QUALITY",
+              "EVIDENCE",
+              "COST",
+              "LATENCY",
+              "RISK",
+              "CHOSEN"
+            ],
+            "rows": [
+              [
+                "python-engine",
+                "deepseek-flash · disabled",
+                "0.800",
+                "prior · n=0",
+                "$0.0022",
+                "20000 ms",
+                "0.1",
+                "CHOSEN"
+              ],
+              [
+                "python-engine",
+                "deepseek-flash · enabled",
+                "0.830",
+                "prior · n=0",
+                "$0.0022",
+                "45000 ms",
+                "0.1",
+                "No"
+              ],
+              [
+                "python-engine",
+                "deepseek-v4-pro · enabled",
+                "0.850",
+                "prior · n=0",
+                "$0.0081",
+                "70000 ms",
+                "0.1",
+                "No"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "CANDIDATE",
+              "MODEL",
+              "QUALITY",
+              "EVIDENCE",
+              "COST",
+              "LATENCY",
+              "RISK",
+              "CHOSEN"
+            ],
+            "rows": [
+              [
+                "python-engine",
+                "deepseek-flash · disabled",
+                "0.800",
+                "prior · n=0",
+                "$0.0022",
+                "20000 ms",
+                "0.1",
+                "CHOSEN"
+              ],
+              [
+                "python-engine",
+                "deepseek-flash · enabled",
+                "0.830",
+                "prior · n=0",
+                "$0.0022",
+                "45000 ms",
+                "0.1",
+                "No"
+              ],
+              [
+                "python-engine",
+                "deepseek-v4-pro · enabled",
+                "0.850",
+                "prior · n=0",
+                "$0.0081",
+                "70000 ms",
+                "0.1",
+                "No"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "CANDIDATE",
+              "MODEL",
+              "QUALITY",
+              "EVIDENCE",
+              "COST",
+              "LATENCY",
+              "RISK",
+              "CHOSEN"
+            ],
+            "rows": [
+              [
+                "python-engine",
+                "deepseek-flash · disabled",
+                "0.800",
+                "prior · n=0",
+                "$0.0022",
+                "20000 ms",
+                "0.1",
+                "CHOSEN"
+              ],
+              [
+                "python-engine",
+                "deepseek-flash · enabled",
+                "0.830",
+                "prior · n=0",
+                "$0.0022",
+                "45000 ms",
+                "0.1",
+                "No"
+              ],
+              [
+                "python-engine",
+                "deepseek-v4-pro · enabled",
+                "0.850",
+                "prior · n=0",
+                "$0.0081",
+                "70000 ms",
+                "0.1",
+                "No"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "CANDIDATE",
+              "MODEL",
+              "QUALITY",
+              "EVIDENCE",
+              "COST",
+              "LATENCY",
+              "RISK",
+              "CHOSEN"
+            ],
+            "rows": [
+              [
+                "python-engine",
+                "deepseek-flash · disabled",
+                "0.800",
+                "prior · n=0",
+                "$0.0022",
+                "20000 ms",
+                "0.1",
+                "CHOSEN"
+              ],
+              [
+                "python-engine",
+                "deepseek-flash · enabled",
+                "0.830",
+                "prior · n=0",
+                "$0.0022",
+                "45000 ms",
+                "0.1",
+                "No"
+              ],
+              [
+                "python-engine",
+                "deepseek-v4-pro · enabled",
+                "0.850",
+                "prior · n=0",
+                "$0.0081",
+                "70000 ms",
+                "0.1",
+                "No"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "CANDIDATE",
+              "MODEL",
+              "QUALITY",
+              "EVIDENCE",
+              "COST",
+              "LATENCY",
+              "RISK",
+              "CHOSEN"
+            ],
+            "rows": [
+              [
+                "python-engine",
+                "deepseek-flash · disabled",
+                "0.800",
+                "prior · n=0",
+                "$0.0022",
+                "20000 ms",
+                "0.1",
+                "CHOSEN"
+              ],
+              [
+                "python-engine",
+                "deepseek-flash · enabled",
+                "0.830",
+                "prior · n=0",
+                "$0.0022",
+                "45000 ms",
+                "0.1",
+                "No"
+              ],
+              [
+                "python-engine",
+                "deepseek-v4-pro · enabled",
+                "0.850",
+                "prior · n=0",
+                "$0.0081",
+                "70000 ms",
+                "0.1",
+                "No"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "CANDIDATE",
+              "MODEL",
+              "QUALITY",
+              "EVIDENCE",
+              "COST",
+              "LATENCY",
+              "RISK",
+              "CHOSEN"
+            ],
+            "rows": [
+              [
+                "python-engine",
+                "deepseek-flash · disabled",
+                "0.800",
+                "prior · n=0",
+                "$0.0022",
+                "20000 ms",
+                "0.1",
+                "CHOSEN"
+              ],
+              [
+                "python-engine",
+                "deepseek-flash · enabled",
+                "0.830",
+                "prior · n=0",
+                "$0.0022",
+                "45000 ms",
+                "0.1",
+                "No"
+              ],
+              [
+                "python-engine",
+                "deepseek-v4-pro · enabled",
+                "0.850",
+                "prior · n=0",
+                "$0.0081",
+                "70000 ms",
+                "0.1",
+                "No"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "CANDIDATE",
+              "MODEL",
+              "QUALITY",
+              "EVIDENCE",
+              "COST",
+              "LATENCY",
+              "RISK",
+              "CHOSEN"
+            ],
+            "rows": [
+              [
+                "python-engine",
+                "deepseek-flash · disabled",
+                "0.800",
+                "prior · n=0",
+                "$0.0022",
+                "20000 ms",
+                "0.1",
+                "CHOSEN"
+              ],
+              [
+                "python-engine",
+                "deepseek-flash · enabled",
+                "0.830",
+                "prior · n=0",
+                "$0.0022",
+                "45000 ms",
+                "0.1",
+                "No"
+              ],
+              [
+                "python-engine",
+                "deepseek-v4-pro · enabled",
+                "0.850",
+                "prior · n=0",
+                "$0.0081",
+                "70000 ms",
+                "0.1",
+                "No"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "CANDIDATE",
+              "MODEL",
+              "QUALITY",
+              "EVIDENCE",
+              "COST",
+              "LATENCY",
+              "RISK",
+              "CHOSEN"
+            ],
+            "rows": [
+              [
+                "python-engine",
+                "deepseek-flash · disabled",
+                "0.800",
+                "prior · n=0",
+                "$0.0022",
+                "20000 ms",
+                "0.1",
+                "CHOSEN"
+              ],
+              [
+                "python-engine",
+                "deepseek-flash · enabled",
+                "0.830",
+                "prior · n=0",
+                "$0.0022",
+                "45000 ms",
+                "0.1",
+                "No"
+              ],
+              [
+                "python-engine",
+                "deepseek-v4-pro · enabled",
+                "0.850",
+                "prior · n=0",
+                "$0.0081",
+                "70000 ms",
+                "0.1",
+                "No"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "CANDIDATE",
+              "MODEL",
+              "QUALITY",
+              "EVIDENCE",
+              "COST",
+              "LATENCY",
+              "RISK",
+              "CHOSEN"
+            ],
+            "rows": [
+              [
+                "python-engine",
+                "deepseek-flash · disabled",
+                "0.800",
+                "prior · n=0",
+                "$0.0022",
+                "20000 ms",
+                "0.1",
+                "CHOSEN"
+              ],
+              [
+                "python-engine",
+                "deepseek-flash · enabled",
+                "0.830",
+                "prior · n=0",
+                "$0.0022",
+                "45000 ms",
+                "0.1",
+                "No"
+              ],
+              [
+                "python-engine",
+                "deepseek-v4-pro · enabled",
+                "0.850",
+                "prior · n=0",
+                "$0.0081",
+                "70000 ms",
+                "0.1",
+                "No"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "CANDIDATE",
+              "MODEL",
+              "QUALITY",
+              "EVIDENCE",
+              "COST",
+              "LATENCY",
+              "RISK",
+              "CHOSEN"
+            ],
+            "rows": [
+              [
+                "python-engine",
+                "deepseek-flash · disabled",
+                "0.800",
+                "prior · n=0",
+                "$0.0022",
+                "20000 ms",
+                "0.1",
+                "CHOSEN"
+              ],
+              [
+                "python-engine",
+                "deepseek-flash · enabled",
+                "0.830",
+                "prior · n=0",
+                "$0.0022",
+                "45000 ms",
+                "0.1",
+                "No"
+              ],
+              [
+                "python-engine",
+                "deepseek-v4-pro · enabled",
+                "0.850",
+                "prior · n=0",
+                "$0.0081",
+                "70000 ms",
+                "0.1",
+                "No"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "CANDIDATE",
+              "MODEL",
+              "QUALITY",
+              "EVIDENCE",
+              "COST",
+              "LATENCY",
+              "RISK",
+              "CHOSEN"
+            ],
+            "rows": [
+              [
+                "python-engine",
+                "deepseek-flash · disabled",
+                "0.800",
+                "prior · n=0",
+                "$0.0022",
+                "20000 ms",
+                "0.1",
+                "CHOSEN"
+              ],
+              [
+                "python-engine",
+                "deepseek-flash · enabled",
+                "0.830",
+                "prior · n=0",
+                "$0.0022",
+                "45000 ms",
+                "0.1",
+                "No"
+              ],
+              [
+                "python-engine",
+                "deepseek-v4-pro · enabled",
+                "0.850",
+                "prior · n=0",
+                "$0.0081",
+                "70000 ms",
+                "0.1",
+                "No"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "CANDIDATE",
+              "MODEL",
+              "QUALITY",
+              "EVIDENCE",
+              "COST",
+              "LATENCY",
+              "RISK",
+              "CHOSEN"
+            ],
+            "rows": [
+              [
+                "python-engine",
+                "deepseek-flash · disabled",
+                "0.800",
+                "prior · n=0",
+                "$0.0022",
+                "20000 ms",
+                "0.1",
+                "CHOSEN"
+              ],
+              [
+                "python-engine",
+                "deepseek-flash · enabled",
+                "0.830",
+                "prior · n=0",
+                "$0.0022",
+                "45000 ms",
+                "0.1",
+                "No"
+              ],
+              [
+                "python-engine",
+                "deepseek-v4-pro · enabled",
+                "0.850",
+                "prior · n=0",
+                "$0.0081",
+                "70000 ms",
+                "0.1",
+                "No"
+              ]
+            ],
+            "rowCount": 3
+          }
+        ],
+        "details": [
+          "Raw decision",
+          "Raw decision",
+          "Raw decision",
+          "Raw decision",
+          "Raw decision",
+          "Raw decision"
+        ],
+        "tableCount": 14
+      },
+      "screenshot": "screens/run-abf5-tab-routing.png"
+    },
+    {
+      "name": "Context",
+      "exists": true,
+      "disabled": false,
+      "panel": {
+        "text": "Context packs Included and excluded items are shown with reasons and estimated size. No raw context is dumped here. Refresh ctx_5f81a55206b0f563 src/util/evidence.py 1,445 TOKENS PREFIX 42F198AAD3… PATH KIND TOKENS CHARS MANDATORY REASON INCLUDED brief brief — — Yes — Not reported task plan — — Yes — Not reported interfaces interface — — Yes — Not reported ctx_6c1b3f371277b32b src/probes/identity.py 3,703 TOKENS PREFIX 42F198AAD3… PATH KIND TOKENS CHARS MANDATORY REASON INCLUDED brief brief — — Yes — Not reported task plan — — Yes — Not reported interfaces interface — — Yes — Not reported src/util/evidence.py dependency — — No — Not reported ctx_6541d7562a3630f7 src/util/sandbox.py 1,440 TOKENS PREFIX 42F198AAD3… PATH KIND TOKENS CHARS MANDATORY REASON INCLUDED brief brief — — Yes — Not reported task plan — — Yes — Not reported interfaces interface — — Yes — Not reported ctx_f3d62c47ed2400ab src/probes/tool_access.py 6,077 TOKENS PREFIX 42F198AAD3… PATH KIND TOKENS CHARS MANDATORY REASON INCLUDED brief brief — — Yes — Not reported task plan — — Yes — Not reported interfaces interface — — Yes — Not reported src/util/evidence.py dependency — — No — Not reported src/util/sandbox.py dependency — — No — Not reported ctx_9538661ae169f01f src/util/fs_scan.py 1,435 TOKENS PREFIX 42F198AAD3… PATH KIND TOKENS CHARS MANDATORY REASON INCLUDED brief brief — — Yes — Not reported task plan — — Yes — Not reported interfaces interface — — Yes — Not reported ctx_eb9f4858d2153dbb src/probes/memory.py 5,983 TOKENS PREFIX 42F198AAD3… PATH KIND TOKENS CHARS MANDATORY REASON INCLUDED brief brief — — Yes — Not reported task plan — — Yes — Not reported interfaces interface — — Yes — Not reported src/util/evidence.py dependency — — No — Not reported src/util/fs_scan.py dependency — — No — Not reported ctx_9323705803988744 src/probes/learning_loop.py 5,996 TOKENS PREFIX 42F198AAD3… PATH KIND TOKENS CHARS MANDATORY REASON INCLUDED brief brief — — Yes — Not reported task plan — — Yes — Not reported interfaces interface — — Yes — Not reported src/util/evidence.py dependency — — No — Not reported src/util/fs_scan.py dependency — — No — Not reported ctx_b2f88517f13c2b0b src/report/aggregate.py 3,695 TOKENS PREFIX 42F198AAD3… PATH KIND TOKENS CHARS MANDATORY REASON INCLUDED brief brief — — Yes — Not reported task plan — — Yes — Not reported interfaces interface — — Yes — Not reported src/util/evidence.py dependency — — No — Not reported ctx_5240945ab62be970 src/report/render.py 3,482 TOKENS PREFIX 42F198AAD3… PATH KIND TOKENS CHARS MANDATORY REASON INCLUDED brief brief — — Yes — Not reported task plan — — Yes — Not reported interfaces interface — — Yes — Not reported src/report/aggregate.py dependency — — No — Not reported ctx_0e64230fcebbbedc src/main.py 23,277 TOKENS PREFIX 42F198AAD3… PATH KIND TOKENS CHARS MANDATORY REASON INCLUDED brief brief — — Yes — Not reported task plan — — Yes — Not reported interfaces interface — — Yes — Not reported src/probes/identity.py dependency — — No — Not reported src/probes/learning_loop.py dependency — — No — Not reported src/probes/memory.py dependency — — No — Not reported src/probes/tool_access.py dependency — — No — Not reported src/report/aggregate.py dependency — — No — Not reported src/report/render.py dependency — — No — Not reported ctx_dcc1661a7f6de716 src/report/schema.py 1,423 TOKENS PREFIX 42F198AAD3… PATH KIND TOKENS CHARS MANDATORY REASON INCLUDED brief brief — — Yes — Not reported task plan — — Yes — Not reported i",
+        "tables": [
+          {
+            "headers": [
+              "PATH",
+              "KIND",
+              "TOKENS",
+              "CHARS",
+              "MANDATORY",
+              "REASON",
+              "INCLUDED"
+            ],
+            "rows": [
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "PATH",
+              "KIND",
+              "TOKENS",
+              "CHARS",
+              "MANDATORY",
+              "REASON",
+              "INCLUDED"
+            ],
+            "rows": [
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/util/evidence.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ]
+            ],
+            "rowCount": 4
+          },
+          {
+            "headers": [
+              "PATH",
+              "KIND",
+              "TOKENS",
+              "CHARS",
+              "MANDATORY",
+              "REASON",
+              "INCLUDED"
+            ],
+            "rows": [
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "PATH",
+              "KIND",
+              "TOKENS",
+              "CHARS",
+              "MANDATORY",
+              "REASON",
+              "INCLUDED"
+            ],
+            "rows": [
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/util/evidence.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/util/sandbox.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ]
+            ],
+            "rowCount": 5
+          },
+          {
+            "headers": [
+              "PATH",
+              "KIND",
+              "TOKENS",
+              "CHARS",
+              "MANDATORY",
+              "REASON",
+              "INCLUDED"
+            ],
+            "rows": [
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "PATH",
+              "KIND",
+              "TOKENS",
+              "CHARS",
+              "MANDATORY",
+              "REASON",
+              "INCLUDED"
+            ],
+            "rows": [
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/util/evidence.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/util/fs_scan.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ]
+            ],
+            "rowCount": 5
+          },
+          {
+            "headers": [
+              "PATH",
+              "KIND",
+              "TOKENS",
+              "CHARS",
+              "MANDATORY",
+              "REASON",
+              "INCLUDED"
+            ],
+            "rows": [
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/util/evidence.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/util/fs_scan.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ]
+            ],
+            "rowCount": 5
+          },
+          {
+            "headers": [
+              "PATH",
+              "KIND",
+              "TOKENS",
+              "CHARS",
+              "MANDATORY",
+              "REASON",
+              "INCLUDED"
+            ],
+            "rows": [
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/util/evidence.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ]
+            ],
+            "rowCount": 4
+          },
+          {
+            "headers": [
+              "PATH",
+              "KIND",
+              "TOKENS",
+              "CHARS",
+              "MANDATORY",
+              "REASON",
+              "INCLUDED"
+            ],
+            "rows": [
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/report/aggregate.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ]
+            ],
+            "rowCount": 4
+          },
+          {
+            "headers": [
+              "PATH",
+              "KIND",
+              "TOKENS",
+              "CHARS",
+              "MANDATORY",
+              "REASON",
+              "INCLUDED"
+            ],
+            "rows": [
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/probes/identity.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/probes/learning_loop.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/probes/memory.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/probes/tool_access.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/report/aggregate.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/report/render.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ]
+            ],
+            "rowCount": 9
+          },
+          {
+            "headers": [
+              "PATH",
+              "KIND",
+              "TOKENS",
+              "CHARS",
+              "MANDATORY",
+              "REASON",
+              "INCLUDED"
+            ],
+            "rows": [
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "PATH",
+              "KIND",
+              "TOKENS",
+              "CHARS",
+              "MANDATORY",
+              "REASON",
+              "INCLUDED"
+            ],
+            "rows": [
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/util/evidence.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ]
+            ],
+            "rowCount": 4
+          },
+          {
+            "headers": [
+              "PATH",
+              "KIND",
+              "TOKENS",
+              "CHARS",
+              "MANDATORY",
+              "REASON",
+              "INCLUDED"
+            ],
+            "rows": [
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/probes/learning_loop.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/probes/memory.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/util/sandbox.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ]
+            ],
+            "rowCount": 6
+          },
+          {
+            "headers": [
+              "PATH",
+              "KIND",
+              "TOKENS",
+              "CHARS",
+              "MANDATORY",
+              "REASON",
+              "INCLUDED"
+            ],
+            "rows": [
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ]
+            ],
+            "rowCount": 3
+          },
+          {
+            "headers": [
+              "PATH",
+              "KIND",
+              "TOKENS",
+              "CHARS",
+              "MANDATORY",
+              "REASON",
+              "INCLUDED"
+            ],
+            "rows": [
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "src/util/evidence.py",
+                "dependency",
+                "—",
+                "—",
+                "No",
+                "—",
+                "Not reported"
+              ],
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "interfaces",
+                "interface",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "brief",
+                "brief",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ],
+              [
+                "task",
+                "plan",
+                "—",
+                "—",
+                "Yes",
+                "—",
+                "Not reported"
+              ]
+            ],
+            "rowCount": 61
+          }
+        ],
+        "details": [],
+        "tableCount": 15
+      },
+      "screenshot": "screens/run-abf5-tab-context.png"
+    },
+    {
+      "name": "Repairs",
+      "exists": true,
+      "disabled": false,
+      "panel": {
+        "text": "Failure signatures Clusters are normalized; recurrence at two failed repairs becomes a stall, not a third blind attempt. Refresh SIGNATURE CATEGORY COUNT SEVERITY REPAIR fedc596c383a9a7777657f76af2cca203f6132144cc412cc476a2a9fd92bd3ef stub.scan 1 error — a683c9c45deb46fe3fcf4212188f5081c6af42bb4629fd01d5a05047a6a3b5b4 stub.scan 1 error — Retry / switch history No retry for auth, payment, path, policy, or budget. Unknown amounts stay unknown. Refresh No retry attempts No retry or switch record was returned.",
+        "tables": [
+          {
+            "headers": [
+              "SIGNATURE",
+              "CATEGORY",
+              "COUNT",
+              "SEVERITY",
+              "REPAIR"
+            ],
+            "rows": [
+              [
+                "fedc596c383a9a7777657f76af2cca203f6132144cc412cc476a2a9fd92bd3ef",
+                "stub.scan",
+                "1",
+                "error",
+                "—"
+              ],
+              [
+                "a683c9c45deb46fe3fcf4212188f5081c6af42bb4629fd01d5a05047a6a3b5b4",
+                "stub.scan",
+                "1",
+                "error",
+                "—"
+              ]
+            ],
+            "rowCount": 2
+          }
+        ],
+        "details": [],
+        "tableCount": 1
+      },
+      "screenshot": "screens/run-abf5-tab-repairs.png"
+    },
+    {
+      "name": "Confidence",
+      "exists": true,
+      "disabled": false,
+      "panel": {
+        "text": "Conservative confidence Mandatory fail or unverified forbids acceptance. n<30 calibration is not a P6a gate. Refresh NEEDS REVIEW score 0.787 PROVISIONAL verification 0.667 review 0.000 schema 1.000 finish 1.000 routePrior 0.800 Raw confidence record",
+        "tables": [],
+        "details": [
+          "Raw confidence record"
+        ],
+        "tableCount": 0
+      },
+      "screenshot": "screens/run-abf5-tab-confidence.png"
+    },
+    {
+      "name": "Events",
+      "exists": true,
+      "disabled": false,
+      "panel": {
+        "text": "Persisted events Terminal runs load the persisted event ledger (latest 500). The snapshot remains the source of truth. TYPE RECEIVED PAYLOAD run.failed Nov 03, 2026, 09:15 PM Inspect repair.stalled Nov 03, 2026, 09:15 PM Inspect phase.completed Nov 03, 2026, 09:15 PM Inspect phase.started Nov 03, 2026, 09:15 PM Inspect phase.completed Nov 03, 2026, 09:15 PM Inspect agent.completed Nov 03, 2026, 09:15 PM Inspect agent.started Nov 03, 2026, 09:15 PM Inspect phase.started Nov 03, 2026, 09:15 PM Inspect phase.completed Nov 03, 2026, 09:15 PM Inspect phase.started Nov 03, 2026, 09:15 PM Inspect phase.completed Nov 03, 2026, 09:15 PM Inspect agent.completed Nov 03, 2026, 09:15 PM Inspect agent.started Nov 03, 2026, 09:14 PM Inspect phase.started Nov 03, 2026, 09:14 PM Inspect phase.completed Nov 03, 2026, 09:14 PM Inspect phase.started Nov 03, 2026, 09:14 PM Inspect phase.completed Nov 03, 2026, 09:14 PM Inspect agent.completed Nov 03, 2026, 09:14 PM Inspect agent.started Nov 03, 2026, 09:14 PM Inspect phase.started Nov 03, 2026, 09:14 PM Inspect phase.completed Nov 03, 2026, 09:14 PM Inspect agent.completed Nov 03, 2026, 09:14 PM Inspect agent.started Nov 03, 2026, 09:13 PM Inspect phase.started Nov 03, 2026, 09:13 PM Inspect phase.completed Nov 03, 2026, 09:13 PM Inspect agent.completed Nov 03, 2026, 09:13 PM Inspect agent.started Nov 03, 2026, 09:11 PM Inspect phase.started Nov 03, 2026, 09:11 PM Inspect phase.completed Nov 03, 2026, 09:11 PM Inspect file.written Nov 03, 2026, 09:11 PM Inspect agent.completed Nov 03, 2026, 09:11 PM Inspect agent.started Nov 03, 2026, 09:11 PM Inspect context.packed Nov 03, 2026, 09:11 PM Inspect file.written Nov 03, 2026, 09:11 PM Inspect agent.completed Nov 03, 2026, 09:11 PM Inspect agent.started Nov 03, 2026, 09:11 PM Inspect context.packed Nov 03, 2026, 09:11 PM Inspect file.written Nov 03, 2026, 09:11 PM Inspect agent.completed Nov 03, 2026, 09:11 PM Inspect agent.started Nov 03, 2026, 09:11 PM Inspect context.packed Nov 03, 2026, 09:11 PM Inspect file.written Nov 03, 2026, 09:11 PM Inspect agent.completed Nov 03, 2026, 09:11 PM Inspect agent.started Nov 03, 2026, 09:10 PM Inspect context.packed Nov 03, 2026, 09:10 PM Inspect file.written Nov 03, 2026, 09:10 PM Inspect agent.completed Nov 03, 2026, 09:10 PM Inspect agent.started Nov 03, 2026, 09:10 PM Inspect context.packed Nov 03, 2026, 09:10 PM Inspect file.written Nov 03, 2026, 09:10 PM Inspect agent.completed Nov 03, 2026, 09:10 PM Inspect agent.started Nov 03, 2026, 09:10 PM Inspect context.packed Nov 03, 2026, 09:10 PM Inspect file.written Nov 03, 2026, 09:10 PM Inspect agent.completed Nov 03, 2026, 09:10 PM Inspect agent.started Nov 03, 2026, 09:10 PM Inspect context.packed Nov 03, 2026, 09:10 PM Inspect file.written Nov 03, 2026, 09:10 PM Inspect agent.completed Nov 03, 2026, 09:10 PM Inspect agent.started Nov 03, 2026, 09:09 PM Inspect context.packed Nov 03, 2026, 09:09 PM Inspect file.written Nov 03, 2026, 09:09 PM Inspect agent.completed Nov 03, 2026, 09:09 PM Inspect agent.started Nov 03, 2026, 09:09 PM Inspect context.packed Nov 03, 2026, 09:09 PM Inspect file.written Nov 03, 2026, 09:09 PM Inspect agent.completed Nov 03, 2026, 09:09 PM Inspect agent.started Nov 03, 2026, 09:09 PM Inspect context.packed Nov 03, 2026, 09:09 PM Inspect file.written Nov 03, 2026, 09:09 PM Inspect agent.completed Nov 03, 2026, 09:09 PM Inspect agent.started Nov 03, 2026, 09:09 PM Inspect context.packed Nov 03, 2026, 09:09 PM Inspect file.written Nov 03, 2026,",
+        "tables": [
+          {
+            "headers": [
+              "TYPE",
+              "RECEIVED",
+              "PAYLOAD"
+            ],
+            "rows": [
+              [
+                "run.failed",
+                "Nov 03, 2026, 09:15 PM",
+                "Inspect"
+              ],
+              [
+                "repair.stalled",
+                "Nov 03, 2026, 09:15 PM",
+                "Inspect"
+              ],
+              [
+                "phase.completed",
+                "Nov 03, 2026, 09:15 PM",
+                "Inspect"
+              ],
+              [
+                "phase.started",
+                "Nov 03, 2026, 09:15 PM",
+                "Inspect"
+              ],
+              [
+                "phase.completed",
+                "Nov 03, 2026, 09:15 PM",
+                "Inspect"
+              ],
+              [
+                "agent.completed",
+                "Nov 03, 2026, 09:15 PM",
+                "Inspect"
+              ],
+              [
+                "agent.started",
+                "Nov 03, 2026, 09:15 PM",
+                "Inspect"
+              ],
+              [
+                "phase.started",
+                "Nov 03, 2026, 09:15 PM",
+                "Inspect"
+              ],
+              [
+                "phase.completed",
+                "Nov 03, 2026, 09:15 PM",
+                "Inspect"
+              ],
+              [
+                "phase.started",
+                "Nov 03, 2026, 09:15 PM",
+                "Inspect"
+              ],
+              [
+                "phase.completed",
+                "Nov 03, 2026, 09:15 PM",
+                "Inspect"
+              ],
+              [
+                "agent.completed",
+                "Nov 03, 2026, 09:15 PM",
+                "Inspect"
+              ]
+            ],
+            "rowCount": 108
+          }
+        ],
+        "details": [
+          "Inspect",
+          "Inspect",
+          "Inspect",
+          "Inspect",
+          "Inspect",
+          "Inspect"
+        ],
+        "tableCount": 1
+      },
+      "screenshot": "screens/run-abf5-tab-events.png",
+      "rawInspect": "{\n  \"code\": \"GATE_FAILED\",\n  \"checks\": [\n    {\n      \"id\": \"stub.scan\",\n      \"status\": \"fail\",\n      \"detail\": \"1 placeholder marker(s), first at line 121\",\n      \"file\": \"src/probes/tool_access.py\",\n      \"line\": 121,\n      \"mandatory\": true\n    }\n  ]\n}"
+    }
+  ],
+  "keyboard": {
+    "activeTabBefore": "Events",
+    "activeTabAfterArrow": "Overview"
+  },
+  "afterReload": {
+    "badges": [
+      "FAILED",
+      "DONE",
+      "20 STEPS",
+      "TERMINAL · SNAPSHOT",
+      "PLANNING",
+      "SUCCEEDED",
+      "GENERATING",
+      "SUCCEEDED"
+    ],
+    "h1": "aNALYZE THE SOFTWARE/WHAT DOES AND DOESNT WORK, WHAT TOOLS YOU CANT CALL, DOES LEARNING WORK, CAN YOU SEE PAST RUNS, DOE…",
+    "bodyHasLiveStream": false,
+    "bodyHasTerminalSnapshot": false,
+    "rawStart": "Skip to content Hive ROUTER AI AGENT CODING ROUTER API online STAGE B2 Overview Agents Runs Vault Learning Settings Screening-grade by design. Local, single-user factory. No learned routing. No generated-code execution. No provider key in the browser. HIVEROUTER v0.1.0 Trust & status All runs RUN_ABF5FE78AAB1E932FF · USER RUN aNALYZE THE SOFTWARE/WHAT DOES AND DOESNT WORK, WHAT TOOLS YOU CANT CALL, DOES LEARNING WORK, CAN YOU SEE PAST RUNS, DOE… Full Build · deepseek-flash · thinking disabled Refresh Download FAILED DONE 20 STEPS TERMINAL · SNAPSHOT CREATED Nov 03, 2026, 09:08 PM DURATION 7m 30s PROMPT TOKENS — COMPLETION TOKENS — SNAPSHOT ea9d9a4862033a8d… PARENT None Estimated spend Not measured The provider has not reported a cost yet. GATE_FAILED Mandatory verification failed Run actions Actions are real API calls; unavailable actions are not rendered. Open folder Revision requires a terminal run with artifacts. Audit requires stored artifacts. ACCEPTED TREE C:\\Users\\Riley\\Desktop\\HiveRouter\\workspace\\runs\\run_abf5fe78aab1e932ff Downloads are available only for terminal runs that have stored artifacts. Overview Files Checks Routing Context Repairs Confidence Events Execution ti"
+  },
+  "consoleMsgs": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "responses": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/runs/run_abf5fe78aab1e932ff/snapshot",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/meta",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/runs/run_abf5fe78aab1e932ff/events",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/runs/run_abf5fe78aab1e932ff/snapshot",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/runs/run_abf5fe78aab1e932ff/events",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/runs/run_abf5fe78aab1e932ff/routing",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/runs/run_abf5fe78aab1e932ff/context",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/runs/run_abf5fe78aab1e932ff/failures",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/runs/run_abf5fe78aab1e932ff/retries",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/runs/run_abf5fe78aab1e932ff/confidence",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/runs/run_abf5fe78aab1e932ff/snapshot",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/meta",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/runs/run_abf5fe78aab1e932ff/events",
+      "status": 200
+    }
+  ]
+}

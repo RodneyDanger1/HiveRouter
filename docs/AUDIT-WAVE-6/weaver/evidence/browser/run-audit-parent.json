@@ -1,0 +1,78 @@
+{
+  "info": {
+    "eyebrow": "run_582bf88992c0ee98ae · Audit run",
+    "description": "Audit · deepseek-flash · thinking disabled",
+    "actions": [
+      {
+        "tag": "button",
+        "text": "Refresh",
+        "href": null,
+        "disabled": false
+      },
+      {
+        "tag": "button",
+        "text": "Revise",
+        "href": null,
+        "disabled": false
+      },
+      {
+        "tag": "button",
+        "text": "Audit",
+        "href": null,
+        "disabled": false
+      },
+      {
+        "tag": "a",
+        "text": "Download",
+        "href": "/api/runs/run_582bf88992c0ee98ae/download",
+        "disabled": false
+      }
+    ],
+    "parentText": "PARENT\nrun_f08c679f…",
+    "parentHref": "/runs/run_f08c679f9075ac230d",
+    "badges": [
+      "COMPLETED",
+      "DONE",
+      "3 STEPS",
+      "COMPLETE · SNAPSHOT",
+      "CLEANING",
+      "SUCCEEDED"
+    ]
+  },
+  "parentNav": {
+    "url": "http://127.0.0.1:8787/runs/run_f08c679f9075ac230d",
+    "eyebrow": "RUN_F08C679F9075AC230D · USER RUN"
+  },
+  "api": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/runs/run_582bf88992c0ee98ae/snapshot",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/meta",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/runs/run_582bf88992c0ee98ae/events",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/runs/run_f08c679f9075ac230d/events",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/runs/run_f08c679f9075ac230d/snapshot",
+      "status": 200
+    }
+  ]
+}

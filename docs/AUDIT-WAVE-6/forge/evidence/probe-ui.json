@@ -1,0 +1,445 @@
+{
+  "capturedAt": "2026-11-04T04:15:12.978Z",
+  "base": "http://127.0.0.1:8787",
+  "appTypes": [
+    "run.started",
+    "run.updated",
+    "run.paused",
+    "run.cancelled",
+    "run.completed",
+    "run.failed",
+    "run.needs_review",
+    "phase.started",
+    "phase.completed",
+    "step.started",
+    "step.completed",
+    "agent.started",
+    "agent.delta",
+    "agent.completed",
+    "file.written",
+    "file.revised",
+    "check.completed",
+    "review.completed",
+    "route.decided",
+    "context.packed",
+    "failure.clustered",
+    "repair.completed",
+    "confidence.recorded",
+    "learning.trace",
+    "learning.eval",
+    "learning.promotion",
+    "heartbeat"
+  ],
+  "missingTypes": [
+    "agent.failed",
+    "context.skipped",
+    "phase.skipped",
+    "repair.stalled",
+    "run.queued"
+  ],
+  "runs": {
+    "95": {
+      "id": "run_95c11797b4923b4277",
+      "expected": {
+        "status": "completed",
+        "steps": 19,
+        "events": 102,
+        "lastEventId": 972
+      },
+      "dom": {
+        "badges": [
+          "COMPLETED",
+          "DONE",
+          "19 STEPS",
+          "COMPLETE · SNAPSHOT"
+        ],
+        "statusBadge": "COMPLETED",
+        "phaseBadge": "DONE",
+        "stepsBadge": "19 STEPS",
+        "streamBadge": "COMPLETE · SNAPSHOT",
+        "eventsHeading": "Persisted events",
+        "rowCount": 102,
+        "domTypeCounts": {
+          "run.completed": 1,
+          "phase.completed": 8,
+          "phase.started": 8,
+          "agent.completed": 19,
+          "agent.started": 19,
+          "file.written": 15,
+          "context.packed": 15,
+          "route.decided": 15,
+          "run.started": 1,
+          "run.queued": 1
+        },
+        "containsUnsubscribedTypes": {
+          "agent.failed": false,
+          "context.skipped": false,
+          "phase.skipped": false,
+          "repair.stalled": false,
+          "run.queued": true
+        }
+      },
+      "convergence": {
+        "statusMatches": true,
+        "stepsMatches": true,
+        "eventRowsMatch": true,
+        "typesMatch": true
+      },
+      "observation": {
+        "initialRequests": [
+          "/api/runs/run_95c11797b4923b4277/snapshot",
+          "/api/meta",
+          "/api/health",
+          "/api/runs/run_95c11797b4923b4277/events"
+        ],
+        "initialSnapshotRequests": 1,
+        "initialStreamRequests": 0,
+        "windowMs": 6000,
+        "windowRequests": [],
+        "windowStreamRequests": 0,
+        "windowSnapshotRequests": 0
+      },
+      "delivery": {
+        "appList": {
+          "counts": {
+            "run.started": 1,
+            "phase.started": 8,
+            "agent.started": 19,
+            "agent.completed": 19,
+            "phase.completed": 8,
+            "route.decided": 15,
+            "context.packed": 15,
+            "file.written": 15,
+            "run.completed": 1
+          },
+          "messages": 0,
+          "errors": 0,
+          "total": 101
+        },
+        "missingList": {
+          "counts": {
+            "run.queued": 1
+          },
+          "messages": 0,
+          "errors": 0,
+          "total": 1
+        }
+      },
+      "deliveryDiff": {
+        "appReceived": 101,
+        "apiFrames": 102,
+        "appMissed": 1,
+        "unsubscribedReceivedWhenRegistered": 1,
+        "onmessageFrames": 0
+      }
+    },
+    "abf5": {
+      "id": "run_abf5fe78aab1e932ff",
+      "expected": {
+        "status": "failed",
+        "steps": 20,
+        "events": 108,
+        "lastEventId": 659
+      },
+      "dom": {
+        "badges": [
+          "FAILED",
+          "DONE",
+          "20 STEPS",
+          "TERMINAL · SNAPSHOT"
+        ],
+        "statusBadge": "FAILED",
+        "phaseBadge": "DONE",
+        "stepsBadge": "20 STEPS",
+        "streamBadge": "TERMINAL · SNAPSHOT",
+        "eventsHeading": "Persisted events",
+        "rowCount": 108,
+        "domTypeCounts": {
+          "run.failed": 1,
+          "repair.stalled": 1,
+          "phase.completed": 11,
+          "phase.started": 11,
+          "agent.completed": 20,
+          "agent.started": 20,
+          "file.written": 14,
+          "context.packed": 14,
+          "route.decided": 14,
+          "run.started": 1,
+          "run.queued": 1
+        },
+        "containsUnsubscribedTypes": {
+          "agent.failed": false,
+          "context.skipped": false,
+          "phase.skipped": false,
+          "repair.stalled": true,
+          "run.queued": true
+        }
+      },
+      "convergence": {
+        "statusMatches": true,
+        "stepsMatches": true,
+        "eventRowsMatch": true,
+        "typesMatch": true
+      },
+      "observation": {
+        "initialRequests": [
+          "/api/runs/run_abf5fe78aab1e932ff/snapshot",
+          "/api/meta",
+          "/api/health",
+          "/api/runs/run_abf5fe78aab1e932ff/events"
+        ],
+        "initialSnapshotRequests": 1,
+        "initialStreamRequests": 0,
+        "windowMs": 6000,
+        "windowRequests": [],
+        "windowStreamRequests": 0,
+        "windowSnapshotRequests": 0
+      },
+      "delivery": {
+        "appList": {
+          "counts": {
+            "run.started": 1,
+            "phase.started": 11,
+            "agent.started": 20,
+            "agent.completed": 20,
+            "phase.completed": 11,
+            "route.decided": 14,
+            "context.packed": 14,
+            "file.written": 14,
+            "run.failed": 1
+          },
+          "messages": 0,
+          "errors": 0,
+          "total": 106
+        },
+        "missingList": {
+          "counts": {
+            "run.queued": 1,
+            "repair.stalled": 1
+          },
+          "messages": 0,
+          "errors": 0,
+          "total": 2
+        }
+      },
+      "deliveryDiff": {
+        "appReceived": 106,
+        "apiFrames": 108,
+        "appMissed": 2,
+        "unsubscribedReceivedWhenRegistered": 2,
+        "onmessageFrames": 0
+      }
+    },
+    "2bb2": {
+      "id": "run_2bb2f8edf3043fe89e",
+      "expected": {
+        "status": "failed",
+        "steps": 9,
+        "events": 55,
+        "lastEventId": 714
+      },
+      "dom": {
+        "badges": [
+          "FAILED",
+          "DONE",
+          "9 STEPS",
+          "TERMINAL · SNAPSHOT"
+        ],
+        "statusBadge": "FAILED",
+        "phaseBadge": "DONE",
+        "stepsBadge": "9 STEPS",
+        "streamBadge": "TERMINAL · SNAPSHOT",
+        "eventsHeading": "Persisted events",
+        "rowCount": 55,
+        "domTypeCounts": {
+          "run.failed": 1,
+          "agent.failed": 1,
+          "agent.started": 9,
+          "context.packed": 8,
+          "file.written": 7,
+          "agent.completed": 8,
+          "phase.started": 3,
+          "phase.completed": 2,
+          "route.decided": 14,
+          "run.started": 1,
+          "run.queued": 1
+        },
+        "containsUnsubscribedTypes": {
+          "agent.failed": true,
+          "context.skipped": false,
+          "phase.skipped": false,
+          "repair.stalled": false,
+          "run.queued": true
+        }
+      },
+      "convergence": {
+        "statusMatches": true,
+        "stepsMatches": true,
+        "eventRowsMatch": true,
+        "typesMatch": true
+      },
+      "observation": {
+        "initialRequests": [
+          "/api/runs/run_2bb2f8edf3043fe89e/snapshot",
+          "/api/meta",
+          "/api/health",
+          "/api/runs/run_2bb2f8edf3043fe89e/events"
+        ],
+        "initialSnapshotRequests": 1,
+        "initialStreamRequests": 0,
+        "windowMs": 6000,
+        "windowRequests": [],
+        "windowStreamRequests": 0,
+        "windowSnapshotRequests": 0
+      },
+      "delivery": {
+        "appList": {
+          "counts": {
+            "run.started": 1,
+            "phase.started": 3,
+            "agent.started": 9,
+            "agent.completed": 8,
+            "phase.completed": 2,
+            "route.decided": 14,
+            "context.packed": 8,
+            "file.written": 7,
+            "run.failed": 1
+          },
+          "messages": 0,
+          "errors": 0,
+          "total": 53
+        },
+        "missingList": {
+          "counts": {
+            "run.queued": 1,
+            "agent.failed": 1
+          },
+          "messages": 0,
+          "errors": 0,
+          "total": 2
+        }
+      },
+      "deliveryDiff": {
+        "appReceived": 53,
+        "apiFrames": 55,
+        "appMissed": 2,
+        "unsubscribedReceivedWhenRegistered": 2,
+        "onmessageFrames": 0
+      }
+    }
+  },
+  "staleCaptureWindow": {
+    "run": {
+      "status": "failed",
+      "created_at": "2026-11-04T03:08:16.957Z",
+      "started_at": "2026-11-04T03:08:16.979Z",
+      "finished_at": "2026-11-04T03:15:46.742Z"
+    },
+    "sevenRowsExistFrom": "2026-11-04T03:09:33.029Z",
+    "eightRowsExistFrom": "2026-11-04T03:09:52.479Z",
+    "windowSeconds": 19.5,
+    "terminalAt": "2026-11-04T03:15:46.742Z",
+    "steps": [
+      {
+        "seq": 1,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:08:16.980Z"
+      },
+      {
+        "seq": 2,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:08:28.141Z"
+      },
+      {
+        "seq": 3,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:08:39.681Z"
+      },
+      {
+        "seq": 4,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:08:53.690Z"
+      },
+      {
+        "seq": 5,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:09:04.474Z"
+      },
+      {
+        "seq": 6,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:09:22.691Z"
+      },
+      {
+        "seq": 7,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:09:33.029Z"
+      },
+      {
+        "seq": 8,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:09:52.479Z"
+      },
+      {
+        "seq": 9,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:10:14.559Z"
+      },
+      {
+        "seq": 10,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:10:24.307Z"
+      },
+      {
+        "seq": 11,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:10:38.610Z"
+      },
+      {
+        "seq": 12,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:10:58.173Z"
+      },
+      {
+        "seq": 13,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:11:07.052Z"
+      },
+      {
+        "seq": 14,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:11:20.788Z"
+      },
+      {
+        "seq": 15,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:11:41.548Z"
+      },
+      {
+        "seq": 16,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:11:51.122Z"
+      },
+      {
+        "seq": 17,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:13:13.883Z"
+      },
+      {
+        "seq": 18,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:14:13.122Z"
+      },
+      {
+        "seq": 19,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:14:52.346Z"
+      },
+      {
+        "seq": 20,
+        "status": "succeeded",
+        "startedAt": "2026-11-04T03:15:25.076Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,338 @@
+﻿{
+  "settings": {
+    "expectedCount": 22,
+    "renderedCount": 22,
+    "expected": [
+      [
+        "model",
+        "deepseek-flash"
+      ],
+      [
+        "thinking",
+        "disabled"
+      ],
+      [
+        "limits.briefChars",
+        "8000"
+      ],
+      [
+        "limits.maxFiles",
+        "24"
+      ],
+      [
+        "limits.maxFileBytes",
+        "262144"
+      ],
+      [
+        "limits.maxContextChars",
+        "500000"
+      ],
+      [
+        "limits.maxOutputTokens",
+        "65536"
+      ],
+      [
+        "limits.maxAttempts",
+        "3"
+      ],
+      [
+        "limits.maxRepairs",
+        "2"
+      ],
+      [
+        "limits.maxRunCostUsd",
+        "0.5"
+      ],
+      [
+        "limits.evalCostUsd",
+        "3"
+      ],
+      [
+        "limits.cycleCostUsd",
+        "4.5"
+      ],
+      [
+        "limits.runTimeoutMs",
+        "1800000"
+      ],
+      [
+        "limits.requestTimeoutMs",
+        "300000"
+      ],
+      [
+        "limits.eventReplayWindow",
+        "500"
+      ],
+      [
+        "limits.eventPayloadMaxBytes",
+        "8192"
+      ],
+      [
+        "limits.retentionDays.events",
+        "90"
+      ],
+      [
+        "limits.retentionDays.context",
+        "30"
+      ],
+      [
+        "limits.retentionDays.traces",
+        "180"
+      ],
+      [
+        "limits.retentionDays.eval",
+        "365"
+      ],
+      [
+        "features.routing",
+        "true"
+      ],
+      [
+        "features.learning",
+        "true"
+      ]
+    ],
+    "renderedRows": [
+      {
+        "label": "model",
+        "value": "deepseek-flash"
+      },
+      {
+        "label": "thinking",
+        "value": "disabled"
+      },
+      {
+        "label": "limits.briefChars",
+        "value": "8000"
+      },
+      {
+        "label": "limits.maxFiles",
+        "value": "24"
+      },
+      {
+        "label": "limits.maxFileBytes",
+        "value": "262144"
+      },
+      {
+        "label": "limits.maxContextChars",
+        "value": "500000"
+      },
+      {
+        "label": "limits.maxOutputTokens",
+        "value": "65536"
+      },
+      {
+        "label": "limits.maxAttempts",
+        "value": "3"
+      },
+      {
+        "label": "limits.maxRepairs",
+        "value": "2"
+      },
+      {
+        "label": "limits.maxRunCostUsd",
+        "value": "0.5"
+      },
+      {
+        "label": "limits.evalCostUsd",
+        "value": "3"
+      },
+      {
+        "label": "limits.cycleCostUsd",
+        "value": "4.5"
+      },
+      {
+        "label": "limits.runTimeoutMs",
+        "value": "1800000"
+      },
+      {
+        "label": "limits.requestTimeoutMs",
+        "value": "300000"
+      },
+      {
+        "label": "limits.eventReplayWindow",
+        "value": "500"
+      },
+      {
+        "label": "limits.eventPayloadMaxBytes",
+        "value": "8192"
+      },
+      {
+        "label": "limits.retentionDays.events",
+        "value": "90"
+      },
+      {
+        "label": "limits.retentionDays.context",
+        "value": "30"
+      },
+      {
+        "label": "limits.retentionDays.traces",
+        "value": "180"
+      },
+      {
+        "label": "limits.retentionDays.eval",
+        "value": "365"
+      },
+      {
+        "label": "features.routing",
+        "value": "true"
+      },
+      {
+        "label": "features.learning",
+        "value": "true"
+      }
+    ],
+    "labelsMatchExpected": true,
+    "valuesMatchExpected": true,
+    "maxRunCostUsd": {
+      "label": "limits.maxRunCostUsd",
+      "value": "0.5"
+    },
+    "eventReplayWindow": {
+      "label": "limits.eventReplayWindow",
+      "value": "500"
+    },
+    "retentionDaysEvents": {
+      "label": "limits.retentionDays.events",
+      "value": "90"
+    },
+    "objectStrings": 0,
+    "secretPatternHits": 0,
+    "containsEnvVarName": false,
+    "renderedKeyRows": [],
+    "bodyHasKeyMaterialSection": true
+  },
+  "runs": {
+    "options": [
+      {
+        "value": "all",
+        "label": "All statuses"
+      },
+      {
+        "value": "queued",
+        "label": "Queued"
+      },
+      {
+        "value": "running",
+        "label": "Running"
+      },
+      {
+        "value": "paused",
+        "label": "Paused"
+      },
+      {
+        "value": "completed",
+        "label": "Completed"
+      },
+      {
+        "value": "completed_with_warnings",
+        "label": "Completed With Warnings"
+      },
+      {
+        "value": "failed",
+        "label": "Failed"
+      },
+      {
+        "value": "cancelled",
+        "label": "Cancelled"
+      },
+      {
+        "value": "budget_exceeded",
+        "label": "Budget Exceeded"
+      },
+      {
+        "value": "needs_review",
+        "label": "Needs Review"
+      },
+      {
+        "value": "interrupted",
+        "label": "Interrupted"
+      }
+    ],
+    "initial": {
+      "rows": 30,
+      "countText": "30 runs · server-filtered",
+      "statuses": [
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED",
+        "BUDGET EXCEEDED",
+        "BUDGET EXCEEDED",
+        "FAILED",
+        "FAILED",
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED",
+        "BUDGET EXCEEDED",
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED",
+        "COMPLETED",
+        "BUDGET EXCEEDED",
+        "FAILED",
+        "COMPLETED"
+      ]
+    },
+    "failed": {
+      "request": [
+        "/api/runs?limit=100&status=failed"
+      ],
+      "apiRows": 3,
+      "apiStatuses": [
+        "failed"
+      ],
+      "uiRows": 3,
+      "uiCountText": "3 runs · server-filtered",
+      "uiStatuses": [
+        "FAILED",
+        "FAILED",
+        "FAILED"
+      ],
+      "emptyState": 0,
+      "emptyBody": false
+    },
+    "queued": {
+      "request": [
+        "/api/runs?limit=100&status=queued"
+      ],
+      "apiRows": 0,
+      "apiStatuses": [],
+      "uiRows": 0,
+      "uiCountText": "0 runs · server-filtered",
+      "uiStatuses": [],
+      "emptyState": 1,
+      "emptyBody": true
+    },
+    "completedWithWarnings": {
+      "request": [
+        "/api/runs?limit=100&status=completed_with_warnings"
+      ],
+      "apiRows": 0,
+      "apiStatuses": [],
+      "uiRows": 0,
+      "uiCountText": "0 runs · server-filtered",
+      "uiStatuses": [],
+      "emptyState": 1,
+      "emptyBody": true
+    },
+    "requests": [
+      "/api/runs?limit=100",
+      "/api/runs?limit=100&status=failed",
+      "/api/runs?limit=100&status=queued",
+      "/api/runs?limit=100&status=completed_with_warnings"
+    ]
+  },
+  "pageErrors": []
+}

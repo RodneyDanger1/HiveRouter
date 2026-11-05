@@ -1,0 +1,1192 @@
+{
+  "capturedAt": "2026-11-04T04:13:24.030Z",
+  "base": "http://127.0.0.1:8787",
+  "routes": {
+    "health": {
+      "status": 200,
+      "body": {
+        "status": "ok",
+        "version": "0.1.0",
+        "phase": "B2",
+        "features": {
+          "routing": true,
+          "learning": true
+        },
+        "db": "ok",
+        "key": {
+          "configured": true,
+          "source": "environment",
+          "fingerprint": "c30cfdbc"
+        },
+        "dataDir": "C:\\Users\\Riley\\Desktop\\HiveRouter\\data",
+        "workspace": "C:\\Users\\Riley\\Desktop\\HiveRouter\\workspace",
+        "time": "2026-11-04T04:13:24.140Z"
+      }
+    },
+    "active": {
+      "status": 200,
+      "body": {
+        "activeRunId": null
+      }
+    },
+    "runs": {
+      "status": 200,
+      "count": 25,
+      "statuses": {
+        "completed": 18,
+        "budget_exceeded": 4,
+        "failed": 3
+      },
+      "ids": [
+        {
+          "id": "run_95c11797b4923b4277",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_26e2456caef4b8be0c",
+          "status": "budget_exceeded",
+          "phase": "done"
+        },
+        {
+          "id": "run_65da49c3948f9d8f5c",
+          "status": "budget_exceeded",
+          "phase": "done"
+        },
+        {
+          "id": "run_2bb2f8edf3043fe89e",
+          "status": "failed",
+          "phase": "done"
+        },
+        {
+          "id": "run_abf5fe78aab1e932ff",
+          "status": "failed",
+          "phase": "done"
+        },
+        {
+          "id": "run_2e6935e48bb8fa74a2",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_a5202415c602bd8320",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_3a4578fa7b6ffebae1",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_066581ff6b793a7aa9",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_9c1e2390e875e16eb3",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_32b087305f87bfa8bf",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_faf2600e5bf180b0dc",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_063580525bb149f98d",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_9b144184491ce0f41b",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_b8a8e239a57052f146",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_23af9b7837448cb24a",
+          "status": "budget_exceeded",
+          "phase": "done"
+        },
+        {
+          "id": "run_3bf07c4861e786f1e7",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_094ae10475a8f3ea01",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_582bf88992c0ee98ae",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_e5853ec6f585b0b657",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_f08c679f9075ac230d",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_01581fa22ff57a5f5e",
+          "status": "completed",
+          "phase": "done"
+        },
+        {
+          "id": "run_1e5add0b6ba2e3c736",
+          "status": "budget_exceeded",
+          "phase": "done"
+        },
+        {
+          "id": "run_9c4659ee2d4fbb40bf",
+          "status": "failed",
+          "phase": "done"
+        },
+        {
+          "id": "run_007238d763a3956e74",
+          "status": "completed",
+          "phase": "done"
+        }
+      ]
+    },
+    "abf5": {
+      "snapshot": {
+        "status": "failed",
+        "phase": "done",
+        "createdAt": "2026-11-04T03:08:16.957Z",
+        "finishedAt": "2026-11-04T03:15:46.742Z",
+        "errorCode": "GATE_FAILED",
+        "steps": 20,
+        "checks": 16,
+        "artifacts": 0,
+        "lastEventId": 659,
+        "truncated": false
+      },
+      "detail": {
+        "steps": 20,
+        "lastEventId": 659,
+        "artifacts": 0
+      },
+      "events": {
+        "status": 200,
+        "count": 108,
+        "firstSeq": 552,
+        "lastSeq": 659,
+        "truncated": true,
+        "lastEventId": 659,
+        "types": {
+          "run.queued": 1,
+          "run.started": 1,
+          "phase.started": 11,
+          "agent.started": 20,
+          "agent.completed": 20,
+          "phase.completed": 11,
+          "route.decided": 14,
+          "context.packed": 14,
+          "file.written": 14,
+          "repair.stalled": 1,
+          "run.failed": 1
+        },
+        "payloadKeys": {
+          "run.queued": [
+            "preset",
+            "runId"
+          ],
+          "run.started": [
+            "preset",
+            "runId"
+          ],
+          "phase.started": [
+            "attempt",
+            "phase"
+          ],
+          "agent.started": [
+            "agentId",
+            "phase",
+            "stepId"
+          ],
+          "agent.completed": [
+            "agentId",
+            "phase",
+            "stepId",
+            "usage"
+          ],
+          "phase.completed": [
+            "attempt",
+            "failed",
+            "phase",
+            "status"
+          ],
+          "route.decided": [
+            "agentId",
+            "model",
+            "score",
+            "taskId",
+            "thinking"
+          ],
+          "context.packed": [
+            "degraded",
+            "prefixHash",
+            "taskId",
+            "tokens"
+          ],
+          "file.written": [
+            "agentId",
+            "bytes",
+            "path"
+          ],
+          "repair.stalled": [
+            "attempts",
+            "reason"
+          ],
+          "run.failed": [
+            "checks",
+            "code"
+          ]
+        }
+      }
+    },
+    "2bb2": {
+      "snapshot": {
+        "status": "failed",
+        "phase": "done",
+        "createdAt": "2026-11-04T03:37:19.383Z",
+        "finishedAt": "2026-11-04T03:39:31.981Z",
+        "errorCode": "E_BUDGET_UNKNOWN_RESERVATION",
+        "steps": 9,
+        "checks": 0,
+        "artifacts": 0,
+        "lastEventId": 714,
+        "truncated": false
+      },
+      "detail": {
+        "steps": 9,
+        "lastEventId": 714,
+        "artifacts": 0
+      },
+      "events": {
+        "status": 200,
+        "count": 55,
+        "firstSeq": 660,
+        "lastSeq": 714,
+        "truncated": true,
+        "lastEventId": 714,
+        "types": {
+          "run.queued": 1,
+          "run.started": 1,
+          "phase.started": 3,
+          "agent.started": 9,
+          "agent.completed": 8,
+          "phase.completed": 2,
+          "route.decided": 14,
+          "context.packed": 8,
+          "file.written": 7,
+          "agent.failed": 1,
+          "run.failed": 1
+        },
+        "payloadKeys": {
+          "run.queued": [
+            "preset",
+            "runId"
+          ],
+          "run.started": [
+            "preset",
+            "runId"
+          ],
+          "phase.started": [
+            "phase"
+          ],
+          "agent.started": [
+            "agentId",
+            "phase",
+            "stepId"
+          ],
+          "agent.completed": [
+            "agentId",
+            "phase",
+            "stepId",
+            "usage"
+          ],
+          "phase.completed": [
+            "allocatedCostUsd",
+            "phase",
+            "reserveUsd",
+            "routes"
+          ],
+          "route.decided": [
+            "agentId",
+            "model",
+            "score",
+            "taskId",
+            "thinking"
+          ],
+          "context.packed": [
+            "degraded",
+            "prefixHash",
+            "taskId",
+            "tokens"
+          ],
+          "file.written": [
+            "agentId",
+            "bytes",
+            "path"
+          ],
+          "agent.failed": [
+            "agentId",
+            "code",
+            "message",
+            "phase",
+            "stepId"
+          ],
+          "run.failed": [
+            "code",
+            "message"
+          ]
+        }
+      }
+    }
+  },
+  "sse": {
+    "abf5": {
+      "frameCount": 108,
+      "first": {
+        "id": 552,
+        "event": "run.queued",
+        "replay": true
+      },
+      "last": {
+        "id": 659,
+        "event": "run.failed",
+        "replay": true
+      },
+      "names": {
+        "run.queued": 1,
+        "run.started": 1,
+        "phase.started": 11,
+        "agent.started": 20,
+        "agent.completed": 20,
+        "phase.completed": 11,
+        "route.decided": 14,
+        "context.packed": 14,
+        "file.written": 14,
+        "repair.stalled": 1,
+        "run.failed": 1
+      },
+      "contains": {
+        "run.queued": true,
+        "repair.stalled": true,
+        "agent.failed": false
+      },
+      "allMetaRunIdMatch": true,
+      "heartbeatFrames": false
+    },
+    "2bb2": {
+      "frameCount": 55,
+      "first": {
+        "id": 660,
+        "event": "run.queued",
+        "replay": true
+      },
+      "last": {
+        "id": 714,
+        "event": "run.failed",
+        "replay": true
+      },
+      "names": {
+        "run.queued": 1,
+        "run.started": 1,
+        "phase.started": 3,
+        "agent.started": 9,
+        "agent.completed": 8,
+        "phase.completed": 2,
+        "route.decided": 14,
+        "context.packed": 8,
+        "file.written": 7,
+        "agent.failed": 1,
+        "run.failed": 1
+      },
+      "contains": {
+        "run.queued": true,
+        "repair.stalled": false,
+        "agent.failed": true
+      },
+      "allMetaRunIdMatch": true,
+      "heartbeatFrames": false
+    },
+    "agentFailedFrame": {
+      "id": 713,
+      "event": "agent.failed",
+      "data": {
+        "schema": "hive.api.v1",
+        "type": "agent.failed",
+        "data": {
+          "stepId": "stp_cb1623ba3e89c5ed26",
+          "agentId": "python-engine",
+          "phase": "generating",
+          "code": "E_BUDGET_UNKNOWN_RESERVATION",
+          "message": "E_BUDGET_UNKNOWN_RESERVATION"
+        },
+        "meta": {
+          "seq": 713,
+          "runId": "run_2bb2f8edf3043fe89e",
+          "replay": true
+        }
+      },
+      "comments": []
+    }
+  },
+  "source": {
+    "emitted": [
+      "agent.completed",
+      "agent.failed",
+      "agent.started",
+      "context.packed",
+      "context.skipped",
+      "file.written",
+      "phase.completed",
+      "phase.skipped",
+      "phase.started",
+      "repair.stalled",
+      "route.decided",
+      "run.cancelled",
+      "run.completed",
+      "run.failed",
+      "run.queued",
+      "run.started"
+    ],
+    "subscribed": [
+      "agent.completed",
+      "agent.delta",
+      "agent.started",
+      "check.completed",
+      "confidence.recorded",
+      "context.packed",
+      "failure.clustered",
+      "file.revised",
+      "file.written",
+      "heartbeat",
+      "learning.eval",
+      "learning.promotion",
+      "learning.trace",
+      "phase.completed",
+      "phase.started",
+      "repair.completed",
+      "review.completed",
+      "route.decided",
+      "run.cancelled",
+      "run.completed",
+      "run.failed",
+      "run.needs_review",
+      "run.paused",
+      "run.started",
+      "run.updated",
+      "step.completed",
+      "step.started"
+    ],
+    "emittedSites": {
+      "agent.started": [
+        "src/server/pipeline/run.ts"
+      ],
+      "agent.completed": [
+        "src/server/pipeline/run.ts"
+      ],
+      "agent.failed": [
+        "src/server/pipeline/run.ts"
+      ],
+      "phase.started": [
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts"
+      ],
+      "phase.completed": [
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts"
+      ],
+      "run.failed": [
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts",
+        "src/server/runs/manager.ts"
+      ],
+      "run.started": [
+        "src/server/pipeline/run.ts"
+      ],
+      "phase.skipped": [
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts"
+      ],
+      "route.decided": [
+        "src/server/pipeline/run.ts"
+      ],
+      "context.packed": [
+        "src/server/pipeline/run.ts"
+      ],
+      "context.skipped": [
+        "src/server/pipeline/run.ts"
+      ],
+      "file.written": [
+        "src/server/pipeline/run.ts"
+      ],
+      "repair.stalled": [
+        "src/server/pipeline/run.ts",
+        "src/server/pipeline/run.ts"
+      ],
+      "run.completed": [
+        "src/server/pipeline/run.ts"
+      ],
+      "run.cancelled": [
+        "src/server/pipeline/run.ts",
+        "src/server/runs/manager.ts"
+      ],
+      "run.queued": [
+        "src/server/runs/manager.ts"
+      ]
+    },
+    "emittedNotSubscribed": [
+      "agent.failed",
+      "context.skipped",
+      "phase.skipped",
+      "repair.stalled",
+      "run.queued"
+    ],
+    "subscribedNotEmitted": [
+      "agent.delta",
+      "check.completed",
+      "confidence.recorded",
+      "failure.clustered",
+      "file.revised",
+      "heartbeat",
+      "learning.eval",
+      "learning.promotion",
+      "learning.trace",
+      "repair.completed",
+      "review.completed",
+      "run.needs_review",
+      "run.paused",
+      "run.updated",
+      "step.completed",
+      "step.started"
+    ],
+    "useApiListLine": 72
+  },
+  "db": {
+    "eventTypeCensus": [
+      {
+        "type": "agent.started",
+        "n": 171
+      },
+      {
+        "type": "agent.completed",
+        "n": 166
+      },
+      {
+        "type": "phase.started",
+        "n": 140
+      },
+      {
+        "type": "phase.completed",
+        "n": 135
+      },
+      {
+        "type": "route.decided",
+        "n": 99
+      },
+      {
+        "type": "file.written",
+        "n": 96
+      },
+      {
+        "type": "context.packed",
+        "n": 84
+      },
+      {
+        "type": "run.started",
+        "n": 25
+      },
+      {
+        "type": "run.queued",
+        "n": 25
+      },
+      {
+        "type": "run.completed",
+        "n": 18
+      },
+      {
+        "type": "run.failed",
+        "n": 7
+      },
+      {
+        "type": "agent.failed",
+        "n": 5
+      },
+      {
+        "type": "repair.stalled",
+        "n": 1
+      }
+    ],
+    "perRun": [
+      {
+        "run_id": "run_abf5fe78aab1e932ff",
+        "n": 108,
+        "first": 552,
+        "last": 659
+      },
+      {
+        "run_id": "run_95c11797b4923b4277",
+        "n": 102,
+        "first": 871,
+        "last": 972
+      },
+      {
+        "run_id": "run_26e2456caef4b8be0c",
+        "n": 97,
+        "first": 774,
+        "last": 870
+      },
+      {
+        "run_id": "run_65da49c3948f9d8f5c",
+        "n": 59,
+        "first": 715,
+        "last": 773
+      },
+      {
+        "run_id": "run_23af9b7837448cb24a",
+        "n": 58,
+        "first": 228,
+        "last": 285
+      },
+      {
+        "run_id": "run_2bb2f8edf3043fe89e",
+        "n": 55,
+        "first": 660,
+        "last": 714
+      },
+      {
+        "run_id": "run_f08c679f9075ac230d",
+        "n": 43,
+        "first": 98,
+        "last": 140
+      },
+      {
+        "run_id": "run_094ae10475a8f3ea01",
+        "n": 42,
+        "first": 175,
+        "last": 216
+      },
+      {
+        "run_id": "run_01581fa22ff57a5f5e",
+        "n": 37,
+        "first": 61,
+        "last": 97
+      },
+      {
+        "run_id": "run_063580525bb149f98d",
+        "n": 37,
+        "first": 332,
+        "last": 368
+      }
+    ],
+    "runsTotal": {
+      "n": 25
+    },
+    "active": [],
+    "eventExamples": [
+      {
+        "run_id": "run_007238d763a3956e74",
+        "seq": 1,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_007238d763a3956e74\",\"preset\":\"blueprint\"}",
+        "created_at": "2026-11-03T15:48:39.985Z"
+      },
+      {
+        "run_id": "run_9c4659ee2d4fbb40bf",
+        "seq": 10,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_9c4659ee2d4fbb40bf\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-03T15:49:26.058Z"
+      },
+      {
+        "run_id": "run_1e5add0b6ba2e3c736",
+        "seq": 42,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_1e5add0b6ba2e3c736\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-03T15:50:36.897Z"
+      },
+      {
+        "run_id": "run_1e5add0b6ba2e3c736",
+        "seq": 59,
+        "type": "agent.failed",
+        "payload_json": "{\"stepId\":\"stp_7e3c5be854cc71749f\",\"agentId\":\"python-engine\",\"phase\":\"generating\",\"code\":\"E_BUDGET_EXCEEDED\",\"message\":\"E_BUDGET_EXCEEDED\"}",
+        "created_at": "2026-11-03T15:50:59.140Z"
+      },
+      {
+        "run_id": "run_01581fa22ff57a5f5e",
+        "seq": 61,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_01581fa22ff57a5f5e\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-03T15:51:54.001Z"
+      },
+      {
+        "run_id": "run_f08c679f9075ac230d",
+        "seq": 98,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_f08c679f9075ac230d\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-03T15:57:58.709Z"
+      },
+      {
+        "run_id": "run_e5853ec6f585b0b657",
+        "seq": 141,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_e5853ec6f585b0b657\",\"preset\":\"revise\"}",
+        "created_at": "2026-11-03T16:02:47.094Z"
+      },
+      {
+        "run_id": "run_582bf88992c0ee98ae",
+        "seq": 156,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_582bf88992c0ee98ae\",\"preset\":\"audit\"}",
+        "created_at": "2026-11-03T16:05:00.690Z"
+      },
+      {
+        "run_id": "run_094ae10475a8f3ea01",
+        "seq": 175,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_094ae10475a8f3ea01\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-03T16:09:39.364Z"
+      },
+      {
+        "run_id": "run_3bf07c4861e786f1e7",
+        "seq": 217,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_3bf07c4861e786f1e7\",\"preset\":\"adhoc\"}",
+        "created_at": "2026-11-03T16:19:23.277Z"
+      },
+      {
+        "run_id": "run_23af9b7837448cb24a",
+        "seq": 228,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_23af9b7837448cb24a\",\"preset\":\"ui-build\"}",
+        "created_at": "2026-11-03T18:45:23.687Z"
+      },
+      {
+        "run_id": "run_23af9b7837448cb24a",
+        "seq": 284,
+        "type": "agent.failed",
+        "payload_json": "{\"stepId\":\"stp_4d52e72d469a5d4b55\",\"agentId\":\"sentinel\",\"phase\":\"hardening\",\"code\":\"E_BUDGET_EXCEEDED\",\"message\":\"E_BUDGET_EXCEEDED\"}",
+        "created_at": "2026-11-03T18:46:41.366Z"
+      },
+      {
+        "run_id": "run_b8a8e239a57052f146",
+        "seq": 286,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_b8a8e239a57052f146\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-03T18:46:51.781Z"
+      },
+      {
+        "run_id": "run_9b144184491ce0f41b",
+        "seq": 323,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_9b144184491ce0f41b\",\"preset\":\"blueprint\"}",
+        "created_at": "2026-11-03T21:33:47.517Z"
+      },
+      {
+        "run_id": "run_063580525bb149f98d",
+        "seq": 332,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_063580525bb149f98d\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-03T21:36:26.364Z"
+      },
+      {
+        "run_id": "run_faf2600e5bf180b0dc",
+        "seq": 369,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_faf2600e5bf180b0dc\",\"preset\":\"adhoc\"}",
+        "created_at": "2026-11-03T21:38:37.598Z"
+      },
+      {
+        "run_id": "run_32b087305f87bfa8bf",
+        "seq": 380,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_32b087305f87bfa8bf\",\"preset\":\"revise\"}",
+        "created_at": "2026-11-03T21:39:31.469Z"
+      },
+      {
+        "run_id": "run_9c1e2390e875e16eb3",
+        "seq": 395,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_9c1e2390e875e16eb3\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-03T22:44:59.758Z"
+      },
+      {
+        "run_id": "run_066581ff6b793a7aa9",
+        "seq": 432,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_066581ff6b793a7aa9\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-03T22:48:49.918Z"
+      },
+      {
+        "run_id": "run_3a4578fa7b6ffebae1",
+        "seq": 469,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_3a4578fa7b6ffebae1\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-04T02:18:44.966Z"
+      },
+      {
+        "run_id": "run_a5202415c602bd8320",
+        "seq": 506,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_a5202415c602bd8320\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-04T02:21:05.931Z"
+      },
+      {
+        "run_id": "run_2e6935e48bb8fa74a2",
+        "seq": 543,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_2e6935e48bb8fa74a2\",\"preset\":\"blueprint\"}",
+        "created_at": "2026-11-04T03:07:01.957Z"
+      },
+      {
+        "run_id": "run_abf5fe78aab1e932ff",
+        "seq": 552,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_abf5fe78aab1e932ff\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-04T03:08:16.975Z"
+      },
+      {
+        "run_id": "run_abf5fe78aab1e932ff",
+        "seq": 658,
+        "type": "repair.stalled",
+        "payload_json": "{\"reason\":\"attempt budget exhausted\",\"attempts\":2}",
+        "created_at": "2026-11-04T03:15:46.734Z"
+      },
+      {
+        "run_id": "run_2bb2f8edf3043fe89e",
+        "seq": 660,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_2bb2f8edf3043fe89e\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-04T03:37:19.402Z"
+      },
+      {
+        "run_id": "run_2bb2f8edf3043fe89e",
+        "seq": 713,
+        "type": "agent.failed",
+        "payload_json": "{\"stepId\":\"stp_cb1623ba3e89c5ed26\",\"agentId\":\"python-engine\",\"phase\":\"generating\",\"code\":\"E_BUDGET_UNKNOWN_RESERVATION\",\"message\":\"E_BUDGET_UNKNOWN_RESERVATION\"}",
+        "created_at": "2026-11-04T03:39:31.970Z"
+      },
+      {
+        "run_id": "run_65da49c3948f9d8f5c",
+        "seq": 715,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_65da49c3948f9d8f5c\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-04T03:42:17.895Z"
+      },
+      {
+        "run_id": "run_65da49c3948f9d8f5c",
+        "seq": 772,
+        "type": "agent.failed",
+        "payload_json": "{\"stepId\":\"stp_030c0b616882d938e2\",\"agentId\":\"python-engine\",\"phase\":\"generating\",\"code\":\"E_BUDGET_EXCEEDED\",\"message\":\"E_BUDGET_EXCEEDED\"}",
+        "created_at": "2026-11-04T03:44:23.140Z"
+      },
+      {
+        "run_id": "run_26e2456caef4b8be0c",
+        "seq": 774,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_26e2456caef4b8be0c\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-04T03:44:33.269Z"
+      },
+      {
+        "run_id": "run_26e2456caef4b8be0c",
+        "seq": 869,
+        "type": "agent.failed",
+        "payload_json": "{\"stepId\":\"stp_2d2f713e18f49db684\",\"agentId\":\"gatekeeper\",\"phase\":\"testing\",\"code\":\"E_BUDGET_EXCEEDED\",\"message\":\"E_BUDGET_EXCEEDED\"}",
+        "created_at": "2026-11-04T03:50:18.424Z"
+      },
+      {
+        "run_id": "run_95c11797b4923b4277",
+        "seq": 871,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_95c11797b4923b4277\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-04T03:50:32.473Z"
+      }
+    ],
+    "abf5": {
+      "n": 108,
+      "first": 552,
+      "last": 659
+    },
+    "abf5First": [
+      {
+        "seq": 552,
+        "type": "run.queued",
+        "payload_json": "{\"runId\":\"run_abf5fe78aab1e932ff\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-04T03:08:16.975Z"
+      },
+      {
+        "seq": 553,
+        "type": "run.started",
+        "payload_json": "{\"runId\":\"run_abf5fe78aab1e932ff\",\"preset\":\"full-build\"}",
+        "created_at": "2026-11-04T03:08:16.979Z"
+      }
+    ],
+    "abf5Last": [
+      {
+        "seq": 659,
+        "type": "run.failed",
+        "payload_json": "{\"code\":\"GATE_FAILED\",\"checks\":[{\"id\":\"stub.scan\",\"status\":\"fail\",\"detail\":\"1 placeholder marker(s), first at line 121\",\"file\":\"src/probes/tool_access.py\",\"line\":121,\"mandatory\":true}]}",
+        "created_at": "2026-11-04T03:15:46.747Z"
+      },
+      {
+        "seq": 658,
+        "type": "repair.stalled",
+        "payload_json": "{\"reason\":\"attempt budget exhausted\",\"attempts\":2}",
+        "created_at": "2026-11-04T03:15:46.734Z"
+      }
+    ],
+    "truncatedPayloads": {
+      "n": 0
+    },
+    "abf5Steps": [
+      {
+        "seq": 1,
+        "phase": "planning",
+        "agent_id": "architect",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:08:16.980Z",
+        "finished_at": "2026-11-04T03:08:27.720Z"
+      },
+      {
+        "seq": 2,
+        "phase": "generating",
+        "agent_id": "python-engine",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:08:28.141Z",
+        "finished_at": "2026-11-04T03:08:39.665Z"
+      },
+      {
+        "seq": 3,
+        "phase": "generating",
+        "agent_id": "python-engine",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:08:39.681Z",
+        "finished_at": "2026-11-04T03:08:53.676Z"
+      },
+      {
+        "seq": 4,
+        "phase": "generating",
+        "agent_id": "python-engine",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:08:53.690Z",
+        "finished_at": "2026-11-04T03:09:04.457Z"
+      },
+      {
+        "seq": 5,
+        "phase": "generating",
+        "agent_id": "python-engine",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:09:04.474Z",
+        "finished_at": "2026-11-04T03:09:22.679Z"
+      },
+      {
+        "seq": 6,
+        "phase": "generating",
+        "agent_id": "python-engine",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:09:22.691Z",
+        "finished_at": "2026-11-04T03:09:32.996Z"
+      },
+      {
+        "seq": 7,
+        "phase": "generating",
+        "agent_id": "python-engine",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:09:33.029Z",
+        "finished_at": "2026-11-04T03:09:52.440Z"
+      },
+      {
+        "seq": 8,
+        "phase": "generating",
+        "agent_id": "python-engine",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:09:52.479Z",
+        "finished_at": "2026-11-04T03:10:14.544Z"
+      },
+      {
+        "seq": 9,
+        "phase": "generating",
+        "agent_id": "python-engine",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:10:14.559Z",
+        "finished_at": "2026-11-04T03:10:24.292Z"
+      },
+      {
+        "seq": 10,
+        "phase": "generating",
+        "agent_id": "python-engine",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:10:24.307Z",
+        "finished_at": "2026-11-04T03:10:38.586Z"
+      },
+      {
+        "seq": 11,
+        "phase": "generating",
+        "agent_id": "python-engine",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:10:38.610Z",
+        "finished_at": "2026-11-04T03:10:58.163Z"
+      },
+      {
+        "seq": 12,
+        "phase": "generating",
+        "agent_id": "python-engine",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:10:58.173Z",
+        "finished_at": "2026-11-04T03:11:07.038Z"
+      },
+      {
+        "seq": 13,
+        "phase": "generating",
+        "agent_id": "python-engine",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:11:07.052Z",
+        "finished_at": "2026-11-04T03:11:20.758Z"
+      },
+      {
+        "seq": 14,
+        "phase": "generating",
+        "agent_id": "python-engine",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:11:20.788Z",
+        "finished_at": "2026-11-04T03:11:41.537Z"
+      },
+      {
+        "seq": 15,
+        "phase": "generating",
+        "agent_id": "markdown-engine",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:11:41.548Z",
+        "finished_at": "2026-11-04T03:11:51.109Z"
+      },
+      {
+        "seq": 16,
+        "phase": "cleaning",
+        "agent_id": "cleaner",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:11:51.122Z",
+        "finished_at": "2026-11-04T03:13:13.811Z"
+      },
+      {
+        "seq": 17,
+        "phase": "hardening",
+        "agent_id": "sentinel",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:13:13.883Z",
+        "finished_at": "2026-11-04T03:14:13.019Z"
+      },
+      {
+        "seq": 18,
+        "phase": "testing",
+        "agent_id": "gatekeeper",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:14:13.122Z",
+        "finished_at": "2026-11-04T03:14:48.841Z"
+      },
+      {
+        "seq": 19,
+        "phase": "repairing",
+        "agent_id": "watchman",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:14:52.346Z",
+        "finished_at": "2026-11-04T03:15:22.635Z"
+      },
+      {
+        "seq": 20,
+        "phase": "repairing",
+        "agent_id": "watchman",
+        "status": "succeeded",
+        "started_at": "2026-11-04T03:15:25.076Z",
+        "finished_at": "2026-11-04T03:15:44.865Z"
+      }
+    ]
+  },
+  "findings": {
+    "abf5ApiStateMatchesMandate": true,
+    "eventsRouteDroppedNothing": true,
+    "eventsRouteTruncatedFlagFalsePositive": true,
+    "sseReplaysUnsubscribedTypes": true,
+    "appSubscribedCount": 27,
+    "emittedCount": 16,
+    "emittedNotSubscribed": [
+      "agent.failed",
+      "context.skipped",
+      "phase.skipped",
+      "repair.stalled",
+      "run.queued"
+    ],
+    "subscribedNotEmitted": [
+      "agent.delta",
+      "check.completed",
+      "confidence.recorded",
+      "failure.clustered",
+      "file.revised",
+      "heartbeat",
+      "learning.eval",
+      "learning.promotion",
+      "learning.trace",
+      "repair.completed",
+      "review.completed",
+      "run.needs_review",
+      "run.paused",
+      "run.updated",
+      "step.completed",
+      "step.started"
+    ],
+    "agentFailedObservedInDb": 5,
+    "phaseSkippedObservedInDb": 0,
+    "contextSkippedObservedInDb": 0,
+    "runCancelledObservedInDb": 0
+  }
+}

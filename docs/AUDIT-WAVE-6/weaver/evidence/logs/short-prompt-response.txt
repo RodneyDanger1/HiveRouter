@@ -1,0 +1,4 @@
+﻿# Prompt-analyze validation probe (read-only; no provider call because it fails before the analyst)
+POST /api/prompt/analyze {"prompt":"abc"}
+HTTP 422
+{"error":{"code":"E_PROMPT_TOO_LARGE","message":"Prompt override exceeds the size limit.","retryable":false,"details":{"reason":"prompt must be at least 8 characters","observed":3}}}

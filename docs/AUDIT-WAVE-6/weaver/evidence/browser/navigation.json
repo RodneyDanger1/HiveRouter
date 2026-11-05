@@ -1,0 +1,282 @@
+{
+  "navigations": [
+    {
+      "from": "http://127.0.0.1:8787/",
+      "link": "Agents",
+      "to": "http://127.0.0.1:8787/agents",
+      "h1": "Agents",
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/agents",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/settings/key-status",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "from": "http://127.0.0.1:8787/agents",
+      "link": "Runs",
+      "to": "http://127.0.0.1:8787/runs",
+      "h1": "Runs",
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/runs?limit=100",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "from": "http://127.0.0.1:8787/runs",
+      "link": "Vault",
+      "to": "http://127.0.0.1:8787/vault",
+      "h1": "Vault",
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/vault/tree",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "from": "http://127.0.0.1:8787/vault",
+      "link": "Learning",
+      "to": "http://127.0.0.1:8787/learning",
+      "h1": "Learning",
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/learning/overview",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "from": "http://127.0.0.1:8787/learning",
+      "link": "Settings",
+      "to": "http://127.0.0.1:8787/settings",
+      "h1": "Settings",
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/settings/key-status",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/settings",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "from": "http://127.0.0.1:8787/settings",
+      "link": "Overview",
+      "to": "http://127.0.0.1:8787/",
+      "h1": "Build with a routed factory, not a single bot.",
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/stats",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/runs?limit=5",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/settings/key-status",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "from": "http://127.0.0.1:8787/",
+      "link": "Run history",
+      "to": "http://127.0.0.1:8787/runs",
+      "h1": "Runs",
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/runs?limit=100",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "from": "http://127.0.0.1:8787/",
+      "link": "Agent registry",
+      "to": "http://127.0.0.1:8787/agents",
+      "h1": "Agents",
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/settings/key-status",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/agents",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "from": "http://127.0.0.1:8787/settings",
+      "link": "Open Learning status",
+      "to": "http://127.0.0.1:8787/learning",
+      "h1": "Learning",
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/learning/overview",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "from": "http://127.0.0.1:8787/learning",
+      "link": "Open settings",
+      "to": "http://127.0.0.1:8787/settings",
+      "h1": "Settings",
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/settings/key-status",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/settings",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "from": "http://127.0.0.1:8787/no-such-page",
+      "link": "Return to overview",
+      "to": "http://127.0.0.1:8787/",
+      "h1": "Build with a routed factory, not a single bot.",
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/stats",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/runs?limit=5",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/settings/key-status",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "from": "http://127.0.0.1:8787/runs",
+      "link": "New run",
+      "to": "http://127.0.0.1:8787/",
+      "h1": "Build with a routed factory, not a single bot.",
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/stats",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/runs?limit=5",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/settings/key-status",
+          "status": 200
+        }
+      ]
+    }
+  ],
+  "refreshes": [
+    {
+      "page": "/",
+      "button": "Refresh",
+      "error": "TimeoutError: locator.click: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Refresh', exact: true }).first()\u001b[22m\n"
+    },
+    {
+      "page": "/agents",
+      "button": "Refresh",
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/agents",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "page": "/runs",
+      "button": "Refresh",
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/runs?limit=100",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "page": "/vault",
+      "button": "Refresh",
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/vault/tree",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "page": "/settings",
+      "button": "Refresh",
+      "api": [
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/settings/key-status",
+          "status": 200
+        },
+        {
+          "method": "GET",
+          "url": "http://127.0.0.1:8787/api/settings",
+          "status": 200
+        }
+      ]
+    }
+  ],
+  "runRowClick": {
+    "url": "http://127.0.0.1:8787/runs/run_95c11797b4923b4277",
+    "h1": "aNALYZE THE SOFTWARE/WHAT DOES AND DOESNT WORK, WHAT TOOLS YOU CANT CALL, DOES LEARNING WORK, CAN YOU SEE PAST RUNS, DOE…",
+    "api": [
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8787/api/runs/run_95c11797b4923b4277/snapshot",
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:8787/api/runs/run_95c11797b4923b4277/events",
+        "status": 200
+      }
+    ]
+  }
+}

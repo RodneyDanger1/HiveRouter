@@ -1,0 +1,51 @@
+﻿{
+  "requested": [
+    "/api/runs?limit=100&status=failed",
+    "/api/runs?limit=100",
+    "/api/runs?limit=50",
+    "/api/runs?limit=10&status=completed+with+warnings%26x%3D1",
+    "/api/runs?limit=7&status=completed_with_warnings",
+    "/api/runs?limit=100"
+  ],
+  "decoded": [
+    {
+      "url": "/api/runs?limit=100&status=failed",
+      "query": {
+        "limit": "100",
+        "status": "failed"
+      }
+    },
+    {
+      "url": "/api/runs?limit=100",
+      "query": {
+        "limit": "100"
+      }
+    },
+    {
+      "url": "/api/runs?limit=50",
+      "query": {
+        "limit": "50"
+      }
+    },
+    {
+      "url": "/api/runs?limit=10&status=completed+with+warnings%26x%3D1",
+      "query": {
+        "limit": "10",
+        "status": "completed with warnings&x=1"
+      }
+    },
+    {
+      "url": "/api/runs?limit=7&status=completed_with_warnings",
+      "query": {
+        "limit": "7",
+        "status": "completed_with_warnings"
+      }
+    },
+    {
+      "url": "/api/runs?limit=100",
+      "query": {
+        "limit": "100"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2115 @@
+﻿{
+  "content_refs": [
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "HiveRouter — AI Agent Coding Router",
+      "ref": "p21:11",
+      "role": "rootwebarea",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:12",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:13",
+      "role": "banner",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "API online",
+      "ref": "p21:14",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:15",
+      "role": "generic",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "STAGE",
+      "ref": "p21:16",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "B2",
+      "ref": "p21:17",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:18",
+      "role": "main",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:19",
+      "role": "sectionheader",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:20",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "EXECUTION LEDGER",
+      "ref": "p21:21",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Runs",
+      "ref": "p21:22",
+      "role": "heading",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:23",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Every run is persisted with its status, phase, spend, and artifacts. Terminal states are terminal; a failed gate is not a success.",
+      "ref": "p21:24",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:25",
+      "role": "labeltext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "STATUS",
+      "ref": "p21:26",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "11",
+      "ref": "p21:27",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "of",
+      "ref": "p21:28",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "11",
+      "ref": "p21:29",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "shown",
+      "ref": "p21:30",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:31",
+      "role": "table",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:32",
+      "role": "rowgroup",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:33",
+      "role": "row",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "RUN",
+      "ref": "p21:34",
+      "role": "columnheader",
+      "states": {
+        "required": false
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "BRIEF",
+      "ref": "p21:35",
+      "role": "columnheader",
+      "states": {
+        "required": false
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "STATUS",
+      "ref": "p21:36",
+      "role": "columnheader",
+      "states": {
+        "required": false
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "PRESET",
+      "ref": "p21:37",
+      "role": "columnheader",
+      "states": {
+        "required": false
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "SPEND",
+      "ref": "p21:38",
+      "role": "columnheader",
+      "states": {
+        "required": false
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "CREATED",
+      "ref": "p21:39",
+      "role": "columnheader",
+      "states": {
+        "required": false
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Open",
+      "ref": "p21:40",
+      "role": "columnheader",
+      "states": {
+        "required": false
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:41",
+      "role": "row",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "run_b8a8e239…",
+      "ref": "p21:42",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Create exactly two files: src/App.tsx exporting function App() that renders an h1 'HiveCounter' and a useState counter b…",
+      "ref": "p21:43",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "COMPLETED",
+      "ref": "p21:44",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Full Build",
+      "ref": "p21:45",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "$0.0042",
+      "ref": "p21:46",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Nov 03, 2026, 12:46 PM",
+      "ref": "p21:47",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Open run run_b8a8e239…",
+      "ref": "p21:48",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:49",
+      "role": "row",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "run_23af9b78…",
+      "ref": "p21:50",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Create a React 19 single-component TypeScript project. src/App.tsx must export function App() and render an h1 'HiveCoun…",
+      "ref": "p21:51",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "BUDGET EXCEEDED",
+      "ref": "p21:52",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Ui Build",
+      "ref": "p21:53",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "—",
+      "ref": "p21:54",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Nov 03, 2026, 12:45 PM",
+      "ref": "p21:55",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Open run run_23af9b78…",
+      "ref": "p21:56",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Primary navigation",
+      "ref": "p21:89",
+      "role": "complementary",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:90",
+      "role": "navigation",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:91",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Screening-grade by design.",
+      "ref": "p21:92",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:93",
+      "role": "paragraph",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Local, single-user factory. No learned routing. No generated-code execution. No provider key in the browser.",
+      "ref": "p21:94",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "HIVEROUTER v",
+      "ref": "p21:95",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "0.1.0",
+      "ref": "p21:96",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:97",
+      "role": "row",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "run_3bf07c48…",
+      "ref": "p21:98",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Write a Python function greet(name: str) -> str that returns 'Hello, ' + name + '!'. Keep it dependency-free.",
+      "ref": "p21:99",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "COMPLETED",
+      "ref": "p21:100",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Adhoc",
+      "ref": "p21:101",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "$0.0003",
+      "ref": "p21:102",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Nov 03, 2026, 10:19 AM",
+      "ref": "p21:103",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Open run run_3bf07c48…",
+      "ref": "p21:104",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:105",
+      "role": "row",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "run_094ae104…",
+      "ref": "p21:106",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Create a Python module src/strings.py with slugify(text) and tests/test_strings.py using unittest. Standard library only…",
+      "ref": "p21:107",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "COMPLETED",
+      "ref": "p21:108",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Full Build",
+      "ref": "p21:109",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "$0.0059",
+      "ref": "p21:110",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Nov 03, 2026, 10:09 AM",
+      "ref": "p21:111",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Open run run_094ae104…",
+      "ref": "p21:112",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:113",
+      "role": "row",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "run_582bf889…",
+      "ref": "p21:114",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Audit the accepted artifacts for defects, security issues, dead code, and missing tests.",
+      "ref": "p21:115",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "COMPLETED",
+      "ref": "p21:116",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Audit",
+      "ref": "p21:117",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "$0.0089",
+      "ref": "p21:118",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Nov 03, 2026, 10:05 AM",
+      "ref": "p21:119",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Open run run_582bf889…",
+      "ref": "p21:120",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:121",
+      "role": "row",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "run_e5853ec6…",
+      "ref": "p21:122",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Add a concise module docstring to src/math_utils.py and keep the tests passing. Do not change the add/subtract behavior.",
+      "ref": "p21:123",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "COMPLETED",
+      "ref": "p21:124",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Revise",
+      "ref": "p21:125",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "$0.0022",
+      "ref": "p21:126",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Nov 03, 2026, 10:02 AM",
+      "ref": "p21:127",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Open run run_e5853ec6…",
+      "ref": "p21:128",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:129",
+      "role": "row",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "run_f08c679f…",
+      "ref": "p21:130",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Create a small Python project: src/math_utils.py with add(a,b) and subtract(a,b), and tests/test_math_utils.py using uni…",
+      "ref": "p21:131",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "COMPLETED",
+      "ref": "p21:132",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Full Build",
+      "ref": "p21:133",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "$0.0114",
+      "ref": "p21:134",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Nov 03, 2026, 09:57 AM",
+      "ref": "p21:135",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Open run run_f08c679f…",
+      "ref": "p21:136",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:137",
+      "role": "row",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "run_01581fa2…",
+      "ref": "p21:138",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Create a small Python project: src/math_utils.py with add(a,b) and subtract(a,b), and tests/test_math_utils.py using uni…",
+      "ref": "p21:139",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "COMPLETED",
+      "ref": "p21:140",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Full Build",
+      "ref": "p21:141",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "$0.0089",
+      "ref": "p21:142",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Nov 03, 2026, 09:51 AM",
+      "ref": "p21:143",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Open run run_01581fa2…",
+      "ref": "p21:144",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:145",
+      "role": "row",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "run_1e5add0b…",
+      "ref": "p21:146",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Create a small Python project: src/calculator.py with add(a,b) and subtract(a,b), and tests/test_calculator.py using uni…",
+      "ref": "p21:147",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "BUDGET EXCEEDED",
+      "ref": "p21:148",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Full Build",
+      "ref": "p21:149",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "—",
+      "ref": "p21:150",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Nov 03, 2026, 09:50 AM",
+      "ref": "p21:151",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Open run run_1e5add0b…",
+      "ref": "p21:152",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:153",
+      "role": "row",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "run_9c4659ee…",
+      "ref": "p21:154",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Create a small Python project: src/calculator.py with add(a,b) and subtract(a,b), and tests/test_calculator.py using uni…",
+      "ref": "p21:155",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "FAILED",
+      "ref": "p21:156",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Full Build",
+      "ref": "p21:157",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "—",
+      "ref": "p21:158",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Nov 03, 2026, 09:49 AM",
+      "ref": "p21:159",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Open run run_9c4659ee…",
+      "ref": "p21:160",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:161",
+      "role": "row",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "run_007238d7…",
+      "ref": "p21:162",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Build a small Python script that prints Hello, HiveRouter.",
+      "ref": "p21:163",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "COMPLETED",
+      "ref": "p21:164",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Blueprint",
+      "ref": "p21:165",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "$0.0006",
+      "ref": "p21:166",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Nov 03, 2026, 09:48 AM",
+      "ref": "p21:167",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Open run run_007238d7…",
+      "ref": "p21:168",
+      "role": "cell",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:169",
+      "role": "contentinfo",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Local factory · 127.0.0.1",
+      "ref": "p21:170",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "Independent local tool. Not affiliated with the U.S. Government or the National Design Studio.",
+      "ref": "p21:171",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": "NO AUTO-PROMOTION · NO SHELL · NO GENERATED-CODE EXECUTION",
+      "ref": "p21:172",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [],
+      "frame": "main",
+      "name": null,
+      "ref": "p21:181",
+      "role": "menulistpopup",
+      "states": {},
+      "value": null,
+      "visibility": "unknown"
+    }
+  ],
+  "mode": "snapshot",
+  "oopif": {
+    "frames": 0,
+    "status": "attached"
+  },
+  "outline": "- generic\n- link \"Skip to content\" [focusable=true]\n- banner\n- button \"Open navigation\" [expanded=false,focusable=true]\n- link \"HiveRouter overview\" [focusable=true]\n- statictext \"Hive\"\n- statictext \"ROUTER\"\n- statictext \"API online\"\n- generic\n  - statictext \"STAGE\"\n  - statictext \"B2\"\n- complementary \"Primary navigation\"\n  - navigation\n    - link \"Overview\" [focusable=true]\n- statictext \"Overview\"\n    - link \"Agents\" [focusable=true]\n- statictext \"Agents\"\n    - link \"Runs\" [focusable=true]\n- statictext \"Runs\"\n    - link \"Vault\" [focusable=true]\n- statictext \"Vault\"\n    - link \"Learning\" [focusable=true]\n- statictext \"Learning\"\n    - link \"Settings\" [focusable=true]\n- statictext \"Settings\"\n- paragraph\n  - statictext \"Screening-grade by design.\"\n- paragraph\n  - statictext \"Local, single-user factory. No learned routing. No generated-code execution. No provider key in the browser.\"\n- statictext \"HIVEROUTER v\"\n- statictext \"0.1.0\"\n- link \"Trust & status\" [focusable=true]\n- main\n- sectionheader\n- paragraph\n  - statictext \"EXECUTION LEDGER\"\n- heading \"Runs\"\n- paragraph\n  - statictext \"Every run is persisted with its status, phase, spend, and artifacts. Terminal states are terminal; a failed gate is not a success.\"\n- link \"New run\" [focusable=true]\n    - menulistpopup\n- button \"Refresh\" [focusable=true]\n- labeltext\n- statictext \"STATUS\"\n  - combobox \"STATUS\": All statuses [expanded=false,focusable=true]\n- option \"All statuses\" [focusable=true,selected=true]\n- option \"Running\" [focusable=true,selected=false]\n- option \"Completed\" [focusable=true,selected=false]\n- option \"Completed With Warnings\" [focusable=true,selected=false]\n- option \"Failed\" [focusable=true,selected=false]\n- option \"Cancelled\" [focusable=true,selected=false]\n- option \"Budget Exceeded\" [focusable=true,selected=false]\n- option \"Needs Review\" [focusable=true,selected=false]\n- statictext \"11\"\n- statictext \"of\"\n- statictext \"11\"\n- statictext \"shown\"\n- table\n  - rowgroup\n    - row\n      - columnheader \"RUN\" [required=false]\n      - columnheader \"BRIEF\" [required=false]\n      - columnheader \"STATUS\" [required=false]\n      - columnheader \"PRESET\" [required=false]\n      - columnheader \"SPEND\" [required=false]\n      - columnheader \"CREATED\" [required=false]\n      - columnheader \"Open\" [required=false]\n- row\n  - cell \"run_b8a8e239…\"\n  - cell \"Create exactly two files: src/App.tsx exporting function App() that renders an h1 'HiveCounter' and a useState counter b…\"\n    - link \"Create exactly two files: src/App.tsx exporting function App() that renders an h1 'HiveCounter' and a useState counter b…\" [focusable=true]\n  - cell \"COMPLETED\"\n  - cell \"Full Build\"\n  - cell \"$0.0042\"\n  - cell \"Nov 03, 2026, 12:46 PM\"\n  - cell \"Open run run_b8a8e239…\"\n    - link \"Open run run_b8a8e239…\" [focusable=true]\n- row\n  - cell \"run_23af9b78…\"\n  - cell \"Create a React 19 single-component TypeScript project. src/App.tsx must export function App() and render an h1 'HiveCoun…\"\n    - link \"Create a React 19 single-component TypeScript project. src/App.tsx must export function App() and render an h1 'HiveCoun…\" [focusable=true]\n  - cell \"BUDGET EXCEEDED\"\n  - cell \"Ui Build\"\n  - cell \"—\"\n  - cell \"Nov 03, 2026, 12:45 PM\"\n  - cell \"Open run run_23af9b78…\"\n    - link \"Open run run_23af9b78…\" [focusable=true]\n- row\n  - cell \"run_3bf07c48…\"\n  - cell \"Write a Python function greet(name: str) -> str that returns 'Hello, ' + name + '!'. Keep it dependency-free.\"\n    - link \"Write a Python function greet(name: str) -> str that returns 'Hello, ' + name + '!'. Keep it dependency-free.\" [focusable=true]\n  - cell \"COMPLETED\"\n  - cell \"Adhoc\"\n  - cell \"$0.0003\"\n  - cell \"Nov 03, 2026, 10:19 AM\"\n  - cell \"Open run run_3bf07c48…\"\n    - link \"Open run run_3bf07c48…\" [focusable=true]\n- row\n  - cell \"run_094ae104…\"\n  - cell \"Create a Python module src/strings.py with slugify(text) and tests/test_strings.py using unittest. Standard library only…\"\n    - link \"Create a Python module src/strings.py with slugify(text) and tests/test_strings.py using unittest. Standard library only…\" [focusable=true]\n  - cell \"COMPLETED\"\n  - cell \"Full Build\"\n  - cell \"$0.0059\"\n  - cell \"Nov 03, 2026, 10:09 AM\"\n  - cell \"Open run run_094ae104…\"\n    - link \"Open run run_094ae104…\" [focusable=true]\n- row\n  - cell \"run_582bf889…\"\n  - cell \"Audit the accepted artifacts for defects, security issues, dead code, and missing tests.\"\n    - link \"Audit the accepted artifacts for defects, security issues, dead code, and missing tests.\" [focusable=true]\n  - cell \"COMPLETED\"\n  - cell \"Audit\"\n  - cell \"$0.0089\"\n  - cell \"Nov 03, 2026, 10:05 AM\"\n  - cell \"Open run run_582bf889…\"\n    - link \"Open run run_582bf889…\" [focusable=true]\n- row\n  - cell \"run_e5853ec6…\"\n  - cell \"Add a concise module docstring to src/math_utils.py and keep the tests passing. Do not change the add/subtract behavior.\"\n    - link \"Add a concise module docstring to src/math_utils.py and keep the tests passing. Do not change the add/subtract behavior.\" [focusable=true]\n  - cell \"COMPLETED\"\n  - cell \"Revise\"\n  - cell \"$0.0022\"\n  - cell \"Nov 03, 2026, 10:02 AM\"\n  - cell \"Open run run_e5853ec6…\"\n    - link \"Open run run_e5853ec6…\" [focusable=true]\n- row\n  - cell \"run_f08c679f…\"\n  - cell \"Create a small Python project: src/math_utils.py with add(a,b) and subtract(a,b), and tests/test_math_utils.py using uni…\"\n    - link \"Create a small Python project: src/math_utils.py with add(a,b) and subtract(a,b), and tests/test_math_utils.py using uni…\" [focusable=true]\n  - cell \"COMPLETED\"\n  - cell \"Full Build\"\n  - cell \"$0.0114\"\n  - cell \"Nov 03, 2026, 09:57 AM\"\n  - cell \"Open run run_f08c679f…\"\n    - link \"Open run run_f08c679f…\" [focusable=true]\n- row\n  - cell \"run_01581fa2…\"\n  - cell \"Create a small Python project: src/math_utils.py with add(a,b) and subtract(a,b), and tests/test_math_utils.py using uni…\"\n    - link \"Create a small Python project: src/math_utils.py with add(a,b) and subtract(a,b), and tests/test_math_utils.py using uni…\" [focusable=true]\n  - cell \"COMPLETED\"\n  - cell \"Full Build\"\n  - cell \"$0.0089\"\n  - cell \"Nov 03, 2026, 09:51 AM\"\n  - cell \"Open run run_01581fa2…\"\n    - link \"Open run run_01581fa2…\" [focusable=true]\n- row\n  - cell \"run_1e5add0b…\"\n  - cell \"Create a small Python project: src/calculator.py with add(a,b) and subtract(a,b), and tests/test_calculator.py using uni…\"\n    - link \"Create a small Python project: src/calculator.py with add(a,b) and subtract(a,b), and tests/test_calculator.py using uni…\" [focusable=true]\n  - cell \"BUDGET EXCEEDED\"\n  - cell \"Full Build\"\n  - cell \"—\"\n  - cell \"Nov 03, 2026, 09:50 AM\"\n  - cell \"Open run run_1e5add0b…\"\n    - link \"Open run run_1e5add0b…\" [focusable=true]\n- row\n  - cell \"run_9c4659ee…\"\n  - cell \"Create a small Python project: src/calculator.py with add(a,b) and subtract(a,b), and tests/test_calculator.py using uni…\"\n    - link \"Create a small Python project: src/calculator.py with add(a,b) and subtract(a,b), and tests/test_calculator.py using uni…\" [focusable=true]\n  - cell \"FAILED\"\n  - cell \"Full Build\"\n  - cell \"—\"\n  - cell \"Nov 03, 2026, 09:49 AM\"\n  - cell \"Open run run_9c4659ee…\"\n    - link \"Open run run_9c4659ee…\" [focusable=true]\n- row\n  - cell \"run_007238d7…\"\n  - cell \"Build a small Python script that prints Hello, HiveRouter.\"\n    - link \"Build a small Python script that prints Hello, HiveRouter.\" [focusable=true]\n  - cell \"COMPLETED\"\n  - cell \"Blueprint\"\n  - cell \"$0.0006\"\n  - cell \"Nov 03, 2026, 09:48 AM\"\n  - cell \"Open run run_007238d7…\"\n    - link \"Open run run_007238d7…\" [focusable=true]\n- contentinfo\n- statictext \"Local factory · 127.0.0.1\"\n- statictext \"Independent local tool. Not affiliated with the U.S. Government or the National Design Studio.\"\n- statictext \"NO AUTO-PROMOTION · NO SHELL · NO GENERATED-CODE EXECUTION\"",
+  "page": {
+    "title": "about:blank",
+    "url": "http://127.0.0.1:8787/runs"
+  },
+  "refs": [
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open navigation",
+      "ref": "p21:0",
+      "role": "button",
+      "states": {
+        "expanded": false,
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "HiveRouter overview",
+      "ref": "p21:1",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Hive",
+      "ref": "p21:2",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "ROUTER",
+      "ref": "p21:3",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "New run",
+      "ref": "p21:4",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Refresh",
+      "ref": "p21:5",
+      "role": "button",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "STATUS",
+      "ref": "p21:6",
+      "role": "combobox",
+      "states": {
+        "expanded": false,
+        "focusable": true
+      },
+      "value": "All statuses",
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Create exactly two files: src/App.tsx exporting function App() that renders an h1 'HiveCounter' and a useState counter b…",
+      "ref": "p21:7",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open run run_b8a8e239…",
+      "ref": "p21:8",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Create a React 19 single-component TypeScript project. src/App.tsx must export function App() and render an h1 'HiveCoun…",
+      "ref": "p21:9",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open run run_23af9b78…",
+      "ref": "p21:10",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "in_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Skip to content",
+      "ref": "p21:57",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Overview",
+      "ref": "p21:58",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Overview",
+      "ref": "p21:59",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Agents",
+      "ref": "p21:60",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Agents",
+      "ref": "p21:61",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Runs",
+      "ref": "p21:62",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Runs",
+      "ref": "p21:63",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Vault",
+      "ref": "p21:64",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Vault",
+      "ref": "p21:65",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Learning",
+      "ref": "p21:66",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Learning",
+      "ref": "p21:67",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Settings",
+      "ref": "p21:68",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Settings",
+      "ref": "p21:69",
+      "role": "statictext",
+      "states": {},
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Trust & status",
+      "ref": "p21:70",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Write a Python function greet(name: str) -> str that returns 'Hello, ' + name + '!'. Keep it dependency-free.",
+      "ref": "p21:71",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open run run_3bf07c48…",
+      "ref": "p21:72",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Create a Python module src/strings.py with slugify(text) and tests/test_strings.py using unittest. Standard library only…",
+      "ref": "p21:73",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open run run_094ae104…",
+      "ref": "p21:74",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Audit the accepted artifacts for defects, security issues, dead code, and missing tests.",
+      "ref": "p21:75",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open run run_582bf889…",
+      "ref": "p21:76",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Add a concise module docstring to src/math_utils.py and keep the tests passing. Do not change the add/subtract behavior.",
+      "ref": "p21:77",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open run run_e5853ec6…",
+      "ref": "p21:78",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Create a small Python project: src/math_utils.py with add(a,b) and subtract(a,b), and tests/test_math_utils.py using uni…",
+      "ref": "p21:79",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open run run_f08c679f…",
+      "ref": "p21:80",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Create a small Python project: src/math_utils.py with add(a,b) and subtract(a,b), and tests/test_math_utils.py using uni…",
+      "ref": "p21:81",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open run run_01581fa2…",
+      "ref": "p21:82",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Create a small Python project: src/calculator.py with add(a,b) and subtract(a,b), and tests/test_calculator.py using uni…",
+      "ref": "p21:83",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open run run_1e5add0b…",
+      "ref": "p21:84",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Create a small Python project: src/calculator.py with add(a,b) and subtract(a,b), and tests/test_calculator.py using uni…",
+      "ref": "p21:85",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open run run_9c4659ee…",
+      "ref": "p21:86",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Build a small Python script that prints Hello, HiveRouter.",
+      "ref": "p21:87",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click",
+        "pointer"
+      ],
+      "frame": "main",
+      "name": "Open run run_007238d7…",
+      "ref": "p21:88",
+      "role": "link",
+      "states": {
+        "focusable": true
+      },
+      "value": null,
+      "visibility": "near_viewport"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "All statuses",
+      "ref": "p21:173",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": true
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Running",
+      "ref": "p21:174",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Completed",
+      "ref": "p21:175",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Completed With Warnings",
+      "ref": "p21:176",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Failed",
+      "ref": "p21:177",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Cancelled",
+      "ref": "p21:178",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Budget Exceeded",
+      "ref": "p21:179",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    },
+    {
+      "actions": [
+        "click"
+      ],
+      "frame": "main",
+      "name": "Needs Review",
+      "ref": "p21:180",
+      "role": "option",
+      "states": {
+        "focusable": true,
+        "selected": false
+      },
+      "value": null,
+      "visibility": "unknown"
+    }
+  ],
+  "snapshot": {
+    "complete": true,
+    "continuation": null,
+    "format": "semantic_v2",
+    "id": "p21",
+    "node_budget": 300,
+    "omitted": {
+      "budget": 0,
+      "css_hidden": 35,
+      "no_layout": 0,
+      "offscreen": 0,
+      "page_occluded": 0,
+      "unknown": 9,
+      "unprovable_frame": 0
+    },
+    "scope": "viewport",
+    "selected_nodes": 182,
+    "total_nodes": 182
+  },
+  "status": "ok",
+  "tab_id": "tab-966a457b-63f6-40d5-a81a-9903c5417a81",
+  "target_id": "bt-262b3278-5ab7-4613-b7c5-ab26768520ce"
+}

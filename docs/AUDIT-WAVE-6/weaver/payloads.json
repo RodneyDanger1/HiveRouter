@@ -1,0 +1,634 @@
+{
+  "schema": "hive.audit.payloads.v1",
+  "task": "task-1 / W6-AUD-01",
+  "seat": "weaver (read-only)",
+  "transport": {
+    "sseRoute": "src/server/app.ts:835-865",
+    "sseFrame": "id: <seq>\\nevent: <type>\\ndata: {\"schema\":\"hive.api.v1\",\"type\":\"<type>\",\"data\":<payload>,\"meta\":{\"seq\":..,\"runId\":\"..\",\"replay\":bool}}",
+    "sseHeartbeat": "src/server/app.ts:860 writes \": ping\\n\\n\" (SSE comment, not an event)",
+    "persistedRoute": "src/server/app.ts:818-833 -> src/server/runs/recorder.ts:58-69",
+    "persistedRow": "{seq, runId, type, payload, createdAt}",
+    "clientSubscribe": "web/src/hooks/useApi.ts:72-100 (27 names), :142-143 addEventListener; :144 onmessage only covers unnamed events",
+    "clientTransformLive": "web/src/hooks/useApi.ts:124-139 -> {type, data: <whole envelope>, receivedAt}",
+    "clientTransformPersisted": "src/shared/run-events.ts:19-24 -> {type, data: payload, receivedAt}",
+    "terminalBehavior": "RunDetailPage.tsx:135 passes null when terminal -> no EventSource; persisted ledger fetched at :129-132. Verified: 0 /stream requests for terminal runs.",
+    "sseEvidence": "evidence/logs/sse_abf5.txt (108 frames, includes run.queued and repair.stalled)"
+  },
+  "summary": {
+    "serverEmittedTypes": 16,
+    "clientSubscribedTypes": 27,
+    "intersection": 11,
+    "emittedButNotSubscribed": [
+      "run.queued",
+      "agent.failed",
+      "phase.skipped",
+      "context.skipped",
+      "repair.stalled"
+    ],
+    "subscribedButNeverEmittedCount": 16,
+    "subscribedButNeverEmitted": [
+      "run.updated",
+      "run.paused",
+      "run.needs_review",
+      "step.started",
+      "step.completed",
+      "agent.delta",
+      "file.revised",
+      "check.completed",
+      "review.completed",
+      "failure.clustered",
+      "repair.completed",
+      "confidence.recorded",
+      "learning.trace",
+      "learning.eval",
+      "learning.promotion",
+      "heartbeat"
+    ],
+    "rawSseFramesAb5": 108,
+    "persistedEventsAb5": 108,
+    "persistedEvents95": 102
+  },
+  "serverEmitted": [
+    {
+      "type": "run.queued",
+      "emitter": "src/server/runs/manager.ts:135",
+      "trigger": "createRun after idempotency row insert",
+      "payloadKeys": [
+        "runId",
+        "preset"
+      ],
+      "clientSubscribed": false,
+      "uiConsumer": "Events tab only when persisted; live feed drops it",
+      "persistedInSample": 1,
+      "sseReplayInSample": 1,
+      "note": "Emitted before navigation to /runs/:id; a live SSE opened after create can replay it, but the listener is absent.",
+      "samplePersisted": {
+        "seq": 552,
+        "runId": "run_abf5fe78aab1e932ff",
+        "payload": {
+          "runId": "run_abf5fe78aab1e932ff",
+          "preset": "full-build"
+        },
+        "createdAt": "2026-11-04T03:08:16.975Z"
+      }
+    },
+    {
+      "type": "run.started",
+      "emitter": "src/server/pipeline/run.ts:451",
+      "trigger": "executeRun after markRunning",
+      "payloadKeys": [
+        "runId",
+        "preset"
+      ],
+      "clientSubscribed": true,
+      "uiConsumer": "Events tab",
+      "persistedInSample": 1,
+      "sseReplayInSample": 1,
+      "samplePersisted": {
+        "seq": 553,
+        "runId": "run_abf5fe78aab1e932ff",
+        "payload": {
+          "runId": "run_abf5fe78aab1e932ff",
+          "preset": "full-build"
+        },
+        "createdAt": "2026-11-04T03:08:16.979Z"
+      }
+    },
+    {
+      "type": "run.failed",
+      "emitter": "src/server/pipeline/run.ts:858 (gate fail), :885 (exception), src/server/runs/manager.ts:157 (executor rejection)",
+      "trigger": "mandatory gate failure or thrown error",
+      "payloadKeys": [
+        "code",
+        "checks?",
+        "message?",
+        "timedOut?"
+      ],
+      "clientSubscribed": true,
+      "uiConsumer": "Events tab + 250ms snapshot reload; StatusBadge from snapshot",
+      "persistedInSample": 1,
+      "sseReplayInSample": 1,
+      "samplePersisted": {
+        "seq": 659,
+        "runId": "run_abf5fe78aab1e932ff",
+        "payload": {
+          "code": "GATE_FAILED",
+          "checks": [
+            {
+              "id": "stub.scan",
+              "status": "fail",
+              "detail": "1 placeholder marker(s), first at line 121",
+              "file": "src/probes/tool_access.py",
+              "line": 121,
+              "mandatory": true
+            }
+          ]
+        },
+        "createdAt": "2026-11-04T03:15:46.747Z"
+      }
+    },
+    {
+      "type": "run.cancelled",
+      "emitter": "src/server/pipeline/run.ts:885; src/server/runs/manager.ts:186",
+      "trigger": "abort/cancel",
+      "payloadKeys": [
+        "code",
+        "message?",
+        "source?"
+      ],
+      "clientSubscribed": true,
+      "uiConsumer": "Events tab",
+      "persistedInSample": 0,
+      "sseReplayInSample": 0,
+      "note": "No cancelled run in this DB sample.",
+      "samplePersisted": null
+    },
+    {
+      "type": "run.completed",
+      "emitter": "src/server/pipeline/run.ts:1088",
+      "trigger": "finalize success",
+      "payloadKeys": [
+        "runId",
+        "status",
+        "files",
+        "costUsd"
+      ],
+      "clientSubscribed": true,
+      "uiConsumer": "Events tab + snapshot reload",
+      "persistedInSample": 0,
+      "sseReplayInSample": 0,
+      "note": "Present in the completed run: 1.",
+      "samplePersisted": {
+        "seq": 972,
+        "runId": "run_95c11797b4923b4277",
+        "payload": {
+          "runId": "run_95c11797b4923b4277",
+          "status": "completed",
+          "files": 20,
+          "costUsd": 0.25078177199999996
+        },
+        "createdAt": "2026-11-04T03:57:17.578Z"
+      }
+    },
+    {
+      "type": "agent.started",
+      "emitter": "src/server/pipeline/run.ts:224",
+      "trigger": "agentStep begin",
+      "payloadKeys": [
+        "stepId",
+        "agentId",
+        "phase"
+      ],
+      "clientSubscribed": true,
+      "uiConsumer": "Events tab",
+      "persistedInSample": 20,
+      "sseReplayInSample": 20,
+      "samplePersisted": {
+        "seq": 555,
+        "runId": "run_abf5fe78aab1e932ff",
+        "payload": {
+          "stepId": "stp_4346b248a77c6b0477",
+          "agentId": "architect",
+          "phase": "planning"
+        },
+        "createdAt": "2026-11-04T03:08:16.980Z"
+      }
+    },
+    {
+      "type": "agent.completed",
+      "emitter": "src/server/pipeline/run.ts:229",
+      "trigger": "agentStep success",
+      "payloadKeys": [
+        "stepId",
+        "agentId",
+        "phase",
+        "usage{promptTokens,completionTokens,cacheHitTokens,cacheMissTokens,reasoningTokens,costUsd,source,model}"
+      ],
+      "clientSubscribed": true,
+      "uiConsumer": "Events tab",
+      "persistedInSample": 20,
+      "sseReplayInSample": 20,
+      "samplePersisted": {
+        "seq": 556,
+        "runId": "run_abf5fe78aab1e932ff",
+        "payload": {
+          "stepId": "stp_4346b248a77c6b0477",
+          "agentId": "architect",
+          "phase": "planning",
+          "usage": {
+            "promptTokens": 604,
+            "completionTokens": 2002,
+            "cacheHitTokens": 0,
+            "cacheMissTokens": 604,
+            "reasoningTokens": 0,
+            "costUsd": 0.0025835999999999997,
+            "source": "provider",
+            "model": "deepseek-flash"
+          }
+        },
+        "createdAt": "2026-11-04T03:08:27.722Z"
+      }
+    },
+    {
+      "type": "agent.failed",
+      "emitter": "src/server/pipeline/run.ts:234",
+      "trigger": "agentStep catch",
+      "payloadKeys": [
+        "stepId",
+        "agentId",
+        "phase",
+        "code",
+        "message"
+      ],
+      "clientSubscribed": false,
+      "uiConsumer": "NONE live; persisted ledger still renders it after terminal",
+      "persistedInSample": 0,
+      "sseReplayInSample": 0,
+      "note": "HIGH: a live watcher never sees the individual agent failure event.",
+      "samplePersisted": null
+    },
+    {
+      "type": "phase.started",
+      "emitter": "src/server/pipeline/run.ts:293,304,316,332,367,426,464,501,608,724,735,749,767,825,833,978",
+      "trigger": "phase transitions",
+      "payloadKeys": [
+        "phase",
+        "agentId?",
+        "adhoc?",
+        "attempt?",
+        "signature?"
+      ],
+      "clientSubscribed": true,
+      "uiConsumer": "Events tab",
+      "persistedInSample": 11,
+      "sseReplayInSample": 11,
+      "samplePersisted": {
+        "seq": 554,
+        "runId": "run_abf5fe78aab1e932ff",
+        "payload": {
+          "phase": "planning"
+        },
+        "createdAt": "2026-11-04T03:08:16.980Z"
+      }
+    },
+    {
+      "type": "phase.completed",
+      "emitter": "src/server/pipeline/run.ts:300,310,327,336,423,430,481,603,719,731,742,762,811,831,848,1087",
+      "trigger": "phase end (includes revision attempts)",
+      "payloadKeys": [
+        "phase",
+        "status?",
+        "checks?",
+        "failed?",
+        "files?",
+        "findings?",
+        "revised?",
+        "attempt?",
+        "confidence?",
+        "verifyPlanChecks?"
+      ],
+      "clientSubscribed": true,
+      "uiConsumer": "Events tab",
+      "persistedInSample": 11,
+      "sseReplayInSample": 11,
+      "samplePersisted": {
+        "seq": 557,
+        "runId": "run_abf5fe78aab1e932ff",
+        "payload": {
+          "phase": "planning",
+          "files": 14
+        },
+        "createdAt": "2026-11-04T03:08:27.727Z"
+      }
+    },
+    {
+      "type": "phase.skipped",
+      "emitter": "src/server/pipeline/run.ts:497 (routing), :788 (verification.plan)",
+      "trigger": "pipelineCapabilities gate off",
+      "payloadKeys": [
+        "phase",
+        "reason",
+        "fallback"
+      ],
+      "clientSubscribed": false,
+      "uiConsumer": "NONE live; this B2 build has routing on, so not emitted in sample",
+      "persistedInSample": 0,
+      "sseReplayInSample": 0,
+      "note": "No live sample: FEATURES.routing=true in B2.",
+      "samplePersisted": null
+    },
+    {
+      "type": "route.decided",
+      "emitter": "src/server/pipeline/run.ts:601",
+      "trigger": "per planned file after routeTasks",
+      "payloadKeys": [
+        "taskId",
+        "agentId",
+        "model",
+        "thinking",
+        "score"
+      ],
+      "clientSubscribed": true,
+      "uiConsumer": "Events tab; Routing tab uses GET /routing",
+      "persistedInSample": 14,
+      "sseReplayInSample": 14,
+      "samplePersisted": {
+        "seq": 559,
+        "runId": "run_abf5fe78aab1e932ff",
+        "payload": {
+          "taskId": "README.md",
+          "agentId": "markdown-engine",
+          "model": "deepseek-flash",
+          "thinking": "disabled",
+          "score": 0.7073999999999999
+        },
+        "createdAt": "2026-11-04T03:08:28.065Z"
+      }
+    },
+    {
+      "type": "context.packed",
+      "emitter": "src/server/pipeline/run.ts:669",
+      "trigger": "per file context pack",
+      "payloadKeys": [
+        "taskId",
+        "tokens",
+        "prefixHash",
+        "degraded"
+      ],
+      "clientSubscribed": true,
+      "uiConsumer": "Events tab; Context tab uses GET /context",
+      "persistedInSample": 14,
+      "sseReplayInSample": 14,
+      "samplePersisted": {
+        "seq": 575,
+        "runId": "run_abf5fe78aab1e932ff",
+        "payload": {
+          "taskId": "src/util/evidence.py",
+          "tokens": 1445,
+          "prefixHash": "42f198aad3f97a8e4e378a3a8f3e151371ea1f80770647a79cd6a1f0b3feb8a7",
+          "degraded": false
+        },
+        "createdAt": "2026-11-04T03:08:28.140Z"
+      }
+    },
+    {
+      "type": "context.skipped",
+      "emitter": "src/server/pipeline/run.ts:679",
+      "trigger": "pipelineCaps.contextPacker false",
+      "payloadKeys": [
+        "taskId",
+        "reason",
+        "fallback"
+      ],
+      "clientSubscribed": false,
+      "uiConsumer": "NONE live; not emitted in B2 sample",
+      "persistedInSample": 0,
+      "sseReplayInSample": 0,
+      "samplePersisted": null
+    },
+    {
+      "type": "file.written",
+      "emitter": "src/server/pipeline/run.ts:717",
+      "trigger": "per accepted generated file",
+      "payloadKeys": [
+        "path",
+        "agentId",
+        "bytes"
+      ],
+      "clientSubscribed": true,
+      "uiConsumer": "Events tab; Files tab uses snapshot artifacts",
+      "persistedInSample": 14,
+      "sseReplayInSample": 14,
+      "samplePersisted": {
+        "seq": 578,
+        "runId": "run_abf5fe78aab1e932ff",
+        "payload": {
+          "path": "src/util/evidence.py",
+          "agentId": "python-engine",
+          "bytes": 9035
+        },
+        "createdAt": "2026-11-04T03:08:39.674Z"
+      }
+    },
+    {
+      "type": "repair.stalled",
+      "emitter": "src/server/pipeline/run.ts:820 (same signature twice), :851 (attempt budget exhausted)",
+      "trigger": "repair loop stop",
+      "payloadKeys": [
+        [
+          "signature"
+        ],
+        [
+          "reason",
+          "attempts"
+        ]
+      ],
+      "clientSubscribed": false,
+      "uiConsumer": "NONE live; persisted ledger renders it after terminal",
+      "persistedInSample": 1,
+      "sseReplayInSample": 1,
+      "note": "HIGH: stall is the explanation for many failed runs and is invisible live.",
+      "samplePersisted": {
+        "seq": 658,
+        "runId": "run_abf5fe78aab1e932ff",
+        "payload": {
+          "reason": "attempt budget exhausted",
+          "attempts": 2
+        },
+        "createdAt": "2026-11-04T03:15:46.734Z"
+      }
+    }
+  ],
+  "clientSubscribedOnly": [
+    {
+      "type": "run.updated",
+      "listener": "web/src/hooks/useApi.ts:72-100 -> source.addEventListener(type, handler) at :143",
+      "emitter": "NONE (grep of src/ for emitEvent with this type returns 0)",
+      "UIconsumer": "Events tab (never receives); no other consumer",
+      "verdict": "WIRED-BUT-DEAD",
+      "note": "Listener is inert; no producer exists."
+    },
+    {
+      "type": "run.paused",
+      "listener": "web/src/hooks/useApi.ts:72-100 -> source.addEventListener(type, handler) at :143",
+      "emitter": "NONE (grep of src/ for emitEvent with this type returns 0)",
+      "UIconsumer": "Events tab (never receives); no other consumer",
+      "verdict": "WIRED-BUT-DEAD",
+      "note": "Listener is inert; no producer exists."
+    },
+    {
+      "type": "run.needs_review",
+      "listener": "web/src/hooks/useApi.ts:72-100 -> source.addEventListener(type, handler) at :143",
+      "emitter": "NONE (grep of src/ for emitEvent with this type returns 0)",
+      "UIconsumer": "Events tab (never receives); no other consumer",
+      "verdict": "WIRED-BUT-DEAD",
+      "note": "Listener is inert; no producer exists."
+    },
+    {
+      "type": "step.started",
+      "listener": "web/src/hooks/useApi.ts:72-100 -> source.addEventListener(type, handler) at :143",
+      "emitter": "NONE (grep of src/ for emitEvent with this type returns 0)",
+      "UIconsumer": "Events tab (never receives); no other consumer",
+      "verdict": "WIRED-BUT-DEAD",
+      "note": "Listener is inert; no producer exists."
+    },
+    {
+      "type": "step.completed",
+      "listener": "web/src/hooks/useApi.ts:72-100 -> source.addEventListener(type, handler) at :143",
+      "emitter": "NONE (grep of src/ for emitEvent with this type returns 0)",
+      "UIconsumer": "Events tab (never receives); no other consumer",
+      "verdict": "WIRED-BUT-DEAD",
+      "note": "Listener is inert; no producer exists."
+    },
+    {
+      "type": "agent.delta",
+      "listener": "web/src/hooks/useApi.ts:72-100 -> source.addEventListener(type, handler) at :143",
+      "emitter": "NONE (grep of src/ for emitEvent with this type returns 0)",
+      "UIconsumer": "Events tab (never receives); no other consumer",
+      "verdict": "WIRED-BUT-DEAD",
+      "note": "Listener is inert; no producer exists."
+    },
+    {
+      "type": "file.revised",
+      "listener": "web/src/hooks/useApi.ts:72-100 -> source.addEventListener(type, handler) at :143",
+      "emitter": "NONE (grep of src/ for emitEvent with this type returns 0)",
+      "UIconsumer": "Events tab (never receives); no other consumer",
+      "verdict": "WIRED-BUT-DEAD",
+      "note": "Listener is inert; no producer exists."
+    },
+    {
+      "type": "check.completed",
+      "listener": "web/src/hooks/useApi.ts:72-100 -> source.addEventListener(type, handler) at :143",
+      "emitter": "NONE (grep of src/ for emitEvent with this type returns 0)",
+      "UIconsumer": "Events tab (never receives); no other consumer",
+      "verdict": "WIRED-BUT-DEAD",
+      "note": "Listener is inert; no producer exists."
+    },
+    {
+      "type": "review.completed",
+      "listener": "web/src/hooks/useApi.ts:72-100 -> source.addEventListener(type, handler) at :143",
+      "emitter": "NONE (grep of src/ for emitEvent with this type returns 0)",
+      "UIconsumer": "Events tab (never receives); no other consumer",
+      "verdict": "WIRED-BUT-DEAD",
+      "note": "Listener is inert; no producer exists."
+    },
+    {
+      "type": "failure.clustered",
+      "listener": "web/src/hooks/useApi.ts:72-100 -> source.addEventListener(type, handler) at :143",
+      "emitter": "NONE (grep of src/ for emitEvent with this type returns 0)",
+      "UIconsumer": "Events tab (never receives); no other consumer",
+      "verdict": "WIRED-BUT-DEAD",
+      "note": "Listener is inert; no producer exists."
+    },
+    {
+      "type": "repair.completed",
+      "listener": "web/src/hooks/useApi.ts:72-100 -> source.addEventListener(type, handler) at :143",
+      "emitter": "NONE (grep of src/ for emitEvent with this type returns 0)",
+      "UIconsumer": "Events tab (never receives); no other consumer",
+      "verdict": "WIRED-BUT-DEAD",
+      "note": "Listener is inert; no producer exists."
+    },
+    {
+      "type": "confidence.recorded",
+      "listener": "web/src/hooks/useApi.ts:72-100 -> source.addEventListener(type, handler) at :143",
+      "emitter": "NONE (grep of src/ for emitEvent with this type returns 0)",
+      "UIconsumer": "Events tab (never receives); no other consumer",
+      "verdict": "WIRED-BUT-DEAD",
+      "note": "Listener is inert; no producer exists."
+    },
+    {
+      "type": "learning.trace",
+      "listener": "web/src/hooks/useApi.ts:72-100 -> source.addEventListener(type, handler) at :143",
+      "emitter": "NONE (grep of src/ for emitEvent with this type returns 0)",
+      "UIconsumer": "Events tab (never receives); no other consumer",
+      "verdict": "WIRED-BUT-DEAD",
+      "note": "Listener is inert; no producer exists."
+    },
+    {
+      "type": "learning.eval",
+      "listener": "web/src/hooks/useApi.ts:72-100 -> source.addEventListener(type, handler) at :143",
+      "emitter": "NONE (grep of src/ for emitEvent with this type returns 0)",
+      "UIconsumer": "Events tab (never receives); no other consumer",
+      "verdict": "WIRED-BUT-DEAD",
+      "note": "Listener is inert; no producer exists."
+    },
+    {
+      "type": "learning.promotion",
+      "listener": "web/src/hooks/useApi.ts:72-100 -> source.addEventListener(type, handler) at :143",
+      "emitter": "NONE (grep of src/ for emitEvent with this type returns 0)",
+      "UIconsumer": "Events tab (never receives); no other consumer",
+      "verdict": "WIRED-BUT-DEAD",
+      "note": "Listener is inert; no producer exists."
+    },
+    {
+      "type": "heartbeat",
+      "listener": "web/src/hooks/useApi.ts:72-100 -> source.addEventListener(type, handler) at :143",
+      "emitter": "NONE (grep of src/ for emitEvent with this type returns 0)",
+      "UIconsumer": "handler drops it at useApi.ts:134",
+      "verdict": "WIRED-BUT-DEAD",
+      "note": "Server sends SSE comment lines \": ping\" (app.ts:860); EventSource never dispatches a named heartbeat event."
+    }
+  ],
+  "missingSubscriptions": [
+    {
+      "type": "run.queued",
+      "serverEmitter": "src/server/runs/manager.ts:135",
+      "impact": "Emitted before navigation to /runs/:id; a live SSE opened after create can replay it, but the listener is absent.",
+      "evidence": [
+        "web/src/hooks/useApi.ts:72-100",
+        "evidence/logs/sse_abf5.txt"
+      ]
+    },
+    {
+      "type": "agent.failed",
+      "serverEmitter": "src/server/pipeline/run.ts:234",
+      "impact": "HIGH: a live watcher never sees the individual agent failure event.",
+      "evidence": [
+        "web/src/hooks/useApi.ts:72-100",
+        "evidence/logs/sse_abf5.txt"
+      ]
+    },
+    {
+      "type": "phase.skipped",
+      "serverEmitter": "src/server/pipeline/run.ts:497 (routing), :788 (verification.plan)",
+      "impact": "No live sample: FEATURES.routing=true in B2.",
+      "evidence": [
+        "web/src/hooks/useApi.ts:72-100",
+        "evidence/logs/sse_abf5.txt"
+      ]
+    },
+    {
+      "type": "context.skipped",
+      "serverEmitter": "src/server/pipeline/run.ts:679",
+      "impact": "Live feed omits this event.",
+      "evidence": [
+        "web/src/hooks/useApi.ts:72-100",
+        "evidence/logs/sse_abf5.txt"
+      ]
+    },
+    {
+      "type": "repair.stalled",
+      "serverEmitter": "src/server/pipeline/run.ts:820 (same signature twice), :851 (attempt budget exhausted)",
+      "impact": "HIGH: stall is the explanation for many failed runs and is invisible live.",
+      "evidence": [
+        "web/src/hooks/useApi.ts:72-100",
+        "evidence/logs/sse_abf5.txt"
+      ]
+    }
+  ],
+  "rawFrames": {
+    "first": "id: 552\nevent: run.queued\ndata: {\"schema\":\"hive.api.v1\",\"type\":\"run.queued\",\"data\":{\"runId\":\"run_abf5fe78aab1e932ff\",\"preset\":\"full-build\"},\"meta\":{\"seq\":552,\"runId\":\"run_abf5fe78aab1e932ff\",\"replay\":true}}",
+    "repairStalled": "id: 658\nevent: repair.stalled\ndata: {\"schema\":\"hive.api.v1\",\"type\":\"repair.stalled\",\"data\":{\"reason\":\"attempt budget exhausted\",\"attempts\":2},\"meta\":{\"seq\":658,\"runId\":\"run_abf5fe78aab1e932ff\",\"replay\":true}}",
+    "runFailed": "id: 659\nevent: run.failed\ndata: {\"schema\":\"hive.api.v1\",\"type\":\"run.failed\",\"data\":{\"code\":\"GATE_FAILED\",\"checks\":[{\"id\":\"stub.scan\",\"status\":\"fail\",\"detail\":\"1 placeholder marker(s), first at line 121\",\"file\":\"src/probes/tool_access.py\",\"line\":121,\"mandatory\":true}]},\"meta\":{\"seq\":659,\"runId\":\"run_abf5fe78aab1e932ff\",\"replay\":true}}",
+    "last": "id: 659\nevent: run.failed\ndata: {\"schema\":\"hive.api.v1\",\"type\":\"run.failed\",\"data\":{\"code\":\"GATE_FAILED\",\"checks\":[{\"id\":\"stub.scan\",\"status\":\"fail\",\"detail\":\"1 placeholder marker(s), first at line 121\",\"file\":\"src/probes/tool_access.py\",\"line\":121,\"mandatory\":true}]},\"meta\":{\"seq\":659,\"runId\":\"run_abf5fe78aab1e932ff\",\"replay\":true}}"
+  },
+  "evidence": {
+    "persistedEvents": [
+      "evidence/api/run_abf5fe78aab1e932ff_events.json",
+      "evidence/api/run_95c11797b4923b4277_events.json"
+    ],
+    "sseRaw": "evidence/logs/sse_abf5.txt",
+    "clientList": "web/src/hooks/useApi.ts:72-100",
+    "emittersGrep": "evidence/logs/emitters.txt"
+  }
+}

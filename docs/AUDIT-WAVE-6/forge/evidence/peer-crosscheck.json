@@ -1,0 +1,136 @@
+{
+  "capturedAt": "2026-11-04T04:28:08.319Z",
+  "errorRegistry": {
+    "refusalCodeCount": 85,
+    "missingOnRunRows": [
+      "GATE_FAILED",
+      "E_CANCELLED",
+      "E_RUN_TIMEOUT",
+      "E_LLM_RATE_LIMIT",
+      "E_PROVIDER_EMPTY"
+    ],
+    "present": {
+      "E_CANCELLED": false,
+      "E_RUN_TIMEOUT": false,
+      "GATE_FAILED": false
+    }
+  },
+  "errorsLog": {
+    "rows": 18,
+    "byCode": {
+      "E_RUN_TIMEOUT": 15,
+      "E_BUDGET_UNKNOWN_RESERVATION": 1,
+      "E_BUDGET_EXCEEDED": 2
+    },
+    "gateFailedRows": 0
+  },
+  "gateFailures": [
+    {
+      "id": "run_9c4659ee2d4fbb40bf",
+      "status": "failed",
+      "error_code": "GATE_FAILED",
+      "error_message": "Mandatory verification failed"
+    },
+    {
+      "id": "run_abf5fe78aab1e932ff",
+      "status": "failed",
+      "error_code": "GATE_FAILED",
+      "error_message": "Mandatory verification failed"
+    }
+  ],
+  "traceCompleteWithoutTrace": [
+    {
+      "id": "run_007238d763a3956e74",
+      "status": "completed",
+      "trace_complete": 1,
+      "trace_rows": 0
+    },
+    {
+      "id": "run_01581fa22ff57a5f5e",
+      "status": "completed",
+      "trace_complete": 1,
+      "trace_rows": 0
+    },
+    {
+      "id": "run_f08c679f9075ac230d",
+      "status": "completed",
+      "trace_complete": 1,
+      "trace_rows": 0
+    },
+    {
+      "id": "run_e5853ec6f585b0b657",
+      "status": "completed",
+      "trace_complete": 1,
+      "trace_rows": 0
+    },
+    {
+      "id": "run_582bf88992c0ee98ae",
+      "status": "completed",
+      "trace_complete": 1,
+      "trace_rows": 0
+    },
+    {
+      "id": "run_094ae10475a8f3ea01",
+      "status": "completed",
+      "trace_complete": 1,
+      "trace_rows": 0
+    },
+    {
+      "id": "run_3bf07c4861e786f1e7",
+      "status": "completed",
+      "trace_complete": 1,
+      "trace_rows": 0
+    }
+  ],
+  "runFailedPayloadShapes": [
+    {
+      "runId": "run_9c4659ee2d4fbb40bf",
+      "keys": [
+        "checks",
+        "code"
+      ]
+    },
+    {
+      "runId": "run_1e5add0b6ba2e3c736",
+      "keys": [
+        "code",
+        "message"
+      ]
+    },
+    {
+      "runId": "run_23af9b7837448cb24a",
+      "keys": [
+        "code",
+        "message"
+      ]
+    },
+    {
+      "runId": "run_abf5fe78aab1e932ff",
+      "keys": [
+        "checks",
+        "code"
+      ]
+    },
+    {
+      "runId": "run_2bb2f8edf3043fe89e",
+      "keys": [
+        "code",
+        "message"
+      ]
+    },
+    {
+      "runId": "run_65da49c3948f9d8f5c",
+      "keys": [
+        "code",
+        "message"
+      ]
+    },
+    {
+      "runId": "run_26e2456caef4b8be0c",
+      "keys": [
+        "code",
+        "message"
+      ]
+    }
+  ]
+}

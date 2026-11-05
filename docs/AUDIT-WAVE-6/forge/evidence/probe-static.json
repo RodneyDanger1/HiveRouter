@@ -1,0 +1,230 @@
+{
+  "capturedAt": "2026-11-04T04:18:24.337Z",
+  "source": {
+    "resetOnRunId": [
+      {
+        "line": 116,
+        "text": "  useEffect(() => {"
+      },
+      {
+        "line": 117,
+        "text": "    setTab('overview');"
+      },
+      {
+        "line": 118,
+        "text": "    setEvents([]);"
+      },
+      {
+        "line": 119,
+        "text": "  }, [runId]);"
+      }
+    ],
+    "persistedFetch": [
+      {
+        "line": 129,
+        "text": "  const persistedEvents = useApiResource<RunStreamEvent[]>("
+      },
+      {
+        "line": 130,
+        "text": "    (signal) => (runId && terminal ? getRunEvents(runId, signal) : Promise.resolve([])),"
+      },
+      {
+        "line": 131,
+        "text": "    [runId, terminal],"
+      },
+      {
+        "line": 132,
+        "text": "  );"
+      }
+    ],
+    "selector": [
+      {
+        "line": 133,
+        "text": "  const visibleEvents = events.length > 0 ? events : persistedEvents.data ?? [];"
+      }
+    ],
+    "streamHook": [
+      {
+        "line": 135,
+        "text": "  const streamStatus = useRunStream(run && !terminal ? runId ?? null : null, (event) => {"
+      },
+      {
+        "line": 136,
+        "text": "    setEvents((previous) => [...previous.slice(-99), event]);"
+      },
+      {
+        "line": 137,
+        "text": "    if (reloadTimer.current) clearTimeout(reloadTimer.current);"
+      },
+      {
+        "line": 138,
+        "text": "    reloadTimer.current = setTimeout(() => reloadRef.current(), 250);"
+      },
+      {
+        "line": 139,
+        "text": "  });"
+      }
+    ],
+    "eventsHeading": [
+      {
+        "line": 1007,
+        "text": "    <Card className=\"p-6\">"
+      },
+      {
+        "line": 1008,
+        "text": "      <SectionTitle"
+      },
+      {
+        "line": 1009,
+        "text": "        title={terminal ? 'Persisted events' : 'Live events'}"
+      },
+      {
+        "line": 1010,
+        "text": "        description={"
+      },
+      {
+        "line": 1011,
+        "text": "          terminal"
+      },
+      {
+        "line": 1012,
+        "text": "            ? 'Terminal runs load the persisted event ledger (latest 500). The snapshot remains the source of truth.'"
+      },
+      {
+        "line": 1013,
+        "text": "            : `Connection: ${streamStatus}. Events are bounded to the latest 100; the snapshot is the source of truth after reconnect.`"
+      }
+    ]
+  },
+  "dynamicImport": [
+    {
+      "line": 48,
+      "text": "import { useApiResource, useRunStream } from '../hooks/useApi';"
+    }
+  ],
+  "priorFixClaim": [
+    {
+      "line": 82,
+      "text": "**Fix.** New `getRunEvents()` (`web/src/api.ts:318-323`) maps persisted rows through `src/shared/run-events.ts`; `RunDetailPage.tsx:127-133` loads it only when terminal, merges local/live vs persisted, and passes loading/error/terminal to `EventsTab` (`:413`, `:1003-1030`). **GREEN:** `e2e/trace-fixes.spec.ts` terminal Events tab test and agent parity test pass against isolated 8788 with rebuilt `web/dist`; mapper unit test passes."
+    }
+  ],
+  "priorFixReceipt": [
+    {
+      "line": 4,
+      "text": "Fix: `getRunEvents` + shared mapper; RunDetailPage loads persisted events for terminal and renders loading/error/rows."
+    },
+    {
+      "line": 5,
+      "text": "GREEN: `e2e/trace-fixes.spec.ts` 2 passed on rebuilt 8788; mapper unit test passed; build exit 0."
+    }
+  ],
+  "e2eCoverage": [
+    {
+      "line": 4,
+      "text": "  test('terminal Events tab renders the persisted ledger instead of an empty live state', async ({ page, request }) => {"
+    },
+    {
+      "line": 5,
+      "text": "    const response = await request.get('/api/runs?limit=50');"
+    },
+    {
+      "line": 6,
+      "text": "    expect(response.ok()).toBeTruthy();"
+    },
+    {
+      "line": 7,
+      "text": "    const body = (await response.json()) as { runs?: Array<{ id: string; status: string }> };"
+    },
+    {
+      "line": 8,
+      "text": "    const run = body.runs?.find((candidate) => candidate.status === 'completed' || candidate.status === 'completed_with_warnings');"
+    },
+    {
+      "line": 9,
+      "text": "    expect(run, 'a terminal run must exist').toBeTruthy();"
+    },
+    {
+      "line": 10,
+      "text": ""
+    },
+    {
+      "line": 11,
+      "text": "    const events = await request.get(`/api/runs/${encodeURIComponent(run!.id)}/events`);"
+    },
+    {
+      "line": 12,
+      "text": "    expect(events.ok()).toBeTruthy();"
+    },
+    {
+      "line": 13,
+      "text": "    const ledger = (await events.json()) as { events?: Array<{ type?: string }> };"
+    },
+    {
+      "line": 14,
+      "text": "    expect((ledger.events ?? []).length).toBeGreaterThan(0);"
+    },
+    {
+      "line": 15,
+      "text": ""
+    },
+    {
+      "line": 16,
+      "text": "    await page.goto(`/runs/${encodeURIComponent(run!.id)}`);"
+    },
+    {
+      "line": 17,
+      "text": "    await page.getByRole('tab', { name: /^Events$/i }).click();"
+    },
+    {
+      "line": 18,
+      "text": "    await expect(page.getByRole('heading', { name: /Persisted events/i })).toBeVisible();"
+    },
+    {
+      "line": 19,
+      "text": "    await expect(page.getByText(/No live events observed/i)).toHaveCount(0);"
+    },
+    {
+      "line": 20,
+      "text": "    const eventTypes = [...new Set((ledger.events ?? []).map((event) => event.type).filter((type): type is string => Boolean(type)))];"
+    },
+    {
+      "line": 21,
+      "text": "    expect(eventTypes.length).toBeGreaterThan(0);"
+    },
+    {
+      "line": 22,
+      "text": "    await expect(page.getByText(eventTypes[0]).first()).toBeVisible();"
+    },
+    {
+      "line": 23,
+      "text": "  });"
+    }
+  ],
+  "selectorTruthTable": [
+    {
+      "state": "fresh terminal load (events=[])",
+      "inputs": {
+        "live": 0,
+        "persisted": 108
+      },
+      "visible": 108,
+      "usesPersisted": true
+    },
+    {
+      "state": "watched live to terminal (events capped at 100)",
+      "inputs": {
+        "live": 100,
+        "persisted": 108
+      },
+      "visible": 100,
+      "usesPersisted": false,
+      "missingRows": 8,
+      "headingWouldBe": "Persisted events (terminal === true)"
+    }
+  ],
+  "liveBufferCap": {
+    "codeLine": "setEvents((previous) => [...previous.slice(-99), event]);",
+    "maxRows": 100
+  },
+  "streamClosedButEventsKept": true
+}

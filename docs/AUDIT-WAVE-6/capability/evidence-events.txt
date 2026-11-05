@@ -1,0 +1,288 @@
+﻿{
+  "emittedCount": 16,
+  "emittedTypes": [
+    "agent.completed",
+    "agent.failed",
+    "agent.started",
+    "context.packed",
+    "context.skipped",
+    "file.written",
+    "phase.completed",
+    "phase.skipped",
+    "phase.started",
+    "repair.stalled",
+    "route.decided",
+    "run.cancelled",
+    "run.completed",
+    "run.failed",
+    "run.queued",
+    "run.started"
+  ],
+  "emittedSites": {
+    "agent.completed": [
+      "src\\server\\pipeline\\run.ts"
+    ],
+    "agent.failed": [
+      "src\\server\\pipeline\\run.ts"
+    ],
+    "agent.started": [
+      "src\\server\\pipeline\\run.ts"
+    ],
+    "context.packed": [
+      "src\\server\\pipeline\\run.ts"
+    ],
+    "context.skipped": [
+      "src\\server\\pipeline\\run.ts"
+    ],
+    "file.written": [
+      "src\\server\\pipeline\\run.ts"
+    ],
+    "phase.completed": [
+      "src\\server\\pipeline\\run.ts"
+    ],
+    "phase.skipped": [
+      "src\\server\\pipeline\\run.ts"
+    ],
+    "phase.started": [
+      "src\\server\\pipeline\\run.ts"
+    ],
+    "repair.stalled": [
+      "src\\server\\pipeline\\run.ts"
+    ],
+    "route.decided": [
+      "src\\server\\pipeline\\run.ts"
+    ],
+    "run.cancelled": [
+      "src\\server\\runs\\manager.ts"
+    ],
+    "run.completed": [
+      "src\\server\\pipeline\\run.ts"
+    ],
+    "run.failed": [
+      "src\\server\\pipeline\\run.ts",
+      "src\\server\\runs\\manager.ts"
+    ],
+    "run.queued": [
+      "src\\server\\runs\\manager.ts"
+    ],
+    "run.started": [
+      "src\\server\\pipeline\\run.ts"
+    ]
+  },
+  "subscribedCount": 27,
+  "overlapCount": 11,
+  "overlap": [
+    "agent.completed",
+    "agent.started",
+    "context.packed",
+    "file.written",
+    "phase.completed",
+    "phase.started",
+    "route.decided",
+    "run.cancelled",
+    "run.completed",
+    "run.failed",
+    "run.started"
+  ],
+  "emittedNotSubscribed": [
+    "agent.failed",
+    "context.skipped",
+    "phase.skipped",
+    "repair.stalled",
+    "run.queued"
+  ],
+  "subscribedNotEmitted": [
+    "run.updated",
+    "run.paused",
+    "run.needs_review",
+    "step.started",
+    "step.completed",
+    "agent.delta",
+    "file.revised",
+    "check.completed",
+    "review.completed",
+    "failure.clustered",
+    "repair.completed",
+    "confidence.recorded",
+    "learning.trace",
+    "learning.eval",
+    "learning.promotion",
+    "heartbeat"
+  ],
+  "eventFieldReads": [
+    "currentTarget",
+    "data",
+    "key",
+    "preventDefault",
+    "receivedAt",
+    "shiftKey",
+    "target",
+    "type"
+  ],
+  "eventFieldReadSites": [
+    {
+      "file": "web\\src\\components\\AppShell.tsx",
+      "field": "key"
+    },
+    {
+      "file": "web\\src\\components\\RunComposer.tsx",
+      "field": "preventDefault"
+    },
+    {
+      "file": "web\\src\\components\\RunComposer.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\components\\RunComposer.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\components\\RunComposer.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\components\\RunComposer.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\components\\RunComposer.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\components\\RunComposer.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\components\\ui.tsx",
+      "field": "key"
+    },
+    {
+      "file": "web\\src\\components\\ui.tsx",
+      "field": "preventDefault"
+    },
+    {
+      "file": "web\\src\\components\\ui.tsx",
+      "field": "key"
+    },
+    {
+      "file": "web\\src\\components\\ui.tsx",
+      "field": "preventDefault"
+    },
+    {
+      "file": "web\\src\\components\\ui.tsx",
+      "field": "key"
+    },
+    {
+      "file": "web\\src\\components\\ui.tsx",
+      "field": "preventDefault"
+    },
+    {
+      "file": "web\\src\\components\\ui.tsx",
+      "field": "key"
+    },
+    {
+      "file": "web\\src\\components\\ui.tsx",
+      "field": "shiftKey"
+    },
+    {
+      "file": "web\\src\\components\\ui.tsx",
+      "field": "preventDefault"
+    },
+    {
+      "file": "web\\src\\components\\ui.tsx",
+      "field": "shiftKey"
+    },
+    {
+      "file": "web\\src\\components\\ui.tsx",
+      "field": "preventDefault"
+    },
+    {
+      "file": "web\\src\\components\\ui.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\components\\ui.tsx",
+      "field": "currentTarget"
+    },
+    {
+      "file": "web\\src\\components\\ui.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\components\\ui.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\hooks\\useApi.ts",
+      "field": "data"
+    },
+    {
+      "file": "web\\src\\hooks\\useApi.ts",
+      "field": "data"
+    },
+    {
+      "file": "web\\src\\hooks\\useApi.ts",
+      "field": "type"
+    },
+    {
+      "file": "web\\src\\pages\\AgentsPage.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\pages\\AgentsPage.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\pages\\AgentsPage.tsx",
+      "field": "preventDefault"
+    },
+    {
+      "file": "web\\src\\pages\\AgentsPage.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\pages\\AgentsPage.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\pages\\AgentsPage.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\pages\\AgentsPage.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\pages\\AgentsPage.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\pages\\LearningPage.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\pages\\RunDetailPage.tsx",
+      "field": "target"
+    },
+    {
+      "file": "web\\src\\pages\\RunDetailPage.tsx",
+      "field": "receivedAt"
+    },
+    {
+      "file": "web\\src\\pages\\RunDetailPage.tsx",
+      "field": "type"
+    },
+    {
+      "file": "web\\src\\pages\\RunDetailPage.tsx",
+      "field": "receivedAt"
+    },
+    {
+      "file": "web\\src\\pages\\RunDetailPage.tsx",
+      "field": "data"
+    },
+    {
+      "file": "web\\src\\pages\\RunsPage.tsx",
+      "field": "target"
+    }
+  ]
+}

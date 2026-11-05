@@ -1,0 +1,113 @@
+[
+  {
+    "route": "/",
+    "consoleError": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "title": "Build with a routed factory, not a single bot.",
+    "textLength": 3495,
+    "screenshot": "docs/LIVE-WAVE-6/evidence/overview.png"
+  },
+  {
+    "route": "/agents",
+    "title": "Agents",
+    "textLength": 6866,
+    "screenshot": "docs/LIVE-WAVE-6/evidence/agents.png"
+  },
+  {
+    "route": "/runs",
+    "title": "Runs",
+    "textLength": 5266,
+    "screenshot": "docs/LIVE-WAVE-6/evidence/runs.png"
+  },
+  {
+    "route": "/vault",
+    "title": "Vault",
+    "textLength": 4951,
+    "screenshot": "docs/LIVE-WAVE-6/evidence/vault.png"
+  },
+  {
+    "route": "/learning",
+    "title": "Learning",
+    "textLength": 1169,
+    "screenshot": "docs/LIVE-WAVE-6/evidence/learning.png"
+  },
+  {
+    "route": "/settings",
+    "title": "Settings",
+    "textLength": 1831,
+    "screenshot": "docs/LIVE-WAVE-6/evidence/settings.png"
+  },
+  {
+    "route": "/runs/run_abf5fe78aab1e932ff",
+    "tabs": {
+      "Overview": {
+        "visible": true,
+        "bodyContains": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-u"
+      },
+      "Files": {
+        "visible": true,
+        "bodyContains": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-u"
+      },
+      "Checks": {
+        "visible": true,
+        "bodyContains": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-u"
+      },
+      "Routing": {
+        "visible": true,
+        "bodyContains": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-u"
+      },
+      "Context": {
+        "visible": true,
+        "bodyContains": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-u"
+      },
+      "Repairs": {
+        "visible": true,
+        "bodyContains": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-u"
+      },
+      "Confidence": {
+        "visible": true,
+        "bodyContains": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-u"
+      },
+      "Events": {
+        "visible": true,
+        "bodyContains": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-u"
+      }
+    }
+  },
+  {
+    "route": "/runs/run_95c11797b4923b4277",
+    "tabs": {
+      "Overview": {
+        "visible": true,
+        "bodyContains": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-u"
+      },
+      "Files": {
+        "visible": true,
+        "bodyContains": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-u"
+      },
+      "Checks": {
+        "visible": true,
+        "bodyContains": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-u"
+      },
+      "Routing": {
+        "visible": true,
+        "bodyContains": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-u"
+      },
+      "Context": {
+        "visible": true,
+        "bodyContains": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-u"
+      },
+      "Repairs": {
+        "visible": true,
+        "bodyContains": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-u"
+      },
+      "Confidence": {
+        "visible": true,
+        "bodyContains": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-u"
+      },
+      "Events": {
+        "visible": true,
+        "bodyContains": "Skip to content\nHive\nROUTER\nAI AGENT CODING ROUTER\nAPI online\nSTAGE B2\nOverview\nAgents\nRuns\nVault\nLearning\nSettings\n\nScreening-grade by design.\n\nLocal, single-u"
+      }
+    }
+  }
+]

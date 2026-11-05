@@ -1,0 +1,67 @@
+{
+  "learning": {
+    "tabs": [
+      {
+        "text": "Overview",
+        "disabled": true,
+        "ariaDisabled": "true"
+      },
+      {
+        "text": "Traces",
+        "disabled": true,
+        "ariaDisabled": "true"
+      },
+      {
+        "text": "Failures",
+        "disabled": true,
+        "ariaDisabled": "true"
+      },
+      {
+        "text": "Datasets",
+        "disabled": true,
+        "ariaDisabled": "true"
+      },
+      {
+        "text": "Candidates",
+        "disabled": true,
+        "ariaDisabled": "true"
+      },
+      {
+        "text": "Evaluations",
+        "disabled": true,
+        "ariaDisabled": "true"
+      },
+      {
+        "text": "Promotions",
+        "disabled": true,
+        "ariaDisabled": "true"
+      },
+      {
+        "text": "Audit",
+        "disabled": true,
+        "ariaDisabled": "true"
+      }
+    ],
+    "codes": [
+      "E_LEARNING_POOL_EXHAUSTED"
+    ],
+    "text": "Skip to content Hive ROUTER AI AGENT CODING ROUTER API online STAGE B2 Overview Agents Runs Vault Learning Settings Screening-grade by design. Local, single-user factory. No learned routing. No generated-code execution. No provider key in the browser. HIVEROUTER v0.1.0 Trust & status P7 · SCREENING-GRADE, HUMAN-GATED Learning A learning loop only proposes candidates; a human approves or rejects a promotion. No candidate auto-applies, and no metric is displayed without its sample size. Trust & status Overview Traces Failures Datasets Candidates Evaluations Promotions Audit All learning sections are unavailable while the API reports this refusal. Learning is unavailable The sealed evaluation pool is empty. No candidate can be evaluated or promoted; this is a refusal, not an empty dataset. Reason E_LEARNING_POOL_EXHAUSTED · consent required Open settings Refresh status The loop must not fabricate an evaluation. This build stays at P6a until the sealed pool exists. Local factory · 127.0.0.1 Independent local tool. Not affiliated with the U.S. Government or the National Design Studio. NO AUTO-PROMOTION · NO SHELL · NO GENERATED-CODE EXECUTION"
+  },
+  "responses": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/learning/overview",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/meta",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/health",
+      "status": 200
+    }
+  ]
+}

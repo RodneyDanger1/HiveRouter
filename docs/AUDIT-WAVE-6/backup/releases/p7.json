@@ -1,0 +1,47 @@
+{
+  "stage": "p7",
+  "label": "B2",
+  "paths": [
+    "src/",
+    "web/",
+    "scripts/",
+    "test/",
+    "e2e/",
+    "config/",
+    "public/",
+    "package.json",
+    "playwright.config.ts"
+  ],
+  "tables": [
+    "schema_migrations", "runs", "steps", "events", "artifacts", "reviews", "checks", "usage",
+    "settings", "run_snapshots", "prompt_versions", "policy_versions", "budget_reservations",
+    "gate_decisions", "idempotency_keys", "agent_evidence",
+    "route_decisions", "route_candidates", "agent_stats", "context_packs", "context_manifests",
+    "failure_signatures", "failure_occurrences", "verification_plans", "confidence_records",
+    "retry_attempts", "script_runs",
+    "consent_records", "traces", "repair_memory", "variants", "sealed_pool_blocks", "sealed_pool",
+    "eval_suites", "eval_cases", "suite_uses", "eval_runs", "eval_results", "approval_tokens",
+    "promotions", "post_promotion_monitor", "learning_jobs", "learning_audit", "feedback", "user_edits"
+  ],
+  "routes": [
+    "/api/health", "/api/meta", "/api/settings", "/api/settings/key", "/api/settings/key-status", "/api/agents",
+    "/api/agents/:id", "/api/agents/:id/prompt", "/api/agents/:id/run",
+    "/api/runs", "/api/runs/active", "/api/runs/:id", "/api/runs/:id/snapshot",
+    "/api/runs/:id/events", "/api/runs/:id/stream", "/api/runs/:id/cancel",
+    "/api/runs/:id/files", "/api/runs/:id/files/content", "/api/runs/:id/download",
+    "/api/runs/:id/open-folder", "/api/runs/:id/revise",
+    "/api/runs/:id/routing", "/api/runs/:id/context", "/api/runs/:id/failures",
+    "/api/runs/:id/checks", "/api/runs/:id/retries", "/api/runs/:id/confidence",
+    "/api/stats", "/api/stats/router", "/api/ops/reports/:kind", "/api/ops/system", "/api/scripts",
+    "/api/scripts/:id/dry-run", "/api/prompt/analyze", "/api/learning/overview", "/api/learning/:kind",
+    "/api/learning/approvals", "/api/learning/promotions", "/api/learning/rollback",
+    "/api/vault/tree", "/api/vault/file", "/openapi.json",
+    "/agents", "/learning", "/runs", "/runs/:runId", "/settings", "/vault"
+  ],
+  "uiRoutes": ["/", "/agents", "/runs", "/runs/:id", "/vault", "/settings", "/learning"],
+  "scripts": [
+    "dev", "dev:server", "dev:web", "build", "start", "typecheck", "test", "test:watch", "e2e",
+    "preflight", "stub-sweep", "secret-scan", "assert-stage", "verify", "bench", "eval:router",
+    "replay", "repo-map", "context:report", "integrity", "learn", "learning:admin", "test:live", "key:import"
+  ]
+}

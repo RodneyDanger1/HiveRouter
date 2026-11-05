@@ -1,0 +1,130 @@
+﻿{
+  "_note": "Prefer `elements` — `tree_markdown` will continue to work but new fields will only be added to the structured side. Issue #22865: use `max_elements` / `max_depth` to bound the UIA walk on apps with very large trees.",
+  "app_name": "chrome.exe",
+  "capture_coverage": {
+    "browser_chrome": {
+      "status": "not_observable_in_window_scope"
+    },
+    "recovery": {
+      "act_target": {
+        "display_id": "primary",
+        "kind": "desktop"
+      },
+      "inspect": "get_desktop_state",
+      "verify": "get_desktop_state",
+      "when": "verified_window_action_ineffective"
+    }
+  },
+  "element_count": 102,
+  "elements": [
+    {
+      "actions": [
+        "invoke"
+      ],
+      "depth": 5,
+      "element_index": 2,
+      "element_token": "s00000040:2",
+      "enabled": true,
+      "frame": {
+        "h": 39,
+        "w": 46,
+        "x": 886,
+        "y": 41
+      },
+      "label": "Close",
+      "role": "Button"
+    },
+    {
+      "actions": [
+        "set_value",
+        "text",
+        "scroll"
+      ],
+      "depth": 7,
+      "element_index": 10,
+      "element_token": "s00000040:10",
+      "enabled": true,
+      "frame": {
+        "h": 545,
+        "w": 884,
+        "x": 48,
+        "y": 127
+      },
+      "label": "HiveRouter — AI Agent Coding Router",
+      "role": "Document",
+      "value": "http://127.0.0.1:8787/"
+    },
+    {
+      "actions": [
+        "invoke"
+      ],
+      "depth": 8,
+      "element_index": 11,
+      "element_token": "s00000040:11",
+      "enabled": true,
+      "frame": {
+        "h": 2602,
+        "w": 869,
+        "x": 48,
+        "y": 127
+      },
+      "in_web_content": true,
+      "label": "root",
+      "parent_index": 10,
+      "role": "Group"
+    },
+    {
+      "actions": [
+        "text"
+      ],
+      "depth": 10,
+      "element_index": 34,
+      "element_token": "s00000040:34",
+      "enabled": true,
+      "frame": {
+        "h": 13,
+        "w": 88,
+        "x": 89,
+        "y": 483
+      },
+      "in_web_content": true,
+      "label": "PROJECT BRIEF",
+      "parent_index": 11,
+      "role": "Text"
+    },
+    {
+      "actions": [
+        "set_value",
+        "text"
+      ],
+      "depth": 10,
+      "element_index": 35,
+      "element_token": "s00000040:35",
+      "enabled": true,
+      "frame": {
+        "h": 133,
+        "w": 787,
+        "x": 89,
+        "y": 501
+      },
+      "in_web_content": true,
+      "label": "PROJECT BRIEF",
+      "parent_index": 11,
+      "role": "Edit"
+    }
+  ],
+  "elements_complete": false,
+  "pid": 17248,
+  "returned_element_count": 5,
+  "snapshot_id": "s00000040",
+  "total_element_count": 102,
+  "tree_markdown": "- Window \"HiveRouter — AI Agent Coding Router - Google Chrome\"\n  - Pane \"HiveRouter — AI Agent Coding Router - Google Chrome\"\n          - [2] Button \"Close\" [id=view_4 actions=[invoke]]\n              - [10] Document \"HiveRouter — AI Agent Coding Router\" [value=\"http://127.0.0.1:8787/\" id=RootWebArea actions=[set_value,text,scroll]]\n                - [11] Group [id=root actions=[invoke]]\n                  - Group \"Primary navigation\"\n                    - [34] Text \"PROJECT BRIEF\" [actions=[text]]\n                    - [35] Edit \"PROJECT BRIEF\" [id=run-brief help=\"Describe the software you want built, the constraints, and how success will be checked.\" actions=[set_value,text]]\n",
+  "window_bounds": {
+    "height": 633,
+    "width": 886,
+    "x": 47,
+    "y": 40
+  },
+  "window_id": 15140156,
+  "window_title": "HiveRouter — AI Agent Coding Router - Google Chrome"
+}

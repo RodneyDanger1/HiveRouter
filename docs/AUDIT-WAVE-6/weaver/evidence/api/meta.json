@@ -1,0 +1,1 @@
+{"version":"0.1.0","phase":"B2","features":{"routing":true,"learning":true},"model":"deepseek-flash","host":"127.0.0.1","port":8787}

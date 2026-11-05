@@ -1,0 +1,68 @@
+{
+  "settingsBefore": {
+    "fields": [
+      "Configured Yes",
+      "Source environment",
+      "Fingerprint c30cfdbc",
+      "Checked Not reported",
+      "Balance Not reported",
+      "Phase B2",
+      "Version 0.1.0",
+      "Routing feature enabled",
+      "Learning feature enabled",
+      "API reachable"
+    ],
+    "runtime": [
+      "MODEL deepseek-flash",
+      "THINKING disabled"
+    ],
+    "text": "Skip to content Hive ROUTER AI AGENT CODING ROUTER API online STAGE B2 Overview Agents Runs Vault Learning Settings Screening-grade by design. Local, single-user factory. No learned routing. No generated-code execution. No provider key in the browser. HIVEROUTER v0.1.0 Trust & status TRUST, STATUS, AND CONFIGURATION Settings The provider key is never accepted or displayed by this page. Status is read-only and sourced from the API. Refresh Provider key Read-only status. No key material is returned by the API or rendered here. Configured Yes Source environment Fingerprint c30cfdbc Checked Not reported Balance Not reported Requests for a provider-key route must return FORBIDDEN_PROVIDER_KEY_ACCESS. Factory stage Features are release-gated by the API, not by a UI switch. Phase B2 Version 0.1.0 Routing feature enabled Learning feature enabled API reachable Feature flags are release-gated. Learning availability (consent and sealed pool) is reported on the Learning page; the feature flag alone is not a claim that an evaluation can run. Open Learning status Runtime settings Only values the API exposes are shown. Unknown values remain “not reported”; they are never rendered as zero. MODEL deepseek-flash THINKING disabled Safety posture Non-negotiable boundaries from the approved plan. No provider key over HTTP or in the browser No arbitrary shell execution No generated-code execution No auto-promotion of learning candidates No learned routing in this release DSH credential store is read only after explicit consent Every paid mutation carries an idempotency key Static-only and unverified outputs are labeled as such Local factory · 127.0.0.1 Independent local tool. Not affiliated with the U.S. Government or the National Design Studio. NO AUTO-PROMOTION · NO SHELL · NO GENERATED-CODE EXECUTION"
+  },
+  "responses": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/learning/overview",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/meta",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/settings/key-status",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/settings",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/health",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/meta",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/settings/key-status",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8787/api/settings",
+      "status": 200
+    }
+  ]
+}

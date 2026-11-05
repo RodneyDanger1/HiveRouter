@@ -1,0 +1,11 @@
+import { DatabaseSync } from 'node:sqlite';
+const db = new DatabaseSync('data/hive.db', { readOnly: true });
+console.log('### steps by agent (all runs)');
+console.log(JSON.stringify(db.prepare('SELECT agent_id, COUNT(*) AS n, SUM(CASE WHEN status=\'succeeded\' THEN 1 ELSE 0 END) AS ok FROM steps GROUP BY agent_id ORDER BY n DESC').all(), null, 1));
+console.log('### agent_evidence by agent/badge');
+console.log(JSON.stringify(db.prepare('SELECT agent_id, badge, COUNT(*) AS n FROM agent_evidence GROUP BY agent_id, badge ORDER BY agent_id').all(), null, 1));
+console.log('### route_decisions by agent (chosen)');
+console.log(JSON.stringify(db.prepare('SELECT agent_id, COUNT(*) AS n FROM route_decisions GROUP BY agent_id ORDER BY n DESC').all(), null, 1));
+console.log('### artifacts by agent');
+console.log(JSON.stringify(db.prepare('SELECT agent_id, COUNT(*) AS n FROM artifacts GROUP BY agent_id ORDER BY n DESC').all(), null, 1));
+db.close();

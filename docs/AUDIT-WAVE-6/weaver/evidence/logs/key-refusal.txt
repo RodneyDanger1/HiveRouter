@@ -1,0 +1,4 @@
+﻿# Provider-key HTTP route refusals (2026-11-03, read-only probes)
+POST /api/settings/key -> HTTP 403 {"error":{"code":"FORBIDDEN_PROVIDER_KEY_ACCESS","message":"Provider key access over HTTP is forbidden.","retryable":false}}
+PUT  /api/settings/key -> HTTP 403 same body
+GET  /api/settings/key -> HTTP 404 via SPA/API not-found handler -> E_RUN_NOT_FOUND (route not registered)

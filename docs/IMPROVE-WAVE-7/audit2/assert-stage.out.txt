@@ -1,0 +1,40 @@
+﻿
+> hive-router@0.1.0 assert-stage
+> node scripts/assert-stage.mjs --stage=p7 --json
+
+{
+  "schema": "hive.cli.v1",
+  "ok": true,
+  "command": "hive.assert-stage",
+  "code": null,
+  "data": {
+    "stage": "p7",
+    "label": "B2",
+    "fallback": false,
+    "manifests": [
+      {
+        "stage": "a",
+        "fallback": false
+      },
+      {
+        "stage": "p6a",
+        "fallback": false
+      },
+      {
+        "stage": "p7",
+        "fallback": false
+      }
+    ],
+    "counts": {
+      "files": 163,
+      "tables": 45,
+      "routes": 48,
+      "scripts": 24
+    },
+    "violations": []
+  },
+  "warnings": [],
+  "meta": {
+    "version": "0.1.0"
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "startedAt": "2026-11-04T18:41:15.165Z",
+  "finishedAt": "2026-11-04T18:41:30.859Z",
+  "health": {
+    "status": "ok",
+    "version": "0.1.0",
+    "phase": "B2",
+    "features": {
+      "routing": true,
+      "learning": true
+    },
+    "db": "ok",
+    "key": {
+      "configured": true,
+      "source": "environment",
+      "fingerprint": "c30cfdbc"
+    },
+    "dataDir": "C:\\Users\\Riley\\Desktop\\HiveRouter\\data",
+    "workspace": "C:\\Users\\Riley\\Desktop\\HiveRouter\\workspace",
+    "time": "2026-11-04T18:41:16.063Z"
+  },
+  "activeAtStart": null,
+  "activeAtEnd": null,
+  "targetRun": {
+    "id": "run_c41f1fb4779d302af7",
+    "status": "completed",
+    "phase": "done",
+    "costUsd": 0.051059388,
+    "artifactCount": 14,
+    "eventCount": 77,
+    "bodyHasCompleted": true
+  },
+  "pages": {
+    "overview": {
+      "route": "/",
+      "url": "http://127.0.0.1:8787/",
+      "heading": "Build with a routed factory, not a single bot.",
+      "bodyLength": 3499,
+      "screenshot": "docs/IMPROVE-WAVE-7/trace/overview.png"
+    },
+    "agents": {
+      "route": "/agents",
+      "url": "http://127.0.0.1:8787/agents",
+      "heading": "Agents",
+      "bodyLength": 6918,
+      "screenshot": "docs/IMPROVE-WAVE-7/trace/agents.png"
+    },
+    "runs": {
+      "route": "/runs",
+      "url": "http://127.0.0.1:8787/runs",
+      "heading": "Runs",
+      "bodyLength": 6062,
+      "screenshot": "docs/IMPROVE-WAVE-7/trace/runs.png"
+    },
+    "vault": {
+      "route": "/vault",
+      "url": "http://127.0.0.1:8787/vault",
+      "heading": "Vault",
+      "bodyLength": 5840,
+      "screenshot": "docs/IMPROVE-WAVE-7/trace/vault.png"
+    },
+    "learning": {
+      "route": "/learning",
+      "url": "http://127.0.0.1:8787/learning",
+      "heading": "Learning",
+      "bodyLength": 1169,
+      "screenshot": "docs/IMPROVE-WAVE-7/trace/learning.png"
+    },
+    "settings": {
+      "route": "/settings",
+      "url": "http://127.0.0.1:8787/settings",
+      "heading": "Settings",
+      "bodyLength": 2361,
+      "screenshot": "docs/IMPROVE-WAVE-7/trace/settings.png"
+    }
+  },
+  "runsFilter": {
+    "allRows": 30,
+    "failedRows": 3,
+    "queuedRows": 0,
+    "failedRowSamples": [
+      "run_2bb2f8ed…\taNALYZE THE SOFTWARE/WHAT DOES AND DOESNT WORK, WHAT TOOLS YOU CANT CALL, DOES LEARNING WORK, CAN YOU SEE PAST RUNS, DOE…\t\nFAILED\tFull Build\t—\tNov 03, 2026, 09:37 PM\t",
+      "run_abf5fe78…\taNALYZE THE SOFTWARE/WHAT DOES AND DOESNT WORK, WHAT TOOLS YOU CANT CALL, DOES LEARNING WORK, CAN YOU SEE PAST RUNS, DOE…\t\nFAILED\tFull Build\t—\tNov 03, 2026, 09:08 PM\t",
+      "run_9c4659ee…\tCreate a small Python project: src/calculator.py with add(a,b) and subtract(a,b), and tests/test_calculator.py using uni…\t\nFAILED\tFull Build\t—\tNov 03, 2026, 09:49 AM\t"
+    ],
+    "bodyHasServerFiltered": true
+  },
+  "settings": {
+    "hasMaxRunCost": true,
+    "hasEventReplay": true,
+    "hasMaxFiles": true,
+    "hasObjectLeak": false,
+    "hasKeyPrefix": false
+  },
+  "runTabs": {
+    "tabCount": 8,
+    "tabs": {
+      "Overview": {
+        "selected": "true",
+        "visible": true,
+        "bodyLength": 7753,
+        "containsTabName": true,
+        "screenshot": "docs/IMPROVE-WAVE-7/trace/run-overview.png"
+      },
+      "Files": {
+        "selected": "true",
+        "visible": true,
+        "bodyLength": 6941,
+        "containsTabName": true,
+        "screenshot": "docs/IMPROVE-WAVE-7/trace/run-files.png"
+      },
+      "Checks": {
+        "selected": "true",
+        "visible": true,
+        "bodyLength": 1715,
+        "containsTabName": true,
+        "screenshot": "docs/IMPROVE-WAVE-7/trace/run-checks.png"
+      },
+      "Routing": {
+        "selected": "true",
+        "visible": true,
+        "bodyLength": 5828,
+        "containsTabName": true,
+        "screenshot": "docs/IMPROVE-WAVE-7/trace/run-routing.png"
+      },
+      "Context": {
+        "selected": "true",
+        "visible": true,
+        "bodyLength": 4859,
+        "containsTabName": true,
+        "screenshot": "docs/IMPROVE-WAVE-7/trace/run-context.png"
+      },
+      "Repairs": {
+        "selected": "true",
+        "visible": true,
+        "bodyLength": 1689,
+        "containsTabName": true,
+        "screenshot": "docs/IMPROVE-WAVE-7/trace/run-repairs.png"
+      },
+      "Confidence": {
+        "selected": "true",
+        "visible": true,
+        "bodyLength": 1540,
+        "containsTabName": true,
+        "screenshot": "docs/IMPROVE-WAVE-7/trace/run-confidence.png"
+      },
+      "Events": {
+        "selected": "true",
+        "visible": true,
+        "bodyLength": 5087,
+        "containsTabName": true,
+        "screenshot": "docs/IMPROVE-WAVE-7/trace/run-events.png"
+      }
+    }
+  },
+  "runRequests": [
+    "http://127.0.0.1:8787/api/runs?limit=5",
+    "http://127.0.0.1:8787/api/runs?limit=100",
+    "http://127.0.0.1:8787/api/runs?limit=100",
+    "http://127.0.0.1:8787/api/runs?limit=100&status=failed",
+    "http://127.0.0.1:8787/api/runs?limit=100&status=queued"
+  ],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "failedRequests": []
+}
