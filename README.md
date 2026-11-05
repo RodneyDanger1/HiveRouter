@@ -124,7 +124,7 @@ These are the parts worth reviewing:
 - **Bounded static analysis.** Dominators and scorecards are read-only JSON endpoints with explicit limits and a real UI, not decorative cards.
 - **Scripts without execution.** The Scripts page lists every verification script with its safety class; a dry-run returns a local command string and never spawns a process. Paid scripts are labeled and disabled, and the API refuses them with `E_SCRIPT_DRY_RUN_UNSUPPORTED`.
 - **FTS5 without path traversal.** Search indexes only one terminal run’s published text files; it never accepts a caller-supplied path.
-- **Tests as a contract.** 455 unit/integration tests, 38 Playwright tests, stage allowlists, OpenAPI response pins, secret scan, and a stub sweep.
+- **Tests as a contract.** 474 unit/integration tests, 44 Playwright tests, stage allowlists, OpenAPI response pins, secret scan, and a stub sweep.
 
 ---
 
@@ -204,13 +204,13 @@ npm run assert-stage -- --stage=p7 --json
 
 | Gate | Observed |
 |---|---|
-| Unit / integration | `npm.cmd test` — **455 tests / 71 files** |
+| Unit / integration | `npm.cmd test` — **474 tests / 74 files** |
 | Typecheck / build | `npm.cmd run verify` — **exit 0** |
-| Browser E2E | `npm.cmd run e2e` — **38 / 38 passed** |
-| Stage allowlist | **204 files / 51 tables / 62 routes / 24 scripts**, violations `[]` |
-| Preflight | **PASS** — free RAM 1.72 GB, disk 8.76 GB, Chrome/Node/npm/port |
+| Browser E2E | `npm.cmd run e2e` — **44 / 44 passed** |
+| Stage allowlist | **209 files / 51 tables / 62 routes / 24 scripts**, violations `[]` |
+| Preflight | **PASS** — free RAM 2.06 GB, disk 7.76 GB, Chrome/Node/npm/port |
 | Stub sweep | clean (103 files) |
-| Secret scan | clean (201 files) |
+| Secret scan | clean (206 files) |
 
 Reproduce:
 
@@ -300,6 +300,7 @@ Key documents:
 - [Wave 14 review coverage](docs/TRACE/WAVE-14/TRACE-SUMMARY.md)
 - [Wave 15 UI and truth audit](docs/TRACE/WAVE-15/TRACE-SUMMARY.md)
 - [Wave 16 retry and chat fan-out](docs/TRACE/WAVE-16/TRACE-SUMMARY.md)
+- [Wave 17 two-seat truth audit](docs/TRACE/WAVE-17/TRACE-SUMMARY.md)
 - [Backlog and test matrix](docs/BACKLOG.md)
 - [Provenance](docs/PROVENANCE.md)
 

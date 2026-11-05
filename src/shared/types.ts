@@ -346,7 +346,7 @@ export type ApiEnvelope<T> =
 export interface RunStats {
   agentCount: number;
   runCount: number;
-  /** Honest totals: null when at least one usage row is unknown. */
+  /** Honest totals: null when any usage/spend source is unknown. */
   totalPromptTokens: number | null;
   totalCompletionTokens: number | null;
   totalCostUsd: number | null;
@@ -356,5 +356,9 @@ export interface RunStats {
   measuredCostUsd: number;
   chatCostUsd: number | null;
   unknownUsageRows: number;
+  /** Terminal runs with NULL spend and no usage ledger row (unaccounted spend). */
+  unknownRunSpendRows: number;
+  /** Chat jobs with attempts but NULL cost (unaccounted spend). */
+  unknownChatSpendJobs: number;
   partial: boolean;
 }

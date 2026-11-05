@@ -263,8 +263,9 @@ export function reviewGateChecks(
   const allowed = new Set(allowedPaths);
   const grounded = (file: string): boolean => {
     try {
-      normalizeRel(file);
-      return allowed.has(file);
+      // Normalize before the membership test: a finding and a reviewedFiles
+      // declaration naming the same plan file must be classified identically.
+      return allowed.has(normalizeRel(file));
     } catch {
       return false;
     }

@@ -11,17 +11,17 @@ This is the honest work queue for the next waves. It is ordered by user impact a
 - Read-only dominator/scorecard API and `/analysis` page.
 - FTS5 search over one terminal run’s published workspace, with workspace-change detection and rebuild.
 - Staged-file resume without a provider call.
-- 455 unit/integration tests, 38 Playwright tests, stage/OpenAPI/secret/stub gates.
+- 474 unit/integration tests, 44 Playwright tests, stage/OpenAPI/secret/stub gates.
 
 ## P0 — correctness before capability
 
 | # | Item | Why it matters | Acceptance |
 |---|---|---|---|
-| P0-1 | Review every writer against the phase/status matrix | A guard that rejects a legal writer is as bad as a missing guard | Exhaustive transition table test for every production writer; unknown edges rejected by name |
+| P0-1 | Review every writer against the phase/status matrix — **delivered Wave 17** | A guard that rejects a legal writer is as bad as a missing guard | `writer-matrix` SQLite trigger captures every persisted status/phase edge across all presets/terminal writers; exhaustive 10×10 status / 11×11 phase pairs; static writer inventory; the dead terminal-phase guard was hardened for every terminal status |
 | P0-2 | Per-file review coverage — **delivered Wave 14** | A review that only sees some files is not a review | `reviewedFiles` contract; `REVIEW_UNREVIEWED` warning names every allowed file not declared; clean partial coverage becomes `completed_with_warnings` |
 | P0-3 | Schema-level file-size bound — **delivered Wave 12** | Byte limits must be enforced before persistence, not only after | File/test/review content is UTF-8-byte bounded in Zod; `E_FILE_TOO_LARGE` survives the provider boundary; no repair call; `writeStaged` remains defense in depth |
 | P0-4 | Full writer tests for failed/cancelled/budget/interrupted paths — **delivered Wave 13** | Terminal truth is not one code path | Four terminal integration tests; open steps settle on every terminal write; manager paths record trace and `trace_complete`; budget event path remains pipeline-owned |
-| P0-5 | Historical NULL handling audit | Unknown spend must stay unknown forever | Query proves no historical NULL was backfilled to zero |
+| P0-5 | Historical NULL handling audit — **delivered Wave 17** | Unknown spend must stay unknown forever | Spend-column UPDATE trigger, DB reopen, list/detail/snapshot, and stats tests prove no historical NULL becomes zero; unaccounted run/chat spend forces `partial`/NULL totals while measured sums remain visible |
 
 ## P1 — finish the router
 

@@ -166,20 +166,18 @@ export function updateRun(runId: string, patch: Partial<{
         throw new RunTransitionError('phase', currentPhase, patch.phase, runId);
       }
       const nextStatus = patch.status ?? currentStatus;
-      if (
-        (nextStatus === 'completed' || nextStatus === 'completed_with_warnings') &&
-        (patch.phase ?? currentPhase) !== 'done'
-      ) {
-        throw new RunTransitionError('phase', currentPhase, patch.phase ?? currentPhase, runId);
+      const nextPhase = patch.phase ?? currentPhase;
+      const statusChanging = patch.status !== undefined && patch.status !== currentStatus;
+      const phaseChanging = patch.phase !== undefined && patch.phase !== currentPhase;
+      // A terminal status and the terminal phase are one close: a run may fail
+      // in any phase, but it may never be persisted terminal beside a live
+      // phase. This holds for every terminal status, not only completed.
+      if ((statusChanging || phaseChanging) && isTerminalStatus(nextStatus) && nextPhase !== 'done') {
+        throw new RunTransitionError('phase', currentPhase, nextPhase, runId);
       }
-      // Terminal writes are allowed to close from any phase (done is the only
-      // terminal phase). Non-terminal writes must follow the real writer map.
-      if (
-        !isTerminalStatus(currentStatus) &&
-        !isTerminalStatus(nextStatus) &&
-        patch.phase !== undefined &&
-        patch.phase !== currentPhase
-      ) {
+      // Terminal closes skip the phase matrix (done is the only terminal
+      // phase). Non-terminal writes must follow the real writer map.
+      if (!isTerminalStatus(currentStatus) && !isTerminalStatus(nextStatus) && phaseChanging) {
         assertPhaseTransition(currentPhase as RunPhase, patch.phase as RunPhase, runId);
       }
     }

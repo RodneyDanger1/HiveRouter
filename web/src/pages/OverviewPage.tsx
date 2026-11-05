@@ -201,7 +201,7 @@ export function OverviewPage() {
       ) : stats.data?.partial ? (
         <div className="mt-3">
           <InlineNotice tone="warn">
-            {stats.data.unknownUsageRows} provider usage row(s) are unknown. Measured run spend is {formatUsd(stats.data.measuredCostUsd)}; the total is intentionally not shown as zero.
+            Unknown spend: {stats.data.unknownUsageRows} provider usage row(s), {stats.data.unknownRunSpendRows} terminal run(s), and {stats.data.unknownChatSpendJobs} chat job(s). Measured run spend is {formatUsd(stats.data.measuredCostUsd)}; the total is intentionally not shown as zero.
           </InlineNotice>
         </div>
       ) : null}

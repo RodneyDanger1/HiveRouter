@@ -236,6 +236,7 @@ function AgentDrawer({
   const liveDisabled = !keyStatus?.configured || Boolean(keyError);
   const needsTarget = data?.outputKind === 'files';
   const canRun = Boolean(data) && agentIsEnabled(data as AgentDefinition) && runInput.trim().length > 0;
+  const drawerBusy = runBusy || saveBusy || resetBusy;
 
   async function savePrompt() {
     if (!data) return;
@@ -318,13 +319,14 @@ function AgentDrawer({
       onClose={onClose}
       title={data?.name ?? 'Agent'}
       width="980px"
+      busy={drawerBusy}
       footer={
         <>
-          <button type="button" className="btn btn-secondary" onClick={onClose}>
+          <button type="button" className="btn btn-secondary" onClick={onClose} disabled={drawerBusy}>
             Close
           </button>
           {data ? (
-            <button type="button" className="btn btn-ghost" onClick={() => setEditing((value) => !value)}>
+            <button type="button" className="btn btn-ghost" onClick={() => setEditing((value) => !value)} disabled={drawerBusy}>
               <Code2 size={14} aria-hidden /> {editing ? 'Stop editing' : 'Edit prompt'}
             </button>
           ) : null}
@@ -420,10 +422,10 @@ function AgentDrawer({
                     <div className="flex items-center justify-between gap-2">
                       <span className="text-xs text-slate-400">{prompt.length}/20000</span>
                       <div className="flex gap-2">
-                        <button type="button" className="btn btn-secondary btn-small" onClick={() => setResetOpen(true)}>
+                        <button type="button" className="btn btn-secondary btn-small" onClick={() => setResetOpen(true)} disabled={drawerBusy}>
                           <Undo2 size={13} aria-hidden /> Reset
                         </button>
-                        <button type="button" className="btn btn-primary btn-small" disabled={saveBusy || prompt.trim().length === 0} onClick={savePrompt}>
+                        <button type="button" className="btn btn-primary btn-small" disabled={drawerBusy || prompt.trim().length === 0} onClick={savePrompt}>
                           {saveBusy ? <Spinner /> : <Save size={13} aria-hidden />} Save
                         </button>
                       </div>

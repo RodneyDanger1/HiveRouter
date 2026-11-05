@@ -119,7 +119,7 @@ select {
 .topbar-right {
   justify-content: flex-end;
 }
-.topbar-menu {
+.topbar .topbar-menu {
   display: none;
   color: #fff;
   border-color: #3b4a66;
@@ -1034,7 +1034,7 @@ select {
     border: 0;
     background: rgba(11, 19, 37, 0.28);
   }
-  .topbar-menu {
+  .topbar .topbar-menu {
     display: inline-flex;
   }
   .main-content {

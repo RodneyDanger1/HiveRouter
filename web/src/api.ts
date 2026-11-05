@@ -445,11 +445,15 @@ export async function auditRun(
   );
 }
 
-export async function resumeRun(runId: string, signal?: AbortSignal): Promise<string> {
+export async function resumeRun(
+  runId: string,
+  signal?: AbortSignal,
+  idempotencyKey: string = newIdempotencyKey(),
+): Promise<string> {
   const payload = await request<{ runId: string }>(`/runs/${encodeURIComponent(runId)}/resume`, {
     method: 'POST',
     body: {},
-    idempotencyKey: newIdempotencyKey(),
+    idempotencyKey,
     signal,
   });
   return payload.runId;

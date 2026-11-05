@@ -9,7 +9,7 @@ This is the honest release register. A defect is only “fixed” when the named
 | P0-1 | Verifier executed generated SQL | **Fixed** | `verify/syntax.ts` no longer imports `DatabaseSync`; `test/unit/sql-static.test.ts` covers DDL/DML/ATTACH/multi-statement behavior |
 | P0-2 | Reviewer verdicts did not gate | **Fixed** | Critical findings (including ungrounded critical findings) become `review.<kind>` fail checks; non-critical ungrounded findings are `REVIEW_UNGROUNDED_WARNING`; `reviews` rows written; `test/unit/p0-truth.test.ts` |
 | P0-3 | Failed runs discarded paid artifacts | **Fixed** | `persistStagedArtifacts` copies to `staged/`, records `status='staged'`; UI labels staged; `test/unit/p0-truth.test.ts` |
-| P0-4 | Spend/stats could lie | **Fixed for new runs** | Unknown usage commits reservation with `null`; `/api/stats` returns measured/partial/unknown and chat cost; `test/unit/stats-truth.test.ts`; legacy rows are not backfilled |
+| P0-4 | Spend/stats could lie | **Fixed for new and historical rows — Wave 17** | Unknown usage commits `null`; `/api/stats` adds `unknownRunSpendRows`/`unknownChatSpendJobs`; unaccounted spend forces `partial` + NULL totals; `test/unit/stats-truth.test.ts`, `test/unit/historical-usage.test.ts`; legacy rows are not backfilled |
 | P0-5 | `trace_complete` and trace producer mismatch | **Fixed for new terminal runs** | `recordRunTrace` uses `trace-store`, flag set from returned evidence; DB open reconciles historical flags; `test/unit/p0-truth.test.ts` |
 | P0-6 | P7 described as implemented/unreachable | **Docs corrected** | README/ARCHITECTURE/CAPABILITY now state no production evaluator; promotion not claimed |
 | P0-7 | Phase matrix dead/wrong | **Fixed** | `intake→cleaning/generating/finalizing` added; `updateRun` validates non-terminal phase writes; tests |
@@ -17,6 +17,13 @@ This is the honest release register. A defect is only “fixed” when the named
 | P0-9 | Stage lock failed open | **Fixed** | `HIVE_PHASE` is required at module load; vitest sets B2 explicitly |
 | P0-10 | `/chat` deep link 404 | **Fixed** | SPA known route includes `/chat`; E2E asserts response 200 |
 | P0-11 | Capability labels overclaimed tests/tools | **Partially fixed** | Test badge now says “writes test files (not executed)”; README says no tools; deeper agent evidence labels still need UI cleanup |
+| P0-12 | Terminal-phase guard covered only two of five terminal statuses | **Fixed Wave 17** | Any status/phase write whose result is terminal must land on `done`; `E_ILLEGAL_RUN_TRANSITION`; `test/unit/writer-matrix.test.ts` planted-defect RED/GREEN |
+| P0-13 | Desktop showed and activated the mobile nav toggle | **Fixed Wave 17** | CSS cascade caught by `.topbar .topbar-menu`; E2E asserts hidden at 1440 and working at 390 |
+| P0-14 | Chat silently swallowed `/api/agents` failure | **Fixed Wave 17** | `ErrorPanel` + retry; selects/create/send disabled with named code; E2E 503→retry recovery |
+| P0-15 | Resume retry minted a new idempotency key | **Fixed Wave 17** | `resumeRun` accepts caller key; `RunDetailPage` memoizes per run; E2E key equality |
+| P0-16 | Run detail offered Revise/Audit for statuses the server rejects | **Fixed Wave 17** | `REVISABLE_STATUSES` gate + state-specific hints; real budget-exceeded POSTs observed `409 E_INVALID_PARENT`; E2E pins |
+| P0-17 | In-flight drawer/confirmation modals could be dismissed and discard the failure | **Fixed Wave 17** | `Modal.busy` vetoes X/Escape/backdrop; `ConfirmDialog` forwards; drawer disables Close/Edit/Reset/Save; E2E pins |
+| P0-18 | `grounded()` used raw path identity while `reviewedFiles` used normalized | **Fixed Wave 17** | `grounded()` compares `normalizeRel(file)`; outside/unsafe paths stay fail-closed; `test/unit/review-coverage.test.ts` |
 
 ## P1 — correctness/quality
 

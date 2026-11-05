@@ -258,13 +258,27 @@ export function ChatPage() {
         </div>
       ) : null}
 
+      {agents.error ? (
+        <div className="mb-4">
+          <ErrorPanel error={agents.error} onRetry={agents.reload} title="Agent registry unavailable" />
+        </div>
+      ) : null}
+
       <div className="grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
         <Card className="p-4">
           <SectionTitle title="Conversations" description="Durable threads; each selected agent answer runs as a job." />
           <div className="mt-4 space-y-2">
             <label className="toolbar-field block">
               <span className="label">Agent</span>
-              <select className="input" value={newAgentId} onChange={(event) => setNewAgentId(event.target.value)}>
+              <select
+                className="input"
+                value={newAgentId}
+                onChange={(event) => setNewAgentId(event.target.value)}
+                disabled={agents.loading || Boolean(agents.error)}
+              >
+                {agentList.length === 0 ? (
+                  <option value="">{agents.loading ? 'Loading agents…' : 'No agents available'}</option>
+                ) : null}
                 {agentList.map((agent) => (
                   <option key={agent.id} value={agent.id}>{agent.name}</option>
                 ))}
@@ -274,7 +288,7 @@ export function ChatPage() {
               <span className="label">Title (optional)</span>
               <input className="input" value={newTitle} maxLength={120} onChange={(event) => setNewTitle(event.target.value)} placeholder="New conversation" />
             </label>
-            <button type="button" className="btn btn-primary w-full" onClick={() => void create()} disabled={creating || !newAgentId}>
+            <button type="button" className="btn btn-primary w-full" onClick={() => void create()} disabled={creating || !newAgentId || agents.loading || Boolean(agents.error)}>
               {creating ? <Spinner /> : <Plus size={14} aria-hidden />} New conversation
             </button>
           </div>
@@ -366,6 +380,7 @@ export function ChatPage() {
                           multiple
                           size={4}
                           value={sendAgentIds}
+                          disabled={agents.loading || Boolean(agents.error)}
                           onChange={(event) => {
                             const next = Array.from(event.target.selectedOptions, (option) => option.value);
                             if (next.length > maxChatAgents) {
@@ -379,12 +394,19 @@ export function ChatPage() {
                           }}
                           aria-describedby="chat-agent-selection-help"
                         >
+                          {agentList.length === 0 ? (
+                            <option value="">{agents.loading ? 'Loading agents…' : 'No agents available'}</option>
+                          ) : null}
                           {agentList.map((agent) => (
                             <option key={agent.id} value={agent.id}>{agent.name}</option>
                           ))}
                         </select>
                         <span id="chat-agent-selection-help" className="mt-1 block text-xs text-slate-500">
-                          {sendAgentIds.length} of {maxChatAgents} selected; Ctrl/Cmd-click to fan out.
+                          {agents.loading
+                            ? 'Loading agents…'
+                            : agents.error
+                              ? `Agent selection unavailable (${agents.error.code}).`
+                              : `${sendAgentIds.length} of ${maxChatAgents} selected; Ctrl/Cmd-click to fan out.`}
                         </span>
                       </label>
                       <span className="text-xs text-slate-500">
@@ -411,7 +433,7 @@ export function ChatPage() {
                     </label>
                     <div className="mt-3 flex items-center justify-between gap-3">
                       <span className="text-xs text-slate-400">{draft.length}/8000</span>
-                      <button type="button" className="btn btn-primary" onClick={() => void send()} disabled={sending || !draft.trim() || sendAgentIds.length === 0}>
+                      <button type="button" className="btn btn-primary" onClick={() => void send()} disabled={sending || !draft.trim() || sendAgentIds.length === 0 || agents.loading || Boolean(agents.error)}>
                         {sending ? <Spinner /> : <Send size={14} aria-hidden />} Send &amp; queue {sendAgentIds.length > 1 ? `${sendAgentIds.length} jobs` : 'job'}
                       </button>
                     </div>

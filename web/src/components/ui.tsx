@@ -380,6 +380,7 @@ export function Modal({
   children,
   footer,
   width = '560px',
+  busy = false,
 }: {
   open: boolean;
   onClose: () => void;
@@ -387,10 +388,14 @@ export function Modal({
   children: ReactNode;
   footer?: ReactNode;
   width?: string;
+  /** While a mutation is in flight the modal owns the outcome and cannot be dismissed. */
+  busy?: boolean;
 }) {
   const titleId = useId();
   const panelRef = useRef<HTMLDivElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
+  const busyRef = useRef(busy);
+  busyRef.current = busy;
 
   useEffect(() => {
     if (!open) return;
@@ -404,6 +409,7 @@ export function Modal({
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
         event.preventDefault();
+        if (busyRef.current) return;
         onClose();
       }
       if (event.key !== 'Tab' || !panel) return;
@@ -436,7 +442,7 @@ export function Modal({
     <div
       className="modal-backdrop"
       onMouseDown={(event) => {
-        if (event.target === event.currentTarget) onClose();
+        if (event.target === event.currentTarget && !busy) onClose();
       }}
     >
       <div
@@ -451,7 +457,7 @@ export function Modal({
           <h2 id={titleId} className="font-display text-2xl">
             {title}
           </h2>
-          <button type="button" className="icon-button" onClick={onClose} aria-label="Close dialog">
+          <button type="button" className="icon-button" onClick={onClose} aria-label="Close dialog" disabled={busy}>
             <X size={18} aria-hidden />
           </button>
         </div>
@@ -496,6 +502,7 @@ export function ConfirmDialog({
       open={open}
       onClose={onClose}
       title={title}
+      busy={busy}
       footer={
         <>
           <button type="button" className="btn btn-secondary" onClick={onClose} disabled={busy}>

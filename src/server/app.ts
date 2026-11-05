@@ -1276,7 +1276,37 @@ export async function buildApp(): Promise<FastifyInstance> {
        FROM usage`,
     ).get() as { rows: number; unknown_rows: number; known_p: number; known_c: number; known_cost: number };
     const unknownUsageRows = Number(usage.unknown_rows ?? 0);
-    const partial = unknownUsageRows > 0;
+    // A terminal run whose spend is NULL and that has no usage row carries spend
+    // the ledger cannot account for. Summing the usage table alone would add it
+    // as zero and report a complete total. Runs with NULL aggregate but measured
+    // usage rows are not unknown: the per-call ledger is the truth for spend.
+    const unknownRunSpendRows = Number(
+      (
+        db
+          .prepare(
+            `SELECT COUNT(*) AS n FROM runs r
+             WHERE r.status IN ('completed','completed_with_warnings','failed','cancelled','budget_exceeded','interrupted')
+               AND r.cost_usd IS NULL
+               AND NOT EXISTS (SELECT 1 FROM usage u WHERE u.run_id = r.id)`,
+          )
+          .get() as { n: number }
+      ).n,
+    );
+    // A chat job with attempts but no cost had an attempt whose spend is not
+    // recorded; adding it as zero is the same lie as a zero run spend.
+    const unknownChatSpendJobs = FEATURES.chat
+      ? Number(
+          (
+            db
+              .prepare(
+                `SELECT COUNT(*) AS n FROM chat_jobs
+                 WHERE attempts > 0 AND cost_usd IS NULL AND status IN ('queued','failed','cancelled')`,
+              )
+              .get() as { n: number }
+          ).n,
+        )
+      : 0;
+    const partial = unknownUsageRows > 0 || unknownRunSpendRows > 0 || unknownChatSpendJobs > 0;
     const chat = FEATURES.chat
       ? (db.prepare('SELECT COALESCE(SUM(cost_usd), 0) AS cost FROM chat_jobs').get() as { cost: number })
       : { cost: 0 };
@@ -1296,6 +1326,8 @@ export async function buildApp(): Promise<FastifyInstance> {
       measuredCostUsd,
       chatCostUsd,
       unknownUsageRows,
+      unknownRunSpendRows,
+      unknownChatSpendJobs,
       partial,
     };
   });

@@ -16,15 +16,15 @@ Status is deliberately blunt. “Partial” means the path exists but a material
 | Static syntax verification | Partial | TS/JS transpile, Python AST, JSON/YAML/HTML; SQL is non-executing and often unverified |
 | Execute generated code/tests | **Absent** | Explicit non-goal; no sandbox |
 | Retain failed-run work | **Now works** | Staged artifacts under `staged/`, marked `staged`; accepted only after publish |
-| Accurate run spend/usage | **Improved** | Unknown usage is NULL/partial; stats includes measured chat; legacy rows not backfilled |
+| Accurate run spend/usage | **Improved** | Unknown usage is NULL/partial; unaccounted terminal-run and attempted-chat spend force `partial` + NULL totals while measured sums stay visible; stats includes measured chat; legacy rows not backfilled |
 | Step/tool trace | Partial | One trace row per terminal run; terminal writes settle open steps; no tool calls, no per-step trace |
-| Resume a run | **Partial** | Re-verifies/publishes retained `staged` files as a child resume run with no provider call; no mid-run checkpoint table or parallel branch |
+| Resume a run | **Partial** | Re-verifies/publishes retained `staged` files as a child resume run with no provider call; unchanged retry now replays its idempotency key; no mid-run checkpoint table or parallel branch |
 | Parallel file generation | **Absent** | Sequential; one active run |
 | P7 evaluation | **Absent** | No `eval_runs`/`eval_results` producer; promotion unreachable |
 | P7 promotion/rollback | Code exists, unreachable | Sealed pool/consent + evaluation absent |
 | Chat | Works (B2) | Durable jobs, leases, retries, SSE, cancellation; multi-agent fan-out from the UI (native multi-select, server-capped at 3); per-message idempotency key reused on unchanged retry |
 | Local key ingress | Works | `npm.cmd run key:import -- --from-env\|--file\|--stdin`; env/app-secret only; regular non-symlink file ≤64 KiB; no HTTP key route; DSH is not read |
-| Mobile / keyboard UI | **Partial** | 390×844 Analysis/Search overflow + run-tab arrow focus + closed-nav focus ownership covered by Playwright; open-nav focus trap and full screen-reader audit remain absent |
+| Mobile / keyboard UI | **Partial** | 390×844 Analysis/Search overflow + run-tab arrow focus + closed-nav focus ownership covered by Playwright; desktop no longer shows the mobile nav toggle; open-nav focus trap and full screen-reader audit remain absent |
 | Multi-user/cloud | **Absent** | Local single-user process |
 | Native `.exe` | **Absent** | Chrome app-window launcher only |
 | Browser/computer use | **Absent** | No browser driver or desktop actuator |

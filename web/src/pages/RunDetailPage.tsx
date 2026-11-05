@@ -82,6 +82,13 @@ import {
 
 type RunTab = 'overview' | 'files' | 'search' | 'checks' | 'routing' | 'context' | 'repairs' | 'confidence' | 'events';
 
+/**
+ * Revise and Audit are accepted by the server only for these parent statuses
+ * (src/server/app.ts:1037 and :1175). A terminal run in any other status has no
+ * legal child action, even when it retained accepted artifacts.
+ */
+const REVISABLE_STATUSES: ReadonlySet<string> = new Set(['completed', 'completed_with_warnings', 'failed']);
+
 const BASE_TABS: TabItem[] = [
   { id: 'overview', label: 'Overview' },
   { id: 'files', label: 'Files' },
@@ -139,6 +146,7 @@ export function RunDetailPage() {
   const terminal = run ? TERMINAL_STATUSES.has(run.status) : false;
   const reviseRequestKey = useMemo(() => newIdempotencyKey(), [runId, feedback]);
   const auditRequestKey = useMemo(() => newIdempotencyKey(), [runId]);
+  const resumeRequestKey = useMemo(() => newIdempotencyKey(), [runId]);
   const persistedEvents = useApiResource<RunStreamEvent[]>(
     (signal) => (runId && terminal ? getRunEvents(runId, signal) : Promise.resolve([])),
     [runId, terminal],
@@ -213,8 +221,8 @@ export function RunDetailPage() {
   const snapshotRecord = snapshot.data as unknown as Record<string, unknown> | undefined;
   const limitRecord = snapshotRecord && isRecord(snapshotRecord.limits) ? snapshotRecord.limits : {};
   const costCap = readNumber(limitRecord.maxCostUsd) ?? null;
-  const canRevise = terminal && acceptedArtifacts.length > 0;
-  const canAudit = terminal && acceptedArtifacts.length > 0;
+  const canRevise = terminal && acceptedArtifacts.length > 0 && REVISABLE_STATUSES.has(run.status);
+  const canAudit = terminal && acceptedArtifacts.length > 0 && REVISABLE_STATUSES.has(run.status);
   const canResume = terminal
     && ['failed', 'budget_exceeded', 'cancelled', 'interrupted'].includes(run.status)
     && artifacts.some((artifact) => artifact.status === 'staged');
@@ -269,7 +277,7 @@ export function RunDetailPage() {
     setResumeBusy(true);
     setResumeError(null);
     try {
-      const childId = await resumeRun(run!.id);
+      const childId = await resumeRun(run!.id, undefined, resumeRequestKey);
       navigate(`/runs/${encodeURIComponent(childId)}`);
     } catch (caught) {
       setResumeError(caught instanceof ApiError ? caught : new ApiError({ code: 'E_NETWORK', status: 0, message: 'Resume failed.' }));
@@ -419,15 +427,23 @@ export function RunDetailPage() {
                 <RotateCcw size={14} aria-hidden /> Revise accepted files
               </button>
             ) : (
-              <span className="text-xs text-slate-500">Revision requires a terminal run with artifacts.</span>
+              <span className="text-xs text-slate-500">
+                {!terminal
+                  ? 'Revision requires a terminal run with artifacts.'
+                  : acceptedArtifacts.length === 0
+                    ? 'Revision requires accepted artifacts.'
+                    : 'Revision requires a completed or failed run with accepted artifacts.'}
+              </span>
             )}
             {terminal ? (
               canAudit ? (
                 <button type="button" className="btn btn-secondary" onClick={() => setAuditOpen(true)}>
                   <Wrench size={14} aria-hidden /> Audit this run
                 </button>
-              ) : (
+              ) : acceptedArtifacts.length === 0 ? (
                 <span className="text-xs text-slate-500">Audit requires stored artifacts.</span>
+              ) : (
+                <span className="text-xs text-slate-500">Audit requires a completed or failed run with stored artifacts.</span>
               )
             ) : null}
             {canResume ? (
