@@ -1,142 +1,326 @@
 # HiveRouter
 
-**HiveRouter is a local, standalone AI agent coding router.** It turns a project brief into a routed build: an architect plans the file matrix, a capability-constrained router picks the right specialist for every file, code engines generate the implementation, cleaner/sentinel/watchman review and repair it, the gatekeeper writes tests, and a deterministic verifier gates the result. The whole run streams to a React UI with artifacts, checks, routing decisions, context packs, confidence, cost, and a manifest.
+**A local-first, truth-first code factory for the DeepSeek API.**  
+Plan a project, route each file to a specialist role, generate, statically verify, repair, and inspect the ledger — without pretending a failed gate passed.
 
-It is **not** built on DeepSeek Desktop Harness. HiveRouter is its own TypeScript/Node application and calls the DeepSeek Chat Completions API directly. DSH is only the development environment and the original source of the key; the app has no DSH runtime dependency.
+<p>
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white">
+  <img alt="Node.js" src="https://img.shields.io/badge/Node.js-26.7-339933?logo=node.js&logoColor=white">
+  <img alt="Fastify" src="https://img.shields.io/badge/Fastify-5-000000?logo=fastify&logoColor=white">
+  <img alt="React" src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=111">
+  <img alt="SQLite" src="https://img.shields.io/badge/SQLite-WAL-003B57?logo=sqlite&logoColor=white">
+  <img alt="Tests" src="https://img.shields.io/badge/tests-419%20passing-2E7D32">
+  <img alt="E2E" src="https://img.shields.io/badge/Playwright-28%20passing-2E7D32">
+</p>
 
-## Stack
+HiveRouter is a personal engineering showcase built around one rule: **evidence or it did not happen**. It is a real, runnable TypeScript application — not a slide deck — with a deterministic routing engine, a persisted run ledger, static verification, a staged-artifact safety model, chat fan-out, full-text run search, and honest refusals when a capability is absent.
 
-- Node.js **26.7.0**, TypeScript **5.9.3**
-- Fastify **5.12.8** + `node:sqlite` (WAL) backend
-- React **19.3.1**, Vite **8.3.5**, Tailwind CSS **4.3.4**
-- LangGraph.js **1.6.0** packages installed for future graph work; the live pipeline is a handwritten staged orchestrator
-- Direct `fetch` DeepSeek client (no OpenAI SDK)
-- 37-agent registry, P6a deterministic decision intelligence, P7 learning modules
+It is deliberately **not** an autonomous agent runtime. Generated code is never executed. There is no shell tool, no Docker sandbox, no auto-promotion, and no claim that a static check proves correctness.
 
-## Quickstart
+---
 
-```cmd
-cd /d C:\Users\Riley\Desktop\HiveRouter
-npm.cmd ci
-:: put DEEPSEEK_API_KEY=sk-... in .env.local (never commit it)
-:: or import it once into the app-secret store:
-:: npm.cmd run key:import -- --file C:\path\to\key.txt
-npm.cmd run build
-npm.cmd start
+## Why this project exists
+
+Most “AI code generator” demos look impressive until you ask three questions:
+
+1. What happens when verification fails?
+2. Can a retry double-charge or lose a write?
+3. Does the UI show the same thing the database recorded?
+
+HiveRouter is built around those questions. Failed runs retain staged artifacts; unknown provider usage is stored as unknown, not zero; terminal states are guarded; the event feed has a persisted ledger; and every paid path is budget-capped.
+
+The goal is not “AGI writes your app.” The goal is a **small, inspectable factory** where the limits are visible and the evidence is reproducible.
+
+---
+
+## Screenshots
+
+### Static analysis: dependency dominators and specialist disagreement
+
+![HiveRouter analysis page](docs/screenshots/analysis.png)
+
+### Agent registry: 37 declared roles with real capability labels
+
+![HiveRouter agent registry](docs/screenshots/agents.png)
+
+---
+
+## What it does
+
+```text
+brief
+  → plan (file graph, interfaces, duties)
+  → route (capability filters, cost/latency/risk utility, micro-USD budget DP)
+  → context pack (PageRank + token-budgeted CPO)
+  → generate (specialist role, whole-file output)
+  → clean → harden → test → static verify
+  → repair loop (bounded)
+  → review gate
+  → atomic publish
+  → persisted ledger + SSE + evidence
 ```
 
-Open **http://127.0.0.1:8787**.
+A run can stop at several named states — including **failed**, **cancelled**, **budget-exceeded**, **interrupted**, and **completed-with-warnings** — and it cannot be quietly upgraded to success.
 
-**Desktop app window:** double-click **`HiveRouter.lnk` on the Desktop**. It starts the server if it is not already healthy, then opens a dedicated Chrome app window (no browser tabs/address bar) sized to the primary screen. The profile is `data/browser-profile`, so window sizing and the composer draft persist across launches. The SQLite database (`data/hive.db`), run workspaces (`workspace/runs/`) and vault (`vault/`) also persist across restarts; startup marks interrupted runs and releases their budget leases.
+### Core capabilities
 
-The server binds loopback only. `npm.cmd run dev` runs Vite on 5173 and Fastify on 8787 with an API proxy.
+| Area | What is real |
+|---|---|
+| Routing | File-level CCR with capability filters, static priors, cost/latency/risk utility, micro-USD budget DP, deterministic seeded ties |
+| Context | PageRank over the file graph, 1-token knapsack units, CJK-aware estimates, stable prefix hashes |
+| Verification | Python AST, TS/JS/JSX transpile diagnostics, JSON, YAML, non-executing SQL shape checks, HTML; unsupported languages are **unverified**, never passed |
+| Safety | Prompt-injection envelopes, path safety, secret scan, stub scan, critical review findings fail the gate |
+| Persistence | SQLite WAL, run/step/check/artifact/review/usage ledger, idempotency keys, compare-and-swap status guards |
+| Failure handling | Budget reservations, `null` for unknown usage, staged failed artifacts, bounded repair loop, terminal-state protection |
+| UI | React 19/Vite 8 operator console: runs, agents, chat, vault, settings, learning refusal state, analysis, run search |
+| Run search | Disposable FTS5 trigram index over a terminal run’s published text files; pathless API, staged files excluded |
+| Chat | Durable `chat_jobs` with leases, retries, cancellation, SSE projection, and bounded history |
+| Learning | P7 scaffolding exists but is **refused** in this build: no sealed 390-case pool and no consent |
 
-## Key handling
+---
 
-The app resolves the DeepSeek key from, in order:
+## Architecture
 
-1. `DEEPSEEK_API_KEY` in the process environment (including `.env.local`, loaded at boot)
-2. `data/secrets/deepseek.json` written by the local import path (0600)
+```mermaid
+flowchart LR
+  UI[React operator console] --> API[Fastify API]
+  API --> RUN[Run manager]
+  RUN --> PLAN[Planner]
+  PLAN --> ROUTE[CCR router]
+  ROUTE --> CTX[CPO context packer]
+  CTX --> GEN[Specialist generation]
+  GEN --> CLEAN[Cleaner]
+  CLEAN --> HARDEN[Hardener]
+  HARDEN --> TEST[Tests]
+  TEST --> VERIFY[Static verifier]
+  VERIFY -->|pass| PUBLISH[Atomic publish]
+  VERIFY -->|fail| REPAIR[Bounded repair] --> VERIFY
+  PUBLISH --> LEDGER[(SQLite ledger)]
+  API --> CHAT[Durable chat jobs]
+  API --> SEARCH[FTS5 run search]
+  API --> ANALYSIS[Dominators + scorecards]
+  API --> SSE[Persisted SSE]
+```
 
-No HTTP route accepts or returns a provider key. The UI only shows `configured`, `source`, and a SHA-256 fingerprint prefix. DSH is **not** read at runtime.
+**Stack lock:** TypeScript, Node 26.7, Fastify 5, React 19, Vite 8, Tailwind 4, `node:sqlite`, direct DeepSeek Chat Completions. No Next.js, Electron, Python backend, OpenAI SDK, or Docker runtime.
 
-## What works
+---
 
-- **Full build**: plan → route → generate → clean → harden → test → verify → finalize.
-- **Blueprint**: architecture document only.
-- **Revision**: child run from accepted files with human feedback; parent is immutable.
-- **Audit**: cleaner/sentinel/gatekeeper review of accepted files; no regeneration of the original brief.
-- **Ad-hoc agent run**: a single selected agent can run live against an explicit target (live-only; mock mode refuses by name).
-- **Truthful terminal/event telemetry**: terminal runs aggregate measured usage (failed/budget/cancelled/interrupted), the live event vocabulary matches the server, terminal Events tabs use the persisted ledger, run caps come from the per-run limit, context exclusions are surfaced, check rows have stable identities, and provider error identity is preserved.
-- **Live chat (B2)**: one owner conversation can fan a message out to up to three registered agents. Every answer is a durable chat_jobs row with a real worker lease, bounded attempts, retry/backoff, cancellation, and a reaper; messages/jobs are projected through a persisted event ledger and SSE. The UI shows pending/running/failed states, a cancel control, and the residual job/thread fields; no provider key reaches the browser.
-- **Guarded run persistence**: status writes use a compare-and-swap transition guard; terminal runs cannot be downgraded by a stale writer, while legal lifecycle transitions and idempotent same-status writes remain valid. Runs filtering is server-side, including queued/paused/interrupted, and Settings renders the real nested runtime limits.
-- **Prompt analyst (chat intent gate)**: a server-side DeepSeek call parses the brief before a run. It separates exact user statements from inferred/unknown details, proposes observable acceptance proof, and refuses an analysis whose "user-stated" quotes are not exact prompt substrings. The UI exposes it in the composer; it never runs code or claims tests passed.
-- **Static verification**: path safety, plan coverage, secret scan, stub scan, and language syntax (Python AST, TS/JS/JSX transpile diagnostics, JSON, YAML, SQLite SQL, HTML). Unsupported languages are labeled unverified, never passed.
-- **CCR routing**: capability filters, static priors, cost/latency/risk utility, micro-USD DP budget allocation, fallback/refusal, seeded deterministic ties.
-- **CPO context packs**: PageRank over the file graph, mandatory/optional token-budgeted packing, stable prefix hashes.
-- **RVS / CCA**: verification plan persisted, conservative confidence/abstention record; mandatory failures can never be accepted.
-- **Repair loop**: Watchman attempts a bounded repair (max 2) with full re-verification and signature-stall detection.
-- **Vault**: Obsidian-compatible markdown logs, blueprints, manifests, `.SYSTEM_INDEX.md`.
-- **Events/SSE**: replayable event IDs, snapshot fallback, heartbeat, bounded replay window.
-- **UI**: Overview, Agents (37), Runs, Run detail (Overview/Files/Checks/Routing/Context/Repairs/Confidence/Events), Vault, Settings, Learning.
+## Engineering highlights
 
-## Honest limitations
+These are the parts worth reviewing:
 
-- **Static verification only.** Generated code and generated tests are **not executed** by the product. No arbitrary shell, no generated-code execution.
-- **P7 learning is implemented but currently refused.** The loop, single-use 65-case suites, sealed pool, statistics, approval tokens, promotion/rollback, repair memory, and guard are implemented and unit-tested. This run has **0 complete sealed 65-case blocks and no active case-to-provider consent**, so `/api/learning/overview` reports `E_LEARNING_POOL_EXHAUSTED`, `npm.cmd run learn` exits 6, and the learning HTTP mutation routes refuse from the same state. No promotion is claimed.
-- **P7 data is operator-supplied, never seeded.** Use `npm.cmd run learning:admin -- consent status|grant|revoke <scope>` and `npm.cmd run learning:admin -- import-block <blockId> <cases.json>` with a real 65-case block and explicit consent. The server will still require a paired evaluation, a candidate, and a human approval token before promotion.
-- **Release stage manifests exist and are strict.** `config/releases/{a,p6a,p7}.json` allowlists are present; `assert-stage --stage=p7` passes with `fallback:false`. The current tree is B2; A/B1 runtime starts were not exercised.
-- **Finalize is a whole-tree directory swap with startup recovery.** Files are built in a sibling publish tree, then the old workspace is renamed aside and the complete tree is renamed into place; post-publish DB/vault/status failures restore the prior tree. The swap is not a database transaction, but interrupted renames are recovered at startup.
-- **P7 HTTP approval/promotion/rollback** are wired to the approval-token and promotion services; with no sealed pool/paired evaluation they refuse by name. They are not a live promotion service until real data and a human token exist.
-- **Wave 6 did not backfill historical rows.** The seven pre-fix failed/budget runs still have NULL cost/tokens; only runs created after the terminal-usage fix aggregate their usage. No paid live run was made during the Wave 6 batch.
-- **Desktop launcher is a Chrome app window, not a frameless native executable.** `HiveRouter.lnk` starts the server and opens Chrome with `--app`; it has no tabs or address bar and is sized to the screen, but Windows/Chrome still own the title-bar minimize/maximize/close controls. The layout is verified from 390×844 to 1920×1080 with no page-level horizontal overflow.
-- **Preflight port check** uses `--port 0` while the live server is running; the default 8787 check applies when starting a new instance.
-- The Vite bundle is a single ~650 KB chunk; functional, not code-split.
-- Rust/C++/PowerShell/CMD/Bash/Tailwind/Three.js/HTML are static-only or unverified where no parser is available; the UI says so.
-- The DeepSeek API is the only provider; no cloud DB, no multi-user auth, no MCP server, no fine-tuning.
+- **Deterministic routing.** Micro-USD DP allocation with a reserve, candidate rejection reasons, and constant normalizers so a cheap model cannot win merely because the per-task cost range was narrow.
+- **Truthful usage accounting.** Unknown provider usage commits the reservation with `null`; terminal rows distinguish measured from unmeasured spend. No backfilled fabrication.
+- **Atomic publish.** A complete tree is built beside the live workspace, then swapped; a DB/vault failure rolls back the publish rather than leaving a completed-looking half-tree.
+- **Idempotent chat.** Thread-scoped keys plus request-body hashes prevent a retry from duplicating answers across threads.
+- **Bounded static analysis.** Dominators and scorecards are read-only JSON endpoints with explicit limits and a real UI, not decorative cards.
+- **FTS5 without path traversal.** Search indexes only one terminal run’s published text files; it never accepts a caller-supplied path.
+- **Tests as a contract.** 419 unit/integration tests, 28 Playwright tests, stage allowlists, OpenAPI response pins, secret scan, and a stub sweep.
 
-## TestDrive
+---
 
-A live GUI+backend test drive is recorded in `docs/TESTDRIVE/`. The durable skill is:
+## What this is — and what it is not
 
-- `C:\Users\Riley\.agents\skills\testdrive\SKILL.md`
-- `C:\Users\Riley\.dsh\skills\testdrive\SKILL.md` (byte-identical)
+**This is:**
 
-TestDrive uses four skill-specific fixer seats, a CUA driver, a UI watchdog, a backend watchdog, a matcher, and a respawned fix wave. The completed 2026-11-03 run executed 8 cards: TD-02..TD-07 passed; TD-01 was UNVERIFIED on route-title evidence; TD-08 persistence was partially verified and the Lead restart proved all 15 runs persisted. Product fixes: unknown HTML routes now return 404, terminal run detail shows **Complete · snapshot** with no SSE, and JSON-repair attempts reserve per attempt. See `docs/TESTDRIVE/20261103T2100Z/SUMMARY.md`.
+- a local, single-user code factory;
+- a deterministic routing and verification pipeline;
+- an operator console over a persisted run ledger;
+- a showcase of failure-first engineering.
 
-## Trace
+**This is not:**
 
-The durable full-stack control tracer is `C:\Users\Riley\.agents\skills\trace\SKILL.md` (mirror `.dsh`, v1.1.0). It inventories every tab/control, follows render → handler → API → route → service → SQLite/vault/LLM → response → rendered state, and hands the exact broken hop to forge/forgewright. The 2026-11-03 campaign recorded in `docs/TRACE/20261103T2200Z/` covered 299 controls and fixed six defects: detail/list evidence drift, hardcoded routing candidates, ignored revision file scope, missing schema-valid evidence, unvalidated run enums, and the terminal Events tab hiding persisted events.
+- an autonomous tool-using agent runtime;
+- a Docker sandbox or remote execution platform;
+- a multi-user or cloud service;
+- a P7 promotion/evaluation system with data;
+- proof that generated code is correct or secure;
+- a replacement for human review.
 
-## Verification commands
+The 37 “agents” are **one-shot prompt personas** with declared output kinds and path globs. They are not separate tool-using processes.
 
-```cmd
-npm.cmd run typecheck
-npm.cmd test                  :: 330 tests / 53 files
-npm.cmd run build
-npm.cmd run e2e               :: 26 live Playwright tests, system Chrome
-npm.cmd run verify            :: typecheck + tests + build + stub/secret sweeps
+---
+
+## Quick start
+
+### Requirements
+
+- Node.js **26.7.x**
+- npm **11.19.x**
+- A DeepSeek API key for live generation
+- Windows: use `npm.cmd` (the PowerShell shim is blocked by execution policy)
+
+```bash
+git clone https://github.com/RodneyDanger1/HiveRouter.git
+cd HiveRouter
+npm ci
+```
+
+Create `.env.local` from `.env.example` and set your key locally:
+
+```dotenv
+DEEPSEEK_API_KEY=your-key
+DEEPSEEK_BASE_URL=https://api.deepseek.com
+DEFAULT_MODEL=deepseek-flash
+HOST=127.0.0.1
+PORT=8787
+HIVE_PHASE=B2
+MAX_RUN_COST_USD=0.50
+```
+
+Never commit `.env.local`. The key is read server-side only; the browser never receives it.
+
+```bash
+npm run build
+npm start
+# open http://127.0.0.1:8787
+```
+
+The SQLite database, workspaces, and vault live under `data/`, `workspace/`, and `vault/` (all ignored by Git).
+
+### First-run checks
+
+```bash
+npm run typecheck
+npm test
+npm run build
+npm run e2e
+npm run preflight -- --port 0 --json
+npm run assert-stage -- --stage=p7 --json
+```
+
+---
+
+## Verification
+
+| Gate | Observed |
+|---|---|
+| Unit / integration | `npm.cmd test` — **419 tests / 63 files** |
+| Typecheck / build | `npm.cmd run verify` — **exit 0** |
+| Browser E2E | `npm.cmd run e2e` — **28 / 28 passed** |
+| Stage allowlist | **192 files / 50 tables / 60 routes / 24 scripts**, violations `[]` |
+| Preflight | **PASS** — free RAM 1.55 GB, disk 7.79 GB, Chrome/Node/npm/port |
+| Stub sweep | clean (101 files) |
+| Secret scan | clean (190 files) |
+
+Reproduce:
+
+```bash
+npm.cmd run verify
+npm.cmd run e2e
 npm.cmd run assert-stage -- --stage=p7 --json
 npm.cmd run preflight -- --port 0 --json
-npm.cmd run bench -- --json
-npm.cmd run integrity -- --run <runId> --json
-npm.cmd run replay -- --run <runId> --json
-npm.cmd run key:import -- --status
-npm.cmd run test:live -- --yes
-npm.cmd run learn -- --json  :: expected exit 6: E_LEARNING_POOL_EXHAUSTED
-npm.cmd run learning:admin -- consent status
-npm.cmd run learning:admin -- consent grant case_to_provider_eval
-npm.cmd run learning:admin -- import-block <blockId> <cases.json>
 ```
 
-Evidence is under `docs/verification/` (live smoke JSON, UI screenshots), `docs/UI-WAVE-1/` (live UI/visual audit, 40+ screenshots, findings and backend receipts), `docs/QA-WAVE-1/` (independent 8-seat QA wave, six fixer receipts, auditor NO-GO notes and systems-validator matrix), and `docs/PLAN-AUDIT/` (the plan audit reports that produced `docs/PLAN-v3.md`).
+No paid live call is required for the normal test suite. `test:live` is opt-in and budget-capped.
+
+---
+
+## Useful commands
+
+| Command | Purpose |
+|---|---|
+| `npm run dev` | Server + Vite dev server |
+| `npm start` | Serve the built app and API |
+| `npm test` | Unit/integration tests |
+| `npm run e2e` | Playwright browser suite |
+| `npm run verify` | Typecheck + tests + build + stub/secret sweeps |
+| `npm run assert-stage -- --stage=p7 --json` | Release allowlist gate |
+| `npm run preflight -- --port 0 --json` | Host/runtime preflight |
+| `npm run bench -- --mock` | Mock benchmark |
+| `npm run eval:router -- --fixture` | Router evaluation fixture |
+| `npm run repo-map -- --run <id>` | Run repository map |
+| `npm run context:report -- --run <id>` | Context pack report |
+| `npm run integrity -- --run <id>` | Artifact integrity check |
+| `npm run learn -- --dataset <f> --candidate <f>` | P7 learning command (refuses without data/consent) |
+
+API docs: `http://127.0.0.1:8787/api/docs`  
+OpenAPI: `http://127.0.0.1:8787/openapi.json`
+
+---
+
+## Selected API surface
+
+| Method | Path | Notes |
+|---|---|---|
+| `GET` | `/api/health` | Phase, DB, key presence, workspace |
+| `GET` | `/api/runs` | Server-filtered run ledger |
+| `GET` | `/api/runs/:id/snapshot` | Run, steps, checks, artifacts |
+| `GET` | `/api/runs/:id/events` | Persisted event ledger |
+| `POST` | `/api/runs/:id/search` | Bounded FTS5 search over published files |
+| `GET` | `/api/analysis` | Self-described static-analysis capabilities |
+| `POST` | `/api/analysis/dominators` | File-level dominance/risk |
+| `POST` | `/api/analysis/scorecards` | Specialist disagreement hint |
+| `GET` | `/api/learning/overview` | Truthful refusal when no sealed pool/consent |
+| `POST` | `/api/chat/threads/:id/messages` | Idempotent multi-agent fan-out |
+
+All mutation boundaries validate input and return named `E_*` refusals with actionable hints.
+
+---
 
 ## Repository map
 
+```text
+src/server/        Fastify API, run pipeline, ledger, verification, routing, chat, search
+src/shared/        Shared contracts, run events, refusals, algorithms
+web/src/           React operator console
+test/              Vitest unit/integration tests
+e2e/               Playwright browser tests
+docs/              Architecture, capability matrix, stop-work flaws, plan, provenance
+scripts/           Preflight, stage gate, sweeps, reports, CLI utilities
+config/releases/   A / B1 / B2 allowlists
+docs/screenshots/  README screenshots
 ```
-src/shared/            contracts, refusals, feature phase
-src/server/            Fastify app, DB, LLM client, agents, pipeline, routing, context, quality, retry, repair, learning, security, vault, verify, runs
-web/                   React UI (built to web/dist)
-scripts/               CLI gates, bench, replay, integrity, repo map, learning report
-test/                  unit/integration tests (330)
-e2e/                   live Playwright UI tests
-config/releases/       stage allowlists
-docs/PLAN-v3.md        authoritative build plan
-docs/PLAN-AUDIT/       independent plan audit reports
-```
 
-## Error and crash logs
+Key documents:
 
-Server failures are written to `data/logs/errors.jsonl` as redacted `hive.error.v1` records (source, code, message, runId, route, stack, context). Fatal crash text is also appended to `data/logs/crash.log`. Logging is best-effort: an unavailable log directory never fails a request or run. Runs are bounded by `RUN_TIMEOUT_MS` (default 30 minutes, 1s–24h); timeout records `E_RUN_TIMEOUT` with status `failed`.
+- [Architecture](docs/ARCHITECTURE.md)
+- [Capability matrix](docs/CAPABILITY-MATRIX.md)
+- [Stop-work flaws](docs/STOP-WORK-FLAWS.md)
+- [Plan](docs/PLAN-v3.md)
+- [Provenance](docs/PROVENANCE.md)
 
-## Security
+---
 
-- Loopback-only server; Host/Origin allowlists; JSON content type on mutations; restrictive CSP; no cookies.
-- No provider-key HTTP route; key never sent to the browser; redaction at logs, events, artifacts, vault, zips, and CLI envelopes.
-- Workspace sandbox: canonical paths, reserved-name/ADS/symlink checks, atomic writes, no writes outside `workspace/` and `vault/`.
-- Budget ledger with reservations, per-run/eval/cycle caps, 20% repair reserve; no unbounded spend.
-- No arbitrary shell; no generated-code execution; no auto-promotion.
+## Status and roadmap
 
-## Cost
+**Current:** local B2 build; deterministic routing, static verification, run ledger, chat, analysis, and run search are implemented and tested. Preflight passes on this host.
 
-Default per-run cap **$0.50**; evaluator cap **$3.00**; learning cycle cap **$4.50**. The live runs recorded in `docs/verification/` cost a few cents each. Prices are estimated from the official DeepSeek price table and the current UTC peak/off-peak window; usage fields are provider-reported where present.
+**Not implemented yet:**
+
+- external repository indexing and read-only repo tools;
+- a DeepSeek tool-call loop and tool allowlists;
+- a P7 evaluator with a sealed case pool and consent;
+- resume/checkpoints and bounded parallel generation;
+- approval/`needs_review` flow;
+- patch/compaction/isolation-branch wiring into the run pipeline;
+- weighted CPM and full context projection provenance.
+
+These are listed as unfinished on purpose. The capability matrix distinguishes **works**, **API only**, **module only**, and **absent**; it does not turn a stub into a feature.
+
+---
+
+## Safety posture
+
+- No generated code execution.
+- No shell tool.
+- No provider key in the browser or logs.
+- No auto-promotion.
+- No historical spend fabrication.
+- No arbitrary path from a search or analysis request.
+- Local-only HTTP surface by default (`127.0.0.1`).
+
+---
+
+## Notes
+
+HiveRouter is an independent local project. It is not affiliated with the U.S. Government, the National Design Studio, or DeepSeek. Product names are used descriptively.
+
+If you are reviewing this as a portfolio project, start with:
+
+1. `docs/STOP-WORK-FLAWS.md` — what was wrong and what remains wrong.
+2. `src/server/runs/recorder.ts` — ledger and terminal truth.
+3. `src/server/pipeline/run.ts` — pipeline, staging, and atomic publish.
+4. `src/server/verify/` — static verification boundaries.
+5. `test/unit/p0-truth.test.ts` — the pins behind the truth claims.

@@ -377,7 +377,7 @@ export const RISK_HINT_WEIGHTS: Readonly<Record<string, number>> = {
 };
 
 export const RISK_PATH_WEIGHTS: ReadonlyArray<readonly [RegExp, number]> = [
-  [/(^|\/)(auth|session|login|password|secret|token)(\/|\.|$)/i, 0.35],
+  [/(^|\/)(auth|session|login|password|secret|token)(\/|\.|$)/i, 0.45],
   [/(^|\/)(migrations?|schema|db|database)(\/|\.|$)/i, 0.25],
   [/(^|\/)(Dockerfile|docker-compose|\.github\/workflows)/i, 0.2],
   [/\.(ps1|cmd|bat|sh)$/i, 0.3],

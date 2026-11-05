@@ -72,7 +72,9 @@ CREATE TABLE IF NOT EXISTS artifacts (
   revised_from TEXT,
   created_at TEXT NOT NULL,
   redaction_status TEXT NOT NULL DEFAULT 'clean',
-  redactor_version TEXT NOT NULL
+  redactor_version TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'accepted',
+  mime TEXT
 );
 CREATE INDEX IF NOT EXISTS ix_artifacts_run ON artifacts(run_id, path);
 
@@ -621,6 +623,7 @@ CREATE TABLE IF NOT EXISTS chat_messages (
   error_code TEXT,
   error_message TEXT,
   request_key TEXT UNIQUE,
+  request_hash TEXT,
   created_at TEXT NOT NULL,
   updated_at TEXT NOT NULL,
   UNIQUE(thread_id, seq)
@@ -665,3 +668,21 @@ CREATE TABLE IF NOT EXISTS chat_events (
 );
 CREATE INDEX IF NOT EXISTS ix_chat_events_thread ON chat_events(thread_id, seq);
 `;
+
+/**
+ * Derived, bounded full-text index over a terminal run's published workspace.
+ * The ordinary table owns the identity/path and the FTS5 table owns the text.
+ * The index is a cache: it can be deleted and rebuilt without changing a run.
+ */
+export const SEARCH_SQL = `
+CREATE TABLE IF NOT EXISTS run_search_docs (
+  id INTEGER PRIMARY KEY,
+  run_id TEXT NOT NULL,
+  path TEXT NOT NULL,
+  content TEXT NOT NULL,
+  UNIQUE(run_id, path)
+);
+CREATE INDEX IF NOT EXISTS ix_run_search_docs_run ON run_search_docs(run_id);
+CREATE VIRTUAL TABLE IF NOT EXISTS run_search_fts USING fts5(content, tokenize='trigram');
+`;
+

@@ -120,6 +120,44 @@ describe('CPO', () => {
     }
   });
 
+  it('converges on a realistic 24-node dependency chain', () => {
+    const nodes = Array.from({ length: 24 }, (_, index) => `f${index}`);
+    const edges = nodes.slice(0, -1).map((node, index) => [node, nodes[index + 1]] as [string, string]);
+    const ranked = pageRank(nodes, edges);
+    expect(ranked.converged).toBe(true);
+    expect(ranked.ranks.f23).toBeGreaterThan(ranked.ranks.f0);
+  });
+
+  it('uses one-token packing granularity instead of dropping sub-1k items', () => {
+    const pack = packContext({
+      taskId: 'granularity',
+      maxTokens: 1500,
+      prefix,
+      mandatory: [item({ id: 'system', kind: 'system', text: 'system', mandatory: true, tokens: 1001 })],
+      optional: [
+        item({ id: 'o1', kind: 'dependency', text: 'a', tokens: 100 }),
+        item({ id: 'o2', kind: 'dependency', text: 'b', tokens: 100 }),
+        item({ id: 'o3', kind: 'dependency', text: 'c', tokens: 100 }),
+      ],
+    });
+    expect(pack.ok).toBe(true);
+    expect(pack.items.map((entry) => entry.id)).toEqual(expect.arrayContaining(['o1', 'o2', 'o3']));
+    expect(pack.estimatedTokens).toBeLessThanOrEqual(1500);
+  });
+
+  it('does not estimate CJK text at four characters per token', () => {
+    const cjk = '中'.repeat(4000);
+    const pack = packContext({
+      taskId: 'cjk',
+      maxTokens: 20_000,
+      prefix,
+      mandatory: [],
+      optional: [item({ id: 'cjk', kind: 'dependency', text: cjk })],
+    });
+    expect(pack.ok).toBe(true);
+    expect(pack.estimatedTokens).toBeGreaterThanOrEqual(4000);
+  });
+
   it('excludes duplicate and over-budget optional items with reasons', () => {
     const pack = packContext({
       taskId: 'task-1',

@@ -190,6 +190,7 @@ export interface ReviewResult {
   findings: Array<{
     severity: 'info' | 'warn' | 'critical';
     file: string;
+    line?: number;
     issue: string;
     fix: string;
   }>;
@@ -312,6 +313,9 @@ export interface ArtifactRecord {
   createdAt: string;
   redactionStatus: 'clean' | 'redacted' | 'blocked';
   redactorVersion: string;
+  /** `staged` artifacts are retained evidence from a failed/unpublished run. */
+  status: 'accepted' | 'staged';
+  mime: string | null;
 }
 
 export interface RunEvent {
@@ -340,7 +344,15 @@ export type ApiEnvelope<T> =
 export interface RunStats {
   agentCount: number;
   runCount: number;
-  totalPromptTokens: number;
-  totalCompletionTokens: number;
+  /** Honest totals: null when at least one usage row is unknown. */
+  totalPromptTokens: number | null;
+  totalCompletionTokens: number | null;
   totalCostUsd: number | null;
+  /** Measured portions remain visible even when totals are partial. */
+  measuredPromptTokens: number;
+  measuredCompletionTokens: number;
+  measuredCostUsd: number;
+  chatCostUsd: number | null;
+  unknownUsageRows: number;
+  partial: boolean;
 }

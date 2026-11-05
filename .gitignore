@@ -14,5 +14,6 @@ data/
 workspace/
 vault/
 *.log
+logs/server-v10.out
 .DS_Store
 Thumbs.db

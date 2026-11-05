@@ -277,13 +277,12 @@ function buildOptions(
 
   if (raw.length === 0) return { options: [], contextRejected, riskRejected };
 
-  const minCost = Math.min(...raw.map((row) => row.rawCostUsd));
-  const maxCost = Math.max(...raw.map((row) => row.rawCostUsd));
-  const minLatency = Math.min(...raw.map((row) => row.rawLatencyMs));
-  const maxLatency = Math.max(...raw.map((row) => row.rawLatencyMs));
   const options = raw.map(({ option }) => {
-    const costNorm = maxCost === minCost ? 0 : (option.costUsd - minCost) / (maxCost - minCost);
-    const latencyNorm = maxLatency === minLatency ? 0 : (option.latencyMs - minLatency) / (maxLatency - minLatency);
+    // Use the policy's constant normalizers. Per-task min-max normalization
+    // collapses small cost differences into a full 0..1 range and lets the
+    // cheapest model dominate regardless of budget.
+    const costNorm = clamp(option.costUsd / Math.max(1e-9, policy.weights.costNormUsd), 0, 1);
+    const latencyNorm = clamp(option.latencyMs / Math.max(1, policy.weights.latencyNormMs), 0, 1);
     const score =
       option.quality * policy.weights.qualityWeight * (1 + policy.weights.criticalPathFactor * option.criticalPath) -
       policy.weights.wC * costNorm -

@@ -4,7 +4,8 @@ test.describe('@ui-audit live chat projection', () => {
   test('creates a durable conversation and renders the projected fields without a fake message', async ({ page }) => {
     const pageErrors: string[] = [];
     page.on('pageerror', (error) => pageErrors.push(error.message));
-    await page.goto('/chat');
+    const response = await page.goto('/chat');
+    expect(response?.status()).toBe(200);
     await expect(page.getByRole('heading', { name: 'Chat', exact: true })).toBeVisible();
     await expect(page.getByText(/Durable threads; each selected agent answer runs as a job/)).toBeVisible();
 

@@ -26,11 +26,12 @@ test.afterEach(() => {
 });
 
 test.describe('@ui-audit routes and visible contract', () => {
-  test('all seven routes render a heading, console-clean', async ({ page }) => {
+  test('all routed pages render a heading, console-clean', async ({ page }) => {
     const routes: Array<[string, RegExp, string]> = [
       ['/', /HiveRouter|routed factory|Start a run/i, 'overview'],
       ['/agents', /Agents/i, 'agents'],
       ['/runs', /Runs/i, 'runs'],
+      ['/analysis', /Analysis/i, 'analysis'],
       ['/vault', /Vault/i, 'vault'],
       ['/settings', /Settings/i, 'settings'],
       ['/learning', /Learning/i, 'learning'],
@@ -45,6 +46,29 @@ test.describe('@ui-audit routes and visible contract', () => {
     await page.goto('/does-not-exist');
     await expect(page.getByText(/not found|404/i).first()).toBeVisible();
     await shot(page, 'route-not-found');
+  });
+
+  test('analysis page drives the bounded static endpoints and shows real results', async ({ page }) => {
+    await page.goto('/analysis');
+    await expect(page.getByRole('heading', { name: 'Analysis', exact: true })).toBeVisible();
+    await expect(page.getByText(/not a control-flow graph/i)).toBeVisible();
+
+    await page.getByLabel(/Root file/i).fill('src/app.ts');
+    await page.getByLabel(/Edges, one per line/i).fill('src/app.ts -> src/api.ts\nsrc/api.ts -> src/store.ts');
+    await page.getByRole('button', { name: /Analyze graph/i }).click();
+    await expect(page.getByText('src/api.ts', { exact: true })).toBeVisible();
+    await expect(page.getByText('src/store.ts', { exact: true })).toBeVisible();
+    await expect(page.getByText('Static only')).toBeVisible();
+    await shot(page, 'analysis-dominators');
+
+    for (const specialist of ['Architect', 'Risk auditor', 'Testability engineer', 'Clarity editor']) {
+      await page.getByLabel(`${specialist} evidence references`).fill(`src/app.ts:1 (${specialist})`);
+    }
+    await page.getByRole('button', { name: /Evaluate disagreement/i }).click();
+    await expect(page.getByText(/No debate trigger/i)).toBeVisible();
+    await expect(page.getByText(/not a quality certificate/i)).toBeVisible();
+    await shot(page, 'analysis-scorecards');
+    await noSecret(page);
   });
 
   test('overview composer exposes every control and never submits in this audit', async ({ page }) => {
@@ -147,7 +171,7 @@ test.describe('@ui-audit run detail contract', () => {
     expect(streamRequests, 'a terminal run must not open an SSE stream').toHaveLength(0);
     await shot(page, 'run-detail-overview');
 
-    for (const tab of ['Overview', 'Files', 'Checks', 'Routing', 'Context', 'Repairs', 'Confidence', 'Events']) {
+    for (const tab of ['Overview', 'Files', 'Search', 'Checks', 'Routing', 'Context', 'Repairs', 'Confidence', 'Events']) {
       const tabButton = page.getByRole('tab', { name: new RegExp(`^${tab}$`, 'i') }).first();
       await expect(tabButton).toBeVisible();
       await tabButton.click();
@@ -155,6 +179,24 @@ test.describe('@ui-audit run detail contract', () => {
       await page.waitForTimeout(120);
       await shot(page, `run-detail-${tab.toLowerCase()}`);
     }
+
+    await page.getByRole('tab', { name: /^Search$/i }).click();
+    const filesResponse = await request.get(`/api/runs/${runId}/files`);
+    const filesBody = (await filesResponse.json()) as { artifacts?: Array<{ path: string }> };
+    let searchTerm = 'function';
+    if (filesBody.artifacts?.[0]?.path) {
+      const contentResponse = await request.get(
+        `/api/runs/${runId}/files/content?path=${encodeURIComponent(filesBody.artifacts[0].path)}`,
+      );
+      if (contentResponse.ok()) {
+        const text = await contentResponse.text();
+        searchTerm = /[A-Za-z]{8,}/.exec(text)?.[0] ?? searchTerm;
+      }
+    }
+    await page.getByLabel(/Search terms/i).fill(searchTerm);
+    await page.getByRole('button', { name: /^Search$/i }).click();
+    await expect(page.getByText(/file[s]? indexed/i)).toBeVisible({ timeout: 10_000 });
+    await shot(page, 'run-detail-search');
 
     await page.getByRole('tab', { name: /^Files$/i }).click();
     const firstFile = page.locator('.vault-row').first();

@@ -3,11 +3,12 @@ import crypto from 'node:crypto';
 import { getDb, nowIso } from '../db/database.js';
 import { config } from '../config.js';
 import { redactValue } from '../security/redact.js';
-import { RunTransitionError, assertStatusTransition, isTerminalStatus } from '../logic/run-state.js';
+import { RunTransitionError, assertPhaseTransition, assertStatusTransition, isTerminalStatus } from '../logic/run-state.js';
 import type {
   ArtifactRecord,
   CheckResult,
   RunEvent,
+  RunPhase,
   RunRecord,
   RunStatus,
   StepRecord,
@@ -171,6 +172,16 @@ export function updateRun(runId: string, patch: Partial<{
       ) {
         throw new RunTransitionError('phase', currentPhase, patch.phase ?? currentPhase, runId);
       }
+      // Terminal writes are allowed to close from any phase (done is the only
+      // terminal phase). Non-terminal writes must follow the real writer map.
+      if (
+        !isTerminalStatus(currentStatus) &&
+        !isTerminalStatus(nextStatus) &&
+        patch.phase !== undefined &&
+        patch.phase !== currentPhase
+      ) {
+        assertPhaseTransition(currentPhase as RunPhase, patch.phase as RunPhase, runId);
+      }
     }
   }
   const sql = `UPDATE runs SET ${entries.map(([k]) => `${k} = ?`).join(', ')} WHERE id = ?${
@@ -259,6 +270,7 @@ export function finishStep(
   usage?: UsageRecord,
   error?: { code?: string; message?: string },
 ): void {
+  const knownUsage = usage && usage.source !== 'unknown' ? usage : undefined;
   getDb()
     .prepare(
       `UPDATE steps SET status = ?, finished_at = ?, output_summary = ?, error_code = ?, error_message = ?,
@@ -270,9 +282,9 @@ export function finishStep(
       outputSummary.slice(0, 2000),
       error?.code ?? null,
       error?.message ?? null,
-      usage?.promptTokens ?? null,
-      usage?.completionTokens ?? null,
-      usage?.costUsd ?? null,
+      knownUsage?.promptTokens ?? null,
+      knownUsage?.completionTokens ?? null,
+      knownUsage?.costUsd ?? null,
       stepId,
     );
 }
@@ -288,6 +300,8 @@ export function insertArtifact(input: {
   revisedFrom?: string | null;
   redactionStatus?: ArtifactRecord['redactionStatus'];
   redactorVersion: string;
+  status?: ArtifactRecord['status'];
+  mime?: string | null;
 }): ArtifactRecord {
   const record: ArtifactRecord = {
     id: id('art'),
@@ -302,11 +316,13 @@ export function insertArtifact(input: {
     createdAt: nowIso(),
     redactionStatus: input.redactionStatus ?? 'clean',
     redactorVersion: input.redactorVersion,
+    status: input.status ?? 'accepted',
+    mime: input.mime ?? null,
   };
   getDb()
     .prepare(
-      `INSERT INTO artifacts (id, run_id, path, kind, language, sha256, bytes, agent_id, revised_from, created_at, redaction_status, redactor_version)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO artifacts (id, run_id, path, kind, language, sha256, bytes, agent_id, revised_from, created_at, redaction_status, redactor_version, status, mime)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     )
     .run(
       record.id,
@@ -321,6 +337,8 @@ export function insertArtifact(input: {
       record.createdAt,
       record.redactionStatus,
       record.redactorVersion,
+      record.status,
+      record.mime,
     );
   return record;
 }
@@ -340,6 +358,8 @@ export function getArtifacts(runId: string): ArtifactRecord[] {
     createdAt: String(row.created_at),
     redactionStatus: String(row.redaction_status) as ArtifactRecord['redactionStatus'],
     redactorVersion: String(row.redactor_version),
+    status: (row.status === 'staged' ? 'staged' : 'accepted') as ArtifactRecord['status'],
+    mime: (row.mime as string | null) ?? null,
   }));
 }
 

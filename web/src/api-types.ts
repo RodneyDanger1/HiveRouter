@@ -76,6 +76,76 @@ export interface RunListResponse {
   total?: number;
 }
 
+export interface AnalysisCapabilities {
+  schema: string;
+  operations: string[];
+  limits: { nodes: number; edges: number; maxIterations: number; scorecards: number };
+  semantics: { dominators: string; scorecards: string };
+}
+
+export interface DominatorEdge {
+  from: string;
+  to: string;
+}
+
+export interface DominatorAnalysisView {
+  analysis: string;
+  kind: string;
+  dynamic: boolean;
+  cfg: boolean;
+  root: string;
+  nodes: string[];
+  edgeCount: number;
+  reachable: string[];
+  unreachable: string[];
+  dominators: Record<string, string[]>;
+  dominatedCounts: Record<string, number>;
+  risk: Record<string, number>;
+  overallRisk: number;
+  iterations: number;
+  maxIterations: number;
+  truncated: boolean;
+}
+
+export interface ScorecardInputView {
+  specialist: 'architect' | 'risk-auditor' | 'testability-engineer' | 'clarity-editor';
+  architecture: number;
+  risk: number;
+  testability: number;
+  clarity: number;
+  evidenceRefs: string[];
+}
+
+export interface ScorecardResultView {
+  variance: number;
+  needsDebate: boolean;
+  missing: string[];
+  scorecards: ScorecardInputView[];
+}
+
+export interface AnalysisErrorView {
+  code: string;
+  message: string;
+  hint?: string;
+  details?: unknown;
+}
+
+export interface RunSearchMatch {
+  path: string;
+  snippet: string;
+  score: number;
+}
+
+export interface RunSearchResponse {
+  ok: boolean;
+  runId: string;
+  query: string;
+  matches: RunSearchMatch[];
+  indexedFiles: number;
+  indexed: boolean;
+  truncated: boolean;
+}
+
 export interface StartRunInput {
   brief: string;
   preset: string;

@@ -24,7 +24,7 @@ export interface PageRankResult {
 }
 
 const DAMPING = 0.85;
-const MAX_ITERATIONS = 50;
+const MAX_ITERATIONS = 200;
 const DELTA = 1e-9;
 const KIND_WEIGHTS: Record<ContextItem['kind'], number> = {
   system: 1,
@@ -37,8 +37,13 @@ const KIND_WEIGHTS: Record<ContextItem['kind'], number> = {
   outline: 0.5,
 };
 
+function estimateTextTokens(text: string): number {
+  const cjk = (text.match(/[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\u3040-\u30ff\uac00-\ud7af]/g) ?? []).length;
+  return Math.max(1, Math.ceil(text.length / 4), cjk);
+}
+
 function estimateItemTokens(item: ContextItem): number {
-  return item.tokens ?? Math.max(1, Math.ceil(item.text.length / 4));
+  return item.tokens ?? estimateTextTokens(item.text);
 }
 
 export function pageRank(
@@ -129,7 +134,7 @@ export function packContext(raw: unknown): ContextPack {
   const request = ContextRequestSchema.parse(raw) as ContextRequest;
   const prefixText = `${request.prefix.system}\n${request.prefix.briefDigest}\n${request.prefix.planSummary}`;
   const prefixHash = sha256Hex(prefixText);
-  const prefixTokens = Math.max(1, Math.ceil(prefixText.length / 4));
+  const prefixTokens = estimateTextTokens(prefixText);
   const pageRankResult = request.graph
     ? pageRank(request.graph.nodes, request.graph.edges)
     : { ranks: {}, incoming: {}, converged: true, iterations: 0 };
@@ -174,14 +179,14 @@ export function packContext(raw: unknown): ContextPack {
       continue;
     }
     const tokens = estimateItemTokens(item);
-    const units = Math.ceil(tokens / 1000);
+    const units = tokens;
     const rank = item.path ? pageRankResult.ranks[item.path] ?? 0 : 0;
     const incoming = item.path ? pageRankResult.incoming[item.path] ?? 0 : 0;
-    const importance = item.importance ?? rank + 0.5 * incoming + 0.25 * item.criticality;
+    const importance = Math.max(0.01, item.importance ?? rank + 0.5 * incoming + 0.25 * item.criticality);
     optional.push({ item, tokens, units, value: importance * KIND_WEIGHTS[item.kind] });
   }
 
-  const capacityUnits = Math.floor((request.maxTokens - mandatoryTokens) / 1000);
+  const capacityUnits = Math.max(0, request.maxTokens - mandatoryTokens);
   const ordered = optional.slice().sort((a, b) => a.item.id.localeCompare(b.item.id));
   const dp = new Float64Array(capacityUnits + 1).fill(Number.NEGATIVE_INFINITY);
   dp[0] = 0;
@@ -227,7 +232,7 @@ export function packContext(raw: unknown): ContextPack {
     if (!selectedIds.has(entry.item.id)) excluded.push({ id: entry.item.id, reason: 'low-importance' });
   }
   for (const entry of ordered) {
-    if (entry.units > capacityUnits) {
+    if (entry.tokens > capacityUnits) {
       const index = excluded.findIndex((row) => row.id === entry.item.id && row.reason === 'low-importance');
       if (index >= 0) excluded[index] = { id: entry.item.id, reason: 'over-budget' };
     }

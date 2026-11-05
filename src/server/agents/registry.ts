@@ -816,6 +816,7 @@ export const ReviewSchema = z.object({
   findings: z.array(z.object({
     severity: z.enum(['info', 'warn', 'critical']),
     file: z.string(),
+    line: z.number().int().positive().optional(),
     issue: z.string(),
     fix: z.string(),
   })).default([]),

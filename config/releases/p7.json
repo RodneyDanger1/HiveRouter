@@ -22,7 +22,7 @@
     "consent_records", "traces", "repair_memory", "variants", "sealed_pool_blocks", "sealed_pool",
     "eval_suites", "eval_cases", "suite_uses", "eval_runs", "eval_results", "approval_tokens",
     "promotions", "post_promotion_monitor", "learning_jobs", "learning_audit", "feedback", "user_edits",
-    "chat_threads", "chat_messages", "chat_jobs", "chat_events"
+    "chat_threads", "chat_messages", "chat_jobs", "chat_events", "run_search_docs"
   ],
   "routes": [
     "/api/health", "/api/meta", "/api/settings", "/api/settings/key", "/api/settings/key-status", "/api/agents",
@@ -30,10 +30,10 @@
     "/api/runs", "/api/runs/active", "/api/runs/:id", "/api/runs/:id/snapshot",
     "/api/runs/:id/events", "/api/runs/:id/stream", "/api/runs/:id/cancel",
     "/api/runs/:id/files", "/api/runs/:id/files/content", "/api/runs/:id/download",
-    "/api/runs/:id/open-folder", "/api/runs/:id/revise",
+    "/api/runs/:id/search", "/api/runs/:id/open-folder", "/api/runs/:id/revise",
     "/api/runs/:id/routing", "/api/runs/:id/context", "/api/runs/:id/failures",
     "/api/runs/:id/checks", "/api/runs/:id/retries", "/api/runs/:id/confidence",
-    "/api/stats", "/api/stats/router", "/api/ops/reports/:kind", "/api/ops/system", "/api/scripts",
+    "/api/stats", "/api/stats/router", "/api/analysis", "/api/analysis/dominators", "/api/analysis/scorecards", "/api/ops/reports/:kind", "/api/ops/system", "/api/scripts", "/analysis",
     "/api/scripts/:id/dry-run", "/api/prompt/analyze", "/api/learning/overview", "/api/learning/:kind",
     "/api/learning/approvals", "/api/learning/promotions", "/api/learning/rollback",
     "/api/chat/threads", "/api/chat/threads/:id", "/api/chat/threads/:id/messages",
@@ -41,7 +41,7 @@
     "/api/vault/tree", "/api/vault/file", "/openapi.json",
     "/agents", "/chat", "/learning", "/runs", "/runs/:runId", "/settings", "/vault"
   ],
-  "uiRoutes": ["/", "/agents", "/chat", "/runs", "/runs/:id", "/vault", "/settings", "/learning"],
+  "uiRoutes": ["/", "/agents", "/chat", "/runs", "/runs/:id", "/analysis", "/vault", "/settings", "/learning"],
   "scripts": [
     "dev", "dev:server", "dev:web", "build", "start", "typecheck", "test", "test:watch", "e2e",
     "preflight", "stub-sweep", "secret-scan", "assert-stage", "verify", "bench", "eval:router",

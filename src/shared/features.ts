@@ -1,6 +1,10 @@
 import { z } from 'zod';
 
-export const PHASE = z.enum(['A', 'B1', 'B2']).parse(process.env.HIVE_PHASE ?? 'B2');
+const rawPhase = process.env.HIVE_PHASE;
+if (!rawPhase) {
+  throw new Error('E_PHASE_REQUIRED: HIVE_PHASE must be explicitly set to A, B1, or B2');
+}
+export const PHASE = z.enum(['A', 'B1', 'B2']).parse(rawPhase);
 export type Phase = 'A' | 'B1' | 'B2';
 
 export const FEATURES = {

@@ -5,10 +5,13 @@ import type { ChatSendResult, ChatThreadList, ChatThreadProjection, ChatThreadSn
 import type {
   AgentRunInput,
   AgentView,
+  AnalysisCapabilities,
   ApprovalRequest,
   ApprovalResponse,
   ConfidenceView,
   ContextView,
+  DominatorAnalysisView,
+  DominatorEdge,
   FailuresView,
   HealthResponse,
   KeyStatusResponse,
@@ -20,8 +23,11 @@ import type {
   RetriesView,
   RoutingView,
   RunListResponse,
+  RunSearchResponse,
   RunSnapshotView,
   RunStreamEvent,
+  ScorecardInputView,
+  ScorecardResultView,
   StartRunInput,
   StartRunResponse,
   VaultNode,
@@ -445,6 +451,19 @@ export async function getFileContent(runId: string, path: string, signal?: Abort
   );
 }
 
+export async function searchRun(
+  runId: string,
+  query: string,
+  limit = 20,
+  signal?: AbortSignal,
+): Promise<RunSearchResponse> {
+  return request<RunSearchResponse>(`/runs/${encodeURIComponent(runId)}/search`, {
+    method: 'POST',
+    body: { query, limit },
+    signal,
+  });
+}
+
 export async function listAgents(signal?: AbortSignal): Promise<AgentView[]> {
   const payload = await request<unknown>('/agents', { signal });
   return listFrom<AgentView>(payload, ['agents', 'items', 'data']);
@@ -567,6 +586,34 @@ export async function getVaultTree(signal?: AbortSignal): Promise<VaultNode[]> {
 
 export async function getVaultFile(path: string, signal?: AbortSignal): Promise<string> {
   return requestText(`/vault/file?path=${encodeURIComponent(path)}`, signal);
+}
+
+export async function getAnalysisCapabilities(signal?: AbortSignal): Promise<AnalysisCapabilities> {
+  return request<AnalysisCapabilities>('/analysis', { signal });
+}
+
+export async function analyzeDominators(
+  input: { root: string; edges: DominatorEdge[] },
+  signal?: AbortSignal,
+): Promise<DominatorAnalysisView> {
+  const payload = await request<{ ok: boolean; analysis: DominatorAnalysisView }>('/analysis/dominators', {
+    method: 'POST',
+    body: input,
+    signal,
+  });
+  return payload.analysis;
+}
+
+export async function evaluateScorecards(
+  input: { scorecards: ScorecardInputView[]; threshold?: number },
+  signal?: AbortSignal,
+): Promise<ScorecardResultView> {
+  const payload = await request<{ ok: boolean; result: ScorecardResultView }>('/analysis/scorecards', {
+    method: 'POST',
+    body: input,
+    signal,
+  });
+  return payload.result;
 }
 
 export function agentBadgeLabel(badge: string): string {

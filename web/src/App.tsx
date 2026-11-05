@@ -4,6 +4,7 @@ import { AppShell } from './components/AppShell';
 import { UiContext } from './context';
 import { useApiResource } from './hooks/useApi';
 import { AgentsPage } from './pages/AgentsPage';
+import { AnalysisPage } from './pages/AnalysisPage';
 import { ChatPage } from './pages/ChatPage';
 import { LearningPage } from './pages/LearningPage';
 import { NotFoundPage } from './pages/NotFoundPage';
@@ -36,6 +37,7 @@ export default function App() {
             <Route path="/chat" element={<ChatPage />} />
             <Route path="/runs" element={<RunsPage />} />
             <Route path="/runs/:runId" element={<RunDetailPage />} />
+            <Route path="/analysis" element={<AnalysisPage />} />
             <Route path="/vault" element={<VaultPage />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/learning" element={<LearningPage />} />

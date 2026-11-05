@@ -73,6 +73,7 @@ export async function verifyStaged(root: string, plannedPaths: string[], rvsPlan
   let syntaxSkipped = 0;
   let syntaxRan = 0;
   let unverified = 0;
+  let staticUnverified = 0;
   let skippedByPlan = 0;
   for (const file of files) {
     let full: string;
@@ -116,6 +117,9 @@ export async function verifyStaged(root: string, plannedPaths: string[], rvsPlan
         if (!result.ok) {
           syntaxFailures += 1;
           checks.push({ id: checkId, status: 'fail', detail: result.detail, file, mandatory: true, code: result.code });
+        } else if (result.unverified) {
+          staticUnverified += 1;
+          checks.push({ id: checkId, status: 'unverified', detail: result.detail, file, mandatory: false });
         }
       }
     } else if (CODE_EXT.has(extOf(file))) {
@@ -132,10 +136,12 @@ export async function verifyStaged(root: string, plannedPaths: string[], rvsPlan
   }
   if (secretFailures === 0 && shouldRun('secret.scan')) checks.push({ id: 'secret.scan', status: 'pass', detail: 'no secret patterns', mandatory: true });
   if (stubFailures === 0 && shouldRun('stub.scan')) checks.push({ id: 'stub.scan', status: 'pass', detail: 'no placeholder markers', mandatory: true });
-  if (syntaxFailures === 0 && syntaxSkipped === 0) {
+  if (syntaxFailures === 0 && syntaxSkipped === 0 && staticUnverified === 0) {
     checks.push({ id: 'syntax.all', status: 'pass', detail: `all ${syntaxRan} verifiable file(s) parse`, mandatory: true });
   } else if (syntaxSkipped > 0) {
     checks.push({ id: 'syntax.all', status: 'unverified', detail: `${syntaxSkipped} verifiable file(s) skipped by the RVS plan; the gate cannot pass`, mandatory: true });
+  } else if (staticUnverified > 0) {
+    checks.push({ id: 'syntax.all', status: 'warn', detail: `${staticUnverified} verifiable file(s) were inspected statically but not executed/fully verified`, mandatory: true });
   }
   if (unverified > 0) {
     checks.push({ id: 'syntax.unverified', status: 'unverified', detail: `${unverified} file(s) have no runtime parser (static-only)`, mandatory: false });

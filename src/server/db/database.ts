@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
-import { A_SQL, CHAT_SQL, P6A_SQL, P7_SQL } from './migrations.js';
+import { A_SQL, CHAT_SQL, P6A_SQL, P7_SQL, SEARCH_SQL } from './migrations.js';
 import { config, ensureRuntimeDirs } from '../config.js';
 import { PHASE } from '../../shared/features.js';
 
@@ -81,18 +81,33 @@ export function initDb(dbPath?: string, stage: Stage = PHASE as Stage): Database
   if (stage === 'B1' || stage === 'B2') groups.push({ version: '010_p6a_decision', sql: P6A_SQL });
   if (stage === 'B2') groups.push({ version: '020_p7_learning', sql: P7_SQL });
   if (stage === 'B2') groups.push({ version: '030_p7_chat', sql: CHAT_SQL });
+  if (stage === 'B2') groups.push({ version: '040_p7_search', sql: SEARCH_SQL });
   for (const group of groups) {
     instance.exec(group.sql);
     instance
       .prepare('INSERT OR IGNORE INTO schema_migrations (version, applied_at) VALUES (?, ?)')
       .run(group.version, nowIso());
   }
+  ensureColumn(instance, 'artifacts', 'status', "TEXT NOT NULL DEFAULT 'accepted'");
+  ensureColumn(instance, 'artifacts', 'mime', 'TEXT');
+  if (stage === 'B2') ensureColumn(instance, 'chat_messages', 'request_hash', 'TEXT');
   if (stage === 'B1' || stage === 'B2') {
     ensureColumn(instance, 'route_candidates', 'model', 'TEXT');
     ensureColumn(instance, 'route_candidates', 'thinking', 'TEXT');
     ensureColumn(instance, 'route_candidates', 'effort', 'TEXT');
     ensureColumn(instance, 'route_candidates', 'chosen', 'INTEGER NOT NULL DEFAULT 0');
     backfillRouteCandidateDisclosure(instance);
+  }
+  if (stage === 'B2') {
+    // The historical flag was written before the trace row existed and is not
+    // a claim we can keep. Reconcile it to physical evidence at open time.
+    instance.exec(
+      `UPDATE runs
+       SET trace_complete = CASE
+         WHEN EXISTS (SELECT 1 FROM traces WHERE traces.run_id = runs.id AND traces.complete = 1) THEN 1
+         ELSE 0
+       END`,
+    );
   }
   db = instance;
   return instance;

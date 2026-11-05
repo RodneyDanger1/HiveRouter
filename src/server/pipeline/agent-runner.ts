@@ -4,6 +4,7 @@ import { getAgent, engineForPath } from '../agents/registry.js';
 import { buildSystemPrompt } from '../agents/prompts.js';
 import { chatJson, chat, DeepSeekError, type ChatMessage } from '../llm/client.js';
 import { reserveLlmCall, maxAffordableOutputTokens, commitLlmCall, releaseLlmCall } from '../runs/manager.js';
+import { recordError } from '../observability/error-log.js';
 
 export interface AgentRuntimeOverride {
   model?: ModelId;
@@ -89,18 +90,38 @@ export async function callAgentJson<T>(
       model,
     );
   };
+  const onAttemptStart = (): number => {
+    return maxAffordableOutputTokens(
+      snapshot.runId,
+      systemPrompt.length + userPrompt.length,
+      requestedMaxTokens,
+      model,
+    );
+  };
   const onHttpAttemptEnd = (_attempt: number, usage: UsageRecord | null): void => {
     // Every actual HTTP attempt has its own reservation. Capture usage before
     // settling so a failed/retried request cannot hide spend or hold the
     // previous attempt's reservation.
     if (usage) mergeUsage(usage);
+    else options.onUsage?.(emptyUsage(model));
     if (!reservationId) return;
     // Clear before committing: commit can throw E_BUDGET_OVERCOMMIT after it
     // has already updated the row. A second end-hook (client success + catch)
     // must not try to settle the same reservation again.
     const id = reservationId;
     reservationId = null;
-    commitLlmCall(id, usage?.costUsd ?? 0);
+    try {
+      // Unknown provider usage commits the reservation, never zero: a zero
+      // would release budget that may already have been spent.
+      commitLlmCall(id, usage?.costUsd ?? null);
+    } catch (error) {
+      recordError({
+        source: 'run',
+        code: error instanceof Error && error.message.startsWith('E_') ? error.message : 'E_BUDGET_SETTLE_FAILED',
+        message: `settle failed for reservation ${id}: ${error instanceof Error ? error.message : String(error)}`,
+        runId: snapshot.runId,
+      });
+    }
   };
   try {
     const data = await chatJson(schema, messages, {
@@ -111,6 +132,7 @@ export async function callAgentJson<T>(
       temperature: runtime.temperature,
       userId: options.userId ?? `hive-${snapshot.runId}-${agentId}`,
       signal: options.signal,
+      onAttemptStart,
       onHttpAttemptStart,
       onHttpAttemptEnd,
     });
@@ -152,7 +174,17 @@ export async function callAgentText(
     if (!reservationId) return;
     const id = reservationId;
     reservationId = null;
-    commitLlmCall(id, usage?.costUsd ?? 0);
+    if (!usage) options.onUsage?.(emptyUsage(snapshot.model));
+    try {
+      commitLlmCall(id, usage?.costUsd ?? null);
+    } catch (error) {
+      recordError({
+        source: 'run',
+        code: error instanceof Error && error.message.startsWith('E_') ? error.message : 'E_BUDGET_SETTLE_FAILED',
+        message: `settle failed for reservation ${id}: ${error instanceof Error ? error.message : String(error)}`,
+        runId: snapshot.runId,
+      });
+    }
   };
   try {
     const result = await chat(

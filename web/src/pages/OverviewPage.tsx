@@ -198,6 +198,12 @@ export function OverviewPage() {
         <div className="mt-3">
           <InlineNotice tone="warn">Stats are unavailable ({stats.error.code}); they are not shown as zero.</InlineNotice>
         </div>
+      ) : stats.data?.partial ? (
+        <div className="mt-3">
+          <InlineNotice tone="warn">
+            {stats.data.unknownUsageRows} provider usage row(s) are unknown. Measured run spend is {formatUsd(stats.data.measuredCostUsd)}; the total is intentionally not shown as zero.
+          </InlineNotice>
+        </div>
       ) : null}
 
       <Card className="mt-5 p-6">

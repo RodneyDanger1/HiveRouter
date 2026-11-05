@@ -521,3 +521,25 @@ Final gates: typecheck PASS; 226 tests / 30 files; 26/26 E2E; build PASS; strict
 - **Live proof:** thread `chat_fb07f8c115b881e417`, architect answer completed at `$0.00009375`; seven additional live answers completed; 1 queued cancellation ended cancelled with `E_CHAT_JOB_CANCELLED`; SSE replay delivered the ordered 8-event sequence.
 - **Gates:** typecheck PASS; **330 tests / 53 files**; build PASS; **27/27 E2E**; stage **173 files / 49 tables / 55 routes / 24 scripts**, violations []; preflight PASS; stub-sweep clean (93), secret-scan clean (171).
 - **Residual:** multi-process queue claims and child-thread delegation are not implemented; worker is single-owner/in-process. A live kill/restart reaper exercise was unit-tested, not process-killed end to end. No P7 promotion or generated-code execution.
+
+---
+
+## 27. Truth wave — P0 stop-work fixes and static analysis modules (2026-11-04)
+
+**Scope:** correct release-blocking truth/safety defects without adding a new runtime.
+
+**Delivered:**
+- Non-executing SQL shape checking; DDL/DML/multi-statement marked unverified, ATTACH/DETACH/PRAGMA/load_extension refused. No `DatabaseSync` in the verifier.
+- Untrusted prompt/file/review envelopes; closing-tag/control-character injection fixtures.
+- Reviewer findings persisted in `reviews`; critical (including ungrounded critical) findings become mandatory `review.*` failures and enter the repair loop; non-critical ungrounded findings are `REVIEW_UNGROUNDED_WARNING`.
+- Failed/cancelled/cap-exceeded runs retain their staging tree under `staged/` with `artifacts.status='staged'`; accepted artifacts remain publish-only. Revision/audit require accepted artifacts.
+- Unknown provider usage commits the reservation with `null` instead of zero; settlement failures are logged, not run-fatal. Fitted `max_tokens` is used.
+- `/api/stats` exposes measured/unknown/partial and chat cost; trace flags are evidence-derived and reconciled at database open.
+- Router scoring now uses constant cost/latency normalizers and auth-path risk; route rank/rejection JSON is persisted. CPO uses 1-token units, CJK-aware estimates, 200-iteration PageRank, and no uniform `importance:1` override.
+- Required `HIVE_PHASE`; `/chat` direct navigation returns 200; open-folder spawn failures are refused instead of crashing.
+- Additive pure modules: file-level static dominators, scorecard variance trigger, exact AST-checked patches, tag-preserving compaction, run-workspace Git isolation branches. Dominators and scorecards are now exposed as bounded read-only JSON endpoints (`GET /api/analysis`, `POST /api/analysis/dominators`, `POST /api/analysis/scorecards`) with an `/analysis` page; patch/compaction/branch modules remain standalone and not wired to API/UI.
+- Run-workspace FTS5 search: `POST /api/runs/:id/search` plus a run-detail Search tab. It indexes only published text files, excludes staged files/`RUN_REPORT.md`/`manifest.json`, rejects arbitrary paths, rebuilds a disposable trigram index on demand, and uses a bounded LIKE fallback below trigram length.
+
+**Gates at this checkpoint:** typecheck PASS; **419 tests / 63 files**; build PASS; **28/28 E2E**; strict stage **192 files / 50 tables / 60 routes / 24 scripts**, violations []; preflight PASS (free RAM 1.55 GB); live `/chat` 200; `GET /api/stats` includes chat and reports `partial:false` on the current data.
+
+**Residual:** release-blocking P0s retained in `docs/STOP-WORK-FLAWS.md` as PARTIAL: per-file review coverage, schema-level file bound, deeper capability labels. P1 weighted CPM, `needs_review`, dead learning producers, and full context projection remain open; router normalizers/risk, CPO token/CJK/PageRank, chat idempotency, and Sec-Fetch-Site checks are now implemented. Dominators/scorecards now have an `/analysis` UI over the API, and terminal run workspaces have bounded FTS5 search; patch/compaction/branch modules are not wired to product routes or UI. No generated-code execution, no P7 evaluation, no native EXE.

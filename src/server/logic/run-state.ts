@@ -54,7 +54,10 @@ export const STATUS_TRANSITIONS: Readonly<Record<RunStatus, readonly RunStatus[]
 } as const;
 
 export const PHASE_TRANSITIONS: Readonly<Record<RunPhase, readonly RunPhase[]>> = {
-  intake: ['planning'],
+  // Full-build enters planning; review/revise starts at cleaning; adhoc starts
+  // at generating; blueprint can finalize after planning. These are the actual
+  // writer shapes in pipeline/run.ts, not an aspirational linear chain.
+  intake: ['planning', 'cleaning', 'generating', 'finalizing'],
   planning: ['routing', 'generating', 'finalizing'],
   routing: ['generating', 'finalizing'],
   generating: ['cleaning', 'hardening', 'testing', 'verifying', 'finalizing'],

@@ -22,6 +22,10 @@ import { EFFORTS, MODEL_IDS, PRESETS, THINKING_MODES, type AgentDefinition, type
 import { createChatThread, getChatEventProjection, getChatSnapshot, getChatThread, listChatThreads, sendChatMessage } from './chat/store.js';
 import { subscribeChat } from './chat/events.js';
 import { cancelChatJob } from './chat/worker.js';
+import { computeDominators, DominatorInputError } from './analysis/dominators.js';
+import { evaluateScorecards, ScorecardInputError } from './analysis/scorecards.js';
+import { AnalysisInputError, parseDominatorRequest, parseScorecardsRequest } from './analysis/api.js';
+import { searchRunWorkspace } from './search/run-search.js';
 
 const REPRESENTATIVE_LIVE = new Set(['architect', 'python-engine', 'react-engine', 'cleaner', 'gatekeeper', 'powershell-core']);
 
@@ -174,6 +178,10 @@ export async function buildApp(): Promise<FastifyInstance> {
       if (origin) {
         const ok = origin === `http://127.0.0.1:${config.port}` || origin === `http://localhost:${config.port}` || origin === 'http://127.0.0.1:5173' || origin === 'http://localhost:5173';
         if (!ok) return refusal(reply as never, 'E_ORIGIN_FORBIDDEN', { origin });
+      }
+      const fetchSite = request.headers['sec-fetch-site'];
+      if (typeof fetchSite === 'string' && !['same-origin', 'none'].includes(fetchSite)) {
+        return refusal(reply as never, 'E_ORIGIN_FORBIDDEN', { secFetchSite: fetchSite });
       }
       const ct = request.headers['content-type'] ?? '';
       const hasBody =
@@ -592,9 +600,9 @@ export async function buildApp(): Promise<FastifyInstance> {
       const includedRows = items.map((item) => ({ id: item.id, path: item.path ?? null, kind: item.kind, tokens: item.tokens, mandatory: item.mandatory, included: true }));
       const excludedRows = excludedItems.map((item) => ({
         id: item.id ?? null,
-        path: null,
+        path: typeof item.path === 'string' ? item.path : null,
         kind: 'excluded',
-        tokens: null,
+        tokens: typeof item.tokens === 'number' ? item.tokens : null,
         mandatory: false,
         reason: String(item.reason ?? 'excluded'),
         included: false,
@@ -606,7 +614,9 @@ export async function buildApp(): Promise<FastifyInstance> {
         maxTokens: null,
         usedTokens: row.est_tokens,
         prefixHash: row.prefix_hash,
-        cacheable: true,
+        // Cacheability is not established by the persisted row; do not
+        // present an unproved hash as a cacheable prefix.
+        cacheable: false,
         converged: Boolean(row.converged),
         degraded: Boolean(row.degraded),
         items: [...includedRows, ...excludedRows],
@@ -652,6 +662,43 @@ export async function buildApp(): Promise<FastifyInstance> {
     return { decisions: Number(decisions.n), agentsUsed: Number(agents.n) };
   });
 
+  // Read-only, bounded static analysis. These endpoints never read a caller-
+  // supplied file path and never execute generated code. They make the
+  // dominator/scorecard modules callable by an agent or operator over JSON.
+  app.get('/api/analysis', async () => ({
+    schema: 'hive.analysis.v1',
+    operations: ['dominators', 'scorecards'],
+    limits: { nodes: 2_000, edges: 5_000, maxIterations: 100_000, scorecards: 4 },
+    semantics: {
+      dominators: 'static file-level dependency heuristic; not a CFG, not dynamic execution data',
+      scorecards: 'opinions with evidence refs; needsDebate is a scheduler hint, not a verdict',
+    },
+  }));
+
+  app.post('/api/analysis/dominators', async (request, reply) => {
+    try {
+      const input = parseDominatorRequest(request.body);
+      return { ok: true, analysis: computeDominators(input) };
+    } catch (error) {
+      if (error instanceof AnalysisInputError || error instanceof DominatorInputError) {
+        return refusal(reply as never, 'E_ANALYSIS_INVALID_INPUT', { message: error.message, code: error.code });
+      }
+      throw error;
+    }
+  });
+
+  app.post('/api/analysis/scorecards', async (request, reply) => {
+    try {
+      const input = parseScorecardsRequest(request.body);
+      return { ok: true, result: evaluateScorecards(input) };
+    } catch (error) {
+      if (error instanceof AnalysisInputError || error instanceof ScorecardInputError) {
+        return refusal(reply as never, 'E_ANALYSIS_INVALID_INPUT', { message: error.message, code: error.code });
+      }
+      throw error;
+    }
+  });
+
   app.get('/api/ops/reports/:kind', async (request, reply) => {
     const kind = (request.params as { kind: string }).kind;
     if (!['bench', 'context', 'integrity', 'repo-map', 'eval'].includes(kind)) return refusal(reply as never, 'E_REPORT_NOT_FOUND');
@@ -661,18 +708,20 @@ export async function buildApp(): Promise<FastifyInstance> {
     return { kind, reports: files.map((f) => ({ name: f, bytes: fs.statSync(path.join(dir, f)).size })) };
   });
 
-  app.get('/api/scripts', async () => ({
-    scripts: [
+  app.get('/api/scripts', async () => {
+    const dryRunAllowed = new Set(['preflight', 'stub-sweep', 'secret-scan', 'assert-stage', 'replay', 'integrity']);
+    const scripts = [
       { id: 'preflight', name: 'preflight', safety: 'read', dryRun: true, description: 'Host resource and toolchain check' },
       { id: 'stub-sweep', name: 'stub-sweep', safety: 'read', dryRun: true, description: 'Placeholder scan' },
       { id: 'secret-scan', name: 'secret-scan', safety: 'read', dryRun: true, description: 'Secret-pattern scan' },
       { id: 'assert-stage', name: 'assert-stage', safety: 'read', dryRun: true, description: 'Release-stage allowlist check' },
-      { id: 'bench', name: 'bench', safety: 'paid', dryRun: true, description: 'Mock/live bench suite' },
+      { id: 'bench', name: 'bench', safety: 'paid', dryRun: false, description: 'Mock/live bench suite (not a dry-run endpoint)' },
       { id: 'replay', name: 'replay', safety: 'read', dryRun: true, description: 'Event replay report' },
       { id: 'integrity', name: 'integrity', safety: 'read', dryRun: true, description: 'Artifact/manifest integrity check' },
-      { id: 'learn', name: 'learn', safety: 'paid', dryRun: true, description: 'Learning dataset/candidate report' },
-    ],
-  }));
+      { id: 'learn', name: 'learn', safety: 'paid', dryRun: false, description: 'Learning dataset/candidate report (not a dry-run endpoint)' },
+    ];
+    return { scripts: scripts.map((script) => ({ ...script, dryRun: dryRunAllowed.has(script.id) })) };
+  });
 
   app.post('/api/scripts/:id/dry-run', async (request, reply) => {
     const id = (request.params as { id: string }).id;
@@ -861,12 +910,54 @@ export async function buildApp(): Promise<FastifyInstance> {
     return reply.send(Buffer.from(zip));
   });
 
+  app.post('/api/runs/:id/search', async (request, reply) => {
+    const { id } = request.params as { id: string };
+    const run = getRun(id);
+    if (!run) return refusal(reply as never, 'E_RUN_NOT_FOUND');
+    if (['queued', 'running'].includes(String(run.status))) return refusal(reply as never, 'E_RUN_NOT_TERMINAL');
+    const body = (request.body ?? {}) as { query?: unknown; limit?: unknown };
+    if (typeof body.query !== 'string' || body.query.trim().length < 1 || body.query.length > 200) {
+      return refusal(reply as never, 'E_SEARCH_INVALID_QUERY');
+    }
+    if (body.limit !== undefined && (typeof body.limit !== 'number' || !Number.isInteger(body.limit) || body.limit < 1 || body.limit > 50)) {
+      return refusal(reply as never, 'E_SEARCH_INVALID_QUERY');
+    }
+    try {
+      return {
+        ok: true,
+        ...searchRunWorkspace(run.id, run.workspacePath, body.query.trim(), body.limit ?? 20),
+      };
+    } catch (error) {
+      return refusal(reply as never, 'E_SEARCH_INVALID_QUERY', {
+        message: error instanceof Error ? error.message : String(error),
+      });
+    }
+  });
+
   app.post('/api/runs/:id/open-folder', async (request, reply) => {
     const { id } = request.params as { id: string };
     const run = getRun(id);
     if (!run) return refusal(reply as never, 'E_RUN_NOT_FOUND');
     if (process.platform !== 'win32') return refusal(reply as never, 'E_OPEN_FOLDER_UNSUPPORTED');
-    spawn('explorer.exe', [run.workspacePath], { detached: true, stdio: 'ignore' }).unref();
+    try {
+      await new Promise<void>((resolve, reject) => {
+        const child = spawn('explorer.exe', [run.workspacePath], { detached: true, stdio: 'ignore' });
+        child.once('error', reject);
+        child.once('spawn', () => {
+          child.unref();
+          resolve();
+        });
+      });
+    } catch (error) {
+      recordError({
+        source: 'http',
+        code: 'E_OPEN_FOLDER_FAILED',
+        message: error instanceof Error ? error.message : String(error),
+        runId: id,
+        route: '/api/runs/:id/open-folder',
+      });
+      return refusal(reply as never, 'E_OPEN_FOLDER_FAILED');
+    }
     return { opened: true, path: run.workspacePath };
   });
 
@@ -910,6 +1001,15 @@ export async function buildApp(): Promise<FastifyInstance> {
       }
       maxCostUsd = rawMaxCost;
     }
+    const requestedParentId = typeof body?.sourceRunId === 'string' ? body.sourceRunId : typeof body?.parentRunId === 'string' ? body.parentRunId : null;
+    if (preset === 'audit' || preset === 'revise') {
+      if (!requestedParentId) return refusal(reply as never, 'E_INVALID_PARENT');
+      const parent = getRun(requestedParentId);
+      const accepted = parent ? getArtifacts(parent.id).filter((artifact) => artifact.status === 'accepted') : [];
+      if (!parent || !['completed', 'completed_with_warnings', 'failed'].includes(parent.status) || accepted.length === 0) {
+        return refusal(reply as never, 'E_INVALID_PARENT');
+      }
+    }
     try {
       const result = await createRun({
         brief: String(body?.brief ?? ''),
@@ -918,7 +1018,7 @@ export async function buildApp(): Promise<FastifyInstance> {
         thinking: thinking as never,
         effort: effort as never,
         idempotencyKey,
-        parentRunId: typeof body?.sourceRunId === 'string' ? body.sourceRunId : typeof body?.parentRunId === 'string' ? body.parentRunId : null,
+        parentRunId: requestedParentId,
         runKind: preset === 'audit' ? 'audit' : 'user',
         maxCostUsd,
       });
@@ -1043,7 +1143,7 @@ export async function buildApp(): Promise<FastifyInstance> {
     const { id } = request.params as { id: string };
     const parent = getRun(id);
     if (!parent) return refusal(reply as never, 'E_RUN_NOT_FOUND');
-    const artifacts = getArtifacts(id);
+    const artifacts = getArtifacts(id).filter((artifact) => artifact.status === 'accepted');
     if (artifacts.length === 0 || !['completed', 'completed_with_warnings', 'failed'].includes(parent.status)) {
       return refusal(reply as never, 'E_INVALID_PARENT');
     }
@@ -1105,14 +1205,37 @@ export async function buildApp(): Promise<FastifyInstance> {
   app.get('/api/stats', async () => {
     const db = getDb();
     const counts = db.prepare('SELECT COUNT(*) AS n FROM runs').get() as { n: number };
-    const usage = db.prepare('SELECT COALESCE(SUM(prompt_tokens),0) AS p, COALESCE(SUM(completion_tokens),0) AS c, COALESCE(SUM(cost_usd),0) AS cost FROM usage').get() as { p: number; c: number; cost: number };
+    const usage = db.prepare(
+      `SELECT
+         COUNT(*) AS rows,
+         SUM(CASE WHEN source = 'unknown' THEN 1 ELSE 0 END) AS unknown_rows,
+         COALESCE(SUM(CASE WHEN source <> 'unknown' THEN prompt_tokens ELSE 0 END), 0) AS known_p,
+         COALESCE(SUM(CASE WHEN source <> 'unknown' THEN completion_tokens ELSE 0 END), 0) AS known_c,
+         COALESCE(SUM(CASE WHEN source <> 'unknown' THEN cost_usd ELSE 0 END), 0) AS known_cost
+       FROM usage`,
+    ).get() as { rows: number; unknown_rows: number; known_p: number; known_c: number; known_cost: number };
+    const unknownUsageRows = Number(usage.unknown_rows ?? 0);
+    const partial = unknownUsageRows > 0;
+    const chat = FEATURES.chat
+      ? (db.prepare('SELECT COALESCE(SUM(cost_usd), 0) AS cost FROM chat_jobs').get() as { cost: number })
+      : { cost: 0 };
+    const measuredPromptTokens = Number(usage.known_p ?? 0);
+    const measuredCompletionTokens = Number(usage.known_c ?? 0);
+    const measuredCostUsd = Number(usage.known_cost ?? 0);
+    const chatCostUsd = Number(chat.cost ?? 0);
     const { REGISTRY } = await import('./agents/registry.js');
     return {
       agentCount: REGISTRY.length,
       runCount: Number(counts.n),
-      totalPromptTokens: Number(usage.p),
-      totalCompletionTokens: Number(usage.c),
-      totalCostUsd: Number(usage.cost),
+      totalPromptTokens: partial ? null : measuredPromptTokens,
+      totalCompletionTokens: partial ? null : measuredCompletionTokens,
+      totalCostUsd: partial ? null : measuredCostUsd + chatCostUsd,
+      measuredPromptTokens,
+      measuredCompletionTokens,
+      measuredCostUsd,
+      chatCostUsd,
+      unknownUsageRows,
+      partial,
     };
   });
 
@@ -1140,7 +1263,7 @@ export async function buildApp(): Promise<FastifyInstance> {
       const normalized = pathname !== '/' ? pathname.replace(/\/+$/, '') : '/';
       const knownSpaRoute =
         normalized === '/' ||
-        ['/agents', '/runs', '/vault', '/settings', '/learning'].includes(normalized) ||
+        ['/agents', '/chat', '/runs', '/analysis', '/vault', '/settings', '/learning'].includes(normalized) ||
         /^\/runs\/[^/]+$/.test(normalized);
       if (!knownSpaRoute) {
         const wantsHtml = String(request.headers.accept ?? '').includes('text/html');

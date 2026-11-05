@@ -293,10 +293,23 @@ export type ChatSendResult = {
 export function sendChatMessage(threadId: string, input: ChatSendMessageInput, requestKey: string): ChatSendResult {
   const thread = getChatThread(threadId);
   if (!thread) throw new Error('E_CHAT_THREAD_NOT_FOUND');
+  const { content, agentIds } = validateMessage(input);
+  // Scope the request key to its thread and bind it to the actual body. A key
+  // reused on another thread or with different content is a conflict, not a
+  // replay of the first thread's snapshot.
+  const scopedKey = `${threadId}\u0000${requestKey}`;
+  const requestHash = crypto
+    .createHash('sha256')
+    .update(JSON.stringify({ content, agentIds }))
+    .digest('hex');
   const existing = getDb()
-    .prepare('SELECT id, thread_id FROM chat_messages WHERE request_key = ?')
-    .get(requestKey) as { id: string; thread_id: string } | undefined;
+    .prepare('SELECT id, thread_id, request_hash FROM chat_messages WHERE request_key = ?')
+    .get(scopedKey) as { id: string; thread_id: string; request_hash: string | null } | undefined;
   if (existing) {
+    if (existing.thread_id !== threadId) throw new Error('E_IDEMPOTENCY_KEY_REUSED');
+    if (existing.request_hash !== null && existing.request_hash !== requestHash) {
+      throw new Error('E_IDEMPOTENCY_KEY_REUSED');
+    }
     const snapshot = getChatSnapshot(existing.thread_id);
     if (!snapshot) throw new Error('E_CHAT_THREAD_NOT_FOUND');
     return {
@@ -307,7 +320,6 @@ export function sendChatMessage(threadId: string, input: ChatSendMessageInput, r
       snapshot,
     };
   }
-  const { content, agentIds } = validateMessage(input);
   const createdAt = nowIso();
   const userId = newId('cmsg');
   const pending = agentIds.map((agentId) => ({
@@ -328,9 +340,9 @@ export function sendChatMessage(threadId: string, input: ChatSendMessageInput, r
     seq += 1;
     db.prepare(
       `INSERT INTO chat_messages
-       (id, thread_id, seq, role, agent_id, content, status, job_id, error_code, error_message, request_key, created_at, updated_at)
-       VALUES (?, ?, ?, 'user', NULL, ?, 'complete', NULL, NULL, NULL, ?, ?, ?)`,
-    ).run(userId, threadId, seq, content, requestKey, createdAt, createdAt);
+       (id, thread_id, seq, role, agent_id, content, status, job_id, error_code, error_message, request_key, request_hash, created_at, updated_at)
+       VALUES (?, ?, ?, 'user', NULL, ?, 'complete', NULL, NULL, NULL, ?, ?, ?, ?)`,
+    ).run(userId, threadId, seq, content, scopedKey, requestHash, createdAt, createdAt);
     events.push(appendChatEvent(db, threadId, 'chat.message.created', { threadId, messageId: userId, role: 'user', seq }));
     for (const target of pending) {
       seq += 1;

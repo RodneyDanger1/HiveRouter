@@ -175,7 +175,7 @@ function AgentCard({ agent, onOpen }: { agent: AgentView; onOpen: () => void }) 
         {disabled ? <span className="badge badge-warn">Disabled</span> : null}
       </div>
       <div className="mt-4 flex items-center justify-between text-xs text-slate-400">
-        <span className="font-mono">{agent.canWrite ? 'write' : agent.canReview ? 'review' : agent.canTest ? 'test' : 'plan'}</span>
+        <span className="font-mono">{agent.canWrite ? 'write' : agent.canReview ? 'review' : agent.canTest ? 'test-files' : 'plan'}</span>
         <span className="inline-flex items-center gap-1">
           Open <Sparkles size={12} aria-hidden />
         </span>
@@ -336,7 +336,7 @@ function AgentDrawer({
             <span className="badge badge-muted">{titleCase(data.verificationSupport)}</span>
             {data.canWrite ? <span className="badge badge-info">write</span> : null}
             {data.canReview ? <span className="badge badge-info">review</span> : null}
-            {data.canTest ? <span className="badge badge-info">tests</span> : null}
+            {data.canTest ? <span className="badge badge-info">writes test files (not executed)</span> : null}
             {data.enabled === false ? <span className="badge badge-warn">disabled</span> : null}
           </div>
 

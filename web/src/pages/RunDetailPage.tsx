@@ -8,6 +8,7 @@ import {
   History,
   RefreshCw,
   RotateCcw,
+  Search,
   Square,
   Wrench,
 } from 'lucide-react';
@@ -29,6 +30,7 @@ import {
   openRunFolder,
   reviseRun,
   runDownloadUrl,
+  searchRun,
 } from '../api';
 import type {
   ConfidenceView,
@@ -42,6 +44,7 @@ import type {
   RouteCandidateView,
   RouteDecisionView,
   RoutingView,
+  RunSearchResponse,
   RunSnapshotView,
   RunStreamEvent,
 } from '../api-types';
@@ -75,11 +78,12 @@ import {
   type TabItem,
 } from '../components/ui';
 
-type RunTab = 'overview' | 'files' | 'checks' | 'routing' | 'context' | 'repairs' | 'confidence' | 'events';
+type RunTab = 'overview' | 'files' | 'search' | 'checks' | 'routing' | 'context' | 'repairs' | 'confidence' | 'events';
 
 const BASE_TABS: TabItem[] = [
   { id: 'overview', label: 'Overview' },
   { id: 'files', label: 'Files' },
+  { id: 'search', label: 'Search' },
   { id: 'checks', label: 'Checks' },
   { id: 'routing', label: 'Routing' },
   { id: 'context', label: 'Context' },
@@ -195,13 +199,14 @@ export function RunDetailPage() {
   }
 
   const artifacts = snapshot.data?.artifacts ?? [];
+  const acceptedArtifacts = artifacts.filter((artifact) => artifact.status !== 'staged');
   const checks = snapshot.data?.checks ?? [];
   const steps = snapshot.data?.steps ?? [];
   const snapshotRecord = snapshot.data as unknown as Record<string, unknown> | undefined;
   const limitRecord = snapshotRecord && isRecord(snapshotRecord.limits) ? snapshotRecord.limits : {};
   const costCap = readNumber(limitRecord.maxCostUsd) ?? null;
-  const canRevise = terminal && artifacts.length > 0;
-  const canAudit = terminal && artifacts.length > 0;
+  const canRevise = terminal && acceptedArtifacts.length > 0;
+  const canAudit = terminal && acceptedArtifacts.length > 0;
   const downloadable = terminal && artifacts.length > 0;
 
   async function confirmStop() {
@@ -399,6 +404,8 @@ export function RunDetailPage() {
           <OverviewTab run={run} steps={steps} checks={checks} artifacts={artifacts} />
         ) : tab === 'files' ? (
           <FilesTab runId={run.id} artifacts={artifacts} terminal={terminal} />
+        ) : tab === 'search' ? (
+          <SearchTab runId={run.id} terminal={terminal} />
         ) : tab === 'checks' ? (
           <ChecksTab checks={checks} />
         ) : tab === 'routing' ? (
@@ -482,6 +489,8 @@ function OverviewTab({
   artifacts: ArtifactRecord[];
 }) {
   const failedChecks = checks.filter((check) => check.status === 'fail' || check.status === 'unverified');
+  const stagedCount = artifacts.filter((artifact) => artifact.status === 'staged').length;
+  const acceptedCount = artifacts.length - stagedCount;
   return (
     <div className="grid gap-5 xl:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
       <Card className="p-6">
@@ -535,10 +544,15 @@ function OverviewTab({
           <SectionTitle title="Checks & artifacts" description="Counts are facts; a passing count is not a quality guarantee." />
           <dl className="mt-3 space-y-2 text-sm">
             <Fact label="Checks" value={`${checks.length} total · ${failedChecks.length} fail/unverified`} />
-            <Fact label="Artifacts" value={formatInteger(artifacts.length)} />
-            <Fact label="Trace complete" value={run.traceComplete ? 'Yes' : 'No'} />
+            <Fact label="Artifacts" value={`${formatInteger(acceptedCount)} accepted${stagedCount > 0 ? ` · ${formatInteger(stagedCount)} staged` : ''}`} />
+            <Fact label="Trace" value={run.traceComplete ? 'Recorded' : 'No trace row'} />
             <Fact label="Policy version" value={run.policyVersionId ?? '—'} />
           </dl>
+          {stagedCount > 0 ? (
+            <div className="mt-4">
+              <InlineNotice tone="warn">This run did not publish. The staged files are retained evidence of paid work, not accepted artifacts.</InlineNotice>
+            </div>
+          ) : null}
           <div className="mt-4 text-xs text-slate-500">
             Use the Checks and Files tabs above to inspect the persisted verification and artifacts.
           </div>
@@ -576,6 +590,7 @@ function FilesTab({ runId, artifacts, terminal }: { runId: string; artifacts: Ar
               >
                 <FileText size={14} aria-hidden />
                 <span className="truncate">{artifact.path}</span>
+                {artifact.status === 'staged' ? <span className="badge badge-muted ml-auto">staged</span> : null}
               </button>
             ))}
           </div>
@@ -591,6 +606,86 @@ function FilesTab({ runId, artifacts, terminal }: { runId: string; artifacts: Ar
         )}
       </Card>
     </div>
+  );
+}
+
+function SearchTab({ runId, terminal }: { runId: string; terminal: boolean }) {
+  const [query, setQuery] = useState('');
+  const [result, setResult] = useState<RunSearchResponse | null>(null);
+  const [error, setError] = useState<ApiError | null>(null);
+  const [busy, setBusy] = useState(false);
+  const inputId = `run-search-${runId}`;
+
+  async function submit(event: React.FormEvent) {
+    event.preventDefault();
+    if (!terminal || query.trim().length === 0) return;
+    setBusy(true);
+    setError(null);
+    setResult(null);
+    try {
+      setResult(await searchRun(runId, query.trim()));
+    } catch (caught) {
+      setError(caught instanceof ApiError ? caught : new ApiError({
+        code: 'E_SEARCH_UI',
+        status: 0,
+        message: caught instanceof Error ? caught.message : 'The search request failed.',
+      }));
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <Card className="p-6">
+      <SectionTitle
+        title="Search published files"
+        description="Full-text search over the accepted workspace only. The index is derived on demand and never searches staged files or arbitrary paths."
+      />
+      <form className="mt-4 flex flex-wrap items-end gap-3" onSubmit={submit}>
+        <label className="label block min-w-72 flex-1" htmlFor={inputId}>
+          Search terms
+          <input
+            id={inputId}
+            className="input mt-1 w-full"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="For example: authentication, retry, export"
+            autoComplete="off"
+          />
+        </label>
+        <button type="submit" className="btn btn-primary" disabled={!terminal || busy || query.trim().length === 0}>
+          {busy ? <Spinner /> : <Search size={15} aria-hidden />} Search
+        </button>
+      </form>
+      {!terminal ? <div className="mt-4"><InlineNotice tone="warn">Search becomes available after the run reaches a terminal state; staged files are not indexed.</InlineNotice></div> : null}
+      <div className="mt-5" aria-live="polite">
+        {error ? <ErrorPanel error={error} title="Search unavailable" /> : null}
+        {result ? (
+          <div className="space-y-3">
+            <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
+              <span className="font-mono">{result.indexedFiles} file{result.indexedFiles === 1 ? '' : 's'} indexed</span>
+              <span>{result.indexed ? 'index built on demand' : 'index reused'}</span>
+              {result.truncated ? <span className="badge badge-warn">result limit reached</span> : null}
+            </div>
+            {result.matches.length === 0 ? (
+              <EmptyState icon={Search} title="No matches" body="The accepted workspace has no match for this query. This is not proof that the file is absent; try another term." />
+            ) : (
+              <div className="space-y-2">
+                {result.matches.map((match) => (
+                  <div key={`${match.path}:${match.score}`} className="rounded-lg border border-slate-200 p-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <span className="font-mono text-xs text-slate-700">{match.path}</span>
+                      <span className="font-mono text-[10px] text-slate-400">score {match.score.toFixed(3)}</span>
+                    </div>
+                    <p className="mt-2 whitespace-pre-wrap break-words text-xs text-slate-600">{match.snippet}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ) : null}
+      </div>
+    </Card>
   );
 }
 

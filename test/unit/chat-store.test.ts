@@ -61,6 +61,25 @@ describe('durable chat store', () => {
     expect(getChatSnapshot(threadId)?.messages).toHaveLength(2);
   });
 
+  it('scopes an idempotency key to its thread instead of replaying another thread', () => {
+    const firstThread = thread();
+    const secondThread = thread();
+    const first = sendChatMessage(firstThread, { content: 'Thread one', agentIds: ['router'] }, 'store-idempotency-key-scope');
+    const second = sendChatMessage(secondThread, { content: 'Thread two', agentIds: ['router'] }, 'store-idempotency-key-scope');
+    expect(first.replayed).toBe(false);
+    expect(second.replayed).toBe(false);
+    expect(second.threadId).toBe(secondThread);
+    expect(getChatSnapshot(firstThread)?.messages).toHaveLength(2);
+    expect(getChatSnapshot(secondThread)?.messages).toHaveLength(2);
+  });
+
+  it('refuses a reused key with a different body or agent set', () => {
+    const threadId = thread();
+    sendChatMessage(threadId, { content: 'Original body', agentIds: ['router'] }, 'store-idempotency-key-body');
+    expect(() => sendChatMessage(threadId, { content: 'Different body', agentIds: ['router'] }, 'store-idempotency-key-body')).toThrow('E_IDEMPOTENCY_KEY_REUSED');
+    expect(() => sendChatMessage(threadId, { content: 'Original body', agentIds: ['architect'] }, 'store-idempotency-key-body')).toThrow('E_IDEMPOTENCY_KEY_REUSED');
+  });
+
   it('claims exactly one job and refuses a stale worker completion', () => {
     const threadId = thread();
     sendChatMessage(threadId, { content: 'A job', agentIds: ['router'] }, 'store-idempotency-key-0003');

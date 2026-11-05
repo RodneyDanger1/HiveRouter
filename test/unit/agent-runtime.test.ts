@@ -9,6 +9,7 @@ const mocks = vi.hoisted(() => ({
   maxTokens: vi.fn(() => 2048),
   commit: vi.fn(),
   release: vi.fn(),
+  recordError: vi.fn(),
 }));
 
 vi.mock('../../src/server/llm/client', () => ({
@@ -27,6 +28,10 @@ vi.mock('../../src/server/runs/manager', () => ({
   maxAffordableOutputTokens: mocks.maxTokens,
   commitLlmCall: mocks.commit,
   releaseLlmCall: mocks.release,
+}));
+
+vi.mock('../../src/server/observability/error-log', () => ({
+  recordError: mocks.recordError,
 }));
 
 vi.mock('../../src/server/agents/registry', () => ({
@@ -136,8 +141,9 @@ describe('agent usage accounting', () => {
     expect(mocks.commit).toHaveBeenCalledTimes(2);
   });
 
-  it('does not settle the same reservation twice when commit throws after changing state', async () => {
+  it('does not fail the run when a settlement throws after changing state', async () => {
     mocks.commit.mockClear();
+    mocks.recordError.mockClear();
     mocks.commit.mockImplementationOnce(() => {
       throw new Error('E_BUDGET_OVERCOMMIT');
     });
@@ -149,11 +155,42 @@ describe('agent usage accounting', () => {
       options.onHttpAttemptEnd?.(1, usage(0.01, 10));
       // The client also invokes the catch-side end hook after a throw.
       options.onHttpAttemptEnd?.(1, null);
+      return { ok: true };
+    });
+
+    const result = await callAgentJson('python-engine', snapshot(), 'user', schema);
+    expect(result.data).toEqual({ ok: true });
+    expect(mocks.commit).toHaveBeenCalledTimes(1);
+    expect(mocks.release).not.toHaveBeenCalled();
+    expect(mocks.recordError).toHaveBeenCalledWith(expect.objectContaining({ code: 'E_BUDGET_OVERCOMMIT' }));
+  });
+
+  it('commits the reservation instead of zero when provider usage is unknown', async () => {
+    mocks.commit.mockClear();
+    mocks.chatJson.mockImplementation(async (_schema: unknown, _messages: unknown, options: {
+      onHttpAttemptStart?: (attempt: number) => void;
+      onHttpAttemptEnd?: (attempt: number, u: ReturnType<typeof usage> | null) => void;
+    }) => {
+      options.onHttpAttemptStart?.(1);
+      options.onHttpAttemptEnd?.(1, null);
+      return { data: { ok: true }, usage: { ...usage(0, 0), source: 'unknown' }, content: '{"ok":true}' };
+    });
+
+    await callAgentJson('python-engine', snapshot(), 'user', schema);
+    expect(mocks.commit).toHaveBeenCalledWith('res_test', null);
+  });
+
+  it('requests the budget-fitted ceiling rather than the unfitted maximum', async () => {
+    let fittedSeen = 0;
+    mocks.maxTokens.mockReturnValue(777);
+    mocks.chatJson.mockImplementation(async (_schema: unknown, _messages: unknown, options: {
+      onAttemptStart?: () => number;
+    }) => {
+      fittedSeen = options.onAttemptStart?.() ?? 0;
       return { data: { ok: true }, usage: usage(0.01, 10), content: '{"ok":true}' };
     });
 
-    await expect(callAgentJson('python-engine', snapshot(), 'user', schema)).rejects.toThrow('E_BUDGET_OVERCOMMIT');
-    expect(mocks.commit).toHaveBeenCalledTimes(1);
-    expect(mocks.release).not.toHaveBeenCalled();
+    await callAgentJson('python-engine', snapshot(), 'user', schema);
+    expect(fittedSeen).toBe(777);
   });
 });

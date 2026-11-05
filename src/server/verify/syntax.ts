@@ -5,7 +5,6 @@ import { promisify } from 'node:util';
 import ts from 'typescript';
 import YAML from 'yaml';
 import { parse as parseHtml } from 'parse5';
-import { DatabaseSync } from 'node:sqlite';
 import { PathError, safePath } from '../security/paths.js';
 
 const execFileAsync = promisify(execFile);
@@ -54,6 +53,90 @@ export interface SyntaxResult {
   ok: boolean;
   detail: string;
   code?: string;
+  /** True when the file was inspected but cannot be honestly verified statically. */
+  unverified?: boolean;
+}
+
+/**
+ * Split SQL into statements without executing it. This deliberately ignores
+ * semicolons inside single/double-quoted strings and comments so a malformed
+ * "static checker" cannot be used to smuggle statements past the gate.
+ */
+export function splitSqlStatements(content: string): string[] {
+  const statements: string[] = [];
+  let current = '';
+  let quote: "'" | '"' | '`' | null = null;
+  let lineComment = false;
+  let blockComment = false;
+  for (let i = 0; i < content.length; i += 1) {
+    const char = content[i]!;
+    const next = content[i + 1];
+    if (lineComment) {
+      if (char === '\n') lineComment = false;
+      current += char;
+      continue;
+    }
+    if (blockComment) {
+      if (char === '*' && next === '/') {
+        blockComment = false;
+        current += '*/';
+        i += 1;
+      } else {
+        current += char;
+      }
+      continue;
+    }
+    if (quote) {
+      current += char;
+      if (char === quote) {
+        if (next === quote && quote !== '`') {
+          current += next;
+          i += 1;
+        } else {
+          quote = null;
+        }
+      } else if (char === '\\' && next) {
+        current += next;
+        i += 1;
+      }
+      continue;
+    }
+    if (char === '-' && next === '-') {
+      lineComment = true;
+      current += '--';
+      i += 1;
+      continue;
+    }
+    if (char === '/' && next === '*') {
+      blockComment = true;
+      current += '/*';
+      i += 1;
+      continue;
+    }
+    if (char === "'" || char === '"' || char === '`') {
+      quote = char;
+      current += char;
+      continue;
+    }
+    if (char === ';') {
+      if (current.trim()) statements.push(current.trim());
+      current = '';
+      continue;
+    }
+    current += char;
+  }
+  if (quote) throw new Error('unterminated SQL string');
+  if (blockComment) throw new Error('unterminated SQL block comment');
+  if (current.trim()) statements.push(current.trim());
+  return statements;
+}
+
+function sqlCommand(statement: string): string {
+  const stripped = statement
+    .replace(/^\s*(?:--[^\n]*\n|\/\*[\s\S]*?\*\/|\s)+/g, '')
+    .trim();
+  const match = /^([A-Za-z]+)/.exec(stripped);
+  return (match?.[1] ?? '').toUpperCase();
 }
 
 function languageOf(file: string): string {
@@ -114,16 +197,34 @@ export async function checkSyntax(filePath: string, content: string): Promise<Sy
         return { ok: true, detail: 'yaml parse' };
       }
       case 'sql': {
-        if (/\b(ATTACH|DETACH|load_extension|VACUUM\s+INTO)\b/i.test(content)) {
-          return { ok: false, detail: 'SQL contains a forbidden statement', code: 'SQL_FORBIDDEN' };
+        if (/\b(?:ATTACH|DETACH|PRAGMA)\b|load_extension\s*\(/i.test(content)) {
+          return { ok: false, detail: 'SQL contains a statement that is forbidden in static verification', code: 'SQL_FORBIDDEN' };
         }
-        const db = new DatabaseSync(':memory:');
-        try {
-          db.exec(content);
-        } finally {
-          db.close();
+        const statements = splitSqlStatements(content);
+        if (statements.length === 0) {
+          return { ok: true, detail: 'empty SQL file (nothing to verify)', unverified: true };
         }
-        return { ok: true, detail: 'sqlite parse' };
+        const commands = statements.map(sqlCommand);
+        if (commands.some((command) => ['ATTACH', 'DETACH', 'VACUUM', 'PRAGMA', 'LOAD_EXTENSION'].includes(command))) {
+          return { ok: false, detail: 'SQL contains a statement that is forbidden in static verification', code: 'SQL_FORBIDDEN' };
+        }
+        // DDL/DML and multi-statement scripts cannot be validated without
+        // executing SQLite's parser/engine. Never execute generated SQL just to
+        // label it valid; report the limitation instead.
+        if (statements.length > 1) {
+          return { ok: true, detail: 'SQL static shape only: multiple statements were not executed or verified', unverified: true };
+        }
+        const command = commands[0] ?? '';
+        if (command === 'SELECT' || command === 'EXPLAIN' || command === 'VALUES') {
+          return { ok: true, detail: 'SQL static shape (not executed)' };
+        }
+        if (command === 'WITH') {
+          return { ok: true, detail: 'SQL static shape only: CTE may contain DML and was not executed', unverified: true };
+        }
+        if (['CREATE', 'ALTER', 'DROP', 'INSERT', 'UPDATE', 'DELETE', 'REPLACE', 'BEGIN', 'COMMIT', 'ROLLBACK', 'SAVEPOINT', 'RELEASE'].includes(command)) {
+          return { ok: true, detail: 'SQL static shape only: DDL/DML was not executed or verified', unverified: true };
+        }
+        return { ok: true, detail: `SQL static shape only: unsupported command ${command || '(unknown)'} was not executed`, unverified: true };
       }
       case 'html': {
         const errors: unknown[] = [];
