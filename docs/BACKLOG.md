@@ -11,7 +11,7 @@ This is the honest work queue for the next waves. It is ordered by user impact a
 - Read-only dominator/scorecard API and `/analysis` page.
 - FTS5 search over one terminal run’s published workspace, with workspace-change detection and rebuild.
 - Staged-file resume without a provider call.
-- 443 unit/integration tests, 34 Playwright tests, stage/OpenAPI/secret/stub gates.
+- 447 unit/integration tests, 34 Playwright tests, stage/OpenAPI/secret/stub gates.
 
 ## P0 — correctness before capability
 
@@ -20,7 +20,7 @@ This is the honest work queue for the next waves. It is ordered by user impact a
 | P0-1 | Review every writer against the phase/status matrix | A guard that rejects a legal writer is as bad as a missing guard | Exhaustive transition table test for every production writer; unknown edges rejected by name |
 | P0-2 | Per-file review coverage | A review that only sees some files is not a review | Each accepted file mapped to a review result; missing coverage fails or is named `unreviewed` |
 | P0-3 | Schema-level file-size bound — **delivered Wave 12** | Byte limits must be enforced before persistence, not only after | File/test/review content is UTF-8-byte bounded in Zod; `E_FILE_TOO_LARGE` survives the provider boundary; no repair call; `writeStaged` remains defense in depth |
-| P0-4 | Full writer tests for failed/cancelled/budget/interrupted paths | Terminal truth is not one code path | One integration test per terminal status across run, step, event, snapshot, usage, and trace rows |
+| P0-4 | Full writer tests for failed/cancelled/budget/interrupted paths — **delivered Wave 13** | Terminal truth is not one code path | Four terminal integration tests; open steps settle on every terminal write; manager paths record trace and `trace_complete`; budget event path remains pipeline-owned |
 | P0-5 | Historical NULL handling audit | Unknown spend must stay unknown forever | Query proves no historical NULL was backfilled to zero |
 
 ## P1 — finish the router

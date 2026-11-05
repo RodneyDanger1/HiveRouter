@@ -593,3 +593,13 @@ Final gates: typecheck PASS; 226 tests / 30 files; 26/26 E2E; build PASS; strict
 - **RED evidence:** old schemas accepted oversized content — 2 schema tests failed (`expected true to be false`). **GREEN:** schema tests 8/8, provider test 12/12, focused 20/20, full **443 tests / 69 files**.
 - **Gates:** typecheck PASS; build PASS; **34/34 E2E**; strict stage **200 files / 51 tables / 62 routes / 24 scripts**, violations `[]`; preflight PASS (free RAM 1.77 GB, disk 9.05 GB); stub clean 103; secret clean 198.
 - **Residual:** no paid live oversized response; the provider test uses the local mock HTTP server. Plan/text outputs use their own limits. No DB/route/UI change.
+
+## 32. Wave 13 — terminal truth across run, step, event, snapshot, usage, and trace (2026-11-05)
+
+- **Plan:** `docs/WAVE-13-PLAN.md`; **evidence:** `docs/TRACE/WAVE-13/TRACE-SUMMARY.md`.
+- Terminal `updateRun` now settles every open `steps` row (`failed` for failed/budget/interrupted, `cancelled` for cancelled). The startup raw-SQL interrupt calls the same helper explicitly.
+- Terminal trace recording moved to `src/server/runs/terminal-trace.ts`; manager executor failure, no-controller cancel, startup interrupt, and `markTerminal` record the shared trace and set `trace_complete` from the result. Pipeline `recordRunTrace` is a wrapper.
+- New `test/unit/terminal-writers.test.ts` asserts four terminal statuses across run, step, event, snapshot, usage, and trace.
+- **RED evidence:** restored the pre-fix recorder/manager/pipeline; all **4/4** terminal tests failed on open steps and missing `trace_complete`. **GREEN:** 4/4; full **447 tests / 70 files**.
+- **Gates:** typecheck PASS; build PASS; **34/34 E2E**; strict stage **202 files / 51 tables / 62 routes / 24 scripts**, violations `[]`; preflight PASS (free RAM 1.91 GB, disk 9.06 GB); stub clean 104; secret clean 200.
+- **Residual:** the budget fixture exercises `markTerminal` for run/step/snapshot/usage/trace; actual budget event emission remains the pipeline catch path. Startup trace is P7-gated. No API/UI change.

@@ -16,7 +16,7 @@ Read `docs/PLAN-v3.md` first. It is the authoritative contract. This file is a s
 
 The durable agent plan is `docs/AGENT-OPERATING-PLAN.md`. Read it before choosing work, then read `docs/PLAN-v3.md` §0, §3, §4, §6, §10, §11, §13, `docs/BACKLOG.md`, and the latest `docs/TRACE/**/TRACE-SUMMARY.md` again.
 
-- **Current wave:** Wave 12, backlog P0-3 — enforce the per-file byte bound at the agent output-schema boundary, before persistence, with a bounded typed refusal; keep the existing write-time guard as defense in depth. No router data-model or UI changes.
+- **Current wave:** Wave 13, backlog P0-4 — prove terminal truth for failed/cancelled/budget-exceeded/interrupted across run, step, event, snapshot, usage, and trace rows; close any open step on a terminal write and record the terminal trace for the manager-owned paths. No router data-model or UI changes.
 - **Skill routing:** use `forgewright-recon` before edits; `logic-gatekeeper` Phase 1 before every mutation; `logic-debugger` for state/error/retry invariants; `forge` for RED→GREEN; `forgewright-lead` for the final integration and gates; `capability-auditor` for registry/prompt parity; `agent-experience` for UI truth; `agent-learning-loop` only for L0/L1/L2 claims and never weight-learning claims; `agent-native-design` for CLI/API affordances; `integration-logic` for client→route→store seams; `research` when a fact is unknown; `evidence-check` before delivery.
 - **No scope drift:** do not implement approval, repo tools, the tool loop, P7 evaluation, checkpoints, or parallel generation in this wave. They stay in `docs/BACKLOG.md`.
 - **Evidence rule:** every claim in the final report names a command/output, file:line, or captured HTTP/DB result. A passing test on another path is not evidence.

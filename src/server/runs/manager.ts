@@ -3,8 +3,9 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { config } from '../config.js';
 import { getDb, nowIso, tx } from '../db/database.js';
-import { createRunRow, getRun, updateRun, emitEvent, usageFields } from './recorder.js';
+import { createRunRow, getRun, updateRun, emitEvent, usageFields, settleOpenSteps } from './recorder.js';
 import { createSnapshot } from './snapshot.js';
+import { recordRunTerminalTrace } from './terminal-trace.js';
 import { canAfford, estimateCallMicroUsd, release, reserve, commit, releaseReservationsForRun } from './budget.js';
 import { hashPrompt } from '../agents/registry.js';
 import { recordError } from '../observability/error-log.js';
@@ -171,6 +172,7 @@ export async function createRun(input: CreateRunInput): Promise<CreateRunResult>
           ...usage,
         });
         emitEvent(id, 'run.failed', { code, message: terminalEventMessage(code, message, 'failed').slice(0, 500), timedOut, costUsd: usage.cost_usd });
+        setTraceComplete(id, recordRunTerminalTrace(id, 'failure'));
       })
       .finally(() => {
         clearTimeout(timeout);
@@ -203,6 +205,7 @@ export function cancelRun(runId: string): boolean {
       ...usage,
     });
     emitEvent(runId, 'run.cancelled', { code: 'E_CANCELLED', source: 'no-controller', message: cancelMessage, costUsd: usage.cost_usd });
+    setTraceComplete(runId, recordRunTerminalTrace(runId, 'cancelled'));
     return true;
   }
   return false;
@@ -231,6 +234,8 @@ export function markStartupInterrupted(): number {
     transitioned += 1;
     emitEvent(row.id, 'run.interrupted', { code: 'E_RUN_INTERRUPTED', message, costUsd: usage.cost_usd });
     recordError({ source: 'run', code: 'E_RUN_INTERRUPTED', message, runId: row.id });
+    settleOpenSteps(row.id, 'failed', { code: 'E_RUN_INTERRUPTED', message });
+    setTraceComplete(row.id, recordRunTerminalTrace(row.id, 'failure'));
     // A crashed process cannot finish its in-flight calls; release their budget
     // leases now rather than leaving the money held until the 15-minute reaper.
     releaseReservationsForRun(row.id);
@@ -283,14 +288,18 @@ export function markRunning(runId: string): void {
 }
 
 export function markTerminal(runId: string, status: RunStatus, phase: string, error?: { code?: string; message?: string }): void {
+  const usage = usageFields(runId);
   updateRun(runId, {
     status,
     phase,
     finished_at: nowIso(),
     error_code: error?.code ?? null,
     error_message: error?.message ?? null,
-    ...usageFields(runId),
+    ...usage,
   });
+  if (status === 'failed' || status === 'cancelled' || status === 'budget_exceeded' || status === 'interrupted') {
+    setTraceComplete(runId, recordRunTerminalTrace(runId, status === 'cancelled' ? 'cancelled' : status === 'budget_exceeded' ? 'budget_exceeded' : 'failure'));
+  }
 }
 
 export function setTraceComplete(runId: string, complete: boolean): void {

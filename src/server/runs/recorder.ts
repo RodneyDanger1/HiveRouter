@@ -196,6 +196,31 @@ export function updateRun(runId: string, patch: Partial<{
     // closed rather than silently overwriting a terminal state.
     throw new RunTransitionError('status', currentStatus, patch.status as RunStatus, runId);
   }
+  if (patch.status !== undefined && isTerminalStatus(patch.status)) {
+    // A terminal run must never retain an open step. This is centralized here
+    // so every terminal writer (pipeline, manager catch, cancel, markTerminal)
+    // settles steps the same way. Startup interrupt uses raw SQL and calls the
+    // helper explicitly.
+    settleOpenSteps(runId, patch.status === 'cancelled' ? 'cancelled' : 'failed', {
+      code: patch.error_code ?? undefined,
+      message: patch.error_message ?? undefined,
+    });
+  }
+}
+
+/** Close any still-open step for a run that just became terminal. */
+export function settleOpenSteps(
+  runId: string,
+  status: 'failed' | 'cancelled',
+  error?: { code?: string; message?: string },
+): number {
+  const result = getDb()
+    .prepare(
+      `UPDATE steps SET status = ?, finished_at = ?, error_code = ?, error_message = ?
+       WHERE run_id = ? AND status = 'started'`,
+    )
+    .run(status, nowIso(), error?.code ?? null, error?.message ?? null, runId);
+  return Number(result.changes);
 }
 
 export function getRun(runId: string): RunRecord | null {

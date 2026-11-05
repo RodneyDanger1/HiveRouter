@@ -17,6 +17,7 @@ import { config } from '../config.js';
 import { getRun, startStep, finishStep, emitEvent, insertArtifact, insertCheck, insertReview, insertUsage, updateRun, usageTotals, usageFields, getChecks } from '../runs/recorder.js';
 import { getSnapshot } from '../runs/snapshot.js';
 import { markRunning, markTerminal, setTraceComplete, terminalEventMessage } from '../runs/manager.js';
+import { recordRunTerminalTrace } from '../runs/terminal-trace.js';
 import { runBudgetUsd } from '../runs/budget.js';
 import { atomicPublishDirectory, rollbackPublishedDirectory } from '../runs/publish.js';
 import { callAgentJson, callAgentText } from './agent-runner.js';
@@ -33,8 +34,6 @@ import { atomicWrite, normalizeRel, safePath, assertAllowedExtension, isAllowedE
 import { REDACTOR_VERSION, redactString } from '../security/redact.js';
 import { verifyStaged, gateStatus } from '../verify/verifier.js';
 import { logAgentTransaction, writeBlueprint, writeRunReport, writeManifest } from '../vault/bridge.js';
-import { recordTrace } from '../learning/trace-store.js';
-import { FEATURES } from '../../shared/features.js';
 import { pipelineCapabilities } from './features.js';
 import { recordError } from '../observability/error-log.js';
 import { codeOfError } from '../../shared/refusals.js';
@@ -109,42 +108,7 @@ export function recordAgentEvidence(runId: string, agentId: AgentId, step: strin
 }
 
 export function recordRunTrace(runId: string, outcome: 'success' | 'failure' | 'cancelled' | 'budget_exceeded'): boolean {
-  // P7 only: traces is a P7 table. A/B1 must not attempt this write.
-  if (!FEATURES.learning) return false;
-  try {
-    const run = getRun(runId);
-    if (!run) return false;
-    const usage = usageTotals(runId);
-    const checks = getChecks(runId);
-    recordTrace(getDb(), {
-      runId,
-      phase: run.phase,
-      policyVersionId: run.policyVersionId ?? undefined,
-      model: run.model,
-      thinking: run.thinking,
-      ...(usage.promptTokens != null ? { promptTokens: usage.promptTokens } : {}),
-      ...(usage.completionTokens != null ? { completionTokens: usage.completionTokens } : {}),
-      ...(usage.cacheHitTokens != null ? { cacheHitTokens: usage.cacheHitTokens } : {}),
-      ...(usage.cacheMissTokens != null ? { cacheMissTokens: usage.cacheMissTokens } : {}),
-      ...(usage.reasoningTokens != null ? { reasoningTokens: usage.reasoningTokens } : {}),
-      ...(usage.costUsd != null ? { costUsd: usage.costUsd } : {}),
-      outcome: outcome === 'success' ? 'success' : outcome === 'cancelled' ? 'cancelled' : 'failure',
-      ...(run.errorMessage ? { errorMessage: run.errorMessage } : {}),
-      verifier: { checks },
-      provenance: 'live',
-      inputPreview: run.brief.slice(0, 4096),
-      ...(run.summary ? { outputPreview: run.summary.slice(0, 4096) } : {}),
-    }, { previewRoot: path.join(config.dataDir, 'replay') });
-    return true;
-  } catch (error) {
-    recordError({
-      source: 'run',
-      code: 'E_TRACE_RECORD_FAILED',
-      message: `trace write failed for ${runId}: ${error instanceof Error ? error.message : String(error)}`,
-      runId,
-    });
-    return false;
-  }
+  return recordRunTerminalTrace(runId, outcome);
 }
 
 function checkAbort(signal: AbortSignal): void {

@@ -15,7 +15,7 @@ Do not treat a README, prompt, or historical wave note as permission to widen sc
 
 ## 2. Current goal
 
-**Wave 12 — P0-3 per-file byte bound at the schema boundary.** Agent file/test/review output must be rejected before persistence when its UTF-8 content exceeds `config.limits.maxFileBytes`, with a bounded `E_FILE_TOO_LARGE` refusal and no wasted schema-repair calls. Keep `writeStaged` as defense in depth. No router data-model, route, or UI changes.
+**Wave 13 — P0-4 terminal writer truth.** Failed, cancelled, budget-exceeded, and interrupted runs must have matching run/step/event/snapshot/usage/trace rows. A terminal write must leave no `started` step; manager-owned terminal paths must record the terminal trace and set `trace_complete` from that result. No router data-model or UI changes.
 
 ## 3. Skill routing — when / why / where / output
 
@@ -35,31 +35,32 @@ Do not treat a README, prompt, or historical wave note as permission to widen sc
 | `research` | A fact is unknown or local code/docs conflict | Replace guesses with confirmed facts | Installed source, lockfile, official docs | Confirmed facts + remaining unknowns |
 | `evidence-check` | Before delivery | Catches overclaiming | Final report | Claim/evidence/status table |
 
-## 4. File map and ownership for Wave 12
+## 4. File map and ownership for Wave 13
 
 | Path | Role | Expected change |
 |---|---|---|
-| `src/server/agents/registry.ts` | Schema owner | Byte-bounded content schemas for file emission, tests, and review revisions |
-| `src/server/llm/client.ts` | Provider boundary | Preserve a schema issue’s `E_*` code and stop repair retries for a deterministic size refusal |
-| `src/shared/refusals.ts` | Refusal registry | Add `E_FILE_TOO_LARGE` |
-| `test/unit/agents.schemas.test.ts` | Schema pins | Exact-limit passes; over-limit carries `E_FILE_TOO_LARGE`; tests/review content too |
-| `test/unit/llm.client.test.ts` | Identity/no-retry pin | Mock oversized schema response → `E_FILE_TOO_LARGE`, one request, no repair |
-| `docs/TRACE/WAVE-12/TRACE-SUMMARY.md` | Evidence | RED/GREEN, exact counts, residual |
-| `docs/PLAN-v3.md`, `docs/CAPABILITY-MATRIX.md`, `docs/BACKLOG.md`, `README.md` | Census/docs | Update P0-3 and counts only if tests change |
+| `src/server/runs/recorder.ts` | Run/step writer | Settle open steps on every terminal `updateRun`; expose step settlement for the startup raw-SQL writer |
+| `src/server/runs/manager.ts` | Manager terminal paths | Close steps for executor catch, no-controller cancel, and startup interrupt; record terminal trace |
+| `src/server/runs/terminal-trace.ts` | New trace owner | Move terminal trace recording out of the pipeline so manager can use it without a cycle |
+| `src/server/pipeline/run.ts` | Pipeline trace caller | Preserve `recordRunTrace` as a wrapper/re-export; no behavior change beyond shared helper |
+| `test/unit/terminal-writers.test.ts` | New integration matrix | failed/cancelled/budget/interrupted × run/step/event/snapshot/usage/trace |
+| `docs/TRACE/WAVE-13/TRACE-SUMMARY.md` | Evidence | RED/GREEN and residuals |
+| `docs/PLAN-v3.md`, `docs/CAPABILITY-MATRIX.md`, `docs/BACKLOG.md`, `README.md` | Census/docs | Update P0-4 and counts |
 
 ## 5. Invariants for this wave
 
-- The byte bound is UTF-8 bytes, not JavaScript characters; exact limit passes, limit+1 fails.
-- No file content is persisted before the schema refusal; `writeStaged` remains as defense in depth.
-- The refusal is typed and bounded: `E_FILE_TOO_LARGE`; no generic `E_INTERNAL` or `E_LLM_SCHEMA_INVALID`.
-- A deterministic size refusal must not trigger JSON repair requests; no extra provider cost.
-- No provider live call; no generated-code execution; no key read.
-- Applies to file emission, generated tests, and review file revisions.
+- A terminal run must never have a `started` step.
+- The terminal event, run row, step rows, usage row, trace row, and `trace_complete` must describe the same outcome.
+- Failed, cancelled, budget_exceeded, and interrupted all close steps; step status is `failed` for failed/budget/interrupted and `cancelled` for cancelled.
+- Step error code/message must match the terminal code/message; no silent closure.
+- The startup interrupt raw SQL must settle steps explicitly because it intentionally bypasses `updateRun`.
+- No API shape change; no UI change; no paid provider call.
+- Trace recording remains P7-gated and must not fabricate a row when disabled.
 
-## 6. Gates for Wave 12
+## 6. Gates for Wave 13
 
 ```powershell
-npm.cmd test -- --run test/unit/agents.schemas.test.ts test/unit/llm.client.test.ts
+npm.cmd test -- --run test/unit/terminal-writers.test.ts test/unit/terminal-usage.test.ts test/unit/startup-interrupt.test.ts
 npm.cmd test
 npm.cmd run typecheck
 npm.cmd run build
@@ -68,7 +69,7 @@ npm.cmd run assert-stage -- --stage=p7 --json
 npm.cmd run preflight -- --port 0 --json
 ```
 
-Stage counts should not change unless a source file is added. A wave is complete only when the schema boundary test and the provider identity/no-repair test have RED→GREEN evidence.
+A wave is complete only when each of the four terminal statuses has a run/step/event/snapshot/usage/trace assertion, with RED evidence for any missing row or open step.
 
 ## 7. Stop conditions
 

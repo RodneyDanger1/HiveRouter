@@ -17,7 +17,7 @@ Status is deliberately blunt. “Partial” means the path exists but a material
 | Execute generated code/tests | **Absent** | Explicit non-goal; no sandbox |
 | Retain failed-run work | **Now works** | Staged artifacts under `staged/`, marked `staged`; accepted only after publish |
 | Accurate run spend/usage | **Improved** | Unknown usage is NULL/partial; stats includes measured chat; legacy rows not backfilled |
-| Step/tool trace | Partial | One trace row per terminal run; no tool calls, no per-step trace |
+| Step/tool trace | Partial | One trace row per terminal run; terminal writes settle open steps; no tool calls, no per-step trace |
 | Resume a run | **Partial** | Re-verifies/publishes retained `staged` files as a child resume run with no provider call; no mid-run checkpoint table or parallel branch |
 | Parallel file generation | **Absent** | Sequential; one active run |
 | P7 evaluation | **Absent** | No `eval_runs`/`eval_results` producer; promotion unreachable |
