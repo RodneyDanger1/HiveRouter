@@ -17,7 +17,7 @@ Vocabulary: `VERIFIED` (command/output or live read), `READ` (file inspected), `
 | C-007 | Live `/api/stats` reports partial, NULL totals, and unknown spend | `curl /api/stats`: partial true, totals null, unknownRunSpendRows 1, unknownChatSpendJobs 0 | VERIFIED |
 | C-008 | No paid provider call / generated-code execution in the wave | no `test:live` or provider invocation; local test doubles only | VERIFIED by command history |
 | C-009 | Current docs counts match the gate | README, PLAN §36, TRACE-SUMMARY, BACKLOG, CAPABILITY use 474/44/209/2.06/7.76/206 | VERIFIED |
-| C-010 | Final commit is on `main` and pushed | commit/push output (to record after commit) | UNVERIFIED until push completes |
+| C-010 | Final commit is on `main` and pushed | `706aa98` product commit; `git push origin main` output `db4e6d5..706aa98  main -> main` | VERIFIED |
 
 ## P0 delivery
 

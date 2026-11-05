@@ -2,7 +2,7 @@
 
 Date: 2026-11-05
 Baseline: `db4e6d5` (455 tests / 71 files; 38/38 E2E; stage 204 files / 51 tables / 62 routes / 24 scripts).
-Final: **474 tests / 74 files**, **44/44 E2E**, stage **209 files / 51 tables / 62 routes / 24 scripts**, verify exit 0, preflight PASS (free RAM 2.06 GB, disk 7.76 GB), `npm audit --omit=dev` 0.
+Commit: `706aa98` on `main` (pushed). Final: **474 tests / 74 files**, **44/44 E2E**, stage **209 files / 51 tables / 62 routes / 24 scripts**, verify exit 0, preflight PASS (free RAM 2.06 GB, disk 7.76 GB), `npm audit --omit=dev` 0.
 
 ## Seats
 
