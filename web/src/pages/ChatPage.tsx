@@ -135,6 +135,7 @@ export function ChatPage() {
   const [cancellingJobId, setCancellingJobId] = useState<string | null>(null);
   const [actionError, setActionError] = useState<ApiError | null>(null);
   const refreshTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const maxChatAgents = meta?.chatMaxAgents ?? 3;
 
   const snapshot = useApiResource<ChatThreadSnapshot | null>(
     (signal) => (selectedId ? getChatThreadSnapshot(selectedId, signal) : Promise.resolve(null)),
@@ -367,7 +368,14 @@ export function ChatPage() {
                           value={sendAgentIds}
                           onChange={(event) => {
                             const next = Array.from(event.target.selectedOptions, (option) => option.value);
-                            setSendAgentIds(next);
+                            if (next.length > maxChatAgents) {
+                              setActionError(new ApiError({
+                                code: 'E_CHAT_INVALID_INPUT',
+                                status: 0,
+                                message: `Select at most ${maxChatAgents} agents for one fan-out.`,
+                              }));
+                            }
+                            setSendAgentIds(next.slice(0, maxChatAgents));
                           }}
                           aria-describedby="chat-agent-selection-help"
                         >
@@ -376,7 +384,7 @@ export function ChatPage() {
                           ))}
                         </select>
                         <span id="chat-agent-selection-help" className="mt-1 block text-xs text-slate-500">
-                          {sendAgentIds.length} selected; Ctrl/Cmd-click to fan out to more agents.
+                          {sendAgentIds.length} of {maxChatAgents} selected; Ctrl/Cmd-click to fan out.
                         </span>
                       </label>
                       <span className="text-xs text-slate-500">

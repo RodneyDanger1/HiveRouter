@@ -7,7 +7,7 @@ Scope: user-requested integration-logic repair of paid retry paths and the incom
 
 ## Execution status
 
-Implemented and verified. Composer/agent/chat submissions bind one idempotency key to one unchanged payload; chat exposes multi-agent selection and sends the selected `agentIds`. E2E: transport abort reuses the header; chat multi-select shows 37 options. Final: **455 tests / 71 files**, **38/38 E2E**, stage **204**, preflight PASS. Evidence: `docs/TRACE/WAVE-16/TRACE-SUMMARY.md`.
+Implemented and verified. Composer/agent/chat/revision/audit submissions bind one idempotency key to one unchanged payload; chat exposes multi-agent selection capped by the server’s `chatMaxAgents` (3). E2E: transport abort reuses the header; chat multi-select shows 37 options and the cap. Final: **455 tests / 71 files**, **38/38 E2E**, stage **204**, preflight PASS. Evidence: `docs/TRACE/WAVE-16/TRACE-SUMMARY.md`.
 
 ## 1. Outcome
 

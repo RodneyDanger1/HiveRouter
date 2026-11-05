@@ -413,11 +413,12 @@ export async function reviseRun(
   feedback: string,
   files: string[] = [],
   signal?: AbortSignal,
+  idempotencyKey: string = newIdempotencyKey(),
 ): Promise<string> {
   const payload = await request<unknown>(`/runs/${encodeURIComponent(runId)}/revise`, {
     method: 'POST',
     body: { feedback, files },
-    idempotencyKey: newIdempotencyKey(),
+    idempotencyKey,
     signal,
   });
   const childId = normalizeRunId(payload);
@@ -427,7 +428,12 @@ export async function reviseRun(
   return childId;
 }
 
-export async function auditRun(runId: string, brief: string, signal?: AbortSignal): Promise<string> {
+export async function auditRun(
+  runId: string,
+  brief: string,
+  signal?: AbortSignal,
+  idempotencyKey: string = newIdempotencyKey(),
+): Promise<string> {
   return startRun(
     {
       brief,
@@ -435,6 +441,7 @@ export async function auditRun(runId: string, brief: string, signal?: AbortSigna
       sourceRunId: runId,
     },
     signal,
+    idempotencyKey,
   );
 }
 

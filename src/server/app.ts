@@ -225,6 +225,7 @@ export async function buildApp(): Promise<FastifyInstance> {
     model: config.model,
     host: config.host,
     port: config.port,
+    chatMaxAgents: config.chat.maxAgentsPerMessage,
   }));
 
   app.get('/api/settings', async () => ({

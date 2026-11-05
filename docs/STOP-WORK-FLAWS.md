@@ -39,7 +39,7 @@ This is the honest release register. A defect is only “fixed” when the named
 | P1-16 | CSRF `Sec-Fetch-Site` | **Partial**: cross-site `Sec-Fetch-Site` is rejected when present; an absent `Origin` on a non-GET is still accepted because tests/clients may omit it |
 | P1-17 | Key-ingress copy named a nonexistent `hive` command and no `--from-env` | **Fixed**: real `npm.cmd run key:import -- --from-env`; regular non-symlink ≤64 KiB inputs |
 | P1-18 | Settings claimed a DSH consent-gated read | **Fixed**: runtime never reads DSH; UI/PLAN corrected; dead `E_DSH_*`/`dshCredentialsPath` removed |
-| P1-19 | Paid retry paths discarded their idempotency key; chat UI hid fan-out | **Fixed**: stable key per unchanged payload; multi-select `agentIds`; browser proof |
+| P1-19 | Paid retry paths discarded their idempotency key; chat UI hid fan-out and exceeded the server cap | **Fixed**: stable keys for composer/chat/agent/revision/audit; multi-select capped by `/api/meta.chatMaxAgents`; browser proof |
 | P2-8 | Unused dependency baggage | **Partial**: removed unused `@langchain/core`/`@langchain/langgraph`; `@fastify/static` upgraded to 10.1.10; `npm audit --omit=dev` now 0 vulnerabilities |
 
 ## Known non-goals

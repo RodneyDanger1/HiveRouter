@@ -79,7 +79,7 @@ A run can stop at several named states — including **failed**, **cancelled**, 
 | Resume | Re-verify and publish retained **staged** files as a child resume run without another provider call; full mid-run checkpoints are still absent |
 | UI | React 19/Vite 8 operator console: runs, agents, chat, vault, settings, learning refusal state, analysis, scripts, run search |
 | Run search | Disposable FTS5 trigram index over a terminal run’s published text files; pathless API, staged files excluded; a workspace signature detects edits and rebuilds before serving |
-| Chat | Durable `chat_jobs` with leases, retries, cancellation, SSE projection, and bounded history |
+| Chat | Durable `chat_jobs` with leases, retries, cancellation, SSE projection, bounded history, and UI multi-agent fan-out (server-capped at 3) |
 | Learning | P7 scaffolding exists but is **refused** in this build: no sealed 390-case pool and no consent |
 
 ---
@@ -208,7 +208,7 @@ npm run assert-stage -- --stage=p7 --json
 | Typecheck / build | `npm.cmd run verify` — **exit 0** |
 | Browser E2E | `npm.cmd run e2e` — **38 / 38 passed** |
 | Stage allowlist | **204 files / 51 tables / 62 routes / 24 scripts**, violations `[]` |
-| Preflight | **PASS** — free RAM 2.46 GB, disk 8.86 GB, Chrome/Node/npm/port |
+| Preflight | **PASS** — free RAM 1.72 GB, disk 8.76 GB, Chrome/Node/npm/port |
 | Stub sweep | clean (103 files) |
 | Secret scan | clean (201 files) |
 

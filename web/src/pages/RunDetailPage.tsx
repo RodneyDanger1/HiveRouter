@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
   ArrowLeft,
@@ -28,6 +28,7 @@ import {
   getRouting,
   getRunEvents,
   getRunSnapshot,
+  newIdempotencyKey,
   openRunFolder,
   resumeRun,
   reviseRun,
@@ -136,6 +137,8 @@ export function RunDetailPage() {
 
   const run = snapshot.data?.run ?? null;
   const terminal = run ? TERMINAL_STATUSES.has(run.status) : false;
+  const reviseRequestKey = useMemo(() => newIdempotencyKey(), [runId, feedback]);
+  const auditRequestKey = useMemo(() => newIdempotencyKey(), [runId]);
   const persistedEvents = useApiResource<RunStreamEvent[]>(
     (signal) => (runId && terminal ? getRunEvents(runId, signal) : Promise.resolve([])),
     [runId, terminal],
@@ -236,7 +239,7 @@ export function RunDetailPage() {
     setReviseBusy(true);
     setReviseError(null);
     try {
-      const childId = await reviseRun(run!.id, feedback.trim());
+      const childId = await reviseRun(run!.id, feedback.trim(), [], undefined, reviseRequestKey);
       setReviseOpen(false);
       navigate(`/runs/${encodeURIComponent(childId)}`);
     } catch (caught) {
@@ -251,7 +254,7 @@ export function RunDetailPage() {
     setAuditBusy(true);
     setAuditError(null);
     try {
-      const childId = await auditRun(run!.id, `Audit run ${run!.id}: inspect the accepted artifacts and report defects.`);
+      const childId = await auditRun(run!.id, `Audit run ${run!.id}: inspect the accepted artifacts and report defects.`, undefined, auditRequestKey);
       setAuditOpen(false);
       navigate(`/runs/${encodeURIComponent(childId)}`);
     } catch (caught) {

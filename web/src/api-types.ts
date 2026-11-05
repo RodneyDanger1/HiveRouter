@@ -19,6 +19,7 @@ export interface MetaResponse {
   phase: string;
   features: { routing: boolean; learning: boolean; chat: boolean };
   version: string;
+  chatMaxAgents?: number;
 }
 
 export interface HealthResponse {

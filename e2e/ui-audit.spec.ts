@@ -558,6 +558,7 @@ test.describe('@ui-audit retry and fan-out wiring', () => {
     const selector = page.locator('select[multiple]');
     await expect(selector).toBeVisible({ timeout: 15_000 });
     await expect(selector.locator('option')).toHaveCount(37);
+    await expect(page.getByText(/1 of 3 selected/)).toBeVisible();
     await expect(page.getByText(/Ctrl\/Cmd-click to fan out/i)).toBeVisible();
   });
 });
