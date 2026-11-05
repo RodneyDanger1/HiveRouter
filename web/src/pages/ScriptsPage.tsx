@@ -42,6 +42,11 @@ export function ScriptsPage() {
       delete next[id];
       return next;
     });
+    setResults((current) => {
+      const next = { ...current };
+      delete next[id];
+      return next;
+    });
     try {
       const result = await dryRunScript(id);
       setResults((current) => ({ ...current, [id]: result }));

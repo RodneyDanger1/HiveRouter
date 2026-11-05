@@ -312,11 +312,16 @@ export function sendChatMessage(threadId: string, input: ChatSendMessageInput, r
     }
     const snapshot = getChatSnapshot(existing.thread_id);
     if (!snapshot) throw new Error('E_CHAT_THREAD_NOT_FOUND');
+    const replayedJobIds = (
+      getDb()
+        .prepare('SELECT id FROM chat_jobs WHERE user_message_id = ? ORDER BY created_at ASC, id ASC')
+        .all(existing.id) as Array<{ id: string }>
+    ).map((row) => row.id);
     return {
       replayed: true,
       threadId: existing.thread_id,
       messageId: existing.id,
-      jobIds: snapshot.jobs.map((job) => job.id),
+      jobIds: replayedJobIds,
       snapshot,
     };
   }

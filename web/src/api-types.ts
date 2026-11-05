@@ -59,6 +59,8 @@ export interface AgentView extends AgentDefinition {
   enabled?: boolean;
   badges?: string[];
   evidence?: AgentEvidence[];
+  promptSource?: 'registry' | 'override';
+  systemPrompt?: string;
 }
 
 export interface RunSnapshotView {

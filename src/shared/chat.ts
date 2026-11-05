@@ -140,6 +140,20 @@ export function previewContent(content: string, max = 160): string {
   return normalized.length > max ? `${normalized.slice(0, max - 1)}…` : normalized;
 }
 
+/**
+ * Usage is two independent measurements. A missing completion count must not
+ * render as zero just because the prompt count arrived; unknown stays unknown.
+ */
+export function formatChatTokenUsage(
+  usage: { promptTokens: number | null; completionTokens: number | null } | null,
+): string {
+  if (!usage) return 'not reported';
+  const prompt = usage.promptTokens == null ? 'prompt not reported' : `${usage.promptTokens} in`;
+  const completion = usage.completionTokens == null ? 'completion not reported' : `${usage.completionTokens} out`;
+  if (usage.promptTokens == null && usage.completionTokens == null) return 'not reported';
+  return `${prompt} / ${completion}`;
+}
+
 export function isChatJobStatus(value: unknown): value is ChatJobStatus {
   return typeof value === 'string' && (CHAT_JOB_STATUSES as readonly string[]).includes(value);
 }

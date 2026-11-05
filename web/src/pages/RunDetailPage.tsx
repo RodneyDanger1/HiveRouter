@@ -450,6 +450,7 @@ export function RunDetailPage() {
             terminal={terminal}
             loading={persistedEvents.loading}
             error={persistedEvents.error}
+            onRetry={persistedEvents.reload}
           />
         )}
       </div>
@@ -1113,6 +1114,7 @@ function EventsTab({
   terminal,
   loading,
   error,
+  onRetry,
 }: {
   events: RunStreamEvent[];
   lastEventId?: number;
@@ -1120,6 +1122,7 @@ function EventsTab({
   terminal: boolean;
   loading: boolean;
   error: ApiError | null;
+  onRetry?: () => void;
 }) {
   return (
     <Card className="p-6">
@@ -1135,7 +1138,7 @@ function EventsTab({
         {loading ? (
           <LoadingPanel label="Loading persisted events…" />
         ) : error ? (
-          <ErrorPanel error={error} title="Events unavailable" />
+          <ErrorPanel error={error} onRetry={onRetry} title="Events unavailable" />
         ) : events.length === 0 ? (
           <EmptyState
             title={terminal ? 'No persisted events recorded' : 'No live events observed'}

@@ -95,6 +95,40 @@ test.describe('@ui-audit routes and visible contract', () => {
     await noSecret(page);
   });
 
+  test('agent prompt override is visible after save and removed after reset', async ({ page, request }) => {
+    const override = '[ROLE] UI audit override role.\n[OBJECTIVE] UI audit override objective.';
+    try {
+      await page.goto('/agents');
+      await page.getByPlaceholder(/Search agents/i).fill('markdown');
+      const card = page.locator('button.agent-card').first();
+      await expect(card).toBeVisible();
+      await card.click();
+      const dialog = page.getByRole('dialog');
+      await expect(dialog).toBeVisible();
+
+      await dialog.getByRole('button', { name: /Edit prompt/i }).click();
+      await dialog.locator('textarea.font-mono').fill(override);
+      const saved = page.waitForResponse((response) => response.url().endsWith('/api/agents/markdown-engine/prompt') && response.request().method() === 'PUT');
+      await dialog.getByRole('button', { name: /^Save$/ }).click();
+      expect((await saved).status()).toBe(200);
+      await expect(dialog.getByText(/^override$/)).toBeVisible({ timeout: 10_000 });
+      await expect(dialog.getByText(/UI audit override role/i).first()).toBeVisible();
+      await shot(page, 'agent-prompt-override');
+
+      await dialog.getByRole('button', { name: /Edit prompt/i }).click();
+      await dialog.getByRole('button', { name: /^Reset$/ }).click();
+      const confirm = page.getByRole('dialog').last();
+      await expect(confirm.getByText(/Reset prompt override/i)).toBeVisible();
+      const removed = page.waitForResponse((response) => response.url().endsWith('/api/agents/markdown-engine/prompt') && response.request().method() === 'DELETE');
+      await confirm.getByRole('button', { name: /^Reset prompt$/ }).click();
+      expect((await removed).status()).toBe(200);
+      await expect(dialog.getByText(/^registry$/)).toBeVisible({ timeout: 10_000 });
+      await dialog.getByRole('button', { name: 'Close', exact: true }).click();
+    } finally {
+      await request.delete('/api/agents/markdown-engine/prompt');
+    }
+  });
+
   test('overview composer exposes every control and never submits in this audit', async ({ page }) => {
     await page.goto('/');
     await expect(page.getByLabel(/Project brief/i)).toBeVisible();

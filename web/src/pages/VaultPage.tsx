@@ -17,7 +17,12 @@ import {
 export function VaultPage() {
   const tree = useApiResource(getVaultTree);
   const [selected, setSelected] = useState<string | null>(null);
+  const [fileNonce, setFileNonce] = useState(0);
   const nodes = tree.data ?? [];
+  const refreshVault = () => {
+    tree.reload();
+    setFileNonce((value) => value + 1);
+  };
 
   return (
     <div className="page">
@@ -26,7 +31,7 @@ export function VaultPage() {
         title="Vault"
         description="Run logs and blueprints are written as Markdown with a system index. This browser reads the vault through the API; it never writes it."
         actions={
-          <button type="button" className="btn btn-secondary" onClick={tree.reload} disabled={tree.loading}>
+          <button type="button" className="btn btn-secondary" onClick={refreshVault} disabled={tree.loading}>
             {tree.loading ? <Spinner /> : <RefreshCw size={15} aria-hidden />} Refresh
           </button>
         }
@@ -58,7 +63,7 @@ export function VaultPage() {
 
           <Card className="min-h-[420px] p-6">
             {selected ? (
-              <VaultFile path={selected} />
+              <VaultFile path={selected} refreshToken={fileNonce} />
             ) : (
               <EmptyState
                 icon={FileText}
@@ -116,8 +121,8 @@ function VaultNodeView({
   );
 }
 
-function VaultFile({ path }: { path: string }) {
-  const file = useApiResource((signal) => getVaultFile(path, signal), [path]);
+function VaultFile({ path, refreshToken }: { path: string; refreshToken: number }) {
+  const file = useApiResource((signal) => getVaultFile(path, signal), [path, refreshToken]);
   if (file.loading) return <LoadingPanel label="Loading vault file…" />;
   if (file.error) return <ErrorPanel error={file.error} onRetry={file.reload} title="Vault file unavailable" />;
   if (!file.data) return <EmptyState title="Empty file" body="The file exists but has no content." />;

@@ -543,7 +543,7 @@ Final gates: typecheck PASS; 226 tests / 30 files; 26/26 E2E; build PASS; strict
 - All 37 agent prompts now share explicit anti-fabrication doctrine (no invented imports/endpoints/commands, fail closed on missing information, preserve assigned path/interfaces); prompt version `2026-11-04.1`.
 - Staged-file resume: `POST /api/runs/:id/resume` + Run-detail action creates a child `resume` run, copies only retained `staged/` text files, re-runs static verification, and publishes without a provider call; parent is unchanged. No mid-run checkpoint table.
 
-**Gates at this checkpoint:** typecheck PASS; **428 tests / 66 files**; build PASS; **29/29 E2E**; strict stage **195 files / 50 tables / 62 routes / 24 scripts**, violations []; preflight PASS (free RAM 2.37 GB); live `/chat` 200; `GET /api/stats` includes chat and reports `partial:false` on the current data.
+**Gates at this checkpoint:** typecheck PASS; **438 tests / 69 files**; build PASS; **30/30 E2E**; strict stage **199 files / 50 tables / 62 routes / 24 scripts**, violations []; preflight PASS (free RAM 2.38 GB); live `/chat` 200; `GET /api/stats` includes chat and reports `partial:false` on the current data.
 
 **Residual:** release-blocking P0s retained in `docs/STOP-WORK-FLAWS.md` as PARTIAL: per-file review coverage, schema-level file bound, deeper capability labels. P1 weighted CPM, `needs_review`, dead learning producers, and full context projection remain open; router normalizers/risk, CPO token/CJK/PageRank, chat idempotency/history, staged-file resume, and Sec-Fetch-Site checks are now implemented. Dominators/scorecards now have an `/analysis` UI over the API, and terminal run workspaces have bounded FTS5 search; patch/compaction/branch modules are not wired to product routes or UI. No generated-code execution, no P7 evaluation, no native EXE.
 
@@ -554,6 +554,14 @@ Final gates: typecheck PASS; 226 tests / 30 files; 26/26 E2E; build PASS; strict
 - Added `test/unit/scripts-api.test.ts` (4 tests) and a Playwright scripts trial; E2E now 29/29.
 - Live trials: scripts, bounded analysis, run-workspace search. Evidence under `docs/TRACE/WAVE-8/` (API JSON, screenshots, runtime fingerprint, probe correction for the CUA native-coordinate false negative).
 - CUA: `cua-driver 0.28.2` loaded the real Chrome window, navigated to `/scripts`, and captured the page; native pixel click did not land on the intended control because the coordinate frame/tab changed, so interaction proof uses Playwright and the CUA click is recorded as a tooling false negative, not a product defect.
-- Gates at this checkpoint: **428 tests / 66 files**, **29/29 E2E**, stage **195 files / 50 tables / 62 routes / 24 scripts**, violations `[]`.
+- Gates at this checkpoint: **438 tests / 69 files**, **30/30 E2E**, stage **199 files / 50 tables / 62 routes / 24 scripts**, violations `[]`.
 
 **Residual after Wave 8:** the scripts surface is catalog + command hint only; it does not execute scripts and does not add typed inputs. Remaining backlog is unchanged: approval/`needs_review`, repo tools/tool loop, P7 evaluator, checkpoints/parallelism, patch/compaction/branch wiring, weighted CPM, mobile/keyboard pass, CI/license/dependency work.
+
+## 28. Wave 9 — tab-by-tab trace and repairs (2026-11-05)
+
+- Walked Overview, Agents, Chat, Runs/list/detail tabs, Analysis, Scripts, Vault, Learning, Settings, and the shell; evidence and claim table in `docs/TRACE/WAVE-9/TRACE-SUMMARY.md`.
+- Real defects fixed: Chat usage unknown shown as `0`; Chat idempotent replay returned all thread job ids; agent prompt overrides were write-only in list/detail and the "Full prompt" omitted the runtime contract; runs status filter accepted arbitrary values; search/download terminal guard was narrower than the UI; files-content read non-artifact workspace paths; empty-byte download returned an empty zip; Vault refresh left the preview stale; Agents refresh left key status stale; Scripts kept a stale result beside a new error; filtered runs used the wrong empty copy; Events had no retry.
+- New tests: `chat-usage.test.ts` (4), `agent-prompt-override.test.ts` (3), `runs-list-api.test.ts` (2), one Chat replay test, and a Playwright agent prompt override round-trip. Final gates: **438 tests / 69 files**, **30/30 E2E**, stage **199 files / 50 tables / 62 routes / 24 scripts**, preflight PASS (free RAM 2.38 GB).
+
+**Residual after Wave 9:** download-empty, Vault-refresh, and Events-retry fixes are code-verified but not fixture-exercised; search/download negative terminal paths are static-only. Approval/`needs_review`, repo tools/tool loop, P7 evaluation, checkpoints/parallelism, patch/compaction/branch wiring, weighted CPM, mobile/keyboard, CI/license/dependency work remain open.

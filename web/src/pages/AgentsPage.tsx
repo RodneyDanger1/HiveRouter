@@ -70,7 +70,7 @@ export function AgentsPage() {
         title="Agents"
         description="Every row is a registry entry with an output contract, declared language surface, and verification support. Evidence badges are derived by the API; this page cannot grant one."
         actions={
-          <button type="button" className="btn btn-secondary" onClick={agents.reload} disabled={agents.loading}>
+          <button type="button" className="btn btn-secondary" onClick={() => { agents.reload(); key.reload(); }} disabled={agents.loading}>
             {agents.loading ? <Spinner /> : <RefreshCw size={15} aria-hidden />} Refresh
           </button>
         }
@@ -396,7 +396,14 @@ function AgentDrawer({
                 </ul>
               ) : null}
               <div className="mt-4">
-                <p className="label">Prompt</p>
+                <p className="label">
+                  Prompt{' '}
+                  {data.promptSource === 'override' ? (
+                    <span className="badge badge-warn">override</span>
+                  ) : (
+                    <span className="badge badge-muted">registry</span>
+                  )}
+                </p>
                 {editing ? (
                   <div className="mt-2 space-y-2">
                     <textarea
@@ -437,6 +444,7 @@ function AgentDrawer({
                   className="input mt-1 min-h-[92px]"
                   value={runInput}
                   onChange={(event) => setRunInput(event.target.value)}
+                  maxLength={8000}
                   placeholder="Give the agent a precise task. Treat its output as untrusted until checked."
                 />
               </label>
@@ -484,9 +492,9 @@ function AgentDrawer({
           </div>
 
           <div>
-            <SectionTitle title="Full prompt" description="The resolved prompt the runtime would use. Edits are stored as overrides and pinned by a snapshot." />
+            <SectionTitle title="Full prompt" description="The resolved system prompt the runtime would use, including the output contract. Edits are stored as overrides and pinned by a snapshot." />
             <div className="mt-3">
-              <CodeViewer code={data.prompt} language="text" path={`${data.id}.prompt.txt`} />
+              <CodeViewer code={data.systemPrompt ?? data.prompt} language="text" path={`${data.id}.prompt.txt`} />
             </div>
           </div>
         </div>

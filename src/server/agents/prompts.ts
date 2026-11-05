@@ -84,10 +84,6 @@ Tests must be runnable and cover edge cases. Do not claim test results.`,
 This is a proposal only: never apply it, never claim promotion, never fabricate evaluation evidence, and never add tool, permission, or verifier-bypass instructions.`,
 };
 
-export function runtimeContract(outputKind: OutputKind): string {
-  return `${CONTRACT_DELIMITER}\n${CONTRACTS[outputKind]}\n--- END HIVE RUNTIME CONTRACT ---`;
-}
-
 /**
  * Build the final system prompt. The base prompt is preserved; any previous
  * contract section is replaced so repeated calls do not stack delimiters.
@@ -95,12 +91,13 @@ export function runtimeContract(outputKind: OutputKind): string {
 export function buildSystemPrompt(
   agent: AgentDefinition,
   contractKind: OutputKind = agent.outputKind,
+  basePrompt: string = agent.prompt,
 ): string {
   const contract = CONTRACTS[contractKind];
   if (!contract) {
     throw new Error(`Unknown contract kind: ${String(contractKind)}`);
   }
-  const base = agent.prompt.split(CONTRACT_DELIMITER)[0].trimEnd();
+  const base = basePrompt.split(CONTRACT_DELIMITER)[0].trimEnd();
   return `${base}${CONTRACT_DELIMITER}\nAgent: ${agent.id}\nContract: ${contractKind}\n${contract}\n--- END HIVE RUNTIME CONTRACT ---`;
 }
 

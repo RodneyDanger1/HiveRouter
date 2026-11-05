@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { MessageSquare, Plus, RefreshCw, Send, Square } from 'lucide-react';
 import type { ChatJobProjection, ChatMessageProjection, ChatThreadSnapshot } from '@shared/chat';
+import { formatChatTokenUsage } from '@shared/chat';
 import {
   ApiError,
   cancelChatJob,
@@ -8,6 +9,7 @@ import {
   getChatThreadSnapshot,
   listAgents,
   listChatThreads,
+  newIdempotencyKey,
   sendChatMessage,
 } from '../api';
 import type { AgentView } from '../api-types';
@@ -108,7 +110,7 @@ function MessageCard({
               <dt>available</dt><dd>{formatDate(job.availableAt)}</dd>
               <dt>lease expires</dt><dd>{formatDate(job.leaseExpiresAt)}</dd>
               <dt>tokens</dt>
-              <dd>{job.promptTokens == null ? 'not reported' : `${job.promptTokens} in / ${job.completionTokens ?? 0} out`}</dd>
+              <dd>{formatChatTokenUsage(job)}</dd>
               <dt>last error</dt>
               <dd>{job.lastErrorCode ?? 'none'}{job.lastErrorMessage ? ` — ${job.lastErrorMessage}` : ''}</dd>
             </dl>
@@ -197,7 +199,7 @@ export function ChatPage() {
       await sendChatMessage(
         selectedId,
         { content: draft, agentIds: [sendAgentId] },
-        crypto.randomUUID(),
+        newIdempotencyKey(),
       );
       setDraft('');
       snapshot.reload();

@@ -2,7 +2,8 @@ import crypto from 'node:crypto';
 import { getDb, nowIso, tx } from '../db/database.js';
 import { config } from '../config.js';
 import { REGISTRY, capabilities } from '../agents/registry.js';
-import { buildSystemPrompt, runtimeContract } from '../agents/prompts.js';
+import { readPromptOverride } from '../agents/overrides.js';
+import { buildSystemPrompt } from '../agents/prompts.js';
 import type { Effort, ModelId, Preset, RunSnapshot, ThinkingMode } from '../../shared/types.js';
 
 export function canonicalJson(value: unknown): string {
@@ -32,17 +33,8 @@ export function createSnapshot(input: {
   return tx((db) => {
     const createdAt = nowIso();
     const promptVersions = REGISTRY.map((agent) => {
-      const overrideRow = db.prepare('SELECT value_json FROM settings WHERE key = ?').get(`prompt_override:${agent.id}`) as { value_json: string } | undefined;
-      let override = '';
-      if (overrideRow) {
-        try {
-          const parsed = JSON.parse(overrideRow.value_json) as { prompt?: string };
-          if (typeof parsed.prompt === 'string' && parsed.prompt.trim().length > 0) override = parsed.prompt.trim();
-        } catch {
-          override = '';
-        }
-      }
-      const text = override ? `${override}${runtimeContract(agent.outputKind)}` : buildSystemPrompt(agent);
+      const override = readPromptOverride(agent.id, db) ?? '';
+      const text = buildSystemPrompt(agent, agent.outputKind, override || agent.prompt);
       const hash = sha256(text);
       db.prepare(
         'INSERT INTO prompt_versions (id, agent_id, version, hash, text, created_at) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT(agent_id, hash) DO NOTHING',

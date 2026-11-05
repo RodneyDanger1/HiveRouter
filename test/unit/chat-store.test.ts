@@ -77,6 +77,17 @@ describe('durable chat store', () => {
     expect(getChatSnapshot(threadId)?.messages).toHaveLength(2);
   });
 
+  it('replays only the original message job ids after newer messages exist', () => {
+    const threadId = thread();
+    const first = sendChatMessage(threadId, { content: 'First question', agentIds: ['router'] }, 'store-idempotency-key-scope-jobs');
+    const second = sendChatMessage(threadId, { content: 'Second question', agentIds: ['architect'] }, 'store-idempotency-key-scope-jobs-2');
+    const replay = sendChatMessage(threadId, { content: 'First question', agentIds: ['router'] }, 'store-idempotency-key-scope-jobs');
+    expect(replay.replayed).toBe(true);
+    expect(replay.jobIds).toEqual(first.jobIds);
+    expect(replay.jobIds).not.toContain(second.jobIds[0]);
+    expect(replay.snapshot.jobs).toHaveLength(2);
+  });
+
   it('scopes an idempotency key to its thread instead of replaying another thread', () => {
     const firstThread = thread();
     const secondThread = thread();

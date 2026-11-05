@@ -18,7 +18,7 @@ import { nowIso } from './db/database.js';
 import { listFiles, safePath, normalizeRel, assertAllowedExtension } from './security/paths.js';
 import { assertOpenApiResponses, decorateOpenApiDocument } from './verify/openapi-schema.js';
 import { recordError } from './observability/error-log.js';
-import { EFFORTS, MODEL_IDS, PRESETS, THINKING_MODES, type AgentDefinition, type RunEvent } from '../shared/types.js';
+import { EFFORTS, MODEL_IDS, PRESETS, RUN_STATUSES, TERMINAL_STATUSES, THINKING_MODES, type AgentDefinition, type RunEvent, type RunStatus } from '../shared/types.js';
 import { createChatThread, getChatEventProjection, getChatSnapshot, getChatThread, listChatThreads, sendChatMessage } from './chat/store.js';
 import { subscribeChat } from './chat/events.js';
 import { cancelChatJob } from './chat/worker.js';
@@ -26,6 +26,8 @@ import { computeDominators, DominatorInputError } from './analysis/dominators.js
 import { evaluateScorecards, ScorecardInputError } from './analysis/scorecards.js';
 import { AnalysisInputError, parseDominatorRequest, parseScorecardsRequest } from './analysis/api.js';
 import { searchRunWorkspace } from './search/run-search.js';
+import { loadPromptOverrides, readPromptOverride } from './agents/overrides.js';
+import { buildSystemPrompt } from './agents/prompts.js';
 
 const REPRESENTATIVE_LIVE = new Set(['architect', 'python-engine', 'react-engine', 'cleaner', 'gatekeeper', 'powershell-core']);
 
@@ -41,6 +43,7 @@ function toAgentView(
   agent: AgentDefinition,
   evidenceRows: AgentEvidenceRow[],
   stepped: Array<{ agent_id: string; run_id: string }>,
+  promptOverride: string | null = null,
 ) {
   const evidence = evidenceRows.filter((row) => row.agent_id === agent.id);
   const badges: string[] = ['registered'];
@@ -48,6 +51,8 @@ function toAgentView(
   const live = evidence.some((row) => row.badge === 'representative-live') || (REPRESENTATIVE_LIVE.has(agent.id) && stepped.some((row) => row.agent_id === agent.id));
   if (live) badges.push('representative-live');
   if (evidence.some((row) => row.badge === 'schema-valid')) badges.push('schema-valid');
+  const promptText = promptOverride ?? agent.prompt;
+  const systemPrompt = buildSystemPrompt(agent, agent.outputKind, promptText);
   return {
     id: agent.id,
     name: agent.name,
@@ -64,7 +69,9 @@ function toAgentView(
     priorVersion: agent.priorVersion,
     promptVersion: agent.promptVersion,
     schemaId: agent.schemaId,
-    prompt: agent.prompt,
+    prompt: promptText,
+    systemPrompt,
+    promptSource: promptOverride ? 'override' : 'registry',
     canWrite: agent.canWrite,
     canReview: agent.canReview,
     canTest: agent.canTest,
@@ -275,7 +282,8 @@ export async function buildApp(): Promise<FastifyInstance> {
     const stepped = getDb()
       .prepare("SELECT DISTINCT s.agent_id AS agent_id, s.run_id AS run_id FROM steps s JOIN runs r ON r.id = s.run_id WHERE s.status = 'succeeded' AND r.status IN ('completed','completed_with_warnings')")
       .all() as Array<{ agent_id: string; run_id: string }>;
-    return REGISTRY.map((a) => toAgentView(a, evidenceRows, stepped));
+    const overrides = loadPromptOverrides();
+    return REGISTRY.map((a) => toAgentView(a, evidenceRows, stepped, overrides.get(a.id) ?? null));
   });
 
   app.get('/api/agents/:id', async (request, reply) => {
@@ -286,7 +294,7 @@ export async function buildApp(): Promise<FastifyInstance> {
     const stepped = getDb()
       .prepare("SELECT DISTINCT s.agent_id AS agent_id, s.run_id AS run_id FROM steps s JOIN runs r ON r.id = s.run_id WHERE s.status = 'succeeded' AND r.status IN ('completed','completed_with_warnings')")
       .all() as Array<{ agent_id: string; run_id: string }>;
-    return toAgentView(agent, evidenceRows, stepped);
+    return toAgentView(agent, evidenceRows, stepped, readPromptOverride(agent.id));
   });
 
   app.put('/api/agents/:id/prompt', async (request, reply) => {
@@ -298,12 +306,20 @@ export async function buildApp(): Promise<FastifyInstance> {
     const prompt = typeof body?.prompt === 'string' ? body.prompt.trim() : '';
     if (prompt.length === 0) return refusal(reply as never, 'E_PROMPT_TOO_LARGE', { reason: 'empty prompt' });
     if (prompt.length > 20_000) return refusal(reply as never, 'E_PROMPT_TOO_LARGE', { limit: 20_000, observed: prompt.length });
+    const { assertPromptClean } = await import('./agents/prompts.js');
+    try {
+      assertPromptClean(id, prompt);
+    } catch (error) {
+      return refusal(reply as never, 'E_PROMPT_OVERRIDE_INVALID', {
+        reason: error instanceof Error ? error.message : 'prompt contract validation failed',
+      });
+    }
     const { containsSecret } = await import('./security/redact.js');
     if (containsSecret(prompt)) return refusal(reply as never, 'E_LEARNING_REDACTION_BLOCKED', { reason: 'secret pattern in prompt' });
     getDb()
       .prepare('INSERT INTO settings (key, value_json, updated_at) VALUES (?, ?, ?) ON CONFLICT(key) DO UPDATE SET value_json = excluded.value_json, updated_at = excluded.updated_at')
       .run(`prompt_override:${id}`, JSON.stringify({ prompt }), nowIso());
-    return { agentId: id, saved: true, chars: prompt.length };
+    return { agentId: id, saved: true, chars: prompt.length, promptSource: 'override' };
   });
 
   app.delete('/api/agents/:id/prompt', async (request, reply) => {
@@ -321,7 +337,10 @@ export async function buildApp(): Promise<FastifyInstance> {
     if (!agent) return refusal(reply as never, 'E_UNSUPPORTED_AGENT');
     const body = request.body as { input?: unknown; mode?: unknown; targetPath?: unknown; maxCostUsd?: unknown } | null;
     const input = typeof body?.input === 'string' ? body.input.trim() : '';
-    if (input.length === 0) return refusal(reply as never, 'E_PROMPT_TOO_LARGE', { reason: 'empty input' });
+    if (input.length === 0) return refusal(reply as never, 'E_INVALID_AGENT_RUN_INPUT', { reason: 'empty input' });
+    if (body?.mode !== undefined && body.mode !== 'live' && body.mode !== 'mock') {
+      return refusal(reply as never, 'E_INVALID_AGENT_RUN_INPUT', { field: 'mode', allowed: ['live', 'mock'], observed: body.mode });
+    }
     if (body?.mode === 'mock') return refusal(reply as never, 'E_AGENT_MOCK_UNAVAILABLE');
     if (!keyStatus().configured) return refusal(reply as never, 'E_KEY_NOT_CONFIGURED');
     const targetPath = typeof body?.targetPath === 'string' && body.targetPath.trim() ? body.targetPath.trim() : undefined;
@@ -891,7 +910,7 @@ export async function buildApp(): Promise<FastifyInstance> {
     const { id } = request.params as { id: string };
     const run = getRun(id);
     if (!run) return refusal(reply as never, 'E_RUN_NOT_FOUND');
-    if (['queued', 'running'].includes(String(run.status))) return refusal(reply as never, 'E_RUN_NOT_TERMINAL');
+    if (!TERMINAL_STATUSES.has(run.status as RunStatus)) return refusal(reply as never, 'E_RUN_NOT_TERMINAL');
     const artifacts = getArtifacts(id);
     if (artifacts.length === 0) return refusal(reply as never, 'E_ZIP_EMPTY');
     const { zipSync } = await import('fflate');
@@ -904,6 +923,7 @@ export async function buildApp(): Promise<FastifyInstance> {
         // skip unsafe entries
       }
     }
+    if (Object.keys(entries).length === 0) return refusal(reply as never, 'E_ZIP_EMPTY');
     const zip = zipSync(entries);
     reply.header('Content-Type', 'application/zip');
     reply.header('Content-Disposition', `attachment; filename="hive-${id.replace(/^run_/, '').slice(0, 10)}.zip"`);
@@ -914,7 +934,7 @@ export async function buildApp(): Promise<FastifyInstance> {
     const { id } = request.params as { id: string };
     const run = getRun(id);
     if (!run) return refusal(reply as never, 'E_RUN_NOT_FOUND');
-    if (['queued', 'running'].includes(String(run.status))) return refusal(reply as never, 'E_RUN_NOT_TERMINAL');
+    if (!TERMINAL_STATUSES.has(run.status as RunStatus)) return refusal(reply as never, 'E_RUN_NOT_TERMINAL');
     const body = (request.body ?? {}) as { query?: unknown; limit?: unknown };
     if (typeof body.query !== 'string' || body.query.trim().length < 1 || body.query.length > 200) {
       return refusal(reply as never, 'E_SEARCH_INVALID_QUERY');
@@ -961,8 +981,15 @@ export async function buildApp(): Promise<FastifyInstance> {
     return { opened: true, path: run.workspacePath };
   });
 
-  app.get('/api/runs', async (request) => {
+  app.get('/api/runs', async (request, reply) => {
     const query = request.query as { limit?: string; status?: string };
+    if (query.status !== undefined && !(RUN_STATUSES as readonly string[]).includes(query.status)) {
+      return refusal(reply as never, 'E_INVALID_RUN_FILTER', {
+        field: 'status',
+        allowed: RUN_STATUSES,
+        observed: query.status,
+      });
+    }
     const rawLimit = Number(query.limit ?? 50);
     const limit = Number.isFinite(rawLimit) && rawLimit > 0 ? Math.max(1, Math.min(100, Math.floor(rawLimit))) : 50;
     return { runs: listRuns(limit, query.status) };
@@ -1220,6 +1247,8 @@ export async function buildApp(): Promise<FastifyInstance> {
     if (!run) return refusal(reply as never, 'E_RUN_NOT_FOUND');
     const query = request.query as { path?: string };
     if (!query.path) return refusal(reply as never, 'E_UNSAFE_PATH', { reason: 'missing path' });
+    const artifact = getArtifacts(id).find((candidate) => candidate.path === query.path);
+    if (!artifact) return refusal(reply as never, 'E_FILE_NOT_FOUND', { reason: 'path is not a persisted artifact' });
     try {
       const { safePath } = await import('./security/paths.js');
       const fsmod = await import('node:fs');

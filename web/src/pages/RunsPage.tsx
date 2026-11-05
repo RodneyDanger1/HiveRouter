@@ -61,8 +61,8 @@ export function RunsPage() {
       ) : list.length === 0 ? (
         <EmptyState
           icon={Boxes}
-          title="No runs recorded"
-          body="The API has no runs for this status. Start one from the overview; this page does not invent a history."
+          title={status === 'all' ? 'No runs recorded' : 'No runs match this status'}
+          body={status === 'all' ? 'The API has no runs yet. Start one from the overview; this page does not invent a history.' : 'The API has no runs for this status. Change the filter; this page does not invent a history.'}
           action={
             <Link to="/" className="btn btn-primary">
               Start a run
