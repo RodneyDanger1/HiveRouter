@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { getDb, tx } from '../db/database.js';
 import { isAllowedExtension, listFiles } from '../security/paths.js';
 
@@ -28,7 +29,18 @@ export interface WorkspaceSearchResult {
   matches: WorkspaceSearchMatch[];
   indexedFiles: number;
   indexed: boolean;
+  indexState: 'built' | 'reused' | 'rebuilt';
   truncated: boolean;
+}
+
+interface WorkspaceIndexInput {
+  signature: string;
+  files: string[];
+}
+
+interface IndexStateRow {
+  workspace_signature: string;
+  indexed_files: number;
 }
 
 function shouldIndex(rel: string): boolean {
@@ -48,27 +60,90 @@ function clearRun(runId: string): void {
   }
 }
 
-function indexRun(runId: string, workspacePath: string): number {
-  if (!workspacePath || !fs.existsSync(workspacePath)) return 0;
-  const files = listFiles(workspacePath).filter(shouldIndex).slice(0, MAX_INDEXED_FILES);
+/**
+ * A cheap freshness signal for the eligible file set. The index remains the
+ * content source of truth; this only decides whether the cached rows are still
+ * valid. Content hashing every file on every search would defeat the cache.
+ */
+function workspaceIndexInput(workspacePath: string): WorkspaceIndexInput {
+  if (!workspacePath || !fs.existsSync(workspacePath)) {
+    return { signature: 'missing', files: [] };
+  }
+  const files = listFiles(workspacePath).filter(shouldIndex).sort();
+  const hash = crypto.createHash('sha256');
+  hash.update('present\n');
+  for (const rel of files) {
+    const full = path.resolve(workspacePath, rel);
+    const relative = path.relative(workspacePath, full);
+    if (relative.startsWith('..') || path.isAbsolute(relative)) continue;
+    let size = -1;
+    let mtimeMs = 0;
+    try {
+      const stat = fs.statSync(full);
+      if (stat.isFile()) {
+        size = stat.size;
+        mtimeMs = stat.mtimeMs;
+      }
+    } catch {
+      // A transient stat failure still contributes the path; the next search
+      // will notice when metadata becomes readable.
+    }
+    hash.update(`${rel}\0${size}\0${mtimeMs}\n`);
+  }
+  return { signature: hash.digest('hex'), files };
+}
+
+function readIndexState(runId: string): IndexStateRow | null {
+  return (
+    (getDb()
+      .prepare('SELECT workspace_signature, indexed_files FROM run_search_index WHERE run_id = ?')
+      .get(runId) as IndexStateRow | undefined) ?? null
+  );
+}
+
+function countIndexedDocs(runId: string): number {
+  const row = getDb().prepare('SELECT COUNT(*) AS n FROM run_search_docs WHERE run_id = ?').get(runId) as { n: number };
+  return Number(row.n);
+}
+
+function indexRun(runId: string, workspacePath: string, input: WorkspaceIndexInput): number {
+  const files = workspacePath && fs.existsSync(workspacePath) ? input.files : [];
   tx((db) => {
     clearRun(runId);
     const insertDoc = db.prepare('INSERT INTO run_search_docs (run_id, path, content) VALUES (?, ?, ?)');
     const insertFts = db.prepare('INSERT INTO run_search_fts (rowid, content) VALUES (?, ?)');
-    for (const rel of files) {
+    for (const rel of files.slice(0, MAX_INDEXED_FILES)) {
       const full = path.resolve(workspacePath, rel);
       const relative = path.relative(workspacePath, full);
       if (relative.startsWith('..') || path.isAbsolute(relative)) continue;
-      const stat = fs.statSync(full);
+      let stat: fs.Stats;
+      try {
+        stat = fs.statSync(full);
+      } catch {
+        continue;
+      }
       if (!stat.isFile() || stat.size > MAX_FILE_BYTES) continue;
-      const content = fs.readFileSync(full, 'utf8');
+      let content: string;
+      try {
+        content = fs.readFileSync(full, 'utf8');
+      } catch {
+        continue;
+      }
       if (content.includes('\0') || content.trim().length === 0) continue;
       const info = insertDoc.run(runId, rel.replace(/\\/g, '/'), content);
       insertFts.run(Number(info.lastInsertRowid), content);
     }
+    const count = db.prepare('SELECT COUNT(*) AS n FROM run_search_docs WHERE run_id = ?').get(runId) as { n: number };
+    db.prepare(
+      `INSERT INTO run_search_index (run_id, workspace_signature, indexed_files, indexed_at)
+       VALUES (?, ?, ?, ?)
+       ON CONFLICT(run_id) DO UPDATE SET
+         workspace_signature = excluded.workspace_signature,
+         indexed_files = excluded.indexed_files,
+         indexed_at = excluded.indexed_at`,
+    ).run(runId, input.signature, Number(count.n), new Date().toISOString());
   });
-  const count = getDb().prepare('SELECT COUNT(*) AS n FROM run_search_docs WHERE run_id = ?').get(runId) as { n: number };
-  return Number(count.n);
+  return countIndexedDocs(runId);
 }
 
 function escapeLike(query: string): string {
@@ -99,15 +174,24 @@ function shortQueryMatches(runId: string, query: string, limit: number): Workspa
 }
 
 /**
- * Search a run workspace. The first search builds the disposable index; later
- * searches reuse it because a terminal run's published workspace is immutable.
+ * Search a run workspace. A changed eligible file set invalidates the cached
+ * index and forces a rebuild before results are served. An unchanged workspace
+ * reuses it; a missing workspace is an honest empty index, not stale success.
  */
 export function searchRunWorkspace(runId: string, workspacePath: string, query: string, limit = 20): WorkspaceSearchResult {
-  const existing = getDb().prepare('SELECT COUNT(*) AS n FROM run_search_docs WHERE run_id = ?').get(runId) as { n: number };
-  let indexedFiles = Number(existing.n);
+  const input = workspaceIndexInput(workspacePath);
+  const state = readIndexState(runId);
+  const docCount = countIndexedDocs(runId);
+  const stateMatches =
+    state !== null &&
+    state.workspace_signature === input.signature &&
+    state.indexed_files === docCount;
+  let indexedFiles = docCount;
   let indexed = false;
-  if (indexedFiles === 0) {
-    indexedFiles = indexRun(runId, workspacePath);
+  let indexState: WorkspaceSearchResult['indexState'] = 'reused';
+  if (!stateMatches) {
+    indexedFiles = indexRun(runId, workspacePath, input);
+    indexState = state !== null || docCount > 0 ? 'rebuilt' : 'built';
     indexed = true;
   }
   const boundedLimit = Math.max(1, Math.min(50, Math.trunc(limit)));
@@ -134,6 +218,7 @@ export function searchRunWorkspace(runId: string, workspacePath: string, query: 
     matches,
     indexedFiles,
     indexed,
+    indexState,
     truncated: matches.length >= boundedLimit,
   };
 }

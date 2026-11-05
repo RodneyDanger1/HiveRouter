@@ -565,3 +565,13 @@ Final gates: typecheck PASS; 226 tests / 30 files; 26/26 E2E; build PASS; strict
 - New tests: `chat-usage.test.ts` (4), `agent-prompt-override.test.ts` (3), `runs-list-api.test.ts` (2), one Chat replay test, and a Playwright agent prompt override round-trip. Final gates: **438 tests / 69 files**, **30/30 E2E**, stage **199 files / 50 tables / 62 routes / 24 scripts**, preflight PASS (free RAM 3.13 GB).
 
 **Residual after Wave 9:** download-empty, Vault-refresh, and Events-retry fixes are code-verified but not fixture-exercised; search/download negative terminal paths are static-only. Approval/`needs_review`, repo tools/tool loop, P7 evaluation, checkpoints/parallelism, patch/compaction/branch wiring, weighted CPM, mobile/keyboard, CI/license/dependency work remain open.
+
+## 29. Wave 10 — search index freshness (2026-11-05)
+
+- **Plan:** `docs/WAVE-10-PLAN.md`; **operating contract:** `docs/AGENT-OPERATING-PLAN.md`; **evidence:** `docs/TRACE/WAVE-10/TRACE-SUMMARY.md`.
+- The search index now stores a run-level workspace signature (sorted eligible path + size + mtimeMs), file count, and indexed timestamp in `run_search_index`. A changed workspace rebuilds before matches are served; an unchanged workspace reuses the index; a missing workspace is an honest empty index.
+- `WorkspaceSearchResult` and `RunSearchResponse` add `indexState: built | reused | rebuilt`; the run-detail Search tab renders the state and keeps `indexed` for compatibility.
+- RED evidence: against the old count-only code, 4 of 5 search tests failed (`expected undefined to be 'built'`), including the edit and delete rebuild paths. GREEN after the fix: 5/5 search tests.
+- New failure fixtures: edited file, deleted file, missing workspace first/repeat. No provider call, no workspace write, no path input.
+- **Gates:** typecheck PASS; **440 tests / 69 files**; build PASS; **30/30 E2E**; strict stage **199 files / 51 tables / 62 routes / 24 scripts**, violations `[]`; preflight PASS (free RAM 1.92 GB, disk 9.07 GB).
+- **Residual:** mtime+size freshness is not cryptographic; a content edit that preserves both size and mtime is not detected. The index state is disposable; deleting `run_search_*` tables rebuilds on the next search. No external repository indexing.

@@ -9,9 +9,9 @@ This is the honest work queue for the next waves. It is ordered by user impact a
 - Idempotent chat fan-out with leases, retries, cancellation, SSE projection, and newest-context history.
 - 37 role prompts with anti-fabrication doctrine.
 - Read-only dominator/scorecard API and `/analysis` page.
-- FTS5 search over one terminal run’s published workspace.
+- FTS5 search over one terminal run’s published workspace, with workspace-change detection and rebuild.
 - Staged-file resume without a provider call.
-- 438 unit/integration tests, 30 Playwright tests, stage/OpenAPI/secret/stub gates.
+- 440 unit/integration tests, 30 Playwright tests, stage/OpenAPI/secret/stub gates.
 
 ## P0 — correctness before capability
 
@@ -44,7 +44,7 @@ This is the honest work queue for the next waves. It is ordered by user impact a
 |---|---|---|---|
 | P2-1 | P7 evaluator | No sealed pool, no consent, no promotion | Schema/loader/worker, exact 65-case suite use, statistics, approval token, promotion/rollback; still refuses without consent |
 | P2-2 | Multi-process chat worker | One in-process worker is a single-owner design | DB lease claim across two processes; kill/restart reaper exercise |
-| P2-3 | Search index freshness | Published files can be edited manually | Hash/mtime rebuild policy; stale index labeled or rebuilt |
+| P2-3 | Search index freshness — **delivered Wave 10** | Published files can be edited manually | Workspace signature (path/size/mtime) detects edits; rebuilds before serving; `indexState` built/reused/rebuilt; tests pin edit/delete/missing paths |
 | P2-4 | Mobile and keyboard-only UI pass | Desktop E2E is not the whole operator surface | Playwright mobile viewport + keyboard traversal for `/analysis` and run Search |
 | P2-5 | Retained-run cleanup | Staged/evidence growth is unbounded | Retention policy with dry-run, explicit delete, and audit row |
 | P2-6 | CI workflow | Gates are local commands | GitHub Actions: `npm ci`, typecheck, test, build, E2E (mock), stage assert, sweeps |

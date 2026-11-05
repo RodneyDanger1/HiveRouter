@@ -22,7 +22,7 @@
     "consent_records", "traces", "repair_memory", "variants", "sealed_pool_blocks", "sealed_pool",
     "eval_suites", "eval_cases", "suite_uses", "eval_runs", "eval_results", "approval_tokens",
     "promotions", "post_promotion_monitor", "learning_jobs", "learning_audit", "feedback", "user_edits",
-    "chat_threads", "chat_messages", "chat_jobs", "chat_events", "run_search_docs"
+    "chat_threads", "chat_messages", "chat_jobs", "chat_events", "run_search_docs", "run_search_index"
   ],
   "routes": [
     "/api/health", "/api/meta", "/api/settings", "/api/settings/key", "/api/settings/key-status", "/api/agents",

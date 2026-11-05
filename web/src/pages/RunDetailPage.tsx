@@ -712,7 +712,13 @@ function SearchTab({ runId, terminal }: { runId: string; terminal: boolean }) {
           <div className="space-y-3">
             <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
               <span className="font-mono">{result.indexedFiles} file{result.indexedFiles === 1 ? '' : 's'} indexed</span>
-              <span>{result.indexed ? 'index built on demand' : 'index reused'}</span>
+              <span>
+                {result.indexState === 'rebuilt'
+                  ? 'index rebuilt: workspace changed'
+                  : result.indexState === 'built'
+                    ? 'index built on demand'
+                    : 'index reused'}
+              </span>
               {result.truncated ? <span className="badge badge-warn">result limit reached</span> : null}
             </div>
             {result.matches.length === 0 ? (

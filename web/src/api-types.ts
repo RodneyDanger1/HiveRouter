@@ -145,6 +145,7 @@ export interface RunSearchResponse {
   matches: RunSearchMatch[];
   indexedFiles: number;
   indexed: boolean;
+  indexState: 'built' | 'reused' | 'rebuilt';
   truncated: boolean;
 }
 

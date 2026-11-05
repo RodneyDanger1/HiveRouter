@@ -255,6 +255,8 @@ test.describe('@ui-audit run detail contract', () => {
     await page.getByRole('button', { name: /^Search$/i }).click();
     await expect(page.getByText(/file[s]? indexed/i)).toBeVisible({ timeout: 10_000 });
     await shot(page, 'run-detail-search');
+    await page.getByRole('button', { name: /^Search$/i }).click();
+    await expect(page.getByText(/index reused/i)).toBeVisible({ timeout: 10_000 });
 
     await page.getByRole('tab', { name: /^Files$/i }).click();
     const firstFile = page.locator('.vault-row').first();

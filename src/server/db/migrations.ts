@@ -683,6 +683,12 @@ CREATE TABLE IF NOT EXISTS run_search_docs (
   UNIQUE(run_id, path)
 );
 CREATE INDEX IF NOT EXISTS ix_run_search_docs_run ON run_search_docs(run_id);
+CREATE TABLE IF NOT EXISTS run_search_index (
+  run_id TEXT PRIMARY KEY,
+  workspace_signature TEXT NOT NULL,
+  indexed_files INTEGER NOT NULL,
+  indexed_at TEXT NOT NULL
+);
 CREATE VIRTUAL TABLE IF NOT EXISTS run_search_fts USING fts5(content, tokenize='trigram');
 `;
 
