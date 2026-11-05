@@ -493,3 +493,71 @@ test.describe('@ui-audit truth copy and shell assets', () => {
     expect(errors.filter((text) => /favicon|404/i.test(text))).toEqual([]);
   });
 });
+
+test.describe('@ui-audit retry and fan-out wiring', () => {
+  test('composer reuses the idempotency key after a transport failure', async ({ page }) => {
+    await page.goto('/');
+    const keys: string[] = [];
+    await page.route('**/api/runs', async (route) => {
+      if (route.request().method() !== 'POST') {
+        await route.continue();
+        return;
+      }
+      const key = route.request().headers()['idempotency-key'];
+      if (key) keys.push(key);
+      await route.abort('failed');
+    });
+
+    await page.getByLabel(/Project brief/i).fill('Retry-safe composer audit brief for a local tool.');
+    const start = page.getByRole('button', { name: /Start run/i });
+    await start.click();
+    await expect(page.getByText(/could not be started|E_NETWORK/i).first()).toBeVisible();
+    await start.click();
+    await expect.poll(() => keys.length).toBe(2);
+    expect(keys[0]).toBeTruthy();
+    expect(keys[1]).toBe(keys[0]);
+  });
+
+  test('chat exposes the backend multi-agent selection', async ({ page }) => {
+    const thread = {
+      id: 'chat_wave16_audit',
+      title: 'Wave 16 audit thread',
+      agentId: 'markdown-engine',
+      model: 'deepseek-flash',
+      thinking: 'disabled',
+      effort: null,
+      status: 'active',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      lastMessageAt: null,
+      lastMessagePreview: null,
+      lastJobId: null,
+      lastJobStatus: null,
+      messageCount: 0,
+      pendingJobCount: 0,
+      queuedJobCount: 0,
+      runningJobCount: 0,
+      failedJobCount: 0,
+      succeededJobCount: 0,
+    };
+    await page.route('**/api/chat/threads?limit=50', async (route) => {
+      await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ threads: [thread] }) });
+    });
+    await page.route('**/api/chat/threads/chat_wave16_audit', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ thread, messages: [], jobs: [], lastEventSeq: 0 }),
+      });
+    });
+    await page.route('**/api/chat/threads/chat_wave16_audit/stream', async (route) => {
+      await route.fulfill({ status: 200, contentType: 'text/event-stream', body: '' });
+    });
+
+    await page.goto('/chat');
+    const selector = page.locator('select[multiple]');
+    await expect(selector).toBeVisible({ timeout: 15_000 });
+    await expect(selector.locator('option')).toHaveCount(37);
+    await expect(page.getByText(/Ctrl\/Cmd-click to fan out/i)).toBeVisible();
+  });
+});

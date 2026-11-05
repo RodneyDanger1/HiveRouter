@@ -381,11 +381,15 @@ export async function getRunEvents(runId: string, signal?: AbortSignal): Promise
   return mapPersistedRunEvents(rows);
 }
 
-export async function startRun(input: StartRunInput, signal?: AbortSignal): Promise<string> {
+export async function startRun(
+  input: StartRunInput,
+  signal?: AbortSignal,
+  idempotencyKey: string = newIdempotencyKey(),
+): Promise<string> {
   const payload = await request<unknown>('/runs', {
     method: 'POST',
     body: input,
-    idempotencyKey: newIdempotencyKey(),
+    idempotencyKey,
     signal,
   });
   const runId = normalizeRunId(payload);
@@ -525,11 +529,16 @@ export async function resetAgentPrompt(agentId: string, signal?: AbortSignal): P
   });
 }
 
-export async function runAgent(agentId: string, input: AgentRunInput, signal?: AbortSignal): Promise<string> {
+export async function runAgent(
+  agentId: string,
+  input: AgentRunInput,
+  signal?: AbortSignal,
+  idempotencyKey: string = newIdempotencyKey(),
+): Promise<string> {
   const payload = await request<unknown>(`/agents/${encodeURIComponent(agentId)}/run`, {
     method: 'POST',
     body: input,
-    idempotencyKey: newIdempotencyKey(),
+    idempotencyKey,
     signal,
   });
   const runId = normalizeRunId(payload);

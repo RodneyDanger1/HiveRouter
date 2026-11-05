@@ -622,3 +622,12 @@ Final gates: typecheck PASS; 226 tests / 30 files; 26/26 E2E; build PASS; strict
 - **Capability audit:** repo tools, tool loop, generated-code execution, approval, checkpoints, parallel generation, external repo index, P7 evaluator, native GUI/MCP remain absent or partial and are documented as such.
 - **Gates:** typecheck PASS; **455 tests / 71 files**; build PASS; **36/36 E2E**; strict stage **204 files / 51 tables / 62 routes / 24 scripts**, violations `[]`; preflight PASS (free RAM 2.31 GB, disk 9.05 GB); stub clean 104; secret clean 201.
 - **Residual:** no paid live provider call; no native CUA proof; `npm audit --omit=dev` is clean after `@fastify/static` 10.1.10; DSH consent remains unimplemented and is documented, not claimed.
+
+## 35. Wave 16 — client retry idempotency and chat fan-out (2026-11-05)
+
+- **Plan:** `docs/WAVE-16-PLAN.md`; **evidence:** `docs/TRACE/WAVE-16/TRACE-SUMMARY.md`.
+- `startRun`/`runAgent` accept caller-supplied idempotency keys. `RunComposer`, the agent drawer, and `ChatPage` bind one key to one unchanged payload; edits/success produce a new key. A lost response followed by an unchanged retry now replays instead of duplicating.
+- `ChatPage` sends a native multi-select `agentIds` set (at least one required) instead of silently sending one agent; the server keeps all fan-out/budget/refusal authority.
+- **Evidence:** E2E transport-abort retry asserts equal `Idempotency-Key` headers; chat control shows 37 options and multi-select help. **38/38 E2E**, **455 tests / 71 files**.
+- **Gates:** typecheck PASS; build PASS; stage **204 files / 51 tables / 62 routes / 24 scripts**, violations `[]`; preflight PASS (free RAM 2.46 GB, disk 8.86 GB); stub clean 104; secret clean 201; `npm audit --omit=dev` 0.
+- **Residual:** browser retry proof is transport-abort not live commit/lost-response; chat control existence is proven but no live multi-job send; thread creation remains non-idempotent; agent-drawer retry is code-reviewed, not browser-tested. No paid provider call.

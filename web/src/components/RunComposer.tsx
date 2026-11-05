@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ArrowRight, Play, ShieldCheck, Sparkles } from 'lucide-react';
 import type { Preset } from '@shared/types';
 import type { PromptAnalysisResponse } from '../api-types';
-import { ApiError, analyzePrompt, startRun } from '../api';
+import { ApiError, analyzePrompt, newIdempotencyKey, startRun } from '../api';
 import { cn, humanError, Spinner } from './ui';
 import { PromptAnalysisCard } from './PromptAnalysisCard';
 
@@ -66,6 +66,10 @@ export function RunComposer({
   const [analysis, setAnalysis] = useState<PromptAnalysisResponse | null>(null);
   const [analysisBusy, setAnalysisBusy] = useState(false);
   const [analysisError, setAnalysisError] = useState<ApiError | null>(null);
+  const requestKey = useMemo(
+    () => newIdempotencyKey(),
+    [brief, preset, model, thinking, effort, maxCostUsd],
+  );
 
   useEffect(() => {
     try {
@@ -122,7 +126,7 @@ export function RunComposer({
         thinking,
         effort: thinking === 'enabled' ? effort : undefined,
         maxCostUsd: cap,
-      });
+      }, undefined, requestKey);
       onStarted(runId);
     } catch (caught) {
       setError(

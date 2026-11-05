@@ -11,7 +11,7 @@ This is the honest work queue for the next waves. It is ordered by user impact a
 - Read-only dominator/scorecard API and `/analysis` page.
 - FTS5 search over one terminal run’s published workspace, with workspace-change detection and rebuild.
 - Staged-file resume without a provider call.
-- 455 unit/integration tests, 36 Playwright tests, stage/OpenAPI/secret/stub gates.
+- 455 unit/integration tests, 38 Playwright tests, stage/OpenAPI/secret/stub gates.
 
 ## P0 — correctness before capability
 

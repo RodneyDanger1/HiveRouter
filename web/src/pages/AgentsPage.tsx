@@ -17,6 +17,7 @@ import {
   getAgent,
   getKeyStatus,
   listAgents,
+  newIdempotencyKey,
   resetAgentPrompt,
   runAgent,
   updateAgentPrompt,
@@ -214,6 +215,10 @@ function AgentDrawer({
   const [runBudget, setRunBudget] = useState('0.05');
   const [runBusy, setRunBusy] = useState(false);
   const [runError, setRunError] = useState<ApiError | null>(null);
+  const runRequestKey = useMemo(
+    () => newIdempotencyKey(),
+    [agentId, runInput, runMode, runTarget, runBudget],
+  );
 
   useEffect(() => {
     if (agent.data) setPrompt(agent.data.prompt);
@@ -296,7 +301,7 @@ function AgentDrawer({
         mode: runMode,
         maxCostUsd: cap,
         targetPath: runTarget.trim() || undefined,
-      });
+      }, undefined, runRequestKey);
       onRun(runId);
     } catch (caught) {
       setRunError(

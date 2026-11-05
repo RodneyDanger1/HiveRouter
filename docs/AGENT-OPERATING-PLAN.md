@@ -15,7 +15,7 @@ Do not treat a README, prompt, or historical wave note as permission to widen sc
 
 ## 2. Current goal
 
-**Wave 15 — full UI/capability/truth audit.** Inspect every rendered route and control, trace confirmed seams, fix the current false key-ingress instructions and the false DSH read claim, add real `--from-env` local key import, close the favicon 404, remove unused dependency baggage, and make the current docs/capability matrix match the running code. Out-of-scope capabilities stay explicitly absent.
+**Wave 16 — client retry and fan-out wiring.** The backend has idempotency and multi-agent chat fan-out, but the composer/chat client discard the request key between attempts and the chat UI sends only one agent. Reuse one key for an unchanged failed submission, expose multi-agent selection, and prove both with browser-level network capture.
 
 ## 3. Skill routing — when / why / where / output
 
@@ -35,35 +35,31 @@ Do not treat a README, prompt, or historical wave note as permission to widen sc
 | `research` | A fact is unknown or local code/docs conflict | Replace guesses with confirmed facts | Installed source, lockfile, official docs | Confirmed facts + remaining unknowns |
 | `evidence-check` | Before delivery | Catches overclaiming | Final report | Claim/evidence/status table |
 
-## 4. File map and ownership for Wave 15
+## 4. File map and ownership for Wave 16
 
 | Path | Role | Expected change |
 |---|---|---|
-| `web/src/pages/SettingsPage.tsx`, `OverviewPage.tsx` | Key-ingress copy | Show the real `npm.cmd run key:import -- --from-env` command; remove the false DSH read claim |
-| `scripts/key-import.ts` | Local key ingress | Add `--from-env`; reject symlink/oversized file/stdin input; keep key out of stdout |
-| `src/server/security/keys.ts` | App-secret reader | Reject symlink/oversized/non-regular app-secret; keep 5s cache and no key logging |
-| `web/index.html`, `web/public/favicon.svg` | Shell asset | Serve a real favicon and remove the `/favicon.ico` 404 |
-| `package.json`, `package-lock.json` | Dependency hygiene | Remove unused `@langchain/core` / `@langchain/langgraph` only if no source/test import remains |
-| `docs/PLAN-v3.md`, `README.md`, `docs/CAPABILITY-MATRIX.md`, `docs/STOP-WORK-FLAWS.md` | Truth/docs | Correct key-ingress and DSH claims; record all confirmed UI/CLI defects and capability boundaries |
-| `test/unit/key-ingress.test.ts` | Regression pin | `--from-env`/file-bound/refusal behavior via temp data dir |
-| `e2e/ui-audit.spec.ts` | UI pin | Settings/Overview show the real command; no DSH read claim; favicon response 200 |
-| `docs/TRACE/WAVE-15/` | Evidence | Control trace, capability audit, before/after, residuals |
+| `web/src/api.ts` | Client contract | `startRun`/`runAgent` accept an optional caller-supplied idempotency key; default remains a new key |
+| `web/src/components/RunComposer.tsx` | Composer retry owner | Stable key per unchanged payload; reuse on transport failure; new key on edit/success |
+| `web/src/pages/ChatPage.tsx` | Chat UI | Multi-agent `agentIds` selection; stable send key per thread/draft/agents; new key after success |
+| `web/src/pages/AgentsPage.tsx` | Ad-hoc run retry | Stable key per unchanged drawer run payload |
+| `e2e/ui-audit.spec.ts` | Browser pin | Transport-failure retry sees the same `Idempotency-Key`; multi-agent control is reachable |
+| `docs/TRACE/WAVE-16/TRACE-SUMMARY.md` | Evidence | RED/GREEN, browser capture, residual |
+| `docs/PLAN-v3.md`, `docs/CAPABILITY-MATRIX.md`, `docs/BACKLOG.md`, `README.md` | Census/docs | Update retry/fan-out truth and counts |
 
 ## 5. Invariants for this wave
 
-- The browser never receives or displays key material; the real local import command is discoverable.
-- `--from-env` reads only `DEEPSEEK_API_KEY`, never echoes it, and fails closed if absent/invalid.
-- Key files are regular, non-symlink, ≤64 KiB; the runtime reader applies the same bound.
-- DSH is not read at runtime; no current docs/UI may claim a DSH consent-gated read.
-- A favicon request must not be a console error.
-- Removing a dependency requires zero imports/usages, lockfile update, and a clean build/test.
-- Every capability matrix row must match a route/service or be explicitly absent/partial.
-- No paid provider call; no generated-code execution; no test weakening.
+- One unchanged failed submission must send the same `Idempotency-Key` on retry.
+- Editing the payload or succeeding must produce a different key.
+- A replayed key must return the original run/job, not create a duplicate.
+- The chat UI must send the selected agent set; at least one agent is required.
+- The server remains the validator; the UI must not bypass the existing budget/refusal paths.
+- No paid provider call in tests; route interception is the test double.
 
-## 6. Gates for Wave 15
+## 6. Gates for Wave 16
 
 ```powershell
-npm.cmd test -- --run test/unit/key-ingress.test.ts
+npx playwright test e2e/ui-audit.spec.ts
 npm.cmd test
 npm.cmd run typecheck
 npm.cmd run build
@@ -72,8 +68,7 @@ npm.cmd run assert-stage -- --stage=p7 --json
 npm.cmd run preflight -- --port 0 --json
 ```
 
-A wave is complete only when the UI/console audit, key-import command, docs claim check, full suite, E2E, stage, and preflight all have quoted evidence.
-
+A wave is complete only when a failed request retry is shown to reuse the key and the chat UI can select more than one agent.
 ## 7. Stop conditions
 
 - Root cause or caller map missing → stop and recon/research.

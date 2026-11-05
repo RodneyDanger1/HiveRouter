@@ -129,7 +129,7 @@ export function ChatPage() {
   const [newAgentId, setNewAgentId] = useState('');
   const [newTitle, setNewTitle] = useState('');
   const [draft, setDraft] = useState('');
-  const [sendAgentId, setSendAgentId] = useState('');
+  const [sendAgentIds, setSendAgentIds] = useState<string[]>([]);
   const [creating, setCreating] = useState(false);
   const [sending, setSending] = useState(false);
   const [cancellingJobId, setCancellingJobId] = useState<string | null>(null);
@@ -148,6 +148,10 @@ export function ChatPage() {
   const jobsById = useMemo(
     () => new Map((snapshot.data?.jobs ?? []).map((job) => [job.id, job])),
     [snapshot.data?.jobs],
+  );
+  const sendKey = useMemo(
+    () => newIdempotencyKey(),
+    [selectedId, draft, sendAgentIds],
   );
 
   const scheduleRefresh = (): void => {
@@ -168,7 +172,7 @@ export function ChatPage() {
   }, [selectedId, threadList]);
 
   useEffect(() => {
-    if (selectedThread) setSendAgentId(selectedThread.agentId);
+    if (selectedThread) setSendAgentIds([selectedThread.agentId]);
   }, [selectedThread?.id, selectedThread?.agentId]);
 
   useEffect(() => () => {
@@ -192,14 +196,14 @@ export function ChatPage() {
   };
 
   const send = async (): Promise<void> => {
-    if (!selectedId || !draft.trim() || !sendAgentId) return;
+    if (!selectedId || !draft.trim() || sendAgentIds.length === 0) return;
     setSending(true);
     setActionError(null);
     try {
       await sendChatMessage(
         selectedId,
-        { content: draft, agentIds: [sendAgentId] },
-        newIdempotencyKey(),
+        { content: draft, agentIds: sendAgentIds },
+        sendKey,
       );
       setDraft('');
       snapshot.reload();
@@ -354,13 +358,26 @@ export function ChatPage() {
 
                   <div className="mt-4 border-t border-slate-100 pt-4">
                     <div className="flex flex-wrap items-end gap-3">
-                      <label className="toolbar-field min-w-[180px] flex-1">
-                        <span className="label">Answer as</span>
-                        <select className="input" value={sendAgentId} onChange={(event) => setSendAgentId(event.target.value)}>
+                      <label className="toolbar-field min-w-[220px] flex-1">
+                        <span className="label">Answer as (multi-select)</span>
+                        <select
+                          className="input"
+                          multiple
+                          size={4}
+                          value={sendAgentIds}
+                          onChange={(event) => {
+                            const next = Array.from(event.target.selectedOptions, (option) => option.value);
+                            setSendAgentIds(next);
+                          }}
+                          aria-describedby="chat-agent-selection-help"
+                        >
                           {agentList.map((agent) => (
                             <option key={agent.id} value={agent.id}>{agent.name}</option>
                           ))}
                         </select>
+                        <span id="chat-agent-selection-help" className="mt-1 block text-xs text-slate-500">
+                          {sendAgentIds.length} selected; Ctrl/Cmd-click to fan out to more agents.
+                        </span>
                       </label>
                       <span className="text-xs text-slate-500">
                         {selectedThread.queuedJobCount + selectedThread.runningJobCount > 0
@@ -386,8 +403,8 @@ export function ChatPage() {
                     </label>
                     <div className="mt-3 flex items-center justify-between gap-3">
                       <span className="text-xs text-slate-400">{draft.length}/8000</span>
-                      <button type="button" className="btn btn-primary" onClick={() => void send()} disabled={sending || !draft.trim() || !sendAgentId}>
-                        {sending ? <Spinner /> : <Send size={14} aria-hidden />} Send &amp; queue job
+                      <button type="button" className="btn btn-primary" onClick={() => void send()} disabled={sending || !draft.trim() || sendAgentIds.length === 0}>
+                        {sending ? <Spinner /> : <Send size={14} aria-hidden />} Send &amp; queue {sendAgentIds.length > 1 ? `${sendAgentIds.length} jobs` : 'job'}
                       </button>
                     </div>
                   </div>
