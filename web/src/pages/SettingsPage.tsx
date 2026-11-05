@@ -65,8 +65,8 @@ export function SettingsPage() {
                 <pre className="mt-2 whitespace-pre-wrap font-mono text-xs">{`# .env.local in the HiveRouter root
 DEEPSEEK_API_KEY=<your key>
 
-# or the CLI import path
-hive key import --from-env`}</pre>
+# or the local import path
+npm.cmd run key:import -- --from-env`}</pre>
               </div>
             </div>
           )}
@@ -117,7 +117,7 @@ hive key import --from-env`}</pre>
             'No generated-code execution',
             'No auto-promotion of learning candidates',
             'No learned routing in this release',
-            'DSH credential store is read only after explicit consent',
+            'DSH is not read at runtime; env or local app-secret only',
             'Every paid mutation carries an idempotency key',
             'Static-only and unverified outputs are labeled as such',
           ].map((item) => (

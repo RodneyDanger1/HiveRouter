@@ -118,7 +118,7 @@ export function OverviewPage() {
                 </InlineNotice>
                 <p className="text-xs text-slate-500">
                   Set <code className="code-chip">DEEPSEEK_API_KEY</code> in <code className="code-chip">.env.local</code> or run{' '}
-                  <code className="code-chip">hive key import --from-env</code>, then refresh.
+                  <code className="code-chip">npm.cmd run key:import -- --from-env</code>, then refresh.
                 </p>
               </div>
             )}

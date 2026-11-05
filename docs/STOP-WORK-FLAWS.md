@@ -30,13 +30,16 @@ This is the honest release register. A defect is only “fixed” when the named
 | P1-7 | Scripts API advertises unsupported dry-runs | **Fixed**: paid scripts report `dryRun:false`; handler allowlist is read-only. Separate `/api/scripts/:id/schema` UI remains absent |
 | P1-8 | Open-folder spawn could crash | **Fixed** with `spawn`/`error` promise + refusal |
 | P1-9 | `needs_review` has no writer | Open; approval gate not implemented |
-| P1-10 | Review coverage/line grounding | Partial: file grounding exists; per-file coverage is not enforced |
-| P1-11 | `maxFileBytes` not enforced at write | **Fixed** in `writeStaged`; schema-level bound still open |
+| P1-10 | Review coverage/line grounding | **Fixed for declared coverage**: `reviewedFiles` and `REVIEW_UNREVIEWED`; line grounding still partial |
+| P1-11 | `maxFileBytes` not enforced at write | **Fixed** in `writeStaged` and at the schema boundary with `E_FILE_TOO_LARGE` |
 | P1-12 | Artifact mime absent | **Fixed** for new rows; staged/failed UI shows status |
 | P1-13 | Chat idempotency scope/body | **Fixed**; thread-scoped key + request hash; cross-thread/body reuse refuses `E_IDEMPOTENCY_KEY_REUSED` |
 | P1-14 | Stats/trace labels | **Partially fixed**; UI now says measured/unknown and “No trace row” |
 | P1-15 | Dead learning tables/producers | Open |
 | P1-16 | CSRF `Sec-Fetch-Site` | **Partial**: cross-site `Sec-Fetch-Site` is rejected when present; an absent `Origin` on a non-GET is still accepted because tests/clients may omit it |
+| P1-17 | Key-ingress copy named a nonexistent `hive` command and no `--from-env` | **Fixed**: real `npm.cmd run key:import -- --from-env`; regular non-symlink ≤64 KiB inputs |
+| P1-18 | Settings claimed a DSH consent-gated read | **Fixed**: runtime never reads DSH; UI/PLAN corrected; dead `E_DSH_*`/`dshCredentialsPath` removed |
+| P2-8 | Unused dependency baggage | **Partial**: removed unused `@langchain/core`/`@langchain/langgraph`; `@fastify/static` upgraded to 10.1.10; `npm audit --omit=dev` now 0 vulnerabilities |
 
 ## Known non-goals
 

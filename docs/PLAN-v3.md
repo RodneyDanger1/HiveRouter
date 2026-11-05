@@ -9,10 +9,10 @@
 ## 0. Implementation Contract — Read First
 
 1. Work only in `C:\Users\Riley\Desktop\HiveRouter`. Source references are read-only.
-2. Stack: TypeScript, Node 26.7, Fastify 5.12.8, React 19.3.1, Vite 8.3.5, Tailwind 4.3.4, LangGraph.js 1.6.0, `node:sqlite`, DeepSeek Chat Completions. No Next.js, Electron, Python backend, OpenAI SDK, or new runtime dependency without amending this file.
+2. Stack: TypeScript, Node 26.7, Fastify 5.12.8, React 19.3.1, Vite 8.3.5, Tailwind 4.3.4, `node:sqlite`, DeepSeek Chat Completions. No Next.js, Electron, Python backend, OpenAI SDK, LangChain/LangGraph, or new runtime dependency without amending this file.
 3. Stage lock: **A = P0–P5**, **B1 = P6a**, **B2 = P7**. A contains no P6/P7 tables/routes/pages/scripts. `config/releases/{a,p6a,p7}.json` is the allowlist; `scripts/assert-stage.mjs` enforces it.
 4. No TODO/FIXME/stub/mock in `src/`. Test doubles only under `test/`/`e2e/`, classified. No fake success; no fake green.
-5. Never print/log/commit/send the DeepSeek key. DSH store read only after a persisted consent record. `redact()` at every sink.
+5. Never print/log/commit/send the DeepSeek key. The runtime reads env/.env.local or the local app-secret and never reads DSH. `redact()` at every sink.
 6. LLM output is untrusted: Zod, path validation, no generated-code execution, no auto-promotion, no auto-apply.
 7. Windows: `npm.cmd`/`cmd /c npm`; never change execution policy. Exact pins, committed lockfile.
 8. Every phase gate quotes command + observed output. A failing gate stops the phase. An honest `P7_REFUSED` is a valid P7 outcome; a fake promotion is not.
@@ -155,7 +155,7 @@ Ad-hoc API: `GET /api/agents`, `GET /api/agents/:id`, `PUT/DELETE /api/agents/:i
 
 ## 5. Security & authority (normative)
 
-**Key ingress/consent.** No HTTP route accepts/returns a provider key; `POST/PUT /api/settings/key` → `FORBIDDEN_PROVIDER_KEY_ACCESS`. Read-only `GET /api/settings/key-status` returns configured/source/fingerprint/balance. App key set only by local first-run import or `hive key import --from-env|--file`; `lstat` regular file ≤64 KiB, write `data/secrets.json` 0600. `consent_records(id,scope,granted_at,version,source,revoked_at)` gates DSH reads before `open()`; deny → `E_DSH_CONSENT_REQUIRED`; malformed/oversize/symlink/alias-bomb → `E_DSH_CREDENTIAL_INVALID`; revoke wipes memory and refuses. Consent scopes: `dsh_key`, `trace_retention`, `trace_to_provider_reflection`, `case_to_provider_eval`. Audit stores source/fingerprint/consent id only.
+**Key ingress.** No HTTP route accepts/returns a provider key; `POST/PUT /api/settings/key` → `FORBIDDEN_PROVIDER_KEY_ACCESS`. Read-only `GET /api/settings/key-status` returns configured/source/fingerprint. Key sources are `DEEPSEEK_API_KEY`/`.env.local` and `data/secrets/deepseek.json`, written only by `npm.cmd run key:import -- --from-env|--file <path>|--stdin`. The import path accepts a regular non-symlink file ≤64 KiB and a 0600 app-secret; the runtime reader applies the same bounds and never reads DSH. `consent_records` is learning-scope data, not a provider-key gate; DSH credential reading and the `dsh_key` consent gate are **not implemented** and are not claimed by the current runtime.
 
 **Approval.** `POST /api/learning/approvals` issues a token only after typed `APPROVE`; token `v1.<nonce>.<HMAC-SHA256>` bound to `{candidateHash,evalEvidenceHash,baselineVersionId,suiteUseId,action,issuedAt,expiresAt}`; key in `data/approval.key` 0600; DB stores hash+nonce+consumed_at; consume atomically in `BEGIN IMMEDIATE`; 10-min TTL; header only `Authorization: HiveApproval <token>`; replay/expiry/wrong-action/wrong-baseline/non-allowlisted Origin refused. No token in logs/URL/DB plaintext.
 
@@ -258,7 +258,7 @@ All algorithms/logic have Zod entry/exit contracts in `src/shared/algorithms.ts`
 
 **Approval:** token bound to candidate/eval/baseline/suite-use/action; 10-min TTL; atomic consume; replay/expiry/wrong action refused. Promotion 100% after approval; **post_promotion_monitor** window 20 runs/14 days; critical safety → auto-rollback to signed last-known-good; non-critical 2 consecutive gate failures or cost >+25% → pause/review; idempotent/audited. No canary.
 
-**Consent:** `consent_records` scopes `trace_retention`, `trace_to_provider_reflection`, `case_to_provider_eval`, `dsh_key`; separate toggles; revoke invalidates pending suites; no provider call without scope.
+**Consent:** `consent_records` scopes `trace_retention`, `trace_to_provider_reflection`, `case_to_provider_eval`; separate toggles; revoke invalidates pending suites; no provider call without scope. The `dsh_key` scope is reserved but **not implemented**; the runtime never reads DSH.
 
 **Holdout access:** only EvalWorker; API returns counts/hash; mining filters dev or no holdout grant; `holdout_seen_by` audit.
 
@@ -294,7 +294,7 @@ Null-not-zero: unfinished `finished_at NULL`; unknown spend NULL; no rating NULL
 
 - Unit/property: registry census 37; prompt golden 37; capabilities; CCR 200 seeds/cross-run determinism; CPO convergence/token; FSN stable clusters; RVS mandatory all code; CCA thresholds; CRA units; LG1 18-case; LG2 matrix; LG3; LG4; path safety; redaction sinks; refusal registry; pricing.
 - Integration (mock): full A; run idempotency; repair staging (failed repair leaves accepted tree unchanged); route refusal; context; verify; snapshot/stream 600 events; approval issue/consume; suite single-use concurrent; 65/50 split; 390 pool; 5 null candidates; mock/synthetic promotion refusal; live gate opt-in; migration 001→010→020; crash/retention.
-- Security: DSH deny-before-open/revoke/symlink/oversize; origin/host/content-type; path/zip/junction; key sink matrix; eval isolation; provenance constraints; rollback authority; injection fixtures.
+- Security: local app-secret regular-file/non-symlink/64 KiB bounds; no DSH read; origin/host/content-type; path/zip/junction; key sink matrix; eval isolation; provenance constraints; rollback authority; injection fixtures.
 - E2E: core run/revision/audit; Routing/Context/Repairs/Checks/Confidence; Learning disabled/insufficient/refused/promotion unit/rollback; scripts dry-run; no dead controls; accessibility; system Chrome `channel:'chrome'`, `workers:1`, temp data, mock provider, `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1`.
 - Live: models/balance; 128–256-token JSON; 3-file micro-suite ≤$0.50; P7 opt-in ≤$3 no promotion. CI mock only.
 - Sweeps: `stub-sweep`/`secret-scan` on every gate; planted TODO/secret fixtures.
@@ -305,7 +305,7 @@ Null-not-zero: unfinished `finished_at NULL`; unknown spend NULL; no rating NULL
 
 ## 12. Delivery, pins, commands, team
 
-Exact pins: Fastify 5.12.8, @fastify/static 10.1.8, @fastify/swagger 9.9.3, @fastify/swagger-ui 6.1.2, @langchain/langgraph 1.6.0, @langchain/core 1.3.4, zod 4.6.7, yaml 2.9.1, p-limit 7.3.3, fflate 0.8.3, parse5 8.1.0, diff 9.0.0, typescript 5.9.3, tsx 4.23.15, react/react-dom 19.3.1, react-router-dom 7.18.5, vite 8.3.5, @vitejs/plugin-react 6.2.1, tailwindcss/@tailwindcss/vite 4.3.4, vitest 5.1.0, @playwright/test 1.64.1, lucide-react 1.67.0, prism-react-renderer 2.4.1, react-markdown 10.1.0, remark-gfm 4.0.1, @fontsource/instrument-serif 5.3.0, concurrently 10.0.6, pino-pretty 13.2.0. `packageManager: npm@11.19.0`, `engines.node: ">=26.7.0 <27"`. P0a: `npm install --save-exact` → lockfile; P0 gate: clean `npm ci`.
+Exact pins: Fastify 5.12.8, @fastify/static 10.1.10, @fastify/swagger 9.9.3, @fastify/swagger-ui 6.1.2, zod 4.6.7, yaml 2.9.1, p-limit 7.3.3, fflate 0.8.3, parse5 8.1.0, diff 9.0.0, typescript 5.9.3, tsx 4.23.15, react/react-dom 19.3.1, react-router-dom 7.18.5, vite 8.3.5, @vitejs/plugin-react 6.2.1, tailwindcss/@tailwindcss/vite 4.3.4, vitest 5.1.0, @playwright/test 1.64.1, lucide-react 1.67.0, prism-react-renderer 2.4.1, react-markdown 10.1.0, remark-gfm 4.0.1, @fontsource/instrument-serif 5.3.0, concurrently 10.0.6, pino-pretty 13.2.0. `packageManager: npm@11.19.0`, `engines.node: ">=26.7.0 <27"`. P0a: `npm install --save-exact` → lockfile; P0 gate: clean `npm ci`.
 
 Commands (stage-specific): `npm.cmd run preflight`; `npm.cmd run typecheck`; `npm.cmd test`; `npm.cmd run build`; `npm.cmd run e2e`; `npm.cmd run stub-sweep`; `npm.cmd run secret-scan`; `npm.cmd run assert-stage -- --stage=a|p6a|p7`; `npm.cmd run verify`; `npm.cmd run test:live -- --yes --max-cost 0.50`; `npm.cmd run test:live -- --p7 --yes --max-cost 3.00`; `npm.cmd run bench -- --mock`; `npm.cmd run eval:router -- --fixture`; `npm.cmd run replay -- --run <id>`; `npm.cmd run repo-map -- --run <id>`; `npm.cmd run context:report -- --run <id>`; `npm.cmd run integrity -- --run <id>`; `npm.cmd run learn -- --dataset <f> --candidate <f>`. Missing args exit 2/6 by name.
 
@@ -322,7 +322,7 @@ Team/write scopes: Lead `src/shared/**`, `src/server/{app,index,config,db,llm,pi
 3. P6a gate: A receipt + CCR/CPO/FSN/RVS/CCA/CRA + LG3 tests; RVS syntax mandatory all code; CCR deterministic cross-run; no learned quality; five scripts; no P7 artifacts.
 4. P7 gate: `P7_PASS` or `P7_REFUSED`; single-use 65/50 blocks; 390 pool or refusal; `gatePass` baseline; atomic suite-use; approval token; no auto-promotion; live proof or label mock-only; no synthetic promotion.
 5. 37-agent registry/census/prompt fixtures; badges from evidence; representative six live; static-only/unverified honesty.
-6. No secret in repo/logs/DB/artifacts/vault/zip/browser; DSH consent; no key route; no shell; no generated-code execution.
+6. No secret in repo/logs/DB/artifacts/vault/zip/browser; no DSH read; no key route; no shell; no generated-code execution.
 7. Event replay only; provenance; no identical-build claim.
 8. Final report: Done/Not done/Unverified with command+output, paths/hashes, run IDs, provenance, RED/GREEN, coverage, residual risk. Unsupported Done rows fail the report lint.
 
@@ -362,7 +362,7 @@ P5/P7 final gates + report.
 | core D3 | repair partial writes | §4 staging |
 | core D4 | run idempotency absent | §4 |
 | sec SEC-01 | section map | §1 |
-| sec SEC-02 | DSH consent | §5 |
+| sec SEC-02 | DSH consent | Not implemented; runtime never reads DSH (§5 local key bounds) |
 | sec SEC-03 | budget ledger | §4/§5 |
 | sec SEC-04 | approval token | §5 |
 | sec SEC-07 | secret sinks | §5 |
@@ -613,3 +613,12 @@ Final gates: typecheck PASS; 226 tests / 30 files; 26/26 E2E; build PASS; strict
 - **RED evidence:** pre-fix gate **2 failed / 8 passed** (missing coverage and critical+missing coverage). **GREEN:** 10/10 focused; full **451 tests / 70 files**.
 - **Gates:** typecheck PASS; build PASS; **34/34 E2E**; stage **202 files / 51 tables / 62 routes / 24 scripts**, violations `[]`; preflight PASS (free RAM 1.67 GB, disk 9.04 GB); stub clean 104; secret clean 200.
 - **Residual:** coverage is self-declared; the gate proves declared-vs-allowed, not actual reading. Existing providers that omit the field now get a visible warning. One review call still covers many files; no per-file split. No paid provider call; no API/UI shape change.
+
+## 34. Wave 15 — UI/capability/truth audit and key ingress repair (2026-11-05)
+
+- **Plan:** `docs/WAVE-15-AUDIT-PLAN.md`; **evidence:** `docs/TRACE/WAVE-15/TRACE-SUMMARY.md`.
+- Live Chrome/Playwright audit of `/`, `/agents`, `/runs`, `/chat`, `/analysis`, `/scripts`, `/vault`, `/learning`, `/settings`, and run detail at 1440×1000/390×844: all routes 200; mobile menu toggles; horizontal overflow 0; one console 404 on `/` before the favicon fix and zero after.
+- **Confirmed defects fixed:** (1) UI/docs told operators to run nonexistent `hive key import`; added real `--from-env` and now show `npm.cmd run key:import -- --from-env`; (2) Settings falsely claimed a DSH consent-gated read; corrected to “DSH is not read at runtime” and removed dead `E_DSH_*`/`dshCredentialsPath`; (3) missing favicon; (4) local key inputs trusted symlinks/oversized files; now bounded regular-file checks in the importer and runtime reader; (5) unused `@langchain/core`/`@langchain/langgraph` removed (21 packages) and plan stack/pins updated.
+- **Capability audit:** repo tools, tool loop, generated-code execution, approval, checkpoints, parallel generation, external repo index, P7 evaluator, native GUI/MCP remain absent or partial and are documented as such.
+- **Gates:** typecheck PASS; **455 tests / 71 files**; build PASS; **36/36 E2E**; strict stage **204 files / 51 tables / 62 routes / 24 scripts**, violations `[]`; preflight PASS (free RAM 2.31 GB, disk 9.05 GB); stub clean 104; secret clean 201.
+- **Residual:** no paid live provider call; no native CUA proof; `npm audit --omit=dev` is clean after `@fastify/static` 10.1.10; DSH consent remains unimplemented and is documented, not claimed.

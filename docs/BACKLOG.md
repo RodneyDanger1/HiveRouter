@@ -11,7 +11,7 @@ This is the honest work queue for the next waves. It is ordered by user impact a
 - Read-only dominator/scorecard API and `/analysis` page.
 - FTS5 search over one terminal run’s published workspace, with workspace-change detection and rebuild.
 - Staged-file resume without a provider call.
-- 451 unit/integration tests, 34 Playwright tests, stage/OpenAPI/secret/stub gates.
+- 455 unit/integration tests, 36 Playwright tests, stage/OpenAPI/secret/stub gates.
 
 ## P0 — correctness before capability
 
@@ -49,7 +49,7 @@ This is the honest work queue for the next waves. It is ordered by user impact a
 | P2-5 | Retained-run cleanup | Staged/evidence growth is unbounded | Retention policy with dry-run, explicit delete, and audit row |
 | P2-6 | CI workflow | Gates are local commands | GitHub Actions: `npm ci`, typecheck, test, build, E2E (mock), stage assert, sweeps |
 | P2-7 | License and contribution policy | A public showcase needs a reuse decision | Choose license, add LICENSE, document contribution/security reporting |
-| P2-8 | Dependency audit | Pinned stack changes over time | `npm audit` triage with accepted-risk records; no silent upgrades |
+| P2-8 | Dependency audit — **partial Wave 15** | Pinned stack changes over time | `npm audit` triage with accepted-risk records; no silent upgrades |
 
 ## Test matrix to add
 

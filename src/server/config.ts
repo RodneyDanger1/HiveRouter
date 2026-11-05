@@ -74,7 +74,6 @@ export const config = {
       outputPeak: 3.96,
     },
   },
-  dshCredentialsPath: path.join(process.env.USERPROFILE ?? process.env.HOME ?? '', '.dsh', '.credentials.yaml'),
 } as const;
 
 export function ensureRuntimeDirs(): void {

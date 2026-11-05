@@ -466,3 +466,30 @@ test.describe('@ui-audit agent-facing blockers', () => {
     await expect(page.getByText(/Audit requires stored artifacts/i).first()).toBeVisible();
   });
 });
+
+test.describe('@ui-audit truth copy and shell assets', () => {
+  test('settings shows the real local key command and does not claim a DSH read', async ({ page, request }) => {
+    await page.route('**/api/settings/key-status', async (route) => {
+      await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ configured: false, source: 'none', fingerprint: null }) });
+    });
+    await page.goto('/settings');
+    await expect(page.getByText('Local key ingress', { exact: true })).toBeVisible();
+    await expect(page.locator('pre').filter({ hasText: 'npm.cmd run key:import -- --from-env' })).toBeVisible();
+    await expect(page.getByText('DSH is not read at runtime; env or local app-secret only', { exact: true })).toBeVisible();
+    await expect(page.getByText('DSH credential store is read only after explicit consent', { exact: true })).toHaveCount(0);
+
+    const icon = await request.get('/favicon.svg');
+    expect(icon.status()).toBe(200);
+    expect(icon.headers()['content-type'] ?? '').toContain('svg');
+  });
+
+  test('the root route loads without a favicon console error', async ({ page }) => {
+    const errors: string[] = [];
+    page.on('console', (message) => {
+      if (message.type() === 'error') errors.push(message.text());
+    });
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+    expect(errors.filter((text) => /favicon|404/i.test(text))).toEqual([]);
+  });
+});

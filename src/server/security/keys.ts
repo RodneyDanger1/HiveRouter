@@ -14,12 +14,17 @@ interface CachedKey {
 
 let cached: CachedKey = { key: null, source: 'none', loadedAt: 0 };
 
+const MAX_APP_SECRET_BYTES = 64 * 1024;
+
 function readAppSecret(): string | null {
   const file = path.join(config.dataDir, 'secrets', 'deepseek.json');
-  if (!fs.existsSync(file)) return null;
   try {
+    const stat = fs.lstatSync(file);
+    if (!stat.isFile() || stat.isSymbolicLink() || stat.size > MAX_APP_SECRET_BYTES) return null;
     const parsed = JSON.parse(fs.readFileSync(file, 'utf8')) as { apiKey?: unknown };
-    return typeof parsed.apiKey === 'string' && parsed.apiKey.trim().length > 0 ? parsed.apiKey.trim() : null;
+    return typeof parsed.apiKey === 'string' && /^sk-[A-Za-z0-9_-]{20,}$/.test(parsed.apiKey.trim())
+      ? parsed.apiKey.trim()
+      : null;
   } catch {
     return null;
   }
