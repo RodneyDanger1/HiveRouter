@@ -206,10 +206,10 @@ npm run assert-stage -- --stage=p7 --json
 |---|---|
 | Unit / integration | `npm.cmd test` — **428 tests / 66 files** |
 | Typecheck / build | `npm.cmd run verify` — **exit 0** |
-| Browser E2E | `npm.cmd run e2e` — **28 / 28 passed** |
+| Browser E2E | `npm.cmd run e2e` — **29 / 29 passed** |
 | Stage allowlist | **195 files / 50 tables / 62 routes / 24 scripts**, violations `[]` |
 | Preflight | **PASS** — free RAM 2.37 GB, disk 8.90 GB, Chrome/Node/npm/port |
-| Stub sweep | clean (101 files) |
+| Stub sweep | clean (102 files) |
 | Secret scan | clean (193 files) |
 
 Reproduce:
@@ -298,7 +298,7 @@ Key documents:
 
 ## Status and roadmap
 
-**Current:** local B2 build; deterministic routing, static verification, run ledger, chat, analysis, run search, and staged-file resume are implemented and tested. Preflight passes on this host.
+**Current:** local B2 build; deterministic routing, static verification, run ledger, chat, analysis, scripts catalog, run search, and staged-file resume are implemented and tested. Preflight passes on this host.
 
 **Not implemented yet:**
 
