@@ -195,6 +195,8 @@ export interface ReviewResult {
     fix: string;
   }>;
   files: Array<{ path: string; content: string }>;
+  /** Every input file the reviewer declares it inspected. Missing coverage is named by the gate. */
+  reviewedFiles?: string[];
   execution?: string;
 }
 

@@ -15,7 +15,7 @@ Do not treat a README, prompt, or historical wave note as permission to widen sc
 
 ## 2. Current goal
 
-**Wave 13 — P0-4 terminal writer truth.** Failed, cancelled, budget-exceeded, and interrupted runs must have matching run/step/event/snapshot/usage/trace rows. A terminal write must leave no `started` step; manager-owned terminal paths must record the terminal trace and set `trace_complete` from that result. No router data-model or UI changes.
+**Wave 14 — P0-2 per-file review coverage.** A review must declare every input file it inspected. `reviewGateChecks` must name every accepted file not in that declaration with `REVIEW_UNREVIEWED`; a clean verdict cannot silently cover missing files. No router data-model or UI changes.
 
 ## 3. Skill routing — when / why / where / output
 
@@ -35,32 +35,31 @@ Do not treat a README, prompt, or historical wave note as permission to widen sc
 | `research` | A fact is unknown or local code/docs conflict | Replace guesses with confirmed facts | Installed source, lockfile, official docs | Confirmed facts + remaining unknowns |
 | `evidence-check` | Before delivery | Catches overclaiming | Final report | Claim/evidence/status table |
 
-## 4. File map and ownership for Wave 13
+## 4. File map and ownership for Wave 14
 
 | Path | Role | Expected change |
 |---|---|---|
-| `src/server/runs/recorder.ts` | Run/step writer | Settle open steps on every terminal `updateRun`; expose step settlement for the startup raw-SQL writer |
-| `src/server/runs/manager.ts` | Manager terminal paths | Close steps for executor catch, no-controller cancel, and startup interrupt; record terminal trace |
-| `src/server/runs/terminal-trace.ts` | New trace owner | Move terminal trace recording out of the pipeline so manager can use it without a cycle |
-| `src/server/pipeline/run.ts` | Pipeline trace caller | Preserve `recordRunTrace` as a wrapper/re-export; no behavior change beyond shared helper |
-| `test/unit/terminal-writers.test.ts` | New integration matrix | failed/cancelled/budget/interrupted × run/step/event/snapshot/usage/trace |
-| `docs/TRACE/WAVE-13/TRACE-SUMMARY.md` | Evidence | RED/GREEN and residuals |
-| `docs/PLAN-v3.md`, `docs/CAPABILITY-MATRIX.md`, `docs/BACKLOG.md`, `README.md` | Census/docs | Update P0-4 and counts |
+| `src/shared/types.ts` | Review contract | `reviewedFiles?: string[]` on `ReviewResult` |
+| `src/server/agents/registry.ts` | Review schema | `reviewedFiles` array default `[]`; no file content change |
+| `src/server/pipeline/run.ts` | Review owner | Prompt asks for coverage; `reviewGateChecks` appends a `REVIEW_UNREVIEWED` warning for every allowed file not declared |
+| `test/unit/p0-truth.test.ts` | Gate pins | Covered clean review; missing-file warning; ungrounded reviewed path ignored |
+| `test/unit/agents.schemas.test.ts` | Schema pin | `reviewedFiles` default/acceptance |
+| `docs/TRACE/WAVE-14/TRACE-SUMMARY.md` | Evidence | RED/GREEN and residual |
+| `docs/PLAN-v3.md`, `docs/CAPABILITY-MATRIX.md`, `docs/BACKLOG.md`, `README.md` | Census/docs | Update P0-2 and counts |
 
 ## 5. Invariants for this wave
 
-- A terminal run must never have a `started` step.
-- The terminal event, run row, step rows, usage row, trace row, and `trace_complete` must describe the same outcome.
-- Failed, cancelled, budget_exceeded, and interrupted all close steps; step status is `failed` for failed/budget/interrupted and `cancelled` for cancelled.
-- Step error code/message must match the terminal code/message; no silent closure.
-- The startup interrupt raw SQL must settle steps explicitly because it intentionally bypasses `updateRun`.
-- No API shape change; no UI change; no paid provider call.
-- Trace recording remains P7-gated and must not fabricate a row when disabled.
+- Only paths in the allowed plan count as coverage; an ungrounded path in `reviewedFiles` is ignored.
+- Every allowed file not declared is named in a single `REVIEW_UNREVIEWED` warning with the sorted missing paths.
+- A clean review with full coverage remains a single `pass` check.
+- A clean review with missing coverage becomes `completed_with_warnings`, never silently `completed`.
+- Critically, the new warning must not suppress an existing critical/changes-required result.
+- No provider call in tests; no API/UI shape change.
 
-## 6. Gates for Wave 13
+## 6. Gates for Wave 14
 
 ```powershell
-npm.cmd test -- --run test/unit/terminal-writers.test.ts test/unit/terminal-usage.test.ts test/unit/startup-interrupt.test.ts
+npm.cmd test -- --run test/unit/p0-truth.test.ts test/unit/agents.schemas.test.ts
 npm.cmd test
 npm.cmd run typecheck
 npm.cmd run build
@@ -69,7 +68,7 @@ npm.cmd run assert-stage -- --stage=p7 --json
 npm.cmd run preflight -- --port 0 --json
 ```
 
-A wave is complete only when each of the four terminal statuses has a run/step/event/snapshot/usage/trace assertion, with RED evidence for any missing row or open step.
+A wave is complete only when the missing-coverage test fails on the pre-fix gate and the full-coverage clean review still passes without a warning.
 
 ## 7. Stop conditions
 

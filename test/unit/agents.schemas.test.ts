@@ -85,6 +85,16 @@ describe('agent output schemas', () => {
     expect(ReviewSchema.safeParse(invalidReview).success).toBe(false);
   });
 
+  it('defaults reviewedFiles to empty and accepts declared coverage', () => {
+    const omitted = ReviewSchema.safeParse(validReview);
+    expect(omitted.success).toBe(true);
+    expect(omitted.success ? omitted.data.reviewedFiles : null).toEqual([]);
+
+    const declared = ReviewSchema.safeParse({ ...validReview, reviewedFiles: ['src/main.py'] });
+    expect(declared.success).toBe(true);
+    expect(declared.success ? declared.data.reviewedFiles : null).toEqual(['src/main.py']);
+  });
+
   it('accepts runnable tests and rejects empty test files', () => {
     expect(TestsSchema.safeParse(validTests).success).toBe(true);
     expect(TestsSchema.safeParse(invalidTests).success).toBe(false);

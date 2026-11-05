@@ -10,7 +10,7 @@ Status is deliberately blunt. “Partial” means the path exists but a material
 | Generate whole files | Works | One DeepSeek JSON call per file/persona; emitted file/test/review content is UTF-8-byte bounded in Zod before persistence, with a typed `E_FILE_TOO_LARGE` and no repair retry |
 | Repository read/search tools | **Absent** | Agents receive a prompt; no tool registry or repo tools |
 | Autonomous tool loop | **Absent** | `llm/client.ts` rejects `tool_calls`; agents are one-shot |
-| Review findings gate completion | **Now works** | Critical findings fail the gate; non-critical ungrounded findings are warned as `REVIEW_UNGROUNDED_WARNING`; rows written to `reviews` |
+| Review findings gate completion | **Now works** | Critical findings fail the gate; non-critical ungrounded findings are warned as `REVIEW_UNGROUNDED_WARNING`; every allowed file not declared in `reviewedFiles` is named `REVIEW_UNREVIEWED`; rows written to `reviews` |
 | Repair loop | Partial | Bounded static re-verification; not a runtime test loop |
 | Test generation | Works (files only) | Gatekeeper writes tests; tests are **not executed** |
 | Static syntax verification | Partial | TS/JS transpile, Python AST, JSON/YAML/HTML; SQL is non-executing and often unverified |

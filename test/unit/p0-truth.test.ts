@@ -5,7 +5,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { closeDb, getDb, initDb } from '../../src/server/db/database.js';
 import { createRunRow, getArtifacts, getRun, insertUsage, updateRun } from '../../src/server/runs/recorder.js';
 import { setTraceComplete } from '../../src/server/runs/manager.js';
-import { persistStagedArtifacts, recordRunTrace, reviewGateChecks } from '../../src/server/pipeline/run.js';
+import { persistStagedArtifacts, recordRunTrace, reviewGateChecks, completionStatus } from '../../src/server/pipeline/run.js';
 
 let tmp = '';
 
@@ -79,6 +79,52 @@ describe('P0 review gate', () => {
       files: [],
     }, ['src/a.ts']);
     expect(checks[0]?.status).toBe('pass');
+  });
+
+  it('keeps a fully covered clean review as a single pass', () => {
+    run('run_review_covered');
+    const checks = reviewGateChecks('run_review_covered', 'cleaning', {
+      verdict: 'pass',
+      summary: '',
+      findings: [],
+      files: [],
+      reviewedFiles: ['src/a.ts', 'src/b.ts'],
+    }, ['src/a.ts', 'src/b.ts']);
+    expect(checks).toHaveLength(1);
+    expect(checks[0]?.status).toBe('pass');
+  });
+
+  it('names every allowed file the clean reviewer did not declare as REVIEW_UNREVIEWED', () => {
+    run('run_review_uncovered');
+    const checks = reviewGateChecks('run_review_uncovered', 'cleaning', {
+      verdict: 'pass',
+      summary: '',
+      findings: [],
+      files: [],
+      reviewedFiles: ['src/a.ts', '../outside.ts'],
+    }, ['src/a.ts', 'src/b.ts']);
+    const primary = checks.find((check) => check.id === 'review.cleaning');
+    const coverage = checks.find((check) => check.id === 'review.cleaning.coverage');
+    expect(primary?.status).toBe('pass');
+    expect(coverage?.status).toBe('warn');
+    expect(coverage?.code).toBe('REVIEW_UNREVIEWED');
+    expect(coverage?.detail).toContain('src/b.ts');
+    expect(coverage?.detail).not.toContain('../outside.ts');
+    expect(completionStatus(checks)).toBe('completed_with_warnings');
+  });
+
+  it('keeps a critical review fail while appending the coverage warning', () => {
+    run('run_review_critical_uncovered');
+    const checks = reviewGateChecks('run_review_critical_uncovered', 'cleaning', {
+      verdict: 'changes_required',
+      summary: '',
+      findings: [{ severity: 'critical', file: 'src/a.ts', issue: 'bug', fix: 'fix' }],
+      files: [],
+      reviewedFiles: ['src/a.ts'],
+    }, ['src/a.ts', 'src/b.ts']);
+    expect(checks[0]?.status).toBe('fail');
+    expect(checks[0]?.mandatory).toBe(true);
+    expect(checks.some((check) => check.code === 'REVIEW_UNREVIEWED')).toBe(true);
   });
 });
 

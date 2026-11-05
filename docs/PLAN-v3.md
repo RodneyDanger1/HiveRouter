@@ -603,3 +603,13 @@ Final gates: typecheck PASS; 226 tests / 30 files; 26/26 E2E; build PASS; strict
 - **RED evidence:** restored the pre-fix recorder/manager/pipeline; all **4/4** terminal tests failed on open steps and missing `trace_complete`. **GREEN:** 4/4; full **447 tests / 70 files**.
 - **Gates:** typecheck PASS; build PASS; **34/34 E2E**; strict stage **202 files / 51 tables / 62 routes / 24 scripts**, violations `[]`; preflight PASS (free RAM 1.91 GB, disk 9.06 GB); stub clean 104; secret clean 200.
 - **Residual:** the budget fixture exercises `markTerminal` for run/step/snapshot/usage/trace; actual budget event emission remains the pipeline catch path. Startup trace is P7-gated. No API/UI change.
+
+## 33. Wave 14 — per-file review coverage (2026-11-05)
+
+- **Plan:** `docs/WAVE-14-PLAN.md`; **evidence:** `docs/TRACE/WAVE-14/TRACE-SUMMARY.md`.
+- `ReviewResult.reviewedFiles` and `ReviewSchema.reviewedFiles` now carry the reviewer’s declared coverage. The review prompt asks for the exact input paths inspected.
+- `reviewGateChecks` normalizes/filters declared paths against the allowed plan, computes missing paths, and appends one `REVIEW_UNREVIEWED` warning listing them. The primary critical/changes-required/pass check remains first; full coverage leaves the original single check.
+- A clean review with missing coverage now produces `completed_with_warnings`, not `completed`.
+- **RED evidence:** pre-fix gate **2 failed / 8 passed** (missing coverage and critical+missing coverage). **GREEN:** 10/10 focused; full **451 tests / 70 files**.
+- **Gates:** typecheck PASS; build PASS; **34/34 E2E**; stage **202 files / 51 tables / 62 routes / 24 scripts**, violations `[]`; preflight PASS (free RAM 1.67 GB, disk 9.04 GB); stub clean 104; secret clean 200.
+- **Residual:** coverage is self-declared; the gate proves declared-vs-allowed, not actual reading. Existing providers that omit the field now get a visible warning. One review call still covers many files; no per-file split. No paid provider call; no API/UI shape change.

@@ -849,6 +849,7 @@ export const ReviewSchema = z.object({
     fix: z.string(),
   })).default([]),
   files: z.array(z.object({ path: z.string().min(1), content: boundedFileContent(0) })).default([]),
+  reviewedFiles: z.array(z.string()).default([]),
   execution: z.string().optional(),
 });
 

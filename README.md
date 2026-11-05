@@ -9,7 +9,7 @@ Plan a project, route each file to a specialist role, generate, statically verif
   <img alt="Fastify" src="https://img.shields.io/badge/Fastify-5-000000?logo=fastify&logoColor=white">
   <img alt="React" src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=111">
   <img alt="SQLite" src="https://img.shields.io/badge/SQLite-WAL-003B57?logo=sqlite&logoColor=white">
-  <img alt="Tests" src="https://img.shields.io/badge/tests-447%20passing-2E7D32">
+  <img alt="Tests" src="https://img.shields.io/badge/tests-451%20passing-2E7D32">
   <img alt="E2E" src="https://img.shields.io/badge/Playwright-34%20passing-2E7D32">
 </p>
 
@@ -124,7 +124,7 @@ These are the parts worth reviewing:
 - **Bounded static analysis.** Dominators and scorecards are read-only JSON endpoints with explicit limits and a real UI, not decorative cards.
 - **Scripts without execution.** The Scripts page lists every verification script with its safety class; a dry-run returns a local command string and never spawns a process. Paid scripts are labeled and disabled, and the API refuses them with `E_SCRIPT_DRY_RUN_UNSUPPORTED`.
 - **FTS5 without path traversal.** Search indexes only one terminal run’s published text files; it never accepts a caller-supplied path.
-- **Tests as a contract.** 447 unit/integration tests, 34 Playwright tests, stage allowlists, OpenAPI response pins, secret scan, and a stub sweep.
+- **Tests as a contract.** 451 unit/integration tests, 34 Playwright tests, stage allowlists, OpenAPI response pins, secret scan, and a stub sweep.
 
 ---
 
@@ -204,11 +204,11 @@ npm run assert-stage -- --stage=p7 --json
 
 | Gate | Observed |
 |---|---|
-| Unit / integration | `npm.cmd test` — **447 tests / 70 files** |
+| Unit / integration | `npm.cmd test` — **451 tests / 70 files** |
 | Typecheck / build | `npm.cmd run verify` — **exit 0** |
 | Browser E2E | `npm.cmd run e2e` — **34 / 34 passed** |
 | Stage allowlist | **202 files / 51 tables / 62 routes / 24 scripts**, violations `[]` |
-| Preflight | **PASS** — free RAM 1.91 GB, disk 9.06 GB, Chrome/Node/npm/port |
+| Preflight | **PASS** — free RAM 1.67 GB, disk 9.04 GB, Chrome/Node/npm/port |
 | Stub sweep | clean (103 files) |
 | Secret scan | clean (200 files) |
 
@@ -297,6 +297,7 @@ Key documents:
 - [Wave 11 mobile and keyboard](docs/TRACE/WAVE-11/TRACE-SUMMARY.md)
 - [Wave 12 schema byte bound](docs/TRACE/WAVE-12/TRACE-SUMMARY.md)
 - [Wave 13 terminal writer truth](docs/TRACE/WAVE-13/TRACE-SUMMARY.md)
+- [Wave 14 review coverage](docs/TRACE/WAVE-14/TRACE-SUMMARY.md)
 - [Backlog and test matrix](docs/BACKLOG.md)
 - [Provenance](docs/PROVENANCE.md)
 

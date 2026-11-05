@@ -272,8 +272,28 @@ export function reviewGateChecks(
   const critical = review.findings.filter((finding) => finding.severity === 'critical');
   const ungrounded = review.findings.filter((finding) => !grounded(finding.file));
   const ungroundedCritical = ungrounded.filter((finding) => finding.severity === 'critical');
+  const reviewed = new Set<string>();
+  for (const declared of review.reviewedFiles ?? []) {
+    try {
+      const normalized = normalizeRel(declared);
+      if (allowed.has(normalized)) reviewed.add(normalized);
+    } catch {
+      // An invalid declaration is not coverage; the affected allowed files stay unreviewed.
+    }
+  }
+  const unreviewed = allowedPaths.filter((path) => !reviewed.has(path)).sort();
+  const coverage: CheckResult | null = unreviewed.length > 0
+    ? {
+        id: `review.${kind}.coverage`,
+        status: 'warn',
+        detail: `unreviewed: ${unreviewed.join(', ')}`,
+        code: 'REVIEW_UNREVIEWED',
+        mandatory: false,
+      }
+    : null;
+  let primary: CheckResult;
   if (critical.length > 0) {
-    return [{
+    primary = {
       id: `review.${kind}`,
       status: 'fail',
       detail: `${critical.length} critical review finding(s)${ungroundedCritical.length > 0 ? `; ${ungroundedCritical.length} ungrounded` : ''}`,
@@ -281,10 +301,9 @@ export function reviewGateChecks(
       line: critical[0]?.line,
       code: ungroundedCritical.length > 0 ? 'REVIEW_UNGROUNDED' : 'REVIEW_CRITICAL',
       mandatory: true,
-    }];
-  }
-  if (review.verdict === 'changes_required' || ungrounded.length > 0) {
-    return [{
+    };
+  } else if (review.verdict === 'changes_required' || ungrounded.length > 0) {
+    primary = {
       id: `review.${kind}`,
       status: 'warn',
       detail: `${review.findings.length} non-critical finding(s); ${ungrounded.length} ungrounded; changes were requested`,
@@ -292,14 +311,16 @@ export function reviewGateChecks(
       line: review.findings[0]?.line,
       code: ungrounded.length > 0 ? 'REVIEW_UNGROUNDED_WARNING' : 'REVIEW_CHANGES_REQUIRED',
       mandatory: false,
-    }];
+    };
+  } else {
+    primary = {
+      id: `review.${kind}`,
+      status: 'pass',
+      detail: 'reviewer reported no critical findings',
+      mandatory: false,
+    };
   }
-  return [{
-    id: `review.${kind}`,
-    status: 'pass',
-    detail: 'reviewer reported no critical findings',
-    mandatory: false,
-  }];
+  return coverage ? [primary, coverage] : [primary];
 }
 
 async function agentStep<T>(
@@ -1055,7 +1076,7 @@ function readGenerated(staging: string, paths: string[]): GeneratedFile[] {
 
 function reviewPrompt(brief: string, plan: ProjectPlan, files: GeneratedFile[]): string {
   const rendered = files.map((f) => wrapUntrusted('file', f.content.slice(0, 40_000), { path: f.path })).join('\n');
-  return buildUserPrompt({ brief, projectName: plan.projectName, planSummary: `${plan.coreParadigm}\n${plan.files.map((f) => `${f.path}: ${f.duty}`).join('\n')}`, dependencies: files.map((f) => ({ path: f.path, content: f.content.slice(0, 40_000) })) }) + `\n\nReview the generated files for quality/security and return complete revisions only for files that must change.\n${rendered}`;
+  return buildUserPrompt({ brief, projectName: plan.projectName, planSummary: `${plan.coreParadigm}\n${plan.files.map((f) => `${f.path}: ${f.duty}`).join('\n')}`, dependencies: files.map((f) => ({ path: f.path, content: f.content.slice(0, 40_000) })) }) + `\n\nReview the generated files for quality/security and return complete revisions only for files that must change.\nSet reviewedFiles to the exact input file paths you inspected. Do not list a path you did not receive; do not omit a file you reviewed.\n${rendered}`;
 }
 
 export function completionStatus(checks: CheckResult[]): 'completed' | 'completed_with_warnings' {
