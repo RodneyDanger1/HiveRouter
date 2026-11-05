@@ -28,6 +28,7 @@ import {
   getRunEvents,
   getRunSnapshot,
   openRunFolder,
+  resumeRun,
   reviseRun,
   runDownloadUrl,
   searchRun,
@@ -112,6 +113,8 @@ export function RunDetailPage() {
   const [auditOpen, setAuditOpen] = useState(false);
   const [auditBusy, setAuditBusy] = useState(false);
   const [auditError, setAuditError] = useState<ApiError | null>(null);
+  const [resumeBusy, setResumeBusy] = useState(false);
+  const [resumeError, setResumeError] = useState<ApiError | null>(null);
   const [folderError, setFolderError] = useState<ApiError | null>(null);
   const [folderBusy, setFolderBusy] = useState(false);
   const reloadTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -207,6 +210,9 @@ export function RunDetailPage() {
   const costCap = readNumber(limitRecord.maxCostUsd) ?? null;
   const canRevise = terminal && acceptedArtifacts.length > 0;
   const canAudit = terminal && acceptedArtifacts.length > 0;
+  const canResume = terminal
+    && ['failed', 'budget_exceeded', 'cancelled', 'interrupted'].includes(run.status)
+    && artifacts.some((artifact) => artifact.status === 'staged');
   const downloadable = terminal && artifacts.length > 0;
 
   async function confirmStop() {
@@ -250,6 +256,20 @@ export function RunDetailPage() {
       setAuditError(caught instanceof ApiError ? caught : new ApiError({ code: 'E_NETWORK', status: 0, message: 'Audit run failed.' }));
     } finally {
       setAuditBusy(false);
+    }
+  }
+
+  async function startResume() {
+    if (!canResume) return;
+    setResumeBusy(true);
+    setResumeError(null);
+    try {
+      const childId = await resumeRun(run!.id);
+      navigate(`/runs/${encodeURIComponent(childId)}`);
+    } catch (caught) {
+      setResumeError(caught instanceof ApiError ? caught : new ApiError({ code: 'E_NETWORK', status: 0, message: 'Resume failed.' }));
+    } finally {
+      setResumeBusy(false);
     }
   }
 
@@ -386,7 +406,13 @@ export function RunDetailPage() {
                 <span className="text-xs text-slate-500">Audit requires stored artifacts.</span>
               )
             ) : null}
+            {canResume ? (
+              <button type="button" className="btn btn-secondary" onClick={startResume} disabled={resumeBusy}>
+                {resumeBusy ? <Spinner /> : <RotateCcw size={14} aria-hidden />} Resume from staged
+              </button>
+            ) : null}
           </div>
+          {resumeError ? <div className="mt-4"><InlineNotice tone="error">{humanError(resumeError)}</InlineNotice></div> : null}
           <div className="mt-4">
             <p className="label">Accepted tree</p>
             <p className="mt-1 break-all font-mono text-xs text-slate-500">{run.workspacePath || 'Not reported'}</p>

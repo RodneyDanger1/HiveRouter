@@ -785,20 +785,30 @@ export function requestCancelChatJob(jobId: string): {
 export function chatHistoryForJob(threadId: string, userMessageId: string): Array<{ role: ChatRole; content: string }> {
   const rows = getDb()
     .prepare(
-      `SELECT role, content FROM chat_messages
+      `SELECT id, role, content, status FROM chat_messages
        WHERE thread_id = ? AND seq <= (SELECT seq FROM chat_messages WHERE id = ?)
        ORDER BY seq ASC`,
     )
-    .all(threadId, userMessageId) as Array<{ role: string; content: string }>;
-  const kept: Array<{ role: ChatRole; content: string }> = [];
-  let chars = 0;
-  for (const row of rows) {
+    .all(threadId, userMessageId) as Array<{ id: string; role: string; content: string; status: string }>;
+  const currentIndex = rows.findIndex((row) => row.id === userMessageId);
+  if (currentIndex < 0) return [];
+  const current = rows[currentIndex];
+  if (current.content.length === 0) return [];
+  const kept: Array<{ role: ChatRole; content: string }> = [{ role: current.role as ChatRole, content: current.content }];
+  let chars = current.content.length;
+  // Keep the most recent complete context, not the oldest. The previous
+  // implementation walked oldest-first and could omit the current user turn
+  // once the thread exceeded maxHistoryChars.
+  const prior: Array<{ role: ChatRole; content: string }> = [];
+  for (let index = currentIndex - 1; index >= 0; index -= 1) {
+    const row = rows[index];
     if (row.content.length === 0) continue;
+    if (row.role === 'assistant' && row.status !== 'complete') continue;
+    if (chars + row.content.length > config.chat.maxHistoryChars) break;
+    prior.unshift({ role: row.role as ChatRole, content: row.content });
     chars += row.content.length;
-    if (chars > config.chat.maxHistoryChars) break;
-    kept.push({ role: row.role as ChatRole, content: row.content });
   }
-  return kept;
+  return [...prior, ...kept];
 }
 
 export function chatUserMessageForJob(jobId: string): { id: string; content: string } | null {

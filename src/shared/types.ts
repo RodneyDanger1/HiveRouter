@@ -279,7 +279,7 @@ export interface RunRecord {
   snapshotHash: string | null;
   policyVersionId: string | null;
   traceComplete: boolean;
-  runKind: 'user' | 'revision' | 'audit' | 'adhoc' | 'eval';
+  runKind: 'user' | 'revision' | 'audit' | 'adhoc' | 'resume' | 'eval';
 }
 
 export interface StepRecord {

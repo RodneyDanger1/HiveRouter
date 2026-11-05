@@ -18,7 +18,7 @@ Status is deliberately blunt. “Partial” means the path exists but a material
 | Retain failed-run work | **Now works** | Staged artifacts under `staged/`, marked `staged`; accepted only after publish |
 | Accurate run spend/usage | **Improved** | Unknown usage is NULL/partial; stats includes measured chat; legacy rows not backfilled |
 | Step/tool trace | Partial | One trace row per terminal run; no tool calls, no per-step trace |
-| Resume a run | **Absent** | No checkpoint/resume table |
+| Resume a run | **Partial** | Re-verifies/publishes retained `staged` files as a child resume run with no provider call; no mid-run checkpoint table or parallel branch |
 | Parallel file generation | **Absent** | Sequential; one active run |
 | P7 evaluation | **Absent** | No `eval_runs`/`eval_results` producer; promotion unreachable |
 | P7 promotion/rollback | Code exists, unreachable | Sealed pool/consent + evaluation absent |
@@ -51,5 +51,5 @@ Status is deliberately blunt. “Partial” means the path exists but a material
 - Runtime proof that generated code works.
 - Agentic tool use.
 - Learning/evaluation.
-- Parallelism/resume.
+- Parallelism and full mid-run checkpointing (staged-file resume is partial).
 - Honest aggregate truth before the current P0 work; some legacy rows remain unbackfilled.

@@ -9,7 +9,7 @@ Plan a project, route each file to a specialist role, generate, statically verif
   <img alt="Fastify" src="https://img.shields.io/badge/Fastify-5-000000?logo=fastify&logoColor=white">
   <img alt="React" src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=111">
   <img alt="SQLite" src="https://img.shields.io/badge/SQLite-WAL-003B57?logo=sqlite&logoColor=white">
-  <img alt="Tests" src="https://img.shields.io/badge/tests-419%20passing-2E7D32">
+  <img alt="Tests" src="https://img.shields.io/badge/tests-424%20passing-2E7D32">
   <img alt="E2E" src="https://img.shields.io/badge/Playwright-28%20passing-2E7D32">
 </p>
 
@@ -72,6 +72,7 @@ A run can stop at several named states — including **failed**, **cancelled**, 
 | Safety | Prompt-injection envelopes, path safety, secret scan, stub scan, critical review findings fail the gate |
 | Persistence | SQLite WAL, run/step/check/artifact/review/usage ledger, idempotency keys, compare-and-swap status guards |
 | Failure handling | Budget reservations, `null` for unknown usage, staged failed artifacts, bounded repair loop, terminal-state protection |
+| Resume | Re-verify and publish retained **staged** files as a child resume run without another provider call; full mid-run checkpoints are still absent |
 | UI | React 19/Vite 8 operator console: runs, agents, chat, vault, settings, learning refusal state, analysis, run search |
 | Run search | Disposable FTS5 trigram index over a terminal run’s published text files; pathless API, staged files excluded |
 | Chat | Durable `chat_jobs` with leases, retries, cancellation, SSE projection, and bounded history |
@@ -113,10 +114,12 @@ These are the parts worth reviewing:
 - **Deterministic routing.** Micro-USD DP allocation with a reserve, candidate rejection reasons, and constant normalizers so a cheap model cannot win merely because the per-task cost range was narrow.
 - **Truthful usage accounting.** Unknown provider usage commits the reservation with `null`; terminal rows distinguish measured from unmeasured spend. No backfilled fabrication.
 - **Atomic publish.** A complete tree is built beside the live workspace, then swapped; a DB/vault failure rolls back the publish rather than leaving a completed-looking half-tree.
-- **Idempotent chat.** Thread-scoped keys plus request-body hashes prevent a retry from duplicating answers across threads.
+- **Idempotent chat.** Thread-scoped keys plus request-body hashes prevent a retry from duplicating answers across threads. History is selected newest-first and always keeps the current user turn, even when the thread exceeds its character budget.
+- **Agent doctrine.** All 37 role prompts carry the same anti-fabrication rules: no invented imports/endpoints/commands, fail closed on missing information, and preserve assigned paths/interfaces. Prompt version is `2026-11-04.1`.
+- **Staged-file resume.** A failed run's retained files can be re-verified and published as a child resume run with no additional model call; mid-run checkpointing is still absent.
 - **Bounded static analysis.** Dominators and scorecards are read-only JSON endpoints with explicit limits and a real UI, not decorative cards.
 - **FTS5 without path traversal.** Search indexes only one terminal run’s published text files; it never accepts a caller-supplied path.
-- **Tests as a contract.** 419 unit/integration tests, 28 Playwright tests, stage allowlists, OpenAPI response pins, secret scan, and a stub sweep.
+- **Tests as a contract.** 424 unit/integration tests, 28 Playwright tests, stage allowlists, OpenAPI response pins, secret scan, and a stub sweep.
 
 ---
 
@@ -196,13 +199,13 @@ npm run assert-stage -- --stage=p7 --json
 
 | Gate | Observed |
 |---|---|
-| Unit / integration | `npm.cmd test` — **419 tests / 63 files** |
+| Unit / integration | `npm.cmd test` — **424 tests / 65 files** |
 | Typecheck / build | `npm.cmd run verify` — **exit 0** |
 | Browser E2E | `npm.cmd run e2e` — **28 / 28 passed** |
-| Stage allowlist | **192 files / 50 tables / 60 routes / 24 scripts**, violations `[]` |
-| Preflight | **PASS** — free RAM 1.55 GB, disk 7.79 GB, Chrome/Node/npm/port |
+| Stage allowlist | **193 files / 50 tables / 61 routes / 24 scripts**, violations `[]` |
+| Preflight | **PASS** — free RAM 2.61 GB, disk 8.54 GB, Chrome/Node/npm/port |
 | Stub sweep | clean (101 files) |
-| Secret scan | clean (190 files) |
+| Secret scan | clean (191 files) |
 
 Reproduce:
 
@@ -249,6 +252,7 @@ OpenAPI: `http://127.0.0.1:8787/openapi.json`
 | `GET` | `/api/runs/:id/snapshot` | Run, steps, checks, artifacts |
 | `GET` | `/api/runs/:id/events` | Persisted event ledger |
 | `POST` | `/api/runs/:id/search` | Bounded FTS5 search over published files |
+| `POST` | `/api/runs/:id/resume` | Re-verify retained staged files as a child resume run (no provider call) |
 | `GET` | `/api/analysis` | Self-described static-analysis capabilities |
 | `POST` | `/api/analysis/dominators` | File-level dominance/risk |
 | `POST` | `/api/analysis/scorecards` | Specialist disagreement hint |
@@ -279,20 +283,21 @@ Key documents:
 - [Capability matrix](docs/CAPABILITY-MATRIX.md)
 - [Stop-work flaws](docs/STOP-WORK-FLAWS.md)
 - [Plan](docs/PLAN-v3.md)
+- [Backlog and test matrix](docs/BACKLOG.md)
 - [Provenance](docs/PROVENANCE.md)
 
 ---
 
 ## Status and roadmap
 
-**Current:** local B2 build; deterministic routing, static verification, run ledger, chat, analysis, and run search are implemented and tested. Preflight passes on this host.
+**Current:** local B2 build; deterministic routing, static verification, run ledger, chat, analysis, run search, and staged-file resume are implemented and tested. Preflight passes on this host.
 
 **Not implemented yet:**
 
 - external repository indexing and read-only repo tools;
 - a DeepSeek tool-call loop and tool allowlists;
 - a P7 evaluator with a sealed case pool and consent;
-- resume/checkpoints and bounded parallel generation;
+- full mid-run checkpoints and bounded parallel generation;
 - approval/`needs_review` flow;
 - patch/compaction/isolation-branch wiring into the run pipeline;
 - weighted CPM and full context projection provenance.

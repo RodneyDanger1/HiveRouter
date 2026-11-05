@@ -432,6 +432,16 @@ export async function auditRun(runId: string, brief: string, signal?: AbortSigna
   );
 }
 
+export async function resumeRun(runId: string, signal?: AbortSignal): Promise<string> {
+  const payload = await request<{ runId: string }>(`/runs/${encodeURIComponent(runId)}/resume`, {
+    method: 'POST',
+    body: {},
+    idempotencyKey: newIdempotencyKey(),
+    signal,
+  });
+  return payload.runId;
+}
+
 export async function openRunFolder(runId: string, signal?: AbortSignal): Promise<void> {
   await request<unknown>(`/runs/${encodeURIComponent(runId)}/open-folder`, {
     method: 'POST',

@@ -2,6 +2,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { closeDb, getDb, initDb } from '../../src/server/db/database.js';
 import {
   claimNextChatJob,
+  chatHistoryForJob,
   createChatThread,
   finishChatJob,
   getChatJob,
@@ -49,6 +50,21 @@ describe('durable chat store', () => {
     expect(snapshot?.messages[1]?.jobAttempts).toBe(0);
     expect(snapshot?.messages[1]?.jobMaxAttempts).toBe(3);
     expect(snapshot?.messages[1]?.jobAvailableAt).toBeTruthy();
+  });
+
+  it('keeps the current user turn and the newest context when history exceeds the budget', () => {
+    const threadId = thread();
+    const turn = (label: string): string =>
+      sendChatMessage(threadId, { content: `${label}:${'x'.repeat(6_900)}`, agentIds: ['router'] }, `history-key-${label}`).messageId;
+    turn('oldest');
+    turn('middle');
+    turn('newer');
+    const currentId = turn('current');
+    const history = chatHistoryForJob(threadId, currentId);
+    expect(history.at(-1)?.content).toContain('current:');
+    expect(history.some((message) => message.content.includes('oldest:'))).toBe(false);
+    expect(history.some((message) => message.content.includes('current:'))).toBe(true);
+    expect(history.reduce((total, message) => total + message.content.length, 0)).toBeLessThanOrEqual(24_000);
   });
 
   it('replays the same idempotency key once without duplicating messages or jobs', () => {

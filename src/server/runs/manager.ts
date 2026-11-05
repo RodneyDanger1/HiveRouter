@@ -61,7 +61,7 @@ export interface CreateRunInput {
   effort: Effort | null;
   idempotencyKey: string;
   parentRunId?: string | null;
-  runKind?: 'user' | 'revision' | 'audit' | 'adhoc';
+  runKind?: 'user' | 'revision' | 'audit' | 'adhoc' | 'resume';
   sourceRunId?: string | null;
   metadata?: Record<string, unknown>;
   maxCostUsd?: number;

@@ -30,7 +30,7 @@
     "/api/runs", "/api/runs/active", "/api/runs/:id", "/api/runs/:id/snapshot",
     "/api/runs/:id/events", "/api/runs/:id/stream", "/api/runs/:id/cancel",
     "/api/runs/:id/files", "/api/runs/:id/files/content", "/api/runs/:id/download",
-    "/api/runs/:id/search", "/api/runs/:id/open-folder", "/api/runs/:id/revise",
+    "/api/runs/:id/search", "/api/runs/:id/open-folder", "/api/runs/:id/revise", "/api/runs/:id/resume",
     "/api/runs/:id/routing", "/api/runs/:id/context", "/api/runs/:id/failures",
     "/api/runs/:id/checks", "/api/runs/:id/retries", "/api/runs/:id/confidence",
     "/api/stats", "/api/stats/router", "/api/analysis", "/api/analysis/dominators", "/api/analysis/scorecards", "/api/ops/reports/:kind", "/api/ops/system", "/api/scripts", "/analysis",

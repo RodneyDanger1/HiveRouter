@@ -31,6 +31,7 @@ export const REFUSALS = {
   E_OPEN_FOLDER_FAILED: { http: 500, exit: 9, retryable: true, message: 'The operating system could not open the run folder.' },
   E_ANALYSIS_INVALID_INPUT: { http: 422, exit: 2, retryable: false, message: 'The static analysis request is invalid or exceeds its bounds.' },
   E_SEARCH_INVALID_QUERY: { http: 422, exit: 2, retryable: false, message: 'The workspace search query is invalid or exceeds its bounds.' },
+  E_RESUME_NO_STAGED_FILES: { http: 409, exit: 4, retryable: false, message: 'This run has no retained staged files to resume.' },
   E_DSH_CONSENT_REQUIRED: { http: 403, exit: 5, retryable: false, message: 'DSH credential-store consent was not granted.', hint: 'Use .env.local or the local key import instead; the runtime never reads DSH.' },
   E_DSH_CREDENTIAL_INVALID: { http: 422, exit: 2, retryable: false, message: 'The credential source is malformed.' },
   E_KEY_NOT_CONFIGURED: { http: 503, exit: 7, retryable: false, message: 'No DeepSeek API key is configured.', hint: 'Add DEEPSEEK_API_KEY to .env.local or data/secrets.json.' },

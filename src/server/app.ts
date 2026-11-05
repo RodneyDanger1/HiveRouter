@@ -1177,6 +1177,37 @@ export async function buildApp(): Promise<FastifyInstance> {
     }
   });
 
+  app.post('/api/runs/:id/resume', async (request, reply) => {
+    const { id } = request.params as { id: string };
+    const parent = getRun(id);
+    if (!parent) return refusal(reply as never, 'E_RUN_NOT_FOUND');
+    if (!['failed', 'budget_exceeded', 'cancelled', 'interrupted'].includes(parent.status)) {
+      return refusal(reply as never, 'E_RESUME_NO_STAGED_FILES', { status: parent.status });
+    }
+    if (!fs.existsSync(path.join(parent.workspacePath, 'staged'))) {
+      return refusal(reply as never, 'E_RESUME_NO_STAGED_FILES', { reason: 'staged directory absent' });
+    }
+    const idempotencyKey = request.headers['idempotency-key'];
+    if (typeof idempotencyKey !== 'string') return refusal(reply as never, 'E_IDEMPOTENCY_KEY_REQUIRED');
+    try {
+      const result = await createRun({
+        brief: parent.brief,
+        preset: parent.preset,
+        model: parent.model,
+        thinking: parent.thinking,
+        effort: parent.effort,
+        idempotencyKey,
+        parentRunId: id,
+        runKind: 'resume',
+      });
+      return reply.code(202).send({ runId: result.runId, replayed: result.replayed });
+    } catch (error) {
+      const code = error instanceof Error ? error.message : 'E_INTERNAL';
+      if (code in REFUSALS) return refusal(reply as never, code as keyof typeof REFUSALS);
+      throw error;
+    }
+  });
+
   app.get('/api/runs/:id/files', async (request, reply) => {
     const { id } = request.params as { id: string };
     if (!getRun(id)) return refusal(reply as never, 'E_RUN_NOT_FOUND');

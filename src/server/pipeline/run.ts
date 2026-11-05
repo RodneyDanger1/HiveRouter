@@ -385,6 +385,48 @@ function planMarkdown(plan: ProjectPlan): string {
   ].join('\n');
 }
 
+async function executeResumeRun(
+  runId: string,
+  snapshot: RunSnapshot,
+  staging: string,
+  signal: AbortSignal,
+): Promise<void> {
+  const run = getRun(runId);
+  if (!run?.parentRunId) throw new Error('E_INVALID_PARENT');
+  const parent = getRun(run.parentRunId);
+  if (!parent) throw new Error('E_INVALID_PARENT');
+  const source = path.join(parent.workspacePath, 'staged');
+  if (!fs.existsSync(source)) throw new Error('E_RESUME_NO_STAGED_FILES');
+  const files = listFiles(source)
+    .filter((file) => file !== 'RUN_REPORT.md' && file !== 'manifest.json')
+    .filter((file) => isAllowedExtension(file));
+  if (files.length === 0) throw new Error('E_RESUME_NO_STAGED_FILES');
+  for (const file of files) {
+    checkAbort(signal);
+    const full = safePath(source, file);
+    writeStaged(staging, file, fs.readFileSync(full, 'utf8'));
+  }
+
+  updateRun(runId, { phase: 'generating' });
+  updateRun(runId, { phase: 'verifying' });
+  emitEvent(runId, 'phase.started', { phase: 'verifying', resumedFrom: parent.id, files: files.length });
+  const checks = await verifyStaged(staging, files);
+  for (const check of checks) insertCheck(runId, check);
+  const status = gateStatus(checks);
+  emitEvent(runId, 'phase.completed', { phase: 'verifying', status, checks: checks.length, failed: checks.filter((c) => c.status === 'fail').length });
+
+  if (status === 'fail') {
+    persistStagedArtifacts(runId);
+    markTerminal(runId, 'failed', 'done', { code: 'GATE_FAILED', message: 'Resume verification failed' });
+    emitEvent(runId, 'run.failed', { code: 'GATE_FAILED', message: 'Resume verification failed', costUsd: usageFields(runId).cost_usd });
+    const traced = recordRunTrace(runId, 'failure');
+    setTraceComplete(runId, traced);
+    return;
+  }
+
+  await finalize(runId, snapshot, staging, files, checks, signal);
+}
+
 async function executeReviewRun(
   runId: string,
   snapshot: RunSnapshot,
@@ -584,6 +626,10 @@ export async function executeRun(ctx: ExecuteContext): Promise<void> {
   emitEvent(runId, 'run.started', { runId, preset: run.preset });
 
   try {
+    if (run.runKind === 'resume') {
+      await executeResumeRun(runId, snapshot, staging, signal);
+      return;
+    }
     if (run.preset === 'revise' || run.preset === 'audit') {
       await executeReviewRun(runId, snapshot, staging, signal, run.preset, run.brief);
       return;

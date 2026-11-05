@@ -103,6 +103,10 @@ The sealed-pool, candidate, approval, promotion, monitor, repair-memory, and gua
 
 `POST /api/runs/:id/search` and the run-detail Search tab build a disposable FTS5 trigram index (`run_search_docs` + `run_search_fts`) over the published workspace of one terminal run. The caller never supplies a path. Only known text extensions are indexed; staged files, `RUN_REPORT.md`, `manifest.json`, symlinks, binary files and files over 256 KB are skipped. Queries shorter than a trigram use a bounded `LIKE` fallback. The index is derived data and can be deleted without changing a run; it is not a source-of-truth store.
 
+## Staged-file resume
+
+`POST /api/runs/:id/resume` creates a child run with `runKind='resume'` from a terminal failed/budget-exceeded/cancelled/interrupted parent. The pipeline copies only the parent's retained `staged/` text files, runs the same static verifier, and either publishes the verified tree or retains the child's own staged copy. It makes no provider call and does not mutate the parent. This is **not** a full checkpoint system: there is no mid-run resume from an arbitrary phase.
+
 ## Security posture
 
 - Loopback-only default binding.
