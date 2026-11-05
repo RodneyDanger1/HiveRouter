@@ -28,6 +28,8 @@ import type {
   RunStreamEvent,
   ScorecardInputView,
   ScorecardResultView,
+  ScriptCatalogResponse,
+  ScriptDryRunResult,
   StartRunInput,
   StartRunResponse,
   VaultNode,
@@ -624,6 +626,18 @@ export async function evaluateScorecards(
     signal,
   });
   return payload.result;
+}
+
+export async function getScripts(signal?: AbortSignal): Promise<ScriptCatalogResponse> {
+  return request<ScriptCatalogResponse>('/scripts', { signal });
+}
+
+export async function dryRunScript(id: string, signal?: AbortSignal): Promise<ScriptDryRunResult> {
+  return request<ScriptDryRunResult>(`/scripts/${encodeURIComponent(id)}/dry-run`, {
+    method: 'POST',
+    body: {},
+    signal,
+  });
 }
 
 export function agentBadgeLabel(badge: string): string {

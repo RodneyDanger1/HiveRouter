@@ -1,0 +1,90 @@
+﻿{
+    "capturedAt":  "2026-11-05T06:44:13.8211054Z",
+    "runId":  "run_c41f1fb4779d302af7",
+    "analysis":  {
+                     "analysis":  "static-file-dominators",
+                     "kind":  "static",
+                     "dynamic":  false,
+                     "cfg":  false,
+                     "root":  "src/app.ts",
+                     "nodes":  [
+                                   "src/api.ts",
+                                   "src/app.ts",
+                                   "src/store.ts"
+                               ],
+                     "edgeCount":  2,
+                     "reachable":  [
+                                       "src/api.ts",
+                                       "src/app.ts",
+                                       "src/store.ts"
+                                   ],
+                     "unreachable":  [
+
+                                     ],
+                     "dominators":  {
+                                        "src/api.ts":  [
+                                                           "src/api.ts",
+                                                           "src/app.ts"
+                                                       ],
+                                        "src/app.ts":  [
+                                                           "src/app.ts"
+                                                       ],
+                                        "src/store.ts":  [
+                                                             "src/api.ts",
+                                                             "src/app.ts",
+                                                             "src/store.ts"
+                                                         ]
+                                    },
+                     "dominatedCounts":  {
+                                             "src/api.ts":  1,
+                                             "src/app.ts":  2,
+                                             "src/store.ts":  0
+                                         },
+                     "risk":  {
+                                  "src/api.ts":  0.5,
+                                  "src/app.ts":  1,
+                                  "src/store.ts":  0
+                              },
+                     "overallRisk":  0.5,
+                     "iterations":  2,
+                     "maxIterations":  64,
+                     "truncated":  false
+                 },
+    "score":  {
+                  "variance":  3,
+                  "needsDebate":  true,
+                  "missing":  [
+                                  "testability-engineer",
+                                  "clarity-editor"
+                              ],
+                  "scorecards":  [
+                                     {
+                                         "specialist":  "architect",
+                                         "architecture":  5,
+                                         "risk":  4,
+                                         "testability":  4,
+                                         "clarity":  5,
+                                         "evidenceRefs":  [
+                                                              "src/app.ts:1"
+                                                          ]
+                                     },
+                                     {
+                                         "specialist":  "risk-auditor",
+                                         "architecture":  2,
+                                         "risk":  5,
+                                         "testability":  3,
+                                         "clarity":  3,
+                                         "evidenceRefs":  [
+                                                              "src/app.ts:2"
+                                                          ]
+                                     }
+                                 ]
+              },
+    "search":  {
+                   "query":  "function",
+                   "indexedFiles":  14,
+                   "truncated":  false,
+                   "indexed":  false,
+                   "matches":  10
+               }
+}

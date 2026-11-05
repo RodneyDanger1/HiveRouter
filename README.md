@@ -9,8 +9,8 @@ Plan a project, route each file to a specialist role, generate, statically verif
   <img alt="Fastify" src="https://img.shields.io/badge/Fastify-5-000000?logo=fastify&logoColor=white">
   <img alt="React" src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=111">
   <img alt="SQLite" src="https://img.shields.io/badge/SQLite-WAL-003B57?logo=sqlite&logoColor=white">
-  <img alt="Tests" src="https://img.shields.io/badge/tests-424%20passing-2E7D32">
-  <img alt="E2E" src="https://img.shields.io/badge/Playwright-28%20passing-2E7D32">
+  <img alt="Tests" src="https://img.shields.io/badge/tests-428%20passing-2E7D32">
+  <img alt="E2E" src="https://img.shields.io/badge/Playwright-29%20passing-2E7D32">
 </p>
 
 HiveRouter is a personal engineering showcase built around one rule: **evidence or it did not happen**. It is a real, runnable TypeScript application — not a slide deck — with a deterministic routing engine, a persisted run ledger, static verification, a staged-artifact safety model, chat fan-out, full-text run search, and honest refusals when a capability is absent.
@@ -34,6 +34,10 @@ The goal is not “AGI writes your app.” The goal is a **small, inspectable fa
 ---
 
 ## Screenshots
+
+### Scripts: read-only catalog, explicit safety classes, command-hint dry-runs
+
+![HiveRouter scripts page](docs/screenshots/scripts.png)
 
 ### Static analysis: dependency dominators and specialist disagreement
 
@@ -73,7 +77,7 @@ A run can stop at several named states — including **failed**, **cancelled**, 
 | Persistence | SQLite WAL, run/step/check/artifact/review/usage ledger, idempotency keys, compare-and-swap status guards |
 | Failure handling | Budget reservations, `null` for unknown usage, staged failed artifacts, bounded repair loop, terminal-state protection |
 | Resume | Re-verify and publish retained **staged** files as a child resume run without another provider call; full mid-run checkpoints are still absent |
-| UI | React 19/Vite 8 operator console: runs, agents, chat, vault, settings, learning refusal state, analysis, run search |
+| UI | React 19/Vite 8 operator console: runs, agents, chat, vault, settings, learning refusal state, analysis, scripts, run search |
 | Run search | Disposable FTS5 trigram index over a terminal run’s published text files; pathless API, staged files excluded |
 | Chat | Durable `chat_jobs` with leases, retries, cancellation, SSE projection, and bounded history |
 | Learning | P7 scaffolding exists but is **refused** in this build: no sealed 390-case pool and no consent |
@@ -118,8 +122,9 @@ These are the parts worth reviewing:
 - **Agent doctrine.** All 37 role prompts carry the same anti-fabrication rules: no invented imports/endpoints/commands, fail closed on missing information, and preserve assigned paths/interfaces. Prompt version is `2026-11-04.1`.
 - **Staged-file resume.** A failed run's retained files can be re-verified and published as a child resume run with no additional model call; mid-run checkpointing is still absent.
 - **Bounded static analysis.** Dominators and scorecards are read-only JSON endpoints with explicit limits and a real UI, not decorative cards.
+- **Scripts without execution.** The Scripts page lists every verification script with its safety class; a dry-run returns a local command string and never spawns a process. Paid scripts are labeled and disabled, and the API refuses them with `E_SCRIPT_DRY_RUN_UNSUPPORTED`.
 - **FTS5 without path traversal.** Search indexes only one terminal run’s published text files; it never accepts a caller-supplied path.
-- **Tests as a contract.** 424 unit/integration tests, 28 Playwright tests, stage allowlists, OpenAPI response pins, secret scan, and a stub sweep.
+- **Tests as a contract.** 428 unit/integration tests, 29 Playwright tests, stage allowlists, OpenAPI response pins, secret scan, and a stub sweep.
 
 ---
 
@@ -199,13 +204,13 @@ npm run assert-stage -- --stage=p7 --json
 
 | Gate | Observed |
 |---|---|
-| Unit / integration | `npm.cmd test` — **424 tests / 65 files** |
+| Unit / integration | `npm.cmd test` — **428 tests / 66 files** |
 | Typecheck / build | `npm.cmd run verify` — **exit 0** |
 | Browser E2E | `npm.cmd run e2e` — **28 / 28 passed** |
-| Stage allowlist | **193 files / 50 tables / 61 routes / 24 scripts**, violations `[]` |
-| Preflight | **PASS** — free RAM 2.61 GB, disk 8.54 GB, Chrome/Node/npm/port |
+| Stage allowlist | **195 files / 50 tables / 62 routes / 24 scripts**, violations `[]` |
+| Preflight | **PASS** — free RAM 2.37 GB, disk 8.90 GB, Chrome/Node/npm/port |
 | Stub sweep | clean (101 files) |
-| Secret scan | clean (191 files) |
+| Secret scan | clean (193 files) |
 
 Reproduce:
 
@@ -256,6 +261,8 @@ OpenAPI: `http://127.0.0.1:8787/openapi.json`
 | `GET` | `/api/analysis` | Self-described static-analysis capabilities |
 | `POST` | `/api/analysis/dominators` | File-level dominance/risk |
 | `POST` | `/api/analysis/scorecards` | Specialist disagreement hint |
+| `GET` | `/api/scripts` | Read-only script catalog with safety class and dry-run availability |
+| `POST` | `/api/scripts/:id/dry-run` | Returns the local command or a named refusal; never executes |
 | `GET` | `/api/learning/overview` | Truthful refusal when no sealed pool/consent |
 | `POST` | `/api/chat/threads/:id/messages` | Idempotent multi-agent fan-out |
 
@@ -283,6 +290,7 @@ Key documents:
 - [Capability matrix](docs/CAPABILITY-MATRIX.md)
 - [Stop-work flaws](docs/STOP-WORK-FLAWS.md)
 - [Plan](docs/PLAN-v3.md)
+- [Wave 8 live trials](docs/TRACE/WAVE-8/TRACE-SUMMARY.md)
 - [Backlog and test matrix](docs/BACKLOG.md)
 - [Provenance](docs/PROVENANCE.md)
 

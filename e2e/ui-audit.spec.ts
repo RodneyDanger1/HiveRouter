@@ -32,6 +32,7 @@ test.describe('@ui-audit routes and visible contract', () => {
       ['/agents', /Agents/i, 'agents'],
       ['/runs', /Runs/i, 'runs'],
       ['/analysis', /Analysis/i, 'analysis'],
+      ['/scripts', /Scripts/i, 'scripts'],
       ['/vault', /Vault/i, 'vault'],
       ['/settings', /Settings/i, 'settings'],
       ['/learning', /Learning/i, 'learning'],
@@ -68,6 +69,29 @@ test.describe('@ui-audit routes and visible contract', () => {
     await expect(page.getByText(/No debate trigger/i)).toBeVisible();
     await expect(page.getByText(/not a quality certificate/i)).toBeVisible();
     await shot(page, 'analysis-scorecards');
+    await noSecret(page);
+  });
+
+  test('scripts page lists the catalog and only dry-runs read-only scripts', async ({ page, request }) => {
+    await page.goto('/scripts');
+    await expect(page.getByRole('heading', { name: 'Scripts', exact: true })).toBeVisible();
+    await expect(page.getByText(/never executes a script/i)).toBeVisible();
+    await expect(page.getByRole('row', { name: /preflight/ })).toBeVisible();
+    await expect(page.getByRole('row', { name: /bench/ })).toBeVisible();
+    await expect(page.getByRole('row', { name: /learn/ })).toBeVisible();
+
+    const paid = page.getByRole('button', { name: /Dry-run bench unavailable/i });
+    await expect(paid).toBeDisabled();
+    await expect(page.getByText(/not dry-runnable/i).first()).toBeVisible();
+
+    await page.getByRole('button', { name: /Dry-run preflight/i }).click();
+    await expect(page.getByText(/npm\.cmd run preflight -- --json/i)).toBeVisible();
+    await shot(page, 'scripts-catalog');
+
+    const refused = await request.post('/api/scripts/bench/dry-run', { data: {} });
+    expect(refused.status()).toBe(422);
+    const body = (await refused.json()) as { error: { code: string } };
+    expect(body.error.code).toBe('E_SCRIPT_DRY_RUN_UNSUPPORTED');
     await noSecret(page);
   });
 

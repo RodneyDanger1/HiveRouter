@@ -1,0 +1,38 @@
+﻿{
+    "short":  {
+                  "ok":  true,
+                  "runId":  "run_c41f1fb4779d302af7",
+                  "query":  "fn",
+                  "matches":  [
+                                  {
+                                      "path":  "src/ui.js",
+                                      "snippet":  "…erStats();\n    renderKeyStatus();\n  }\n\n  function applyAction(actionName, action⟦Fn⟧) {\n    try {\n      actionFn();\n    } catch (err) {\n      appendMessage(chatLog, \u0027error\u0027, \u0027Action \"\u0027 + actionName + \u0027\" f…",
+                                      "score":  0
+                                  },
+                                  {
+                                      "path":  "tests/input.test.js",
+                                      "snippet":  "…Target() {\n  const listeners = new Map();\n  return {\n    addEventListener(type, ⟦fn⟧) {\n      if (!listeners.has(type)) listeners.set(type, new Set());\n      listeners.get(type).add(fn);\n    },\n    remove…",
+                                      "score":  0
+                                  },
+                                  {
+                                      "path":  "tests/ui.test.js",
+                                      "snippet":  "…rstElementChild() { return this.children[0] || null; }\n  addEventListener(type, ⟦fn⟧) {\n    if (!this.listeners.has(type)) this.listeners.set(type, new Set());\n    this.listeners.get(type).add(fn);\n  }\n  …",
+                                      "score":  0
+                                  }
+                              ],
+                  "indexedFiles":  14,
+                  "indexed":  false,
+                  "truncated":  false
+              },
+    "noMatch":  {
+                    "ok":  true,
+                    "runId":  "run_c41f1fb4779d302af7",
+                    "query":  "zzzznotfoundzzzz",
+                    "matches":  [
+
+                                ],
+                    "indexedFiles":  14,
+                    "indexed":  false,
+                    "truncated":  false
+                }
+}

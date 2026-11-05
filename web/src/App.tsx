@@ -11,6 +11,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { OverviewPage } from './pages/OverviewPage';
 import { RunDetailPage } from './pages/RunDetailPage';
 import { RunsPage } from './pages/RunsPage';
+import { ScriptsPage } from './pages/ScriptsPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { VaultPage } from './pages/VaultPage';
 
@@ -38,6 +39,7 @@ export default function App() {
             <Route path="/runs" element={<RunsPage />} />
             <Route path="/runs/:runId" element={<RunDetailPage />} />
             <Route path="/analysis" element={<AnalysisPage />} />
+            <Route path="/scripts" element={<ScriptsPage />} />
             <Route path="/vault" element={<VaultPage />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/learning" element={<LearningPage />} />

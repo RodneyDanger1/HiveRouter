@@ -1294,7 +1294,7 @@ export async function buildApp(): Promise<FastifyInstance> {
       const normalized = pathname !== '/' ? pathname.replace(/\/+$/, '') : '/';
       const knownSpaRoute =
         normalized === '/' ||
-        ['/agents', '/chat', '/runs', '/analysis', '/vault', '/settings', '/learning'].includes(normalized) ||
+        ['/agents', '/chat', '/runs', '/analysis', '/scripts', '/vault', '/settings', '/learning'].includes(normalized) ||
         /^\/runs\/[^/]+$/.test(normalized);
       if (!knownSpaRoute) {
         const wantsHtml = String(request.headers.accept ?? '').includes('text/html');

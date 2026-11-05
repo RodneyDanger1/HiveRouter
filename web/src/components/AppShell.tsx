@@ -14,6 +14,7 @@ import {
   RefreshCw,
   Settings,
   ShieldCheck,
+  Terminal,
   X,
 } from 'lucide-react';
 import { useUi } from '../context';
@@ -25,6 +26,7 @@ const NAV = [
   { to: '/chat', label: 'Chat', icon: MessageSquare, end: false },
   { to: '/runs', label: 'Runs', icon: Boxes, end: false },
   { to: '/analysis', label: 'Analysis', icon: Network, end: false },
+  { to: '/scripts', label: 'Scripts', icon: Terminal, end: false },
   { to: '/vault', label: 'Vault', icon: FolderTree, end: false },
   { to: '/learning', label: 'Learning', icon: FlaskConical, end: false },
   { to: '/settings', label: 'Settings', icon: Settings, end: false },

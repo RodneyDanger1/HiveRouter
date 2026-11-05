@@ -146,6 +146,26 @@ export interface RunSearchResponse {
   truncated: boolean;
 }
 
+export type ScriptSafety = 'read' | 'paid' | 'write';
+
+export interface ScriptInfo {
+  id: string;
+  name: string;
+  safety: ScriptSafety;
+  dryRun: boolean;
+  description: string;
+}
+
+export interface ScriptCatalogResponse {
+  scripts: ScriptInfo[];
+}
+
+export interface ScriptDryRunResult {
+  script: string;
+  dryRun: boolean;
+  message: string;
+}
+
 export interface StartRunInput {
   brief: string;
   preset: string;

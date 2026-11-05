@@ -41,7 +41,7 @@
     "/api/vault/tree", "/api/vault/file", "/openapi.json",
     "/agents", "/chat", "/learning", "/runs", "/runs/:runId", "/settings", "/vault"
   ],
-  "uiRoutes": ["/", "/agents", "/chat", "/runs", "/runs/:id", "/analysis", "/vault", "/settings", "/learning"],
+  "uiRoutes": ["/", "/agents", "/chat", "/runs", "/runs/:id", "/analysis", "/scripts", "/vault", "/settings", "/learning"],
   "scripts": [
     "dev", "dev:server", "dev:web", "build", "start", "typecheck", "test", "test:watch", "e2e",
     "preflight", "stub-sweep", "secret-scan", "assert-stage", "verify", "bench", "eval:router",

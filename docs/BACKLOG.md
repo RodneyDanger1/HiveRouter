@@ -11,7 +11,7 @@ This is the honest work queue for the next waves. It is ordered by user impact a
 - Read-only dominator/scorecard API and `/analysis` page.
 - FTS5 search over one terminal run’s published workspace.
 - Staged-file resume without a provider call.
-- 424 unit/integration tests, 28 Playwright tests, stage/OpenAPI/secret/stub gates.
+- 428 unit/integration tests, 29 Playwright tests, stage/OpenAPI/secret/stub gates.
 
 ## P0 — correctness before capability
 
@@ -36,7 +36,7 @@ This is the honest work queue for the next waves. It is ordered by user impact a
 | P1-7 | Bounded parallel generation | Sequential generation is a latency ceiling | DAG-level batching, bounded concurrency, deterministic artifact order, budget-safe reservations |
 | P1-8 | Wire patch/compaction/branch modules | Three tested mechanisms are not shipped | Patch path integrated into repair, compaction into bounded chat/history, isolation branch on failed patch/gate, API/UI where needed |
 | P1-9 | Weighted CPM and full context projection | Critical path is still binary; projection fields are incomplete | Latency-weighted CPM, exact criticality, persisted agentId/maxTokens/expected prefix hash |
-| P1-10 | Scripts UI/schema | CLI scripts are not agent-discoverable | Schema endpoint, dry-run UI, typed inputs, named refusal for unavailable scripts |
+| P1-10 | Scripts UI/schema — **delivered Wave 8** | CLI scripts are not agent-discoverable | `/scripts` page + `GET /api/scripts` catalog + command-hint dry-run; paid refusals tested; no execution |
 
 ## P2 — evidence and operations
 

@@ -31,6 +31,7 @@ Status is deliberately blunt. “Partial” means the path exists but a material
 | FTS5 run-workspace search | **Works** | `POST /api/runs/:id/search` + run-detail Search tab; disposable trigram index over published files only; no path input, no staged files |
 | Git checkpoints | **Absent** | No product Git integration |
 | Static analysis API and page | **Works** | `/analysis` UI drives `GET /api/analysis`, `POST /api/analysis/dominators`, `POST /api/analysis/scorecards`; bounded, named 422, no file access |
+| Scripts catalog and UI | **Works (read-only)** | `/scripts` lists `GET /api/scripts`; dry-run returns a local command string only, never executes; paid scripts are labeled and refused with `E_SCRIPT_DRY_RUN_UNSUPPORTED` |
 | Dependency dominator risk | **API + UI** | Static file-level heuristic exposed; not wired into the run pipeline |
 | Scorecard variance debate | **API + UI** | Four-opinion variance/debate hint; not a verdict and not wired into an analysis preset |
 | Exact patch/AST tightening | **Not shipped** | Standalone module + tests; no run/API integration |
