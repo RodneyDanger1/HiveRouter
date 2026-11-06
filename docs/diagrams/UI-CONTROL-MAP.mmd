@@ -1,0 +1,51 @@
+%% UI control map — pages to client calls to owned state
+flowchart TD
+  subgraph SHELL["AppShell"]
+    NAV["9 nav links + skip link"]
+    STATUS["API online / STAGE B2 / feature chips"]
+    MENU["Mobile nav toggle"]
+  end
+  subgraph OVERVIEW["OverviewPage"]
+    COMPOSER["RunComposer<br/>brief · preset · model · thinking · cost · Start"]
+    ANALYZE["Prompt analyst<br/>paid endpoint"]
+    STATS["Stats + unknown-spend notice"]
+    RECENT["Recent runs + links"]
+  end
+  subgraph AGENTS["AgentsPage"]
+    FILTER["search · group · output filters"]
+    CARDS["37 agent cards"]
+    DRAWER["drawer · prompt edit/save/reset · run form"]
+  end
+  subgraph RUNS["RunsPage / RunDetailPage"]
+    FILTER2["status filter · rows"]
+    TABS["9 tabs · overview/files/search/checks/routing/context/repairs/confidence/events"]
+    ACTIONS["Revise · Audit · Resume · Stop · download · open folder"]
+  end
+  subgraph CHAT["ChatPage"]
+    THREADS["thread list + new conversation"]
+    AGENTSEL["agent select · multi-select cap 3"]
+    MESSAGE["message · send · cancel · SSE"]
+  end
+  subgraph OTHER["Analysis / Scripts / Vault / Settings / Learning"]
+    DOM["dominators + scorecards"]
+    SCRIPTS["catalog + read-only dry-run"]
+    VAULT["tree + file preview"]
+    KEY["key status · refresh · phase"]
+    LEARN["disabled/refused learning tabs"]
+  end
+  NAV --> OVERVIEW
+  NAV --> AGENTS
+  NAV --> RUNS
+  NAV --> CHAT
+  NAV --> OTHER
+  COMPOSER -->|POST /api/runs| ACTIONS
+  ANALYZE -->|POST /api/prompt/analyze| STATS
+  FILTER --> CARDS
+  CARDS --> DRAWER
+  DRAWER -->|PUT/DELETE prompt| CARDS
+  DRAWER -->|POST agent run| RUNS
+  FILTER2 --> TABS
+  TABS --> ACTIONS
+  THREADS --> AGENTSEL
+  AGENTSEL --> MESSAGE
+  KEY -->|GET settings/key-status| STATUS

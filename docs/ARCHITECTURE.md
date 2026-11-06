@@ -120,3 +120,10 @@ The sealed-pool, candidate, approval, promotion, monitor, repair-memory, and gua
 ## Known architectural gaps
 
 See `docs/STOP-WORK-FLAWS.md` for the current defect register and status. The largest gaps are no tool loop, no production P7 evaluator, router/context projection truth, and a small set of dead/documented surfaces. Chat idempotency keys are now thread-scoped and body-bound; the remaining chat gap is single-process worker ownership.
+
+## Codebase maps (Wave 18)
+
+- Master map and 11 domain diagrams: `docs/diagrams/index.html`; sources are `.mmd` files in the same folder.
+- Exhaustive file manifest: `docs/CODEBASE-AUDIT/FILE-MANIFEST.json`; route/table/capability reconciliation: `docs/CODEBASE-AUDIT/07-DATA-CAPABILITY.md`.
+- Live proof and limits: `docs/TRACE/WAVE-18/TRACE-SUMMARY.md`.
+- Count reconciliation: 51 app tables + six FTS5 shadow tables = 57 live SQLite tables; 57 route registrations = 53 unique API paths + 9 SPA paths = 62 stage route strings.

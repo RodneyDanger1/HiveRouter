@@ -1,0 +1,150 @@
+%% Core A schema — 16 app tables; source: src/server/db/migrations.ts
+erDiagram
+  runs {
+    TEXT id PK
+    TEXT parent_run_id FK
+    TEXT brief
+    TEXT preset
+    TEXT status
+    TEXT phase
+    TEXT model
+    TEXT thinking
+    TEXT effort
+    TEXT created_at
+    TEXT started_at
+    TEXT finished_at
+    REAL cost_usd
+    INTEGER prompt_tokens
+    INTEGER completion_tokens
+    TEXT error_code
+    TEXT workspace_path
+    TEXT snapshot_hash
+    TEXT policy_version_id
+    INTEGER trace_complete
+    TEXT run_kind
+  }
+  steps {
+    TEXT id PK
+    TEXT run_id FK
+    INTEGER seq
+    TEXT phase
+    TEXT agent_id
+    TEXT status
+    TEXT error_code
+    INTEGER prompt_tokens
+    INTEGER completion_tokens
+    REAL cost_usd
+  }
+  events {
+    INTEGER seq PK
+    TEXT run_id FK
+    TEXT type
+    TEXT payload_json
+    TEXT created_at
+  }
+  artifacts {
+    TEXT id PK
+    TEXT run_id FK
+    TEXT path
+    TEXT sha256
+    INTEGER bytes
+    TEXT agent_id
+    TEXT status
+    TEXT mime
+  }
+  reviews {
+    TEXT id PK
+    TEXT run_id FK
+    TEXT kind
+    TEXT verdict
+    TEXT findings_json
+  }
+  checks {
+    TEXT id PK
+    TEXT run_id FK
+    TEXT check_id
+    TEXT status
+    TEXT detail
+    INTEGER mandatory
+    TEXT file
+    INTEGER line
+  }
+  usage {
+    INTEGER id PK
+    TEXT run_id FK
+    TEXT step_id
+    TEXT model
+    INTEGER prompt_tokens
+    INTEGER completion_tokens
+    REAL cost_usd
+    TEXT source
+  }
+  settings {
+    TEXT key PK
+    TEXT value_json
+    TEXT updated_at
+  }
+  run_snapshots {
+    TEXT id PK
+    TEXT run_id FK
+    TEXT snapshot_hash
+    TEXT snapshot_json
+  }
+  prompt_versions {
+    TEXT id PK
+    TEXT agent_id
+    TEXT version
+    TEXT hash
+    TEXT text
+  }
+  policy_versions {
+    TEXT id PK
+    TEXT version
+    TEXT hash
+    TEXT json
+  }
+  budget_reservations {
+    TEXT id PK
+    TEXT scope
+    TEXT owner_run_id
+    INTEGER amount_micro_usd
+    TEXT state
+    INTEGER committed_micro_usd
+  }
+  gate_decisions {
+    TEXT id PK
+    TEXT run_id FK
+    INTEGER attempt
+    TEXT decision_json
+    TEXT signature
+  }
+  idempotency_keys {
+    TEXT key_hash PK
+    TEXT method
+    TEXT path
+    TEXT status
+    TEXT response_json
+  }
+  agent_evidence {
+    TEXT id PK
+    TEXT agent_id
+    TEXT badge
+    TEXT run_id
+    TEXT evidence_hash
+  }
+  schema_migrations {
+    TEXT version PK
+    TEXT applied_at
+  }
+  runs ||--o{ steps : contains
+  runs ||--o{ events : emits
+  runs ||--o{ artifacts : owns
+  runs ||--o{ reviews : reviews
+  runs ||--o{ checks : checks
+  runs ||--o{ usage : usage
+  runs ||--|| run_snapshots : snapshot
+  runs ||--o{ gate_decisions : gates
+  runs ||--o{ budget_reservations : reserves
+  runs ||--o{ agent_evidence : evidence
+  runs ||--o{ runs : parent
+  usage }o--o| steps : attempts

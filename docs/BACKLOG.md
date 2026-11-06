@@ -12,6 +12,7 @@ This is the honest work queue for the next waves. It is ordered by user impact a
 - FTS5 search over one terminal run’s published workspace, with workspace-change detection and rebuild.
 - Staged-file resume without a provider call.
 - 474 unit/integration tests, 44 Playwright tests, stage/OpenAPI/secret/stub gates.
+- Wave 18 exhaustive codebase audit: 1,367-file manifest, 12 validated Mermaid maps, 15/15 live UI trials, 10/10 console/network route sweep; no new confirmed product defect.
 
 ## P0 — correctness before capability
 

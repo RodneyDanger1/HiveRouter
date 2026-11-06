@@ -56,3 +56,9 @@ Status is deliberately blunt. “Partial” means the path exists but a material
 - Learning/evaluation.
 - Parallelism and full mid-run checkpointing (staged-file resume is partial).
 - Honest aggregate truth before the current P0 work; some legacy rows remain unbackfilled.
+
+## Audit evidence (Wave 18)
+
+- 15/15 live UI trials + 10/10 route console/network sweep; no new product defect confirmed in covered paths.
+- Full file/route/table/agent map: `docs/CODEBASE-AUDIT/00-INDEX.md`; visual maps: `docs/diagrams/index.html`.
+- Reconciliation: 51 app table declarations + six FTS5 shadow tables = 57 live SQLite tables; 57 route registrations = 53 unique API paths + 9 SPA paths = 62 stage strings.

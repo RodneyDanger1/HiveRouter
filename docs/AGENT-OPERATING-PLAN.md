@@ -15,7 +15,7 @@ Do not treat a README, prompt, or historical wave note as permission to widen sc
 
 ## 2. Current goal
 
-**Wave 17 complete — two-seat production audit.** Seat A proved UI/API control truth (`weaver` + `agent-experience` + `trace`) and fixed D1 desktop dead toggle, D2 chat registry failure render-back, D3 resume retry key, D-A run-action eligibility, and D-B in-flight modal dismissal. Seat B audited ledger/state truth (`truthseeker` + `logic-debugger` + `auditor`) and fixed D-B1 terminal-phase guard, D-B2 stats unknown spend, and D-B3 normalized review-path identity; **P0-1 and P0-5 are delivered**. Both mandatory waves and independent plant/restore verification are in `docs/TRACE/WAVE-17/TRACE-SUMMARY.md`. **Next planned wave (not started): Wave 18 — P1-2 read-only repo tools, then P1-1 external repo index.**
+**Wave 18 complete — whole-codebase cartography and live proof.** 1,367 baseline tracked files are inventoried in `docs/CODEBASE-AUDIT/FILE-MANIFEST.json`; 12 validated Mermaid maps are indexed at `docs/diagrams/index.html`; the 51 app tables / 57 live SQLite tables, 57 route registrations / 53 unique API paths / 62 stage strings, 37 agents, 10 UI routes, and live data census are reconciled in `docs/CODEBASE-AUDIT/07-DATA-CAPABILITY.md`; CUA visible-window proof plus **15/15** live Playwright trials and **10/10** console/network routes are recorded in `docs/TRACE/WAVE-18/`. **P0-1 and P0-5 remain delivered; no new product defect was confirmed in the audited live paths. Next planned wave (not started): Wave 19 — P1-2 read-only repo tools, then P1-1 external repo index.**
 
 ## 3. Skill routing — when / why / where / output
 
@@ -41,15 +41,15 @@ Do not treat a README, prompt, or historical wave note as permission to widen sc
 | `source-verification` / `source-freshness-checker` | Official external sources influence code | Prevent stale or invented facts | Docs/standards/pricing pages | Source label + fetch date |
 | `evidence-check` / `claim-register-builder` | Before delivery | Catches overclaiming | Final report and docs | Claim/evidence/status table |
 
-## 4. File map and ownership for Wave 17 (complete)
+## 4. File map and ownership for Wave 18 (complete)
 
 | Owner | Paths | Scope |
 |---|---|---|
-| Seat A | `web/**`, `e2e/**`, `docs/TRACE/WAVE-17/seat-a.md`, `seat-a-wave2.md` | Render→handler→client→route→store→render-back; E2E pins |
-| Seat B | `src/server/**`, `test/unit/**`, `docs/TRACE/WAVE-17/seat-b.md`, `seat-b-wave2.md` | P0-1/P0-5, review/grounding, unit pins |
-| Lead | `docs/**` except seat reports; `shared` contract; final integration | Plan, claim register, docs, full gates, commit |
+| Lead (solo) | `docs/CODEBASE-AUDIT/**`, `docs/diagrams/**`, `docs/TRACE/WAVE-18/**`, `docs/WAVE-18-PLAN.md` | exhaustive baseline manifest, code/docs/data/UI mapping, Mermaid, live proof |
+| Lead (code fixes) | `src/**`, `web/**`, `test/**`, `e2e/**` | only confirmed defects, with RED→GREEN and regression pins |
+| Lead (current docs) | `README.md`, `AGENTS.md`, `docs/PLAN-v3.md`, `docs/ARCHITECTURE.md`, `docs/AGENT-OPERATING-PLAN.md`, `docs/CAPABILITY-MATRIX.md`, `docs/BACKLOG.md` | truth sync after evidence |
 
-Final integrated gate: **474 tests / 74 files**, **44/44 E2E**, stage **209/51/62/24**, verify exit 0, preflight PASS (RAM 2.06 GB, disk 7.76 GB), audit 0.
+Final integrated gate: **474 tests / 74 files**, **44/44 E2E**, stage **209/51/62/24**, verify exit 0, preflight PASS, audit 0; **15/15** live trials and **10/10** console/network routes.
 
 ## 5. Invariants for this wave
 
@@ -64,7 +64,7 @@ Final integrated gate: **474 tests / 74 files**, **44/44 E2E**, stage **209/51/6
 - No paid provider call, server restart, destructive action, or git write by a seat.
 - A second wave with the same seats re-verifies wave 1 before the Lead folds.
 
-## 6. Gates for Wave 17
+## 6. Gates for Wave 18
 
 ```powershell
 npx playwright test e2e/ui-audit.spec.ts e2e/wave17-controls.spec.ts e2e/wave17-actions.spec.ts

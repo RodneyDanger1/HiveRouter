@@ -1,0 +1,36 @@
+%% Runtime status machine — source: src/server/logic/run-state.ts
+stateDiagram-v2
+  [*] --> queued
+  queued --> running
+  queued --> failed
+  queued --> budget_exceeded
+  queued --> cancelled
+  queued --> interrupted
+  running --> paused
+  running --> needs_review
+  running --> completed
+  running --> completed_with_warnings
+  running --> failed
+  running --> budget_exceeded
+  running --> cancelled
+  running --> interrupted
+  paused --> running
+  paused --> needs_review
+  paused --> cancelled
+  paused --> interrupted
+  needs_review --> running
+  needs_review --> completed
+  needs_review --> completed_with_warnings
+  needs_review --> failed
+  needs_review --> cancelled
+  needs_review --> interrupted
+  completed --> [*]
+  completed_with_warnings --> [*]
+  failed --> [*]
+  cancelled --> [*]
+  budget_exceeded --> [*]
+  interrupted --> [*]
+  note right of needs_review
+    No production producer currently writes this status.
+    Approval/decision flow is absent (P1-5).
+  end note

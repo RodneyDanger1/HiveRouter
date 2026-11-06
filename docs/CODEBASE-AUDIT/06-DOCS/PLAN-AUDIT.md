@@ -1,0 +1,13 @@
+# Docs group: PLAN-AUDIT
+
+| File | Type | Title / evidence | Bytes | Read status |
+|---|---|---|---:|---|
+| `docs/PLAN-AUDIT/01-core-state.md` | .md | 01 â€” Core State, Lifecycle, Snapshots, Budget, SSE, Persistence — **Wave:** PLAN-AUDIT-1 Â· **Seat:** 1 `plan-audit-core` Â· **Target:** `docs/PLAN-v2.md` (454 lines, mtime 2026-11-03 09:24) Â· **Audit clock:** 2026-11-03 09:28:52â€“09:30 -06:00 | 57572 | head-read |
+| `docs/PLAN-AUDIT/02-api-ui.md` | .md | 02 â€” API / UI / SSE / CLI seam audit — **Seat:** 2 `plan-api-ui-seams` Â· **Plan:** `docs/PLAN-v2.md` (SHA256 `8AD8â€¦18F2`) Â· **Wave:** PLAN-AUDIT-1 Â· **Date:** 2026-11-03 09:22â€“09:36 America/Chicago | 21681 | head-read |
+| `docs/PLAN-AUDIT/03-security.md` | .md | 03 â€” Security, Authority, Budget, Isolation, and Consent — **Seat:** 3 `plan-security-authority` (delegated; scope Â§2, Â§4 W02/W05/W15, Â§7.7, Â§13, Â§14, Â§17) | 46075 | head-read |
+| `docs/PLAN-AUDIT/04-learning.md` | .md | PLAN-AUDIT-1 â€” Seat 4 `plan-audit-learning` — **Target:** `docs/PLAN-v2.md` Â§7 (L1/L2/L4/L3), related Â§4 W03/W04/W05, Â§15, Â§17; v2 test matrix Â§10 and DoD Â§11. | 32958 | head-read |
+| `docs/PLAN-AUDIT/05-algorithms.md` | .md | 05 â€” Algorithms & routing-math audit (seat 5) — **Seat:** 5 `plan-routing-math` Â· **Wave:** PLAN-AUDIT-1 Â· **Plan of record:** `docs/PLAN-v2.md` (454 lines, read in full 2026-11-03 09:24â€“09:27) | 32815 | head-read |
+| `docs/PLAN-AUDIT/06-capability.md` | .md | 06 â€” Agent Capability & Traceability Audit (Seat 6) — **Wave:** PLAN-AUDIT-1 Â· **Seat:** `plan-agent-capability` Â· **Checkpoint:** `docs/PLAN-v2.md` (454 lines, 45,327 bytes) Â· **Repo:** empty except this audit workspace; **no product code**, no installs, no API calls, no key access. | 24492 | head-read |
+| `docs/PLAN-AUDIT/07-delivery.md` | .md | Seat 7 â€” Delivery, Gates, and Tooling Audit (`plan-audit-delivery`) — **Plan audited:** `docs/PLAN-v2.md`, SHA-256 `8AD841C5F572A23DAFCF5254A98F9E81B37F6D8BC7AE0B806D6BDEC146B518F2` (454 lines). | 27478 | head-read |
+| `docs/PLAN-AUDIT/08-auditor.md` | .md | PLAN-AUDIT-1 â€” Seat 8 Independent Auditor (First Pass) — **Audited artifact:** `docs/PLAN-v2.md`, SHA-256 `8AD841C5F572A23DAFCF5254A98F9E81B37F6D8BC7AE0B806D6BDEC146B518F2` (454 displayed lines). | 32062 | head-read |
+| `docs/PLAN-AUDIT/WAVE-SHEET.md` | .md | HiveRouter â€” Plan Bug-Fix Wave Sheet — **Wave:** PLAN-AUDIT-1 | 3762 | head-read |

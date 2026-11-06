@@ -1,0 +1,4247 @@
+[
+    {
+        "path":  "config/releases/a.json",
+        "category":  "config",
+        "bytes":  1828,
+        "lines":  34,
+        "summary":  "{ \"stage\": \"a\", \"label\": \"A\", \"paths\": [ \"src/shared/\", \"src/server/config.ts\", \"src/server/index.ts\", \"src/server/app.ts\", \"src/server/env.ts\", \"src/server/db/\", \"src/server/llm/\", \"src/server/pipeline/\", \"src/server/ru",
+        "imports":  [
+
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "config/releases/p6a.json",
+        "category":  "config",
+        "bytes":  1372,
+        "lines":  27,
+        "summary":  "{ \"stage\": \"p6a\", \"label\": \"B1\", \"paths\": [ \"src/shared/\", \"src/server/config.ts\", \"src/server/index.ts\", \"src/server/app.ts\", \"src/server/env.ts\", \"src/server/db/\", \"src/server/llm/\", \"src/server/pipeline/\", \"src/server",
+        "imports":  [
+
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "config/releases/p7.json",
+        "category":  "config",
+        "bytes":  2948,
+        "lines":  51,
+        "summary":  "{ \"stage\": \"p7\", \"label\": \"B2\", \"paths\": [ \"src/\", \"web/\", \"scripts/\", \"test/\", \"e2e/\", \"config/\", \"public/\", \"package.json\", \"playwright.config.ts\" ], \"tables\": [ \"schema_migrations\", \"runs\", \"steps\", \"events\", \"artifac",
+        "imports":  [
+
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "e2e/api-contract.spec.ts",
+        "category":  "e2e",
+        "bytes":  6154,
+        "lines":  121,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "@playwright/test"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "e2e/app.spec.ts",
+        "category":  "e2e",
+        "bytes":  3003,
+        "lines":  68,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "@playwright/test"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "e2e/chat.spec.ts",
+        "category":  "e2e",
+        "bytes":  1401,
+        "lines":  24,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "@playwright/test"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "e2e/mobile-keyboard.spec.ts",
+        "category":  "e2e",
+        "bytes":  4435,
+        "lines":  90,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "@playwright/test",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "e2e/trace-fixes.spec.ts",
+        "category":  "e2e",
+        "bytes":  2218,
+        "lines":  40,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "@playwright/test"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "e2e/ui-audit.spec.ts",
+        "category":  "e2e",
+        "bytes":  27616,
+        "lines":  564,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "@playwright/test",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "e2e/wave17-actions.spec.ts",
+        "category":  "e2e",
+        "bytes":  7513,
+        "lines":  191,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "@playwright/test"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "e2e/wave17-controls.spec.ts",
+        "category":  "e2e",
+        "bytes":  5385,
+        "lines":  158,
+        "summary":  "* Wave 17 regression pins for the three confirmed control/wiring defects. * Each test fails on the pre-fix tree and passes on the repaired tree.",
+        "imports":  [
+                        "@playwright/test"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "scripts/assert-stage.mjs",
+        "category":  "script",
+        "bytes":  13107,
+        "lines":  344,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "scripts/bench-suite.ts",
+        "category":  "script",
+        "bytes":  2938,
+        "lines":  68,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../src/server/agents/registry.js",
+                        "../src/server/config.js",
+                        "../src/server/security/keys.js",
+                        "../src/shared/algorithms.js",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "scripts/build-repo-map.ts",
+        "category":  "script",
+        "bytes":  3805,
+        "lines":  85,
+        "summary":  "* build-repo-map.ts * Lightweight symbol/import map for a generated run (no tree-sitter, no network). * Exit 0 pass, 2 usage, 3 not found, 9 internal.",
+        "imports":  [
+                        "../src/server/config.js",
+                        "../src/server/db/database.js",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "scripts/check-secrets.mjs",
+        "category":  "script",
+        "bytes":  5285,
+        "lines":  169,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "scripts/context-pack-report.ts",
+        "category":  "script",
+        "bytes":  2015,
+        "lines":  58,
+        "summary":  "* context-pack-report.ts * Summarize persisted context packs for a run. Read-only. * Exit 0 pass, 2 usage, 3 not found, 9 internal.",
+        "imports":  [
+                        "../src/server/config.js",
+                        "../src/server/db/database.js",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "scripts/eval-router.ts",
+        "category":  "script",
+        "bytes":  1827,
+        "lines":  45,
+        "summary":  "* eval-router.ts * Offline summary of deterministic route decisions. Read-only; no provider calls. * Exit 0 pass, 6 insufficient data, 9 internal.",
+        "imports":  [
+                        "../src/server/config.js",
+                        "../src/server/db/database.js",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "scripts/integrity-check.ts",
+        "category":  "script",
+        "bytes":  3553,
+        "lines":  73,
+        "summary":  "* integrity-check.ts * Recompute artifact hashes and compare against the stored manifest/registry. * Exit 0 pass, 2 usage, 3 not found, 5 mismatch, 9 internal.",
+        "imports":  [
+                        "../src/server/config.js",
+                        "../src/server/db/database.js",
+                        "node:crypto",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "scripts/key-import.ts",
+        "category":  "script",
+        "bytes":  2641,
+        "lines":  66,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../src/server/config.js",
+                        "../src/server/security/keys.js",
+                        "node:fs"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "scripts/launch-desktop.ps1",
+        "category":  "script",
+        "bytes":  3372,
+        "lines":  80,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "scripts/learn.ts",
+        "category":  "script",
+        "bytes":  3472,
+        "lines":  90,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../src/server/config.js",
+                        "../src/server/db/database.js",
+                        "../src/server/learning/consent.js",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "scripts/learning-admin.ts",
+        "category":  "script",
+        "bytes":  2898,
+        "lines":  88,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../src/server/db/database.js",
+                        "../src/server/learning/index.js",
+                        "node:fs"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "scripts/live-smoke.ts",
+        "category":  "script",
+        "bytes":  2605,
+        "lines":  68,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../src/server/config.js",
+                        "../src/server/llm/client.js",
+                        "../src/server/security/keys.js",
+                        "../src/server/security/redact.js",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "scripts/preflight.ts",
+        "category":  "script",
+        "bytes":  8976,
+        "lines":  311,
+        "summary":  "* Preflight gate. Read-only: it never opens a key, a DB, or the network. * Exit codes: 0 pass, 2 usage, 7 resource/browser/port refusal, 9 internal.",
+        "imports":  [
+                        "node:child_process",
+                        "node:fs",
+                        "node:net",
+                        "node:os",
+                        "node:path",
+                        "node:url"
+                    ],
+        "exports":  [
+                        "collectEnvironment",
+                        "defaultChromePaths",
+                        "evaluatePreflight",
+                        "MIN_DISK_GB",
+                        "MIN_RAM_GB",
+                        "NODE_EXACT",
+                        "NPM_EXACT",
+                        "PreflightCheck",
+                        "PreflightConstraints",
+                        "PreflightEnvironment",
+                        "PreflightResult"
+                    ]
+    },
+    {
+        "path":  "scripts/replay-run.ts",
+        "category":  "script",
+        "bytes":  3161,
+        "lines":  71,
+        "summary":  "* replay-run.ts * Reconstruct a run from persisted events and artifacts. Never calls the LLM. * Exit 0 pass, 2 usage, 3 not found, 4 integrity failure, 9 internal.",
+        "imports":  [
+                        "../src/server/config.js",
+                        "../src/server/db/database.js",
+                        "node:crypto",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "scripts/screenshot.mjs",
+        "category":  "script",
+        "bytes":  1303,
+        "lines":  28,
+        "summary":  "* screenshot.mjs â€” evidence-only UI capture. Not part of the product runtime.",
+        "imports":  [
+                        "@playwright/test",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "scripts/stub-sweep.mjs",
+        "category":  "script",
+        "bytes":  5055,
+        "lines":  166,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "src/server/agents/hash.ts",
+        "category":  "server/agents",
+        "bytes":  3446,
+        "lines":  101,
+        "summary":  "* Hash a UTF-8 string with SHA-256 and return lowercase hex (64 chars).",
+        "imports":  [
+
+                    ],
+        "exports":  [
+                        "sha256"
+                    ]
+    },
+    {
+        "path":  "src/server/agents/overrides.ts",
+        "category":  "server/agents",
+        "bytes":  1575,
+        "lines":  41,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../db/database.js"
+                    ],
+        "exports":  [
+                        "loadPromptOverrides",
+                        "readPromptOverride"
+                    ]
+    },
+    {
+        "path":  "src/server/agents/prompts.ts",
+        "category":  "server/agents",
+        "bytes":  7370,
+        "lines":  163,
+        "summary":  "Fixed boundary; buildSystemPrompt is idempotent around this token.",
+        "imports":  [
+                        "../../shared/types.js",
+                        "./hash.js"
+                    ],
+        "exports":  [
+                        "assertPromptClean",
+                        "buildSystemPrompt",
+                        "buildUserPrompt",
+                        "CONTRACT_DELIMITER",
+                        "escapeEnvelopeAttribute",
+                        "escapeEnvelopeText",
+                        "FORBIDDEN_PROMPT_TOKENS",
+                        "promptHash",
+                        "wrapUntrusted"
+                    ]
+    },
+    {
+        "path":  "src/server/agents/registry.ts",
+        "category":  "server/agents",
+        "bytes":  46715,
+        "lines":  888,
+        "summary":  ".py\u0027, \u0027*",
+        "imports":  [
+                        "../../shared/algorithms.js",
+                        "../../shared/types.js",
+                        "../config.js",
+                        "./hash.js",
+                        "./prompts.js",
+                        "./sources.js",
+                        "zod"
+                    ],
+        "exports":  [
+                        "AgentPlanSchema",
+                        "CandidateDraftSchema",
+                        "capabilities",
+                        "ENGINE_MAP",
+                        "engineForPath",
+                        "EngineResolution",
+                        "FileEmissionSchema",
+                        "getAgent",
+                        "hashPrompt",
+                        "PLAN_AGENT_IDS",
+                        "PlanFileSchema",
+                        "planOutputSchemaFor",
+                        "ProjectPlanSchema",
+                        "PROMPT_HASHES",
+                        "PROMPT_SOURCE_BY_AGENT",
+                        "PROMPT_SOURCE_MAP",
+                        "PROMPTS",
+                        "PromptSourceMapEntry",
+                        "REGISTRY",
+                        "resolveEngine",
+                        "ReviewSchema",
+                        "TestsSchema",
+                        "toFileTasks"
+                    ]
+    },
+    {
+        "path":  "src/server/agents/sources.ts",
+        "category":  "server/agents",
+        "bytes":  4214,
+        "lines":  60,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/types"
+                    ],
+        "exports":  [
+                        "AGENT_SOURCES",
+                        "PromptSource",
+                        "PromptSourceMeta"
+                    ]
+    },
+    {
+        "path":  "src/server/analysis/api.ts",
+        "category":  "server/analysis",
+        "bytes":  4302,
+        "lines":  94,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "./dominators.js",
+                        "./scorecards.js"
+                    ],
+        "exports":  [
+                        "AnalysisInputError",
+                        "parseDominatorRequest",
+                        "parseScorecardsRequest"
+                    ]
+    },
+    {
+        "path":  "src/server/analysis/dominators.ts",
+        "category":  "server/analysis",
+        "bytes":  8613,
+        "lines":  258,
+        "summary":  "The depending file.",
+        "imports":  [
+
+                    ],
+        "exports":  [
+                        "computeDominators",
+                        "DominatorAnalysis",
+                        "DominatorErrorCode",
+                        "DominatorInput",
+                        "DominatorInputError",
+                        "FileDependencyEdge"
+                    ]
+    },
+    {
+        "path":  "src/server/analysis/scorecards.ts",
+        "category":  "server/analysis",
+        "bytes":  5505,
+        "lines":  164,
+        "summary":  "Integer 1..5.",
+        "imports":  [
+
+                    ],
+        "exports":  [
+                        "evaluateScorecards",
+                        "SCORECARD_DIMENSIONS",
+                        "SCORECARD_SPECIALISTS",
+                        "ScorecardDimension",
+                        "ScorecardErrorCode",
+                        "ScorecardInputError",
+                        "ScorecardsInput",
+                        "ScorecardSpecialist",
+                        "ScorecardsResult",
+                        "SpecialistScorecard"
+                    ]
+    },
+    {
+        "path":  "src/server/app.ts",
+        "category":  "runtime",
+        "bytes":  67214,
+        "lines":  1424,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../shared/features.js",
+                        "../shared/refusals.js",
+                        "../shared/types.js",
+                        "./agents/overrides.js",
+                        "./agents/prompts.js",
+                        "./analysis/api.js",
+                        "./analysis/dominators.js",
+                        "./analysis/scorecards.js",
+                        "./chat/events.js",
+                        "./chat/store.js",
+                        "./chat/worker.js",
+                        "./config.js",
+                        "./db/database.js",
+                        "./observability/error-log.js",
+                        "./runs/budget.js",
+                        "./runs/manager.js",
+                        "./runs/recorder.js",
+                        "./search/run-search.js",
+                        "./security/keys.js",
+                        "./security/paths.js",
+                        "./verify/openapi-schema.js",
+                        "@fastify/static",
+                        "@fastify/swagger",
+                        "@fastify/swagger-ui",
+                        "fastify",
+                        "node:child_process",
+                        "node:fs",
+                        "node:os",
+                        "node:path"
+                    ],
+        "exports":  [
+                        "buildApp"
+                    ]
+    },
+    {
+        "path":  "src/server/chat/events.ts",
+        "category":  "server/chat",
+        "bytes":  2709,
+        "lines":  84,
+        "summary":  "Insert one durable projection event inside an existing transaction.",
+        "imports":  [
+                        "../../shared/chat.js",
+                        "../db/database.js",
+                        "../security/redact.js",
+                        "node:crypto",
+                        "node:events"
+                    ],
+        "exports":  [
+                        "appendChatEvent",
+                        "chatEventId",
+                        "countChatEventsAfter",
+                        "getChatEvents",
+                        "lastChatEventSeq",
+                        "publishChatEvents",
+                        "subscribeChat"
+                    ]
+    },
+    {
+        "path":  "src/server/chat/generate.ts",
+        "category":  "server/chat",
+        "bytes":  6074,
+        "lines":  145,
+        "summary":  "* One real provider call for a durable chat job. Budget reservations are scoped * to the cycle ledger and settled on every HTTP attempt; a failed provider call * never leaves a reservation held.",
+        "imports":  [
+                        "../agents/prompts.js",
+                        "../agents/registry.js",
+                        "../config.js",
+                        "../db/database.js",
+                        "../llm/client.js",
+                        "../runs/budget.js",
+                        "./store.js"
+                    ],
+        "exports":  [
+                        "chatFailure",
+                        "ChatUsage",
+                        "generateChatReply",
+                        "GenerateChatReplyInput",
+                        "GenerateChatReplyResult"
+                    ]
+    },
+    {
+        "path":  "src/server/chat/store.ts",
+        "category":  "server/chat",
+        "bytes":  34936,
+        "lines":  827,
+        "summary":  "Events are replayed newest-window-first only when the cursor exceeds the window.",
+        "imports":  [
+                        "../../shared/chat.js",
+                        "../agents/registry.js",
+                        "../config.js",
+                        "../db/database.js",
+                        "./events.js",
+                        "node:crypto",
+                        "node:sqlite"
+                    ],
+        "exports":  [
+                        "ChatCreateThreadInput",
+                        "chatHistoryForJob",
+                        "ChatJobClaim",
+                        "ChatJobOutcome",
+                        "ChatSendMessageInput",
+                        "ChatSendResult",
+                        "chatUserMessageForJob",
+                        "claimNextChatJob",
+                        "createChatThread",
+                        "finishChatJob",
+                        "getChatEventProjection",
+                        "getChatJob",
+                        "getChatJobs",
+                        "getChatSnapshot",
+                        "getChatThread",
+                        "listChatThreads",
+                        "reapExpiredChatJobs",
+                        "requestCancelChatJob",
+                        "sendChatMessage"
+                    ]
+    },
+    {
+        "path":  "src/server/chat/worker.ts",
+        "category":  "server/chat",
+        "bytes":  6723,
+        "lines":  174,
+        "summary":  "Start the one in-process worker. Startup reaps expired leases first.",
+        "imports":  [
+                        "../../shared/chat.js",
+                        "../config.js",
+                        "./generate.js",
+                        "./store.js",
+                        "node:os"
+                    ],
+        "exports":  [
+                        "cancelChatJob",
+                        "ChatGenerator",
+                        "ChatWorkerHandle",
+                        "ProcessChatResult",
+                        "processNextChatJob",
+                        "setChatWorkerId",
+                        "startChatWorker"
+                    ]
+    },
+    {
+        "path":  "src/server/config.ts",
+        "category":  "runtime",
+        "bytes":  2961,
+        "lines":  98,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../shared/features.js",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+                        "config",
+                        "ensureRuntimeDirs"
+                    ]
+    },
+    {
+        "path":  "src/server/context/compaction.ts",
+        "category":  "server/context",
+        "bytes":  15493,
+        "lines":  417,
+        "summary":  "Maximum successful output length in characters. Default 32,000.",
+        "imports":  [
+                        "../../shared/algorithms"
+                    ],
+        "exports":  [
+                        "compactEvidence",
+                        "CompactEvidenceOptions",
+                        "COMPACTION_LIMITS",
+                        "COMPACTION_REFUSAL_CODES",
+                        "CompactionRefusal",
+                        "CompactionRefusalCode",
+                        "CompactionResult"
+                    ]
+    },
+    {
+        "path":  "src/server/context/packer.ts",
+        "category":  "server/context",
+        "bytes":  8734,
+        "lines":  262,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/algorithms"
+                    ],
+        "exports":  [
+                        "CPO_CLAMP",
+                        "CPO_PAGE_RANK",
+                        "packContext",
+                        "pageRank",
+                        "PageRankResult"
+                    ]
+    },
+    {
+        "path":  "src/server/db/database.ts",
+        "category":  "server/db",
+        "bytes":  5965,
+        "lines":  156,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/features.js",
+                        "../config.js",
+                        "./migrations.js",
+                        "node:fs",
+                        "node:path",
+                        "node:sqlite"
+                    ],
+        "exports":  [
+                        "backfillRouteCandidateDisclosure",
+                        "closeDb",
+                        "getDb",
+                        "initDb",
+                        "nowIso",
+                        "openDatabase",
+                        "Stage",
+                        "tableNames",
+                        "tx"
+                    ]
+    },
+    {
+        "path":  "src/server/db/migrations.ts",
+        "category":  "server/db",
+        "bytes":  19445,
+        "lines":  695,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+
+                    ],
+        "exports":  [
+                        "A_SQL",
+                        "CHAT_SQL",
+                        "P6A_SQL",
+                        "P7_SQL",
+                        "SEARCH_SQL"
+                    ]
+    },
+    {
+        "path":  "src/server/env.ts",
+        "category":  "runtime",
+        "bytes":  495,
+        "lines":  13,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "src/server/git/branches.ts",
+        "category":  "server/git",
+        "bytes":  11901,
+        "lines":  293,
+        "summary":  "Optional failed-patch commit. Must already exist in the run workspace.",
+        "imports":  [
+                        "../../shared/types.js",
+                        "node:child_process",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+                        "assertRunWorkspace",
+                        "createIsolationBranch",
+                        "CreateIsolationBranchInput",
+                        "GitBranchError",
+                        "GitBranchErrorCode",
+                        "ISOLATION_BRANCH_PREFIX",
+                        "isolationBranchName",
+                        "listBranches",
+                        "MAX_BRANCH_NAME_LENGTH"
+                    ]
+    },
+    {
+        "path":  "src/server/index.ts",
+        "category":  "runtime",
+        "bytes":  2897,
+        "lines":  77,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../shared/features.js",
+                        "./app.js",
+                        "./chat/worker.js",
+                        "./config.js",
+                        "./db/database.js",
+                        "./observability/error-log.js",
+                        "./pipeline/run.js",
+                        "./runs/budget.js",
+                        "./runs/manager.js",
+                        "./runs/publish.js",
+                        "./security/paths.js",
+                        "node:path"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "src/server/learning/approval.ts",
+        "category":  "server/learning",
+        "bytes":  7668,
+        "lines":  225,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../config.js",
+                        "../db/database.js",
+                        "../security/redact.js",
+                        "./errors.js",
+                        "node:crypto",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+                        "ApprovalAction",
+                        "ApprovalBinding",
+                        "ApprovalService",
+                        "ConsumedApprovalToken",
+                        "createApprovalService",
+                        "IssuedApprovalToken"
+                    ]
+    },
+    {
+        "path":  "src/server/learning/candidates.ts",
+        "category":  "server/learning",
+        "bytes":  9846,
+        "lines":  307,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../db/database.js",
+                        "../security/redact.js",
+                        "./contracts.js",
+                        "./errors.js",
+                        "node:crypto",
+                        "node:sqlite"
+                    ],
+        "exports":  [
+                        "candidateFamilySize",
+                        "CandidateLintResult",
+                        "createVariant",
+                        "getVariant",
+                        "lintCandidate",
+                        "parseCandidateDraft",
+                        "setVariantStatus",
+                        "VariantRecord"
+                    ]
+    },
+    {
+        "path":  "src/server/learning/consent.ts",
+        "category":  "server/learning",
+        "bytes":  3648,
+        "lines":  129,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../db/database.js",
+                        "./contracts.js",
+                        "./errors.js",
+                        "node:crypto",
+                        "node:sqlite"
+                    ],
+        "exports":  [
+                        "consentMatrix",
+                        "ConsentRecord",
+                        "grantConsent",
+                        "isConsentActive",
+                        "latestConsent",
+                        "requireConsent",
+                        "revokeConsent"
+                    ]
+    },
+    {
+        "path":  "src/server/learning/contracts.ts",
+        "category":  "server/learning",
+        "bytes":  5523,
+        "lines":  141,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/types.js",
+                        "zod"
+                    ],
+        "exports":  [
+                        "BLOCK_CASES",
+                        "BOOTSTRAP_ITERATIONS",
+                        "CandidateDraft",
+                        "CandidateDraftSchema",
+                        "CandidateKind",
+                        "CandidateKindSchema",
+                        "ConsentScopeSchema",
+                        "ContextPayloadSchema",
+                        "DEFAULT_SEED",
+                        "DEV_TARGET",
+                        "HOLDOUT_TARGET",
+                        "LEARNING_CONSENT_SCOPES",
+                        "LearningConsentScope",
+                        "LearningProvenance",
+                        "LearningProvenanceSchema",
+                        "MIN_SEALED_BLOCKS",
+                        "PairedOutcome",
+                        "PairedOutcomeSchema",
+                        "PromptPayloadSchema",
+                        "SAFETY_POLICY",
+                        "SAFETY_POLICY_VERSION",
+                        "SealedCase",
+                        "SealedCaseSchema",
+                        "THRESHOLD_BOUNDS",
+                        "ThresholdKey",
+                        "ThresholdKeySchema",
+                        "ThresholdPayloadSchema",
+                        "TraceInput",
+                        "TraceInputSchema"
+                    ]
+    },
+    {
+        "path":  "src/server/learning/errors.ts",
+        "category":  "server/learning",
+        "bytes":  750,
+        "lines":  27,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/refusals.js"
+                    ],
+        "exports":  [
+                        "isLearningError",
+                        "LearningError",
+                        "refuse"
+                    ]
+    },
+    {
+        "path":  "src/server/learning/guard.ts",
+        "category":  "server/learning",
+        "bytes":  3058,
+        "lines":  84,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/refusals.js",
+                        "zod"
+                    ],
+        "exports":  [
+                        "DEFAULT_GUARD_POLICY",
+                        "evaluateLoopGuard",
+                        "GuardDecision",
+                        "GuardPolicy",
+                        "GuardPolicySchema",
+                        "GuardState",
+                        "GuardStateSchema"
+                    ]
+    },
+    {
+        "path":  "src/server/learning/index.ts",
+        "category":  "server/learning",
+        "bytes":  469,
+        "lines":  16,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "./approval.js",
+                        "./candidates.js",
+                        "./consent.js",
+                        "./contracts.js",
+                        "./errors.js",
+                        "./guard.js",
+                        "./metric.js",
+                        "./mining.js",
+                        "./overview.js",
+                        "./promotion.js",
+                        "./repair-memory.js",
+                        "./sealed-pool.js",
+                        "./signatures.js",
+                        "./stats.js",
+                        "./trace-store.js"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "src/server/learning/metric.ts",
+        "category":  "server/learning",
+        "bytes":  1764,
+        "lines":  50,
+        "summary":  "* The only P7 primary metric. Gate pass is deterministic: * all mandatory checks pass, no critical safety finding, every planned file exists, * and syntax explicitly passed. No LLM judge, no inference from prose.",
+        "imports":  [
+                        "../../shared/types.js"
+                    ],
+        "exports":  [
+                        "computeGatePass",
+                        "criticalSafetyFromChecks",
+                        "GatePassInput",
+                        "GatePassResult"
+                    ]
+    },
+    {
+        "path":  "src/server/learning/mining.ts",
+        "category":  "server/learning",
+        "bytes":  3971,
+        "lines":  129,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "./contracts.js",
+                        "./signatures.js",
+                        "./trace-store.js",
+                        "node:sqlite"
+                    ],
+        "exports":  [
+                        "eligibleClusters",
+                        "FailureCluster",
+                        "mineFailures",
+                        "MiningOptions"
+                    ]
+    },
+    {
+        "path":  "src/server/learning/overview.ts",
+        "category":  "server/learning",
+        "bytes":  3216,
+        "lines":  99,
+        "summary":  "* The UI must not treat an incomplete block, a revoked consent, or an * unrelated consent scope as readiness. This is derived from the same * complete-block/active-consent rules the evaluation services enforce.",
+        "imports":  [
+                        "./consent.js",
+                        "./contracts.js",
+                        "node:sqlite"
+                    ],
+        "exports":  [
+                        "buildLearningOverview",
+                        "LearningOverviewView"
+                    ]
+    },
+    {
+        "path":  "src/server/learning/promotion.ts",
+        "category":  "server/learning",
+        "bytes":  28950,
+        "lines":  836,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/refusals.js",
+                        "../db/database.js",
+                        "../security/redact.js",
+                        "./approval.js",
+                        "./candidates.js",
+                        "./consent.js",
+                        "./contracts.js",
+                        "./errors.js",
+                        "./stats.js",
+                        "node:crypto",
+                        "node:sqlite"
+                    ],
+        "exports":  [
+                        "autoRollback",
+                        "computeEvidenceHash",
+                        "evaluatePromotionGate",
+                        "FingerprintStatus",
+                        "GateDecision",
+                        "GateEvidence",
+                        "GateResult",
+                        "getActiveVersion",
+                        "getLastKnownGood",
+                        "getMonitor",
+                        "getPromotion",
+                        "listPromotions",
+                        "loadGateEvidence",
+                        "MonitorObservation",
+                        "MonitorRecord",
+                        "promote",
+                        "PromotionRecord",
+                        "recordMonitorObservation",
+                        "rollback",
+                        "setActiveVersion",
+                        "setLastKnownGood"
+                    ]
+    },
+    {
+        "path":  "src/server/learning/repair-memory.ts",
+        "category":  "server/learning",
+        "bytes":  5488,
+        "lines":  183,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../db/database.js",
+                        "../security/redact.js",
+                        "./errors.js",
+                        "node:crypto",
+                        "node:sqlite"
+                    ],
+        "exports":  [
+                        "listRepairMemory",
+                        "recordRepair",
+                        "recordRepairOutcome",
+                        "RepairEntry",
+                        "retrieveRepairs"
+                    ]
+    },
+    {
+        "path":  "src/server/learning/sealed-pool.ts",
+        "category":  "server/learning",
+        "bytes":  16982,
+        "lines":  524,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../config.js",
+                        "../db/database.js",
+                        "../security/redact.js",
+                        "./consent.js",
+                        "./contracts.js",
+                        "./errors.js",
+                        "node:crypto",
+                        "node:fs",
+                        "node:path",
+                        "node:sqlite"
+                    ],
+        "exports":  [
+                        "assertHoldoutTarget",
+                        "claimSuite",
+                        "createSealedBlock",
+                        "createSuiteFromBlock",
+                        "ensureSealedPoolReady",
+                        "EvalCaseRow",
+                        "EvalSuite",
+                        "getSealedBlock",
+                        "getSuite",
+                        "getSuiteCases",
+                        "getSuiteUse",
+                        "listSealedBlocks",
+                        "loadSealedCase",
+                        "SealedBlock",
+                        "sealedCaseHash",
+                        "SealedPoolCaseRow",
+                        "SuiteReadPurpose",
+                        "SuiteUse"
+                    ]
+    },
+    {
+        "path":  "src/server/learning/signatures.ts",
+        "category":  "server/learning",
+        "bytes":  2973,
+        "lines":  80,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "node:crypto"
+                    ],
+        "exports":  [
+                        "classifyFailure",
+                        "FAILURE_CATEGORIES",
+                        "FailureCategory",
+                        "failureSignature",
+                        "FailureSignatureInput",
+                        "normalizeFailureMessage"
+                    ]
+    },
+    {
+        "path":  "src/server/learning/stats.ts",
+        "category":  "server/learning",
+        "bytes":  4884,
+        "lines":  151,
+        "summary":  "Two-sided exact McNemar p-value on the discordant counts.",
+        "imports":  [
+                        "./contracts.js"
+                    ],
+        "exports":  [
+                        "evaluateScreening",
+                        "Interval",
+                        "mcnemarExact",
+                        "pairedBootstrap",
+                        "ScreeningMetrics",
+                        "wilson"
+                    ]
+    },
+    {
+        "path":  "src/server/learning/trace-store.ts",
+        "category":  "server/learning",
+        "bytes":  10990,
+        "lines":  334,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/types.js",
+                        "../config.js",
+                        "../db/database.js",
+                        "../security/redact.js",
+                        "./contracts.js",
+                        "./errors.js",
+                        "./signatures.js",
+                        "node:crypto",
+                        "node:fs",
+                        "node:path",
+                        "node:sqlite"
+                    ],
+        "exports":  [
+                        "getTrace",
+                        "getTraceByRun",
+                        "listTraces",
+                        "readTracePreview",
+                        "recordTrace",
+                        "recordUserVerdict",
+                        "TraceFilter",
+                        "TracePreview",
+                        "TraceRecord"
+                    ]
+    },
+    {
+        "path":  "src/server/llm/client.ts",
+        "category":  "server/llm",
+        "bytes":  35559,
+        "lines":  1023,
+        "summary":  "Backwards-compatible name used by the first scaffold.",
+        "imports":  [
+                        "../../shared/types.js",
+                        "../config.js",
+                        "../security/keys.js",
+                        "../security/redact.js",
+                        "zod"
+                    ],
+        "exports":  [
+                        "balance",
+                        "chat",
+                        "chatJson",
+                        "ChatMessage",
+                        "ChatOptions",
+                        "ChatRequest",
+                        "ChatResult",
+                        "computeCostUsd",
+                        "createDeepSeekClient",
+                        "DeepSeekBalance",
+                        "DeepSeekBalanceInfo",
+                        "DeepSeekClient",
+                        "DeepSeekClientOptions",
+                        "DeepSeekModelInfo",
+                        "FinishReason",
+                        "isPeakUtc",
+                        "LlmError",
+                        "LlmErrorCode",
+                        "LlmErrorPayload",
+                        "LlmMessage",
+                        "models",
+                        "parseJsonLoose",
+                        "stripFences",
+                        "StructuredChatResult",
+                        "TokenUsageInput"
+                    ]
+    },
+    {
+        "path":  "src/server/llm/index.ts",
+        "category":  "server/llm",
+        "bytes":  139,
+        "lines":  8,
+        "summary":  "* Filename: src/server/llm/index.ts * Dependencies: ./client.js * Run: imported by server modules",
+        "imports":  [
+                        "./client.js"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "src/server/logic/budget-policy.ts",
+        "category":  "server/logic",
+        "bytes":  8496,
+        "lines":  253,
+        "summary":  "* Commit a reservation. `actualMicroUsd === null` means the provider did not * report usage: hold the reserved amount and mark it unknown, not zero.",
+        "imports":  [
+                        "../../shared/refusals",
+                        "zod"
+                    ],
+        "exports":  [
+                        "BUDGET_REFUSAL_CODES",
+                        "BudgetPolicyError",
+                        "BudgetRefusalCode",
+                        "BudgetReservation",
+                        "BudgetReservationSchema",
+                        "BudgetSnapshot",
+                        "BudgetSnapshotSchema",
+                        "BudgetState",
+                        "BudgetStateSchema",
+                        "canAfford",
+                        "commit",
+                        "createBudget",
+                        "MicroUsdSchema",
+                        "release",
+                        "remainingMicroUsd",
+                        "ReservationStatus",
+                        "ReservationStatusSchema",
+                        "reserve",
+                        "snapshot"
+                    ]
+    },
+    {
+        "path":  "src/server/logic/gate-decision.ts",
+        "category":  "server/logic",
+        "bytes":  11360,
+        "lines":  371,
+        "summary":  "* Compute one gate decision. Input is parsed by Zod at the boundary; every * branch is deterministic and total for valid inputs.",
+        "imports":  [
+                        "../../shared/refusals",
+                        "../../shared/types",
+                        "node:crypto",
+                        "zod"
+                    ],
+        "exports":  [
+                        "CHECK_SEVERITY_RANK",
+                        "CHECK_STATUSES",
+                        "decideGate",
+                        "GATE_OUTCOMES",
+                        "GATE_POLICY_NAMES",
+                        "GATE_PRECEDENCE",
+                        "GateAction",
+                        "GateActionSchema",
+                        "GateCheck",
+                        "GateCheckSchema",
+                        "GateCheckStatus",
+                        "GateDecisionError",
+                        "GateDecisionResult",
+                        "GateDecisionSchema",
+                        "GateInput",
+                        "GateInputSchema",
+                        "GateOutcome",
+                        "GatePolicy",
+                        "GatePolicyName",
+                        "GatePolicySchema",
+                        "GateReason",
+                        "GateReasonSchema",
+                        "GateRepairContext",
+                        "GateRepairContextSchema",
+                        "GateRisk",
+                        "GateRiskSchema",
+                        "gateSignature",
+                        "toLegacyGateDecision"
+                    ]
+    },
+    {
+        "path":  "src/server/logic/repair-plan.ts",
+        "category":  "server/logic",
+        "bytes":  8453,
+        "lines":  251,
+        "summary":  "Lexical only: no filesystem access, no symlink check.",
+        "imports":  [
+                        "../../shared/refusals",
+                        "node:crypto",
+                        "zod"
+                    ],
+        "exports":  [
+                        "normalizeRepairPath",
+                        "planRepair",
+                        "REPAIR_PLAN_CODES",
+                        "REPAIR_REFUSAL_CODES",
+                        "REPAIR_SEVERITIES",
+                        "RepairAction",
+                        "RepairActionSchema",
+                        "RepairContext",
+                        "RepairContextSchema",
+                        "RepairFailure",
+                        "RepairFailureSchema",
+                        "RepairPlan",
+                        "RepairPlanCode",
+                        "RepairPlanSchema",
+                        "RepairSeverity"
+                    ]
+    },
+    {
+        "path":  "src/server/logic/run-state.ts",
+        "category":  "server/logic",
+        "bytes":  6720,
+        "lines":  215,
+        "summary":  "A same-value transition is the idempotent no-op; terminal states may not move elsewhere.",
+        "imports":  [
+                        "../../shared/refusals",
+                        "../../shared/types",
+                        "zod"
+                    ],
+        "exports":  [
+                        "allowedNextPhases",
+                        "allowedNextStatuses",
+                        "assertPhaseTransition",
+                        "assertStatusTransition",
+                        "isTerminalPhase",
+                        "isTerminalStatus",
+                        "nextPhase",
+                        "PHASE_TRANSITIONS",
+                        "RunPhaseSchema",
+                        "RunState",
+                        "RunStateSchema",
+                        "RunStateUpdate",
+                        "RunStateUpdateSchema",
+                        "RunStatusSchema",
+                        "RunTransitionError",
+                        "STATUS_TRANSITIONS",
+                        "TERMINAL_PHASES",
+                        "TERMINAL_STATUS_LIST",
+                        "TransitionKind",
+                        "transitionPhase",
+                        "transitionRun",
+                        "transitionStatus"
+                    ]
+    },
+    {
+        "path":  "src/server/observability/error-log.ts",
+        "category":  "server/observability",
+        "bytes":  2717,
+        "lines":  85,
+        "summary":  "Append one redacted structured error record to the durable error log.",
+        "imports":  [
+                        "../config.js",
+                        "../security/redact.js",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+                        "ErrorLogInput",
+                        "ErrorLogOptions",
+                        "recordCrash",
+                        "recordError"
+                    ]
+    },
+    {
+        "path":  "src/server/pipeline/agent-runner.ts",
+        "category":  "server/pipeline",
+        "bytes":  8419,
+        "lines":  232,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/types.js",
+                        "../agents/prompts.js",
+                        "../agents/registry.js",
+                        "../llm/client.js",
+                        "../observability/error-log.js",
+                        "../runs/manager.js",
+                        "zod"
+                    ],
+        "exports":  [
+                        "AgentCallOptions",
+                        "AgentRuntime",
+                        "AgentRuntimeOverride",
+                        "callAgentJson",
+                        "callAgentText",
+                        "engineForTask"
+                    ]
+    },
+    {
+        "path":  "src/server/pipeline/features.ts",
+        "category":  "server/pipeline",
+        "bytes":  1753,
+        "lines":  56,
+        "summary":  "P6a: CCR/route_decisions/route_candidates.",
+        "imports":  [
+                        "../../shared/features.js"
+                    ],
+        "exports":  [
+                        "pipelineCapabilities",
+                        "PipelineFeatures"
+                    ]
+    },
+    {
+        "path":  "src/server/pipeline/patch.ts",
+        "category":  "server/pipeline",
+        "bytes":  10578,
+        "lines":  284,
+        "summary":  "Approximate changed-node count by comparing leaf/leaf-token nodes in AST order.",
+        "imports":  [
+                        "node:crypto",
+                        "node:fs",
+                        "node:path",
+                        "typescript"
+                    ],
+        "exports":  [
+                        "applyPatch",
+                        "changedNodeCount",
+                        "PATCH_LIMITS",
+                        "PatchErrorCode",
+                        "PatchLanguage",
+                        "PatchOptions",
+                        "PatchRequest",
+                        "PatchResult",
+                        "TextPatch"
+                    ]
+    },
+    {
+        "path":  "src/server/pipeline/run.ts",
+        "category":  "server/pipeline",
+        "bytes":  60654,
+        "lines":  1276,
+        "summary":  "* Preserve what the user paid for when a run does not publish. These rows are * explicitly `staged`, live under workspace/staged, and are never presented as * accepted artifacts.",
+        "imports":  [
+                        "../../shared/algorithms.js",
+                        "../../shared/refusals.js",
+                        "../../shared/types.js",
+                        "../agents/prompts.js",
+                        "../agents/registry.js",
+                        "../config.js",
+                        "../context/packer.js",
+                        "../db/database.js",
+                        "../learning/guard.js",
+                        "../observability/error-log.js",
+                        "../quality/confidence.js",
+                        "../quality/rvs.js",
+                        "../routing/ccr.js",
+                        "../runs/budget.js",
+                        "../runs/manager.js",
+                        "../runs/publish.js",
+                        "../runs/recorder.js",
+                        "../runs/snapshot.js",
+                        "../runs/terminal-trace.js",
+                        "../security/paths.js",
+                        "../security/redact.js",
+                        "../vault/bridge.js",
+                        "../verify/verifier.js",
+                        "./agent-runner.js",
+                        "./features.js",
+                        "node:crypto",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+                        "applyRevisions",
+                        "artifactAgentId",
+                        "completionStatus",
+                        "ExecuteContext",
+                        "executeRun",
+                        "persistStagedArtifacts",
+                        "plannedTestFiles",
+                        "recordAgentEvidence",
+                        "recordRunTrace",
+                        "reviewGateChecks",
+                        "revisionFilesForRun"
+                    ]
+    },
+    {
+        "path":  "src/server/prompt/analyst.ts",
+        "category":  "server/prompt",
+        "bytes":  5422,
+        "lines":  107,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/prompt-analysis.js",
+                        "../../shared/types.js",
+                        "../llm/client.js"
+                    ],
+        "exports":  [
+                        "analyzePrompt",
+                        "PromptAnalysisError",
+                        "PromptAnalysisResult"
+                    ]
+    },
+    {
+        "path":  "src/server/quality/confidence.ts",
+        "category":  "server/quality",
+        "bytes":  3281,
+        "lines":  99,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/algorithms"
+                    ],
+        "exports":  [
+                        "computeConfidence"
+                    ]
+    },
+    {
+        "path":  "src/server/quality/rvs.ts",
+        "category":  "server/quality",
+        "bytes":  8089,
+        "lines":  208,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/algorithms"
+                    ],
+        "exports":  [
+                        "DEFAULT_CHECK_SPECS",
+                        "planVerification"
+                    ]
+    },
+    {
+        "path":  "src/server/quality/scheduler.ts",
+        "category":  "server/quality",
+        "bytes":  308,
+        "lines":  15,
+        "summary":  "* RVS module alias. * * The algorithm is implemented in ./rvs.ts; this file keeps the conventional * verify/scheduler import name available without creating a second behavior.",
+        "imports":  [
+                        "./rvs"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "src/server/repair/triage.ts",
+        "category":  "server/repair",
+        "bytes":  9463,
+        "lines":  256,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/algorithms"
+                    ],
+        "exports":  [
+                        "classifyFailure",
+                        "failureSignature",
+                        "FSN",
+                        "jaccard",
+                        "normalizeFailure",
+                        "tokenSet",
+                        "triageFailures"
+                    ]
+    },
+    {
+        "path":  "src/server/retry/allocator.ts",
+        "category":  "server/retry",
+        "bytes":  8175,
+        "lines":  225,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/algorithms"
+                    ],
+        "exports":  [
+                        "decideRetry"
+                    ]
+    },
+    {
+        "path":  "src/server/routing/ccr.ts",
+        "category":  "server/routing",
+        "bytes":  20786,
+        "lines":  602,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/algorithms"
+                    ],
+        "exports":  [
+                        "routeTasks"
+                    ]
+    },
+    {
+        "path":  "src/server/runs/budget.ts",
+        "category":  "server/runs",
+        "bytes":  6604,
+        "lines":  144,
+        "summary":  "* The effective per-run budget in USD. Routing must use this, not the global * MAX_RUN_COST_USD, or it can allocate a plan the run cannot afford before the * first provider call.",
+        "imports":  [
+                        "../config.js",
+                        "../db/database.js"
+                    ],
+        "exports":  [
+                        "BudgetScope",
+                        "canAfford",
+                        "commit",
+                        "estimateCallMicroUsd",
+                        "reapExpired",
+                        "release",
+                        "releaseReservationsForRun",
+                        "Reservation",
+                        "reserve",
+                        "runBudgetUsd",
+                        "scopeCap",
+                        "spentMicro"
+                    ]
+    },
+    {
+        "path":  "src/server/runs/manager.ts",
+        "category":  "server/runs",
+        "bytes":  13154,
+        "lines":  312,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/refusals.js",
+                        "../../shared/types.js",
+                        "../agents/registry.js",
+                        "../config.js",
+                        "../db/database.js",
+                        "../observability/error-log.js",
+                        "./budget.js",
+                        "./recorder.js",
+                        "./snapshot.js",
+                        "./terminal-trace.js",
+                        "node:crypto",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+                        "cancelRun",
+                        "commitLlmCall",
+                        "createRun",
+                        "createRunId",
+                        "CreateRunInput",
+                        "CreateRunResult",
+                        "getActiveRunId",
+                        "markRunning",
+                        "markStartupInterrupted",
+                        "markTerminal",
+                        "maxAffordableOutputTokens",
+                        "promptHashOf",
+                        "releaseLlmCall",
+                        "reserveLlmCall",
+                        "RunContext",
+                        "runWorkspace",
+                        "setExecutor",
+                        "setTraceComplete",
+                        "terminalEventMessage"
+                    ]
+    },
+    {
+        "path":  "src/server/runs/publish.ts",
+        "category":  "server/runs",
+        "bytes":  3219,
+        "lines":  86,
+        "summary":  "Undo a published tree after a post-publish DB/vault failure.",
+        "imports":  [
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+                        "atomicPublishDirectory",
+                        "PublishedTree",
+                        "recoverFinalizeDirectories",
+                        "rollbackPublishedDirectory"
+                    ]
+    },
+    {
+        "path":  "src/server/runs/recorder.ts",
+        "category":  "server/runs",
+        "bytes":  20493,
+        "lines":  499,
+        "summary":  "Number of this run\u0027s events after the cursor (the run\u0027s own rows, not the global seq space).",
+        "imports":  [
+                        "../../shared/types.js",
+                        "../config.js",
+                        "../db/database.js",
+                        "../logic/run-state.js",
+                        "../security/redact.js",
+                        "node:crypto",
+                        "node:events"
+                    ],
+        "exports":  [
+                        "countEventsAfter",
+                        "createRunRow",
+                        "emitEvent",
+                        "finishStep",
+                        "getArtifacts",
+                        "getChecks",
+                        "getEvents",
+                        "getRecentEvents",
+                        "getRun",
+                        "getSteps",
+                        "getUserFeedback",
+                        "insertArtifact",
+                        "insertCheck",
+                        "insertReview",
+                        "insertUsage",
+                        "lastEventId",
+                        "listRuns",
+                        "settleOpenSteps",
+                        "startStep",
+                        "subscribe",
+                        "updateRun",
+                        "usageFields",
+                        "usageTotals"
+                    ]
+    },
+    {
+        "path":  "src/server/runs/snapshot.ts",
+        "category":  "server/runs",
+        "bytes":  4018,
+        "lines":  99,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/types.js",
+                        "../agents/overrides.js",
+                        "../agents/prompts.js",
+                        "../agents/registry.js",
+                        "../config.js",
+                        "../db/database.js",
+                        "node:crypto"
+                    ],
+        "exports":  [
+                        "canonicalJson",
+                        "createSnapshot",
+                        "getSnapshot",
+                        "sha256"
+                    ]
+    },
+    {
+        "path":  "src/server/runs/terminal-trace.ts",
+        "category":  "server/runs",
+        "bytes":  2279,
+        "lines":  54,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/features.js",
+                        "../config.js",
+                        "../db/database.js",
+                        "../learning/trace-store.js",
+                        "../observability/error-log.js",
+                        "./recorder.js",
+                        "node:path"
+                    ],
+        "exports":  [
+                        "recordRunTerminalTrace"
+                    ]
+    },
+    {
+        "path":  "src/server/search/run-search.ts",
+        "category":  "server/search",
+        "bytes":  8239,
+        "lines":  225,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../db/database.js",
+                        "../security/paths.js",
+                        "node:crypto",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+                        "searchRunWorkspace",
+                        "WorkspaceSearchMatch",
+                        "WorkspaceSearchResult"
+                    ]
+    },
+    {
+        "path":  "src/server/security/keys.ts",
+        "category":  "server/security",
+        "bytes":  3335,
+        "lines":  106,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../config.js",
+                        "./redact.js",
+                        "node:crypto",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+                        "clearAppKey",
+                        "keyFingerprint",
+                        "KeySource",
+                        "keyStatus",
+                        "redactedKeyForLog",
+                        "requireKey",
+                        "resolveKey",
+                        "safeKeyLog",
+                        "saveAppKey",
+                        "setKeyForTests"
+                    ]
+    },
+    {
+        "path":  "src/server/security/paths.ts",
+        "category":  "server/security",
+        "bytes":  4816,
+        "lines":  112,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "node:crypto",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+                        "assertAllowedExtension",
+                        "atomicWrite",
+                        "contentHash",
+                        "ensureDir",
+                        "isAllowedExtension",
+                        "listFiles",
+                        "normalizeRel",
+                        "PathError",
+                        "readText",
+                        "safePath"
+                    ]
+    },
+    {
+        "path":  "src/server/security/redact.ts",
+        "category":  "server/security",
+        "bytes":  2194,
+        "lines":  61,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "node:crypto"
+                    ],
+        "exports":  [
+                        "containsSecret",
+                        "fingerprint",
+                        "MASK",
+                        "redactForLog",
+                        "REDACTOR_VERSION",
+                        "redactString",
+                        "redactValue",
+                        "sha256"
+                    ]
+    },
+    {
+        "path":  "src/server/verify/openapi-schema.ts",
+        "category":  "server/verify",
+        "bytes":  6636,
+        "lines":  164,
+        "summary":  "Binary/text routes are not JSON; they still get a typed response schema.",
+        "imports":  [
+
+                    ],
+        "exports":  [
+                        "assertOpenApiResponses",
+                        "decorateOpenApiDocument",
+                        "decorateRouteResponses",
+                        "JSON_ERROR_SCHEMA",
+                        "JSON_SUCCESS_SCHEMA",
+                        "OpenApiDocumentLike",
+                        "OpenApiOperationLike",
+                        "openApiResponseViolations"
+                    ]
+    },
+    {
+        "path":  "src/server/verify/secret-scan.ts",
+        "category":  "server/verify",
+        "bytes":  575,
+        "lines":  21,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../security/redact.js"
+                    ],
+        "exports":  [
+                        "redactContent",
+                        "scanSecrets",
+                        "SecretFinding"
+                    ]
+    },
+    {
+        "path":  "src/server/verify/stub-scan.ts",
+        "category":  "server/verify",
+        "bytes":  2945,
+        "lines":  72,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../security/paths.js",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+                        "scanStagedTree",
+                        "scanText",
+                        "scanTree",
+                        "StubFinding"
+                    ]
+    },
+    {
+        "path":  "src/server/verify/syntax.ts",
+        "category":  "server/verify",
+        "bytes":  9172,
+        "lines":  257,
+        "summary":  "* Minimal environment for the Python AST checker. Never forward provider * credentials (DEEPSEEK_API_KEY, OPENROUTER_API_KEY, AWS/GitHub tokens) or * arbitrary PYTHONPATH injection into a child process.",
+        "imports":  [
+                        "../security/paths.js",
+                        "node:child_process",
+                        "node:fs",
+                        "node:path",
+                        "node:util",
+                        "parse5",
+                        "typescript",
+                        "yaml"
+                    ],
+        "exports":  [
+                        "assertNoBinary",
+                        "checkFileSyntax",
+                        "checkSyntax",
+                        "splitSqlStatements",
+                        "syntaxChildEnv",
+                        "SyntaxResult"
+                    ]
+    },
+    {
+        "path":  "src/server/verify/verifier.ts",
+        "category":  "server/verify",
+        "bytes":  6884,
+        "lines":  161,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../shared/types.js",
+                        "../security/paths.js",
+                        "./secret-scan.js",
+                        "./stub-scan.js",
+                        "./syntax.js",
+                        "node:fs",
+                        "node:path"
+                    ],
+        "exports":  [
+                        "gateStatus",
+                        "mandatoryFailed",
+                        "VerificationPlanCheck",
+                        "verifyStaged"
+                    ]
+    },
+    {
+        "path":  "src/shared/algorithms.ts",
+        "category":  "shared",
+        "bytes":  23991,
+        "lines":  724,
+        "summary":  "Convert a capability path glob to a deterministic workspace-relative matcher.",
+        "imports":  [
+                        "node:crypto",
+                        "zod"
+                    ],
+        "exports":  [
+                        "AgentCapability",
+                        "AgentCapabilitySchema",
+                        "ALGORITHM_REFUSAL_CODES",
+                        "AlgorithmRefusal",
+                        "AlgorithmRefusalCode",
+                        "AlgorithmRefusalSchema",
+                        "CandidateOption",
+                        "CandidateOptionSchema",
+                        "CHECK_STATUSES",
+                        "CheckSpec",
+                        "CheckSpecSchema",
+                        "CheckStatus",
+                        "clamp",
+                        "CONFIDENCE_WEIGHTS",
+                        "ConfidenceInput",
+                        "ConfidenceInputSchema",
+                        "ConfidenceResult",
+                        "ConfidenceResultSchema",
+                        "ContextItem",
+                        "ContextItemSchema",
+                        "ContextPack",
+                        "ContextPackSchema",
+                        "ContextRequest",
+                        "ContextRequestSchema",
+                        "DEFAULT_MODEL_PROFILES",
+                        "Effort",
+                        "EFFORTS",
+                        "FAILURE_CATEGORIES",
+                        "FailureCategory",
+                        "FailureCluster",
+                        "FailureClusterSchema",
+                        "FailureInput",
+                        "FailureInputSchema",
+                        "FailureTriageRequest",
+                        "FailureTriageRequestSchema",
+                        "FailureTriageResult",
+                        "FailureTriageResultSchema",
+                        "FileTask",
+                        "FileTaskSchema",
+                        "FINISH_REASONS",
+                        "FinishReason",
+                        "isSafeRelativePath",
+                        "matchesAnyPathGlob",
+                        "MODEL_IDS",
+                        "ModelId",
+                        "ModelProfile",
+                        "ModelProfileSchema",
+                        "normalizeLanguage",
+                        "OUTPUT_KINDS",
+                        "OutputKind",
+                        "pathGlobToRegExp",
+                        "REPAIR_ACTIONS",
+                        "RepairAction",
+                        "RetryCandidate",
+                        "RetryCandidateSchema",
+                        "RetryDecision",
+                        "RetryDecisionSchema",
+                        "RetryRequest",
+                        "RetryRequestSchema",
+                        "RISK_HINT_WEIGHTS",
+                        "RISK_PATH_WEIGHTS",
+                        "RISK_TIERS",
+                        "RiskFile",
+                        "RiskFileSchema",
+                        "RiskTier",
+                        "roundMicro",
+                        "ROUTE_WEIGHT_PRESETS",
+                        "RoutePolicy",
+                        "RoutePolicySchema",
+                        "RoutePresetSchema",
+                        "RouteRequest",
+                        "RouteRequestSchema",
+                        "RouteResult",
+                        "RouteResultSchema",
+                        "RouteWeights",
+                        "RouteWeightsSchema",
+                        "sha256Hex",
+                        "shortHash",
+                        "STATIC_PSUCCESS_PRIORS",
+                        "TaskRoute",
+                        "TaskRouteSchema",
+                        "THINKING_MODES",
+                        "ThinkingMode",
+                        "VERIFICATION_SUPPORTS",
+                        "VerificationCheck",
+                        "VerificationCheckSchema",
+                        "VerificationPlan",
+                        "VerificationPlanSchema",
+                        "VerificationRequest",
+                        "VerificationRequestSchema",
+                        "VerificationSupport"
+                    ]
+    },
+    {
+        "path":  "src/shared/chat.ts",
+        "category":  "shared",
+        "bytes":  4737,
+        "lines":  164,
+        "summary":  "* Shared live-chat contracts. The server is the source of truth for every * projection; the web client consumes these shapes and never computes run/job * state locally.",
+        "imports":  [
+
+                    ],
+        "exports":  [
+                        "CHAT_EVENT_TYPES",
+                        "CHAT_JOB_STATUSES",
+                        "CHAT_MESSAGE_STATUSES",
+                        "CHAT_ROLES",
+                        "ChatCreateInput",
+                        "ChatEventRecord",
+                        "ChatEventType",
+                        "ChatJobProjection",
+                        "ChatJobStatus",
+                        "ChatMessageProjection",
+                        "ChatMessageStatus",
+                        "ChatRole",
+                        "ChatSendInput",
+                        "ChatSendResult",
+                        "ChatThreadList",
+                        "ChatThreadProjection",
+                        "ChatThreadSnapshot",
+                        "formatChatTokenUsage",
+                        "isChatEventType",
+                        "isChatJobStatus",
+                        "previewContent"
+                    ]
+    },
+    {
+        "path":  "src/shared/features.ts",
+        "category":  "shared",
+        "bytes":  563,
+        "lines":  22,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "zod"
+                    ],
+        "exports":  [
+                        "FEATURES",
+                        "isFeatureEnabled",
+                        "PHASE",
+                        "SCHEMA_VERSION",
+                        "VERSION"
+                    ]
+    },
+    {
+        "path":  "src/shared/prompt-analysis.ts",
+        "category":  "shared",
+        "bytes":  5458,
+        "lines":  133,
+        "summary":  "Exact substring copied from the user prompt; required for source=user.",
+        "imports":  [
+                        "zod"
+                    ],
+        "exports":  [
+                        "normalizePromptAnalysis",
+                        "PROMPT_ACCEPTANCE_STATUSES",
+                        "PROMPT_ANALYSIS_SOURCES",
+                        "PromptAcceptanceCriterion",
+                        "PromptAcceptanceCriterionSchema",
+                        "PromptAmbiguitySchema",
+                        "PromptAnalysis",
+                        "PromptAnalysisSchema",
+                        "PromptRequirement",
+                        "PromptRequirementSchema",
+                        "validatePromptAnalysis"
+                    ]
+    },
+    {
+        "path":  "src/shared/refusals.ts",
+        "category":  "shared",
+        "bytes":  14206,
+        "lines":  135,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+
+                    ],
+        "exports":  [
+                        "codeOfError",
+                        "isRefusalCode",
+                        "refusal",
+                        "RefusalCode",
+                        "RefusalDefinition",
+                        "REFUSALS"
+                    ]
+    },
+    {
+        "path":  "src/shared/run-events.ts",
+        "category":  "shared",
+        "bytes":  3395,
+        "lines":  109,
+        "summary":  "Every name the client registers a listener for.",
+        "imports":  [
+
+                    ],
+        "exports":  [
+                        "MappedRunEvent",
+                        "mapPersistedRunEvents",
+                        "normaliseStreamEvent",
+                        "PersistedRunEventRow",
+                        "RESERVED_EVENT_TYPES",
+                        "RUN_EVENT_TYPES",
+                        "selectVisibleEvents",
+                        "STREAM_EVENT_TYPES"
+                    ]
+    },
+    {
+        "path":  "src/shared/types.ts",
+        "category":  "shared",
+        "bytes":  9089,
+        "lines":  365,
+        "summary":  "Every input file the reviewer declares it inspected. Missing coverage is named by the gate.",
+        "imports":  [
+
+                    ],
+        "exports":  [
+                        "AGENT_IDS",
+                        "AgentCapability",
+                        "AgentDefinition",
+                        "AgentId",
+                        "ApiEnvelope",
+                        "ApiMeta",
+                        "ArtifactRecord",
+                        "CheckResult",
+                        "CheckStatus",
+                        "Effort",
+                        "EFFORTS",
+                        "FileTask",
+                        "GateDecision",
+                        "GeneratedFile",
+                        "MODEL_IDS",
+                        "ModelId",
+                        "OutputKind",
+                        "PlanFile",
+                        "Preset",
+                        "PRESETS",
+                        "ProjectPlan",
+                        "Provenance",
+                        "ReviewResult",
+                        "RouterPlan",
+                        "RUN_PHASES",
+                        "RUN_STATUSES",
+                        "RunEvent",
+                        "RunPhase",
+                        "RunRecord",
+                        "RunSnapshot",
+                        "RunStats",
+                        "RunStatus",
+                        "StepRecord",
+                        "TERMINAL_STATUSES",
+                        "TestOutput",
+                        "THINKING_MODES",
+                        "ThinkingMode",
+                        "UsageRecord",
+                        "VerificationSupport"
+                    ]
+    },
+    {
+        "path":  "test/fixtures/agents/fixtures.ts",
+        "category":  "test",
+        "bytes":  3278,
+        "lines":  137,
+        "summary":  "* Schema fixtures for the agent registry. Kept separate from the tests so the * same valid/invalid cases can be reused by future adapter tests.",
+        "imports":  [
+
+                    ],
+        "exports":  [
+                        "invalidCandidateDraft",
+                        "invalidFileEmission",
+                        "invalidProjectPlan",
+                        "invalidReview",
+                        "invalidRouterPlan",
+                        "invalidTests",
+                        "validCandidateDraft",
+                        "validCartographerPlan",
+                        "validEpicPlan",
+                        "validFileEmission",
+                        "validProjectPlan",
+                        "validReview",
+                        "validRouterPlan",
+                        "validTests"
+                    ]
+    },
+    {
+        "path":  "test/pipeline-qa.test.ts",
+        "category":  "test",
+        "bytes":  5597,
+        "lines":  131,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../src/server/pipeline/run.js",
+                        "../src/server/security/paths.js",
+                        "../src/server/verify/syntax.js",
+                        "../src/server/verify/verifier.js",
+                        "../src/shared/types.js",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/scripts.test.ts",
+        "category":  "test",
+        "bytes":  9737,
+        "lines":  254,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../scripts/preflight",
+                        "node:child_process",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "node:url",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/agent-plan-contract.test.ts",
+        "category":  "test",
+        "bytes":  2493,
+        "lines":  60,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/agents/registry.js",
+                        "../fixtures/agents/fixtures.js",
+                        "node:fs",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/agent-prompt-override.test.ts",
+        "category":  "test",
+        "bytes":  3342,
+        "lines":  84,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/app.js",
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/agent-runtime.test.ts",
+        "category":  "test",
+        "bytes":  6937,
+        "lines":  197,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/pipeline/agent-runner",
+                        "../../src/shared/types.js",
+                        "vitest",
+                        "zod"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/agents.engine.test.ts",
+        "category":  "test",
+        "bytes":  5351,
+        "lines":  108,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/agents/registry.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/agents.hash.test.ts",
+        "category":  "test",
+        "bytes":  1451,
+        "lines":  32,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/agents/hash.js",
+                        "../../src/server/agents/prompts.js",
+                        "../../src/server/agents/registry.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/agents.registry.test.ts",
+        "category":  "test",
+        "bytes":  5745,
+        "lines":  139,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/agents/prompts.js",
+                        "../../src/server/agents/registry.js",
+                        "../../src/shared/types.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/agents.schemas.test.ts",
+        "category":  "test",
+        "bytes":  4350,
+        "lines":  108,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/agents/registry.js",
+                        "../../src/server/config.js",
+                        "../fixtures/agents/fixtures.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/analysis-api.test.ts",
+        "category":  "test",
+        "bytes":  3876,
+        "lines":  93,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/app.js",
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/branches.test.ts",
+        "category":  "test",
+        "bytes":  6989,
+        "lines":  187,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/git/branches.js",
+                        "node:child_process",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/chat-store.test.ts",
+        "category":  "test",
+        "bytes":  10867,
+        "lines":  210,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/chat/store.js",
+                        "../../src/server/db/database.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/chat-usage.test.ts",
+        "category":  "test",
+        "bytes":  1000,
+        "lines":  26,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/shared/chat.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/chat-worker.test.ts",
+        "category":  "test",
+        "bytes":  4498,
+        "lines":  85,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/chat/store.js",
+                        "../../src/server/chat/worker.js",
+                        "../../src/server/db/database.js",
+                        "../../src/server/llm/client.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/checks-identity.test.ts",
+        "category":  "test",
+        "bytes":  4149,
+        "lines":  86,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/app.js",
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "../../src/server/runs/recorder.js",
+                        "../../src/shared/types.js",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/compaction.test.ts",
+        "category":  "test",
+        "bytes":  9316,
+        "lines":  216,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/context/compaction",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/context-excluded.test.ts",
+        "category":  "test",
+        "bytes":  4552,
+        "lines":  128,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/app.js",
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "../../src/server/runs/recorder.js",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/context.test.ts",
+        "category":  "test",
+        "bytes":  6689,
+        "lines":  178,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/context/packer",
+                        "../../src/shared/algorithms",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/dominators.test.ts",
+        "category":  "test",
+        "bytes":  5671,
+        "lines":  150,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/analysis/dominators",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/error-code.test.ts",
+        "category":  "test",
+        "bytes":  2576,
+        "lines":  56,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/llm/client.js",
+                        "../../src/shared/refusals.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/error-log.test.ts",
+        "category":  "test",
+        "bytes":  2007,
+        "lines":  55,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/observability/error-log.js",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/event-contract.test.ts",
+        "category":  "test",
+        "bytes":  8473,
+        "lines":  235,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/shared/run-events.js",
+                        "@shared/run-events",
+                        "node:fs",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/events-window.test.ts",
+        "category":  "test",
+        "bytes":  5266,
+        "lines":  135,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/app.js",
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "../../src/server/runs/recorder.js",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/historical-usage.test.ts",
+        "category":  "test",
+        "bytes":  17166,
+        "lines":  394,
+        "summary":  "Simulate a terminal row written before the terminal-usage fix: terminal, spend still NULL.",
+        "imports":  [
+                        "../../src/server/app.js",
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "../../src/server/pipeline/run.js",
+                        "../../src/server/runs/manager.js",
+                        "../../src/server/runs/recorder.js",
+                        "../../src/shared/types.js",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/http-attempt-hooks.test.ts",
+        "category":  "test",
+        "bytes":  1793,
+        "lines":  56,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/llm/client",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/key-ingress.test.ts",
+        "category":  "test",
+        "bytes":  2290,
+        "lines":  62,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/config.js",
+                        "../../src/server/security/keys.js",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/learning-approval.test.ts",
+        "category":  "test",
+        "bytes":  3432,
+        "lines":  106,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/db/database.js",
+                        "../../src/server/learning/index.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/learning-candidates.test.ts",
+        "category":  "test",
+        "bytes":  4481,
+        "lines":  140,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/db/database.js",
+                        "../../src/server/learning/index.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/learning-cli.test.ts",
+        "category":  "test",
+        "bytes":  2027,
+        "lines":  61,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/db/database.js",
+                        "node:child_process",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/learning-consent-trace.test.ts",
+        "category":  "test",
+        "bytes":  5710,
+        "lines":  175,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/db/database.js",
+                        "../../src/server/learning/index.js",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/learning-mining-repair-guard.test.ts",
+        "category":  "test",
+        "bytes":  5954,
+        "lines":  165,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/db/database.js",
+                        "../../src/server/learning/index.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/learning-overview.test.ts",
+        "category":  "test",
+        "bytes":  2336,
+        "lines":  52,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/db/database.js",
+                        "../../src/server/learning/consent.js",
+                        "../../src/server/learning/overview.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/learning-pool.test.ts",
+        "category":  "test",
+        "bytes":  3849,
+        "lines":  117,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/db/database.js",
+                        "../../src/server/learning/index.js",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/learning-promotion.test.ts",
+        "category":  "test",
+        "bytes":  7937,
+        "lines":  229,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/db/database.js",
+                        "../../src/server/learning/index.js",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/learning-stats.test.ts",
+        "category":  "test",
+        "bytes":  6634,
+        "lines":  201,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/learning/contracts.js",
+                        "../../src/server/learning/index.js",
+                        "../../src/shared/types.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/llm-budget-repair.test.ts",
+        "category":  "test",
+        "bytes":  2111,
+        "lines":  54,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/llm/client",
+                        "vitest",
+                        "zod"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/llm.client.test.ts",
+        "category":  "test",
+        "bytes":  12072,
+        "lines":  412,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/llm/client.js",
+                        "node:http",
+                        "node:net",
+                        "vitest",
+                        "zod"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/logic-budget-policy.test.ts",
+        "category":  "test",
+        "bytes":  3892,
+        "lines":  101,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/logic/budget-policy",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/logic-core.test.ts",
+        "category":  "test",
+        "bytes":  9451,
+        "lines":  233,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/config",
+                        "../../src/server/db/database",
+                        "../../src/server/logic/run-state",
+                        "../../src/server/runs/budget",
+                        "../../src/server/runs/manager",
+                        "../../src/server/runs/recorder",
+                        "../../src/server/security/paths",
+                        "node:crypto",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/logic-gate-decision.test.ts",
+        "category":  "test",
+        "bytes":  7831,
+        "lines":  173,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/logic/gate-decision",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/logic-repair-plan.test.ts",
+        "category":  "test",
+        "bytes":  5558,
+        "lines":  151,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/logic/repair-plan",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/logic-run-state.test.ts",
+        "category":  "test",
+        "bytes":  5521,
+        "lines":  137,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/logic/run-state",
+                        "../../src/shared/types",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/openapi-schema.test.ts",
+        "category":  "test",
+        "bytes":  1764,
+        "lines":  55,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/app",
+                        "../../src/server/config",
+                        "../../src/server/verify/openapi-schema",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/p0-truth.test.ts",
+        "category":  "test",
+        "bytes":  6737,
+        "lines":  176,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/db/database.js",
+                        "../../src/server/pipeline/run.js",
+                        "../../src/server/runs/manager.js",
+                        "../../src/server/runs/recorder.js",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/patch.test.ts",
+        "category":  "test",
+        "bytes":  6585,
+        "lines":  142,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/pipeline/patch.js",
+                        "node:crypto",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "typescript",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/prompt-analysis.test.ts",
+        "category":  "test",
+        "bytes":  3631,
+        "lines":  91,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/shared/prompt-analysis.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/prompt-envelope.test.ts",
+        "category":  "test",
+        "bytes":  1698,
+        "lines":  40,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/agents/prompts.js",
+                        "../../src/server/agents/registry.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/publish.test.ts",
+        "category":  "test",
+        "bytes":  3036,
+        "lines":  77,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/runs/publish.js",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/quality.test.ts",
+        "category":  "test",
+        "bytes":  5694,
+        "lines":  150,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/quality/confidence",
+                        "../../src/server/quality/rvs",
+                        "../../src/shared/algorithms",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/repair.test.ts",
+        "category":  "test",
+        "bytes":  3987,
+        "lines":  106,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/repair/triage",
+                        "../../src/shared/algorithms",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/resume-run.test.ts",
+        "category":  "test",
+        "bytes":  4638,
+        "lines":  126,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/app.js",
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "../../src/server/pipeline/run.js",
+                        "../../src/server/runs/manager.js",
+                        "../../src/server/runs/recorder.js",
+                        "node:fs",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/retry.test.ts",
+        "category":  "test",
+        "bytes":  4030,
+        "lines":  130,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/retry/allocator",
+                        "../../src/shared/algorithms",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/review-coverage.test.ts",
+        "category":  "test",
+        "bytes":  4817,
+        "lines":  135,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/db/database.js",
+                        "../../src/server/pipeline/run.js",
+                        "../../src/server/runs/recorder.js",
+                        "../../src/shared/types.js",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/route-candidate-backfill.test.ts",
+        "category":  "test",
+        "bytes":  1991,
+        "lines":  52,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/db/database.js",
+                        "../../src/server/runs/recorder.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/routing-reason.test.ts",
+        "category":  "test",
+        "bytes":  4582,
+        "lines":  112,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/app.js",
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "../../src/server/runs/recorder.js",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/routing.test.ts",
+        "category":  "test",
+        "bytes":  10558,
+        "lines":  306,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/agents/registry",
+                        "../../src/server/routing/ccr",
+                        "../../src/shared/algorithms",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/run-events-selection.test.ts",
+        "category":  "test",
+        "bytes":  2227,
+        "lines":  55,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/shared/run-events.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/run-search.test.ts",
+        "category":  "test",
+        "bytes":  4012,
+        "lines":  87,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/db/database.js",
+                        "../../src/server/search/run-search.js",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/run-timeout.test.ts",
+        "category":  "test",
+        "bytes":  1681,
+        "lines":  47,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "../../src/server/runs/manager.js",
+                        "../../src/server/runs/recorder.js",
+                        "node:fs",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/run-transition-guard.test.ts",
+        "category":  "test",
+        "bytes":  2757,
+        "lines":  72,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/db/database.js",
+                        "../../src/server/runs/recorder.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/runs-list-api.test.ts",
+        "category":  "test",
+        "bytes":  1468,
+        "lines":  36,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/app.js",
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/scorecards.test.ts",
+        "category":  "test",
+        "bytes":  5533,
+        "lines":  142,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/analysis/scorecards",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/scripts-agents.test.ts",
+        "category":  "test",
+        "bytes":  1712,
+        "lines":  52,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "node:child_process",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/scripts-api.test.ts",
+        "category":  "test",
+        "bytes":  2906,
+        "lines":  84,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/app.js",
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/snapshot-limits.test.ts",
+        "category":  "test",
+        "bytes":  3649,
+        "lines":  96,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/app.js",
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "../../src/server/runs/recorder.js",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/sql-static.test.ts",
+        "category":  "test",
+        "bytes":  2129,
+        "lines":  54,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/verify/syntax.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/startup-interrupt.test.ts",
+        "category":  "test",
+        "bytes":  4860,
+        "lines":  115,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "../../src/server/runs/budget.js",
+                        "../../src/server/runs/manager.js",
+                        "../../src/server/runs/recorder.js",
+                        "../../src/shared/refusals.js",
+                        "../../src/shared/types.js",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/stats-truth.test.ts",
+        "category":  "test",
+        "bytes":  1765,
+        "lines":  60,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/app.js",
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "../../src/server/runs/recorder.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/stub-scan.test.ts",
+        "category":  "test",
+        "bytes":  1273,
+        "lines":  32,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/verify/stub-scan.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/terminal-error-code.test.ts",
+        "category":  "test",
+        "bytes":  2576,
+        "lines":  64,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "../../src/server/llm/client.js",
+                        "../../src/server/runs/manager.js",
+                        "../../src/server/runs/recorder.js",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/terminal-usage.test.ts",
+        "category":  "test",
+        "bytes":  8904,
+        "lines":  212,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/app.js",
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "../../src/server/pipeline/run.js",
+                        "../../src/server/runs/manager.js",
+                        "../../src/server/runs/recorder.js",
+                        "../../src/shared/types.js",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/terminal-writers.test.ts",
+        "category":  "test",
+        "bytes":  7407,
+        "lines":  199,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/app.js",
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "../../src/server/learning/trace-store.js",
+                        "../../src/server/pipeline/run.js",
+                        "../../src/server/runs/manager.js",
+                        "../../src/server/runs/recorder.js",
+                        "../../src/shared/types.js",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/trace-fixes.test.ts",
+        "category":  "test",
+        "bytes":  8490,
+        "lines":  169,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../../src/server/app.js",
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "../../src/server/pipeline/run.js",
+                        "../../src/server/runs/recorder.js",
+                        "../../src/shared/run-events.js",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "test/unit/writer-matrix.test.ts",
+        "category":  "test",
+        "bytes":  20553,
+        "lines":  546,
+        "summary":  "Every captured persisted edge must be legal; a terminal write must close at phase done.",
+        "imports":  [
+                        "../../src/server/config.js",
+                        "../../src/server/db/database.js",
+                        "../../src/server/logic/run-state.js",
+                        "../../src/server/pipeline/run.js",
+                        "../../src/server/runs/manager.js",
+                        "../../src/server/runs/recorder.js",
+                        "../../src/shared/types.js",
+                        "node:fs",
+                        "node:os",
+                        "node:path",
+                        "vitest"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "web/index.html",
+        "category":  "web",
+        "bytes":  488,
+        "lines":  16,
+        "summary":  "\u003c!doctype html\u003e \u003chtml lang=\"en\"\u003e \u003chead\u003e \u003cmeta charset=\"UTF-8\" /\u003e \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /\u003e \u003cmeta name=\"color-scheme\" content=\"light\" /\u003e \u003cmeta name=\"theme-color\" content=\"#FA",
+        "imports":  [
+
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "web/public/favicon.svg",
+        "category":  "web",
+        "bytes":  276,
+        "lines":  6,
+        "summary":  "\u003csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 64 64\" role=\"img\" aria-label=\"HiveRouter\"\u003e \u003crect width=\"64\" height=\"64\" rx=\"14\" fill=\"#FAF9F5\"/\u003e \u003cpath d=\"M14 16h8v13h20V16h8v32h-8V36H22v12h-8z\" fill=\"#B7791F\"/\u003e \u003ccir",
+        "imports":  [
+
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "web/src/App.tsx",
+        "category":  "web",
+        "bytes":  2019,
+        "lines":  53,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "./api",
+                        "./components/AppShell",
+                        "./context",
+                        "./hooks/useApi",
+                        "./pages/AgentsPage",
+                        "./pages/AnalysisPage",
+                        "./pages/ChatPage",
+                        "./pages/LearningPage",
+                        "./pages/NotFoundPage",
+                        "./pages/OverviewPage",
+                        "./pages/RunDetailPage",
+                        "./pages/RunsPage",
+                        "./pages/ScriptsPage",
+                        "./pages/SettingsPage",
+                        "./pages/VaultPage",
+                        "react-router-dom"
+                    ],
+        "exports":  [
+                        "App"
+                    ]
+    },
+    {
+        "path":  "web/src/api-types.ts",
+        "category":  "web",
+        "bytes":  7610,
+        "lines":  371,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "@shared/prompt-analysis",
+                        "@shared/types"
+                    ],
+        "exports":  [
+                        "AgentEvidence",
+                        "AgentRunInput",
+                        "AgentView",
+                        "AnalysisCapabilities",
+                        "AnalysisErrorView",
+                        "ApprovalRequest",
+                        "ApprovalResponse",
+                        "BalanceInfo",
+                        "ConfidenceView",
+                        "ContextItemView",
+                        "ContextPackView",
+                        "ContextView",
+                        "DominatorAnalysisView",
+                        "DominatorEdge",
+                        "FailureClusterView",
+                        "FailuresView",
+                        "HealthResponse",
+                        "KeyStatusResponse",
+                        "LearningOverview",
+                        "LearningRecord",
+                        "MetaResponse",
+                        "PromptAnalysisResponse",
+                        "RawRecord",
+                        "RetriesView",
+                        "RetryAttemptView",
+                        "RouteCandidateView",
+                        "RouteDecisionView",
+                        "RoutingView",
+                        "RunListResponse",
+                        "RunSearchMatch",
+                        "RunSearchResponse",
+                        "RunSnapshotView",
+                        "RunStreamEvent",
+                        "ScorecardInputView",
+                        "ScorecardResultView",
+                        "ScriptCatalogResponse",
+                        "ScriptDryRunResult",
+                        "ScriptInfo",
+                        "ScriptSafety",
+                        "StartRunInput",
+                        "StartRunResponse",
+                        "VaultNode",
+                        "VaultTreeResponse"
+                    ]
+    },
+    {
+        "path":  "web/src/api.ts",
+        "category":  "web",
+        "bytes":  22282,
+        "lines":  699,
+        "summary":  "keep text",
+        "imports":  [
+                        "./api-types",
+                        "@shared/chat",
+                        "@shared/refusals",
+                        "@shared/run-events",
+                        "@shared/types"
+                    ],
+        "exports":  [
+                        "agentBadgeLabel",
+                        "agentIsEnabled",
+                        "analyzeDominators",
+                        "analyzePrompt",
+                        "ApiError",
+                        "auditRun",
+                        "cancelChatJob",
+                        "cancelRun",
+                        "createChatThread",
+                        "downloadRunArchive",
+                        "dryRunScript",
+                        "evaluateScorecards",
+                        "getAgent",
+                        "getAnalysisCapabilities",
+                        "getChatThreadSnapshot",
+                        "getConfidence",
+                        "getContext",
+                        "getFailures",
+                        "getFileContent",
+                        "getHealth",
+                        "getKeyStatus",
+                        "getLearningOverview",
+                        "getMeta",
+                        "getRetries",
+                        "getRouting",
+                        "getRunEvents",
+                        "getRunSnapshot",
+                        "getScripts",
+                        "getSettings",
+                        "getStats",
+                        "getVaultFile",
+                        "getVaultTree",
+                        "isAbortError",
+                        "listAgents",
+                        "listChatThreads",
+                        "listLearningRecords",
+                        "listRuns",
+                        "newIdempotencyKey",
+                        "openRunFolder",
+                        "promoteLearning",
+                        "requestApproval",
+                        "resetAgentPrompt",
+                        "resumeRun",
+                        "reviseRun",
+                        "rollbackLearning",
+                        "runAgent",
+                        "searchRun",
+                        "sendChatMessage",
+                        "startRun",
+                        "updateAgentPrompt"
+                    ]
+    },
+    {
+        "path":  "web/src/components/AppShell.tsx",
+        "category":  "web",
+        "bytes":  8293,
+        "lines":  217,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../context",
+                        "./ui",
+                        "lucide-react",
+                        "react",
+                        "react-router-dom"
+                    ],
+        "exports":  [
+                        "AppShell"
+                    ]
+    },
+    {
+        "path":  "web/src/components/CodeViewer.tsx",
+        "category":  "web",
+        "bytes":  2767,
+        "lines":  88,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "./ui",
+                        "lucide-react",
+                        "prism-react-renderer"
+                    ],
+        "exports":  [
+                        "CodeViewer",
+                        "languageFor"
+                    ]
+    },
+    {
+        "path":  "web/src/components/PromptAnalysisCard.tsx",
+        "category":  "web",
+        "bytes":  6724,
+        "lines":  155,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "@shared/prompt-analysis",
+                        "lucide-react"
+                    ],
+        "exports":  [
+                        "PromptAnalysisCard"
+                    ]
+    },
+    {
+        "path":  "web/src/components/RunComposer.tsx",
+        "category":  "web",
+        "bytes":  11559,
+        "lines":  292,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../api",
+                        "../api-types",
+                        "./PromptAnalysisCard",
+                        "./ui",
+                        "@shared/types",
+                        "lucide-react",
+                        "react"
+                    ],
+        "exports":  [
+                        "RunComposer"
+                    ]
+    },
+    {
+        "path":  "web/src/components/RunTable.tsx",
+        "category":  "web",
+        "bytes":  1885,
+        "lines":  52,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "./ui",
+                        "@shared/types",
+                        "lucide-react",
+                        "react-router-dom"
+                    ],
+        "exports":  [
+                        "RunTable"
+                    ]
+    },
+    {
+        "path":  "web/src/components/ui.tsx",
+        "category":  "web",
+        "bytes":  20157,
+        "lines":  693,
+        "summary":  "While a mutation is in flight the modal owns the outcome and cannot be dismissed.",
+        "imports":  [
+                        "../api",
+                        "@shared/types",
+                        "lucide-react",
+                        "react"
+                    ],
+        "exports":  [
+                        "Card",
+                        "CheckBadge",
+                        "cn",
+                        "ConfirmDialog",
+                        "CopyButton",
+                        "CostMeter",
+                        "EmptyState",
+                        "ErrorPanel",
+                        "EvidenceBadge",
+                        "EvidenceTone",
+                        "formatDate",
+                        "formatDuration",
+                        "formatInteger",
+                        "formatPercent",
+                        "formatUsd",
+                        "humanError",
+                        "InlineNotice",
+                        "JsonPreview",
+                        "KeyValue",
+                        "LoadingPanel",
+                        "LockHint",
+                        "Modal",
+                        "Notice",
+                        "PageHeader",
+                        "SearchField",
+                        "SectionTitle",
+                        "ShieldNote",
+                        "shortId",
+                        "Spinner",
+                        "StageGate",
+                        "StatusBadge",
+                        "SuccessMark",
+                        "TabItem",
+                        "Tabs",
+                        "titleCase"
+                    ]
+    },
+    {
+        "path":  "web/src/context.tsx",
+        "category":  "web",
+        "bytes":  619,
+        "lines":  21,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "./api",
+                        "./api-types",
+                        "react"
+                    ],
+        "exports":  [
+                        "UiContext",
+                        "UiContextValue",
+                        "useUi"
+                    ]
+    },
+    {
+        "path":  "web/src/hooks/useApi.ts",
+        "category":  "web",
+        "bytes":  4075,
+        "lines":  126,
+        "summary":  "retain raw text",
+        "imports":  [
+                        "../api",
+                        "../api-types",
+                        "@shared/run-events",
+                        "react"
+                    ],
+        "exports":  [
+                        "ApiResource",
+                        "ResourceState",
+                        "StreamStatus",
+                        "useApiResource",
+                        "useRunStream"
+                    ]
+    },
+    {
+        "path":  "web/src/hooks/useChatStream.ts",
+        "category":  "web",
+        "bytes":  2104,
+        "lines":  65,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "@shared/chat",
+                        "react"
+                    ],
+        "exports":  [
+                        "ChatStreamStatus",
+                        "useChatStream"
+                    ]
+    },
+    {
+        "path":  "web/src/main.tsx",
+        "category":  "web",
+        "bytes":  411,
+        "lines":  16,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "./App",
+                        "react",
+                        "react-dom/client"
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "web/src/pages/AgentsPage.tsx",
+        "category":  "web",
+        "bytes":  22489,
+        "lines":  534,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../api",
+                        "../api-types",
+                        "../components/CodeViewer",
+                        "../components/ui",
+                        "../hooks/useApi",
+                        "@shared/types",
+                        "lucide-react",
+                        "react",
+                        "react-router-dom"
+                    ],
+        "exports":  [
+                        "AgentsPage"
+                    ]
+    },
+    {
+        "path":  "web/src/pages/AnalysisPage.tsx",
+        "category":  "web",
+        "bytes":  14222,
+        "lines":  319,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../api",
+                        "../api-types",
+                        "../components/ui",
+                        "lucide-react",
+                        "react"
+                    ],
+        "exports":  [
+                        "AnalysisPage"
+                    ]
+    },
+    {
+        "path":  "web/src/pages/ChatPage.tsx",
+        "category":  "web",
+        "bytes":  20681,
+        "lines":  452,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../api",
+                        "../api-types",
+                        "../components/ui",
+                        "../context",
+                        "../hooks/useApi",
+                        "../hooks/useChatStream",
+                        "@shared/chat",
+                        "lucide-react",
+                        "react"
+                    ],
+        "exports":  [
+                        "ChatPage"
+                    ]
+    },
+    {
+        "path":  "web/src/pages/LearningPage.tsx",
+        "category":  "web",
+        "bytes":  33056,
+        "lines":  733,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../api",
+                        "../api-types",
+                        "../components/ui",
+                        "../hooks/useApi",
+                        "lucide-react",
+                        "react",
+                        "react-router-dom"
+                    ],
+        "exports":  [
+                        "LearningPage"
+                    ]
+    },
+    {
+        "path":  "web/src/pages/NotFoundPage.tsx",
+        "category":  "web",
+        "bytes":  438,
+        "lines":  19,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../components/ui",
+                        "react-router-dom"
+                    ],
+        "exports":  [
+                        "NotFoundPage"
+                    ]
+    },
+    {
+        "path":  "web/src/pages/OverviewPage.tsx",
+        "category":  "web",
+        "bytes":  11083,
+        "lines":  282,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../api",
+                        "../components/RunComposer",
+                        "../components/RunTable",
+                        "../components/ui",
+                        "../context",
+                        "../hooks/useApi",
+                        "lucide-react",
+                        "react-router-dom"
+                    ],
+        "exports":  [
+                        "OverviewPage"
+                    ]
+    },
+    {
+        "path":  "web/src/pages/RunDetailPage.tsx",
+        "category":  "web",
+        "bytes":  56063,
+        "lines":  1248,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../api",
+                        "../api-types",
+                        "../components/CodeViewer",
+                        "../components/ui",
+                        "../context",
+                        "../hooks/useApi",
+                        "@shared/run-events",
+                        "@shared/types",
+                        "lucide-react",
+                        "react",
+                        "react-router-dom"
+                    ],
+        "exports":  [
+                        "RunDetailPage"
+                    ]
+    },
+    {
+        "path":  "web/src/pages/RunsPage.tsx",
+        "category":  "web",
+        "bytes":  2856,
+        "lines":  78,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../api",
+                        "../components/RunTable",
+                        "../components/ui",
+                        "../hooks/useApi",
+                        "lucide-react",
+                        "react",
+                        "react-router-dom"
+                    ],
+        "exports":  [
+                        "RunsPage"
+                    ]
+    },
+    {
+        "path":  "web/src/pages/ScriptsPage.tsx",
+        "category":  "web",
+        "bytes":  7883,
+        "lines":  188,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../api",
+                        "../api-types",
+                        "../components/ui",
+                        "../hooks/useApi",
+                        "lucide-react",
+                        "react"
+                    ],
+        "exports":  [
+                        "ScriptsPage"
+                    ]
+    },
+    {
+        "path":  "web/src/pages/SettingsPage.tsx",
+        "category":  "web",
+        "bytes":  8609,
+        "lines":  178,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../api",
+                        "../api-types",
+                        "../components/ui",
+                        "../context",
+                        "../hooks/useApi",
+                        "lucide-react",
+                        "react-router-dom"
+                    ],
+        "exports":  [
+                        "SettingsPage"
+                    ]
+    },
+    {
+        "path":  "web/src/pages/VaultPage.tsx",
+        "category":  "web",
+        "bytes":  4932,
+        "lines":  136,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "../api",
+                        "../api-types",
+                        "../components/ui",
+                        "../hooks/useApi",
+                        "lucide-react",
+                        "react",
+                        "react-markdown",
+                        "remark-gfm"
+                    ],
+        "exports":  [
+                        "VaultPage"
+                    ]
+    },
+    {
+        "path":  "web/src/styles.css",
+        "category":  "web",
+        "bytes":  20533,
+        "lines":  1075,
+        "summary":  "@import \"tailwindcss\"; @theme { --color-canvas: #FAF9F5; --color-ink: #0B1325; --color-ink-soft: #1B2740; --color-hairline: #E5E1D8; --color-amber: #B7791F; --color-paper: #FFFFFF; --font-display: \"Instrument Serif\", Geo",
+        "imports":  [
+
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "web/src/vite-env.d.ts",
+        "category":  "web",
+        "bytes":  38,
+        "lines":  2,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "web/tsconfig.json",
+        "category":  "web",
+        "bytes":  143,
+        "lines":  9,
+        "summary":  "{ \"extends\": \"../tsconfig.json\", \"compilerOptions\": { \"noEmit\": true, \"types\": [\"node\", \"vite/client\"] }, \"include\": [\"src\"] }",
+        "imports":  [
+
+                    ],
+        "exports":  [
+
+                    ]
+    },
+    {
+        "path":  "web/vite.config.ts",
+        "category":  "web",
+        "bytes":  743,
+        "lines":  35,
+        "summary":  "(no extractable prose in first 64 KiB)",
+        "imports":  [
+                        "@tailwindcss/vite",
+                        "@vitejs/plugin-react",
+                        "node:path",
+                        "node:url",
+                        "vite"
+                    ],
+        "exports":  [
+
+                    ]
+    }
+]

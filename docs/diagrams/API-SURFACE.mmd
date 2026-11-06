@@ -1,0 +1,14 @@
+%% API surface — domain map; exact 57 registrations are in API-SURFACE.md
+flowchart LR
+  CLIENT["SPA routes<br/>10"] --> META["Meta / settings<br/>health · meta · settings · key-status<br/>key write → 403"]
+  CLIENT --> RUNS["Runs<br/>create/detail/snapshot/events/stream<br/>files/search/actions"]
+  CLIENT --> AGENTS["Agents<br/>list/detail · prompt overrides<br/>agent run · prompt analyze"]
+  CLIENT --> CHAT["Chat<br/>threads/messages/SSE<br/>job cancel"]
+  CLIENT --> ANALYSIS["Analysis / scripts<br/>dominators · scorecards<br/>catalog · read-only dry-run"]
+  CLIENT --> VAULT["Vault<br/>tree · file preview"]
+  CLIENT --> LEARNING["Learning<br/>overview · approvals/promotions/rollback<br/>refused without evaluator/consent"]
+  RUNS --> RUNSTORE[("runs · steps · events<br/>artifacts · checks · usage")]
+  AGENTS --> REGISTRY[("registry + prompt_versions")]
+  CHAT --> CHATSTORE[("chat_threads/messages/jobs/events")]
+  ANALYSIS --> PURE["pure algorithms<br/>no model/no file read"]
+  LEARNING --> REFUSE["E_LEARNING_* refusals"]

@@ -1,0 +1,26 @@
+%% Data lineage — UI, API, service, store, projections
+flowchart LR
+  INPUT["Operator brief / action"] --> CLIENT["React client<br/>web/src/api.ts"]
+  CLIENT --> ROUTE["Fastify route<br/>validation + refusal"]
+  ROUTE --> MANAGER["run manager<br/>idempotency + active-run + CAS"]
+  MANAGER --> PIPELINE["pipeline<br/>plan · route · context · generate"]
+  PIPELINE --> PROVIDER["DeepSeek<br/>server-side key"]
+  PIPELINE --> VERIFY["static verifier + review gate"]
+  VERIFY --> PUBLISH["atomic publish / staged files"]
+  PIPELINE --> RECORDER["recorder<br/>steps · events · usage · checks · reviews"]
+  RECORDER --> DB[("SQLite WAL")]
+  PUBLISH --> WORKSPACE["run workspace + vault"]
+  RECORDER --> SNAPSHOT["snapshot projection"]
+  DB --> API["API projections"]
+  SNAPSHOT --> API
+  API --> UI["rendered state"]
+  DB --> STATS["/api/stats<br/>NULL/partial truth"]
+  STATS --> UI
+  DB --> SEARCH["FTS5 derived index"]
+  SEARCH --> UI
+  DB --> CHAT["chat jobs/events"]
+  CHAT --> UI
+  DB -.->|no evaluator| LEARN["P7 refusal state"]
+  LEARN --> UI
+  classDef untrusted fill:#fff3cd,stroke:#8a6d3b
+  class INPUT,PROVIDER untrusted

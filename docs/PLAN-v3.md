@@ -642,6 +642,17 @@ Final gates: typecheck PASS; 226 tests / 30 files; 26/26 E2E; build PASS; strict
 - **Gates:** typecheck PASS; **474 tests / 74 files**; build PASS; **44/44 E2E**; strict stage **209 files / 51 tables / 62 routes / 24 scripts**, violations `[]`; preflight PASS (free RAM 2.06 GB, disk 7.76 GB); stub clean 104; secret clean 206; `npm audit --omit=dev` 0.
 - **Residual:** no paid provider call; paid submit/live Stop/resume-success/E_ZIP_EMPTY remain unverified; idempotency-row/run-row atomicity fault injection is not implemented (observed, not reproduced); nested Reset-dialog Escape, `/api/runs` total marker, cancel retry key ignored, and review-path case/`.` policy remain residual; no native CUA.
 
-## 37. Next plan
+## 37. Wave 18 — whole-codebase cartography and live proof (2026-11-05)
 
-Wave 18 is not started. The queued order is **P1-2 read-only repo tools → P1-1 external read-only repo index → P1-3 tool-call loop → P1-5 approval/needs_review → P1-8 patch/compaction/branch wiring → P1-6 checkpoints → P1-7 parallel generation → P1-9 weighted CPM/context projection → P1-4 analysis preset → P2 infrastructure**. Details: `docs/TRACE/WAVE-17/NEXT-STEPS.md`.
+- **Plan:** `docs/WAVE-18-PLAN.md`; **evidence:** `docs/TRACE/WAVE-18/TRACE-SUMMARY.md`; **maps:** `docs/diagrams/index.html`.
+- **Inventory:** all 1,367 baseline tracked files in `docs/CODEBASE-AUDIT/FILE-MANIFEST.json` (617 text + 508 image docs; 70 server, 7 shared, 30 web, 75 tests, 8 E2E, 16 scripts, 3 config, 24 logs); `git ls-files` and manifest counts match.
+- **Data/capability reconciliation:** 51 app table declarations and 57 live SQLite tables (six FTS5 shadow tables); 57 route registrations = 53 unique API paths + 9 SPA paths = 62 stage route strings; 37 agents (28 files, 4 plan, 3 review, 1 tests, 1 text); live read-only census 30 runs, 8 terminal NULL-spend rows, 1 genuinely unaccounted run.
+- **Mermaid:** master map first, then 11 domain maps; all 12 validated via Kroki, exported SVG/PNG, indexed with no CDN; visual review in `docs/diagrams/REVIEW.md`.
+- **Live proof:** native CUA visible-window screenshot and foreground navigation; **15/15** live Playwright trials; **10/10** route console/network sweep. No confirmed product defect in the covered live paths; three probe-locator errors were test-harness corrections, not product fixes.
+- **Capability truth:** repo tools, tool loop, generated-code execution, approval, checkpoints, parallel generation, P7 evaluator, native CUA, MCP, and cloud remain absent/partial and are documented.
+- **Gate:** **474 tests / 74 files**, **44/44 E2E**, stage **209/51/62/24**, verify exit 0, preflight PASS (RAM 1.74 GB, disk 7.71 GB), audit 0; live proof 15/15 + 10/10 sweep.
+- **Residual:** paid submits, live Stop/cancel, mid-run SSE, resume success, `E_ZIP_EMPTY`, and existing-profile CUA automation are UNVERIFIED; no paid provider call or generated-code execution.
+
+## 38. Next plan
+
+Wave 19 is not started. The queued order is **P1-2 read-only repo tools → P1-1 external read-only repo index → P1-3 tool-call loop → P1-5 approval/needs_review → P1-8 patch/compaction/branch wiring → P1-6 checkpoints → P1-7 parallel generation → P1-9 weighted CPM/context projection → P1-4 analysis preset → P2 infrastructure**. Details: `docs/TRACE/WAVE-17/NEXT-STEPS.md`.

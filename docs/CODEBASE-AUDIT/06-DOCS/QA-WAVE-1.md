@@ -1,0 +1,19 @@
+# Docs group: QA-WAVE-1
+
+| File | Type | Title / evidence | Bytes | Read status |
+|---|---|---|---:|---|
+| `docs/QA-WAVE-1/01-core.md` | .md | QA Wave 1 â€” Seat 1 `qa-core` — - **File:** `src/server/runs/budget.ts:40-44` (pre-fix). | 12519 | head-read |
+| `docs/QA-WAVE-1/01-core-r2.md` | .md | QA Wave 1 â€” Round 2, independent logic re-verification (`qa-core-r2`) — **Mode:** read-only re-verification; no product edits. Wrote only this file and `logs/qa-core-r2.md`. | 7322 | head-read |
+| `docs/QA-WAVE-1/02-pipeline.md` | .md | 02 â€” Pipeline, LLM, and Verify QA (Seat 2) — **Checkpoint:** `2026-11-03T10:22:05-06:00` Â· `package-lock` and plan hashes from `docs/QA-WAVE-1/WAVE-SHEET.md`. | 9632 | head-read |
+| `docs/QA-WAVE-1/02-pipeline-r2.md` | .md | 02-pipeline â€” Round 2 Independent Re-Verification (read-only) — **Checkpoint:** `docs/QA-WAVE-1/P1-FIXES.md` (2026-11-03T10:50-06:00). No product edits. Only this report and `logs/qa-pipeline-r2.md` written. | 6128 | head-read |
+| `docs/QA-WAVE-1/03-api.md` | .md | QA Wave 1 â€” Seat 3 `qa-api` report — **Checkpoint:** 2026-11-03T10:22:05-06:00 Â· plan `698C1Bâ€¦27C7` Â· package-lock `ADD08Fâ€¦AFF` | 11790 | head-read |
+| `docs/QA-WAVE-1/04-ui.md` | .md | QA WAVE 1 â€” Seat 4 `qa-ui` report — **Scope:** `web/**` only. No `src/**`, root config, e2e, or server edits. Server was already running; not restarted. | 8073 | head-read |
+| `docs/QA-WAVE-1/05-agents.md` | .md | QA Wave 1 â€” Seat 5 `qa-agents` report — **Scope:** `src/server/agents/**`, `src/server/routing/**`, `src/server/context/**`, `src/server/quality/**`, `src/server/retry/**`, `src/server/repair/**`, `src/shared/algorithms.ts`, five P6a scripts, matching tests. | 8246 | head-read |
+| `docs/QA-WAVE-1/06-learning.md` | .md | QA WAVE 1 â€” Seat 6 `qa-learning` — **Scope:** `src/server/learning/**`, `scripts/learn.ts`, `scripts/eval-router.ts`, `scripts/live-smoke.ts`, new learning tests. | 8334 | head-read |
+| `docs/QA-WAVE-1/07-auditor.md` | .md | QA WAVE 1 â€” Seat 7 Independent Auditor (`qa-auditor`) — **Checkpoint:** 2026-11-03T10:22:05-06:00 Â· plan `698C1Bâ€¦27C7` Â· lock `ADD08Fâ€¦7AFF` | 12441 | head-read |
+| `docs/QA-WAVE-1/07-auditor-r2.md` | .md | QA WAVE 1 â€” Round 2 Independent Auditor (`qa-auditor-r2`) — **Checkpoint:** 2026-11-03T10:51:28-06:00 Â· plan `698C1Bâ€¦27C7` Â· lock `ADD08Fâ€¦7AFF` | 8525 | head-read |
+| `docs/QA-WAVE-1/08-systems-validator.md` | .md | QA WAVE 1 â€” Seat 8 Systems Validator — **Mode:** read-only systems validation. No product edits, no server restart, no installs, no git writes, no key access. Only this report and `logs/qa-systems.md` were written. | 21686 | head-read |
+| `docs/QA-WAVE-1/08-systems-validator-r2.md` | .md | QA WAVE 1 â€” ROUND 2 â€” Seat 8 Systems Validator — **Mode:** read-only independent systems validation. No product edits, no server restart, no installs, no git writes, no key reads. Only this report and `logs/qa-systems-r2.md` were written. | 9913 | head-read |
+| `docs/QA-WAVE-1/P1-FIXES.md` | .md | QA Wave 1 â€” P1 remediation ledger — **Checkpoint after remediation:** 2026-11-03T10:50-06:00 Â· HEAD-equivalent: no git; package-lock SHA256 unchanged `ADD08Fâ€¦7AFF`; plan SHA256 `698C1Bâ€¦27C7`. | 4335 | head-read |
+| `docs/QA-WAVE-1/P1-FIXES-R2.md` | .md | QA Wave 1 â€” Round 2 + final remediation ledger — **Final gates (Lead, current tree):** | 3556 | head-read |
+| `docs/QA-WAVE-1/WAVE-SHEET.md` | .md | HiveRouter QA Wave 1 â€” Wave Sheet — **Checkpoint:** 2026-11-03T10:22:05-06:00 Â· 114 source/test files Â· package-lock SHA256 `ADD08FE57ECD2353ECB99B5AD3DCE231AEBC5B9D2E3C87ECAA2FEBFFC53E7AFF` Â· plan SHA256 `698C1B89613FDA0ECC56AF90C21521705C33BC5CAEC3EA8BD88838C64B0927C7`. | 5991 | head-read |

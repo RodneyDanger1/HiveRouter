@@ -208,7 +208,7 @@ npm run assert-stage -- --stage=p7 --json
 | Typecheck / build | `npm.cmd run verify` — **exit 0** |
 | Browser E2E | `npm.cmd run e2e` — **44 / 44 passed** |
 | Stage allowlist | **209 files / 51 tables / 62 routes / 24 scripts**, violations `[]` |
-| Preflight | **PASS** — free RAM 2.06 GB, disk 7.76 GB, Chrome/Node/npm/port |
+| Preflight | **PASS** — free RAM 1.74 GB, disk 7.71 GB, Chrome/Node/npm/port |
 | Stub sweep | clean (103 files) |
 | Secret scan | clean (206 files) |
 
@@ -301,6 +301,8 @@ Key documents:
 - [Wave 15 UI and truth audit](docs/TRACE/WAVE-15/TRACE-SUMMARY.md)
 - [Wave 16 retry and chat fan-out](docs/TRACE/WAVE-16/TRACE-SUMMARY.md)
 - [Wave 17 two-seat truth audit](docs/TRACE/WAVE-17/TRACE-SUMMARY.md)
+- [Wave 18 codebase audit and live proof](docs/TRACE/WAVE-18/TRACE-SUMMARY.md)
+- [Codebase map and Mermaid diagrams](docs/CODEBASE-AUDIT/00-INDEX.md)
 - [Backlog and test matrix](docs/BACKLOG.md)
 - [Provenance](docs/PROVENANCE.md)
 

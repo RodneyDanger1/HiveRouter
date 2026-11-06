@@ -1,0 +1,111 @@
+%% B2 learning/evaluation schema — 18 app tables
+erDiagram
+  consent_records {
+    TEXT id PK
+    TEXT scope
+    TEXT status
+    TEXT created_at
+  }
+  learning_jobs {
+    TEXT id PK
+    TEXT job_kind
+    TEXT status
+    INTEGER attempts
+  }
+  learning_audit {
+    TEXT id PK
+    TEXT action
+    TEXT actor
+    TEXT payload_json
+  }
+  eval_suites {
+    TEXT id PK
+    TEXT suite_hash
+    TEXT provenance
+    TEXT status
+  }
+  eval_cases {
+    TEXT case_id PK
+    TEXT suite_id FK
+    TEXT split
+    TEXT provenance
+    TEXT content_hash
+    TEXT tombstoned_at
+  }
+  suite_uses {
+    TEXT id PK
+    TEXT suite_id FK
+    TEXT status
+  }
+  sealed_pool {
+    TEXT id PK
+    TEXT case_id
+    TEXT split
+  }
+  sealed_pool_blocks {
+    TEXT block_id PK
+    INTEGER dev_count
+    INTEGER holdout_count
+    TEXT status
+  }
+  eval_runs {
+    TEXT id PK
+    TEXT suite_use_id FK
+    TEXT status
+  }
+  eval_results {
+    TEXT id PK
+    TEXT eval_run_id FK
+    TEXT case_id
+    TEXT outcome
+  }
+  approval_tokens {
+    TEXT jti PK
+    TEXT action
+    TEXT binding_hash
+    TEXT consumed_at
+  }
+  promotions {
+    TEXT id PK
+    TEXT eval_run_id
+    TEXT policy_hash
+    TEXT status
+  }
+  post_promotion_monitor {
+    TEXT id PK
+    TEXT promotion_id FK
+    TEXT status
+    TEXT evidence_json
+  }
+  traces {
+    TEXT id PK
+    TEXT run_id
+    TEXT outcome
+    TEXT evidence_json
+  }
+  repair_memory {
+    TEXT id PK
+    TEXT signature
+    TEXT outcome
+  }
+  variants {
+    TEXT id PK
+    TEXT policy_hash
+    TEXT status
+  }
+  feedback {
+    TEXT id PK
+    TEXT run_id
+    TEXT rating
+  }
+  user_edits {
+    TEXT id PK
+    TEXT artifact_id
+    TEXT diff_json
+  }
+  eval_suites ||--o{ eval_cases : contains
+  eval_suites ||--o{ suite_uses : uses
+  suite_uses ||--o{ eval_runs : runs
+  eval_runs ||--o{ eval_results : results
+  promotions ||--o{ post_promotion_monitor : monitors
+  consent_records ||--o{ eval_cases : provenance

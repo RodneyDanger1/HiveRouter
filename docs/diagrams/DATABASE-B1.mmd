@@ -1,0 +1,87 @@
+%% B1 routing/context/quality schema — 11 app tables
+erDiagram
+  route_decisions {
+    TEXT id PK
+    TEXT run_id FK
+    TEXT task_id
+    TEXT reason
+    TEXT features_json
+    TEXT candidates_json
+  }
+  route_candidates {
+    TEXT id PK
+    TEXT run_id FK
+    TEXT task_id
+    TEXT agent_id
+    TEXT model
+    TEXT thinking
+    TEXT effort
+    INTEGER chosen
+  }
+  agent_stats {
+    TEXT agent_id PK
+    INTEGER attempts
+    INTEGER successes
+    REAL cost_usd
+  }
+  context_packs {
+    TEXT id PK
+    TEXT run_id FK
+    TEXT task_id
+    TEXT pack_json
+    TEXT prefix_hash
+  }
+  context_manifests {
+    TEXT id PK
+    TEXT run_id FK
+    TEXT manifest_json
+  }
+  failure_signatures {
+    TEXT id PK
+    TEXT cluster_id
+    TEXT category
+    TEXT language
+    TEXT signature
+  }
+  failure_occurrences {
+    TEXT id PK
+    TEXT signature_id FK
+    TEXT run_id
+    TEXT task_id
+  }
+  verification_plans {
+    TEXT id PK
+    TEXT run_id FK
+    TEXT plan_json
+  }
+  confidence_records {
+    TEXT id PK
+    TEXT run_id FK
+    TEXT decision
+    REAL score
+    TEXT components_json
+  }
+  retry_attempts {
+    TEXT id PK
+    TEXT run_id FK
+    TEXT task_id
+    INTEGER attempt
+    TEXT outcome
+  }
+  script_runs {
+    TEXT id PK
+    TEXT script_id
+    TEXT status
+    TEXT output_json
+  }
+  route_decisions ||--o{ route_candidates : ranks
+  failure_signatures ||--o{ failure_occurrences : occurs
+  route_decisions }o--|| runs : writes
+  context_packs }o--|| runs : packs
+  context_manifests }o--|| runs : manifests
+  verification_plans }o--|| runs : plans
+  confidence_records }o--|| runs : gauges
+  retry_attempts }o--|| runs : retries
+  runs {
+    TEXT id PK
+  }

@@ -1,0 +1,41 @@
+%% Capability map — claims to evidence state; no tool loop exists
+flowchart LR
+  subgraph WORK["Works"]
+    GEN["Bounded generation<br/>37 personas · max 24 files"]
+    LEDGER["Run ledger · events · snapshots<br/>terminal truth"]
+    PUB["Atomic publish + staged retention"]
+    VERIFY["Static verification<br/>no execution"]
+    CHAT["Durable chat jobs<br/>leases · SSE · cap 3"]
+    SEARCH["FTS5 terminal-run search<br/>derived index"]
+    ANALYSIS["Static analysis API/UI<br/>dominators · scorecards"]
+    KEY["Local key ingress<br/>server-side only"]
+  end
+  subgraph PARTIAL["Partial / module only"]
+    ROUTE["CCR routing<br/>binary critical path"]
+    CONTEXT["CPO context<br/>projection provenance partial"]
+    REVIEW["Review coverage + gate<br/>line grounding partial"]
+    RESUME["Staged-file resume<br/>no mid-run checkpoints"]
+    PATCH["Patch · compaction · branch<br/>tested modules, not wired"]
+    MOBILE["Mobile/keyboard<br/>open-nav focus trap partial"]
+  end
+  subgraph ABSENT["Absent / refused"]
+    TOOLS["Repo read/search tools"]
+    LOOP["Tool-call loop"]
+    EXEC["Generated-code execution"]
+    APPROVAL["Approval / needs_review producer"]
+    CHECKPOINT["Full checkpoints"]
+    PARALLEL["Parallel generation"]
+    EVAL["P7 evaluator"]
+    PROMOTE["P7 promotion/rollback<br/>unreachable"]
+    CUA["Native GUI/CUA capability<br/>external test tooling only"]
+    CLOUD["Multi-user/cloud · native .exe"]
+  end
+  WORK -->|truth boundary| PARTIAL
+  PARTIAL -->|not shipped| ABSENT
+  REVIEW -->|gate evidence| LEDGER
+  VERIFY -->|checks| LEDGER
+  PUB -->|artifacts| LEDGER
+  CHAT -->|jobs| LEDGER
+  KEY -->|configured fingerprint| CHAT
+  EVAL -.->|no producer| PROMOTE
+  TOOLS -.->|needed by| LOOP

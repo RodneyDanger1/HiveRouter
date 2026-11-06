@@ -1,0 +1,39 @@
+%% Phase machine — source: src/server/logic/run-state.ts
+stateDiagram-v2
+  [*] --> intake
+  intake --> planning
+  intake --> cleaning
+  intake --> generating
+  intake --> finalizing
+  planning --> routing
+  planning --> generating
+  planning --> finalizing
+  routing --> generating
+  routing --> finalizing
+  generating --> cleaning
+  generating --> hardening
+  generating --> testing
+  generating --> verifying
+  generating --> finalizing
+  cleaning --> hardening
+  cleaning --> testing
+  cleaning --> verifying
+  cleaning --> finalizing
+  hardening --> testing
+  hardening --> verifying
+  hardening --> finalizing
+  testing --> verifying
+  testing --> finalizing
+  verifying --> repairing
+  verifying --> finalizing
+  repairing --> verifying
+  repairing --> finalizing
+  finalizing --> done
+  done --> [*]
+  note right of intake
+    Different presets enter different phases:
+    full-build → planning
+    revise/audit → cleaning
+    adhoc/resume → generating
+    blueprint → planning/finalizing
+  end note

@@ -1,0 +1,58 @@
+%% Chat and derived run-search schema — 6 app tables
+erDiagram
+  chat_threads {
+    TEXT id PK
+    TEXT title
+    TEXT agent_id
+    TEXT status
+    TEXT updated_at
+    TEXT last_job_id
+  }
+  chat_messages {
+    TEXT id PK
+    TEXT thread_id FK
+    INTEGER seq
+    TEXT role
+    TEXT content
+    TEXT status
+    TEXT request_key
+  }
+  chat_jobs {
+    TEXT id PK
+    TEXT thread_id FK
+    TEXT message_id FK
+    TEXT user_message_id FK
+    TEXT agent_id
+    TEXT status
+    INTEGER attempts
+    INTEGER max_attempts
+    TEXT lease_owner
+    TEXT lease_expires_at
+    REAL cost_usd
+  }
+  chat_events {
+    INTEGER seq PK
+    TEXT thread_id FK
+    TEXT type
+    TEXT payload_json
+  }
+  run_search_docs {
+    INTEGER id PK
+    TEXT run_id
+    TEXT path
+    TEXT content
+  }
+  run_search_index {
+    TEXT run_id PK
+    TEXT workspace_signature
+    INTEGER indexed_files
+    TEXT indexed_at
+  }
+  chat_threads ||--o{ chat_messages : contains
+  chat_threads ||--o{ chat_jobs : queues
+  chat_threads ||--o{ chat_events : projects
+  chat_messages ||--|| chat_jobs : answers
+  run_search_docs }o--o{ run_search_fts : indexed_by
+  run_search_fts {
+    TEXT content
+  }

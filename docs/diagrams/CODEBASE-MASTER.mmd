@@ -1,0 +1,99 @@
+%% HiveRouter master map — Wave 18 draft
+%% Source of truth: current tracked tree at e0d522e plus live UI observation.
+%% This first map is intentionally folder/subsystem-level; the exhaustive
+%% file manifest and domain maps follow the codebase audit.
+flowchart LR
+  subgraph CLIENT["Operator console — web/src · 10 SPA routes"]
+    UI_OVERVIEW["Overview<br/>composer + stats"]
+    UI_AGENTS["Agents<br/>37 registry cards"]
+    UI_RUNS["Runs + Run detail<br/>9 tabs"]
+    UI_CHAT["Chat<br/>threads + jobs"]
+    UI_ANALYSIS["Analysis<br/>dominators + scorecards"]
+    UI_SCRIPTS["Scripts<br/>catalog + dry-run"]
+    UI_VAULT["Vault<br/>tree + preview"]
+    UI_SETTINGS["Settings<br/>key status"]
+    UI_LEARNING["Learning<br/>refusal state"]
+  end
+
+  subgraph API["Fastify app — src/server/app.ts · 57 route handlers"]
+    API_RUNS["/api/runs<br/>create, detail, events, search, actions"]
+    API_AGENTS["/api/agents<br/>registry + prompt overrides"]
+    API_CHAT["/api/chat<br/>threads, messages, SSE"]
+    API_ANALYSIS["/api/analysis<br/>bounded pure operations"]
+    API_SCRIPTS["/api/scripts<br/>catalog + dry-run"]
+    API_VAULT["/api/vault<br/>tree + file"]
+    API_OPS["/api/settings, /api/stats,<br/>/api/health, /api/meta"]
+  end
+
+  subgraph RUN["Run orchestration"]
+    MGR["run manager<br/>one active run · CAS terminal writes"]
+    PIPE["staged pipeline<br/>plan → route → context → generate<br/>clean → harden → test → verify → repair → finalize"]
+    SNAP["snapshot + event ledger"]
+    PUB["atomic publish / staged retention"]
+  end
+
+  subgraph DECIDE["Decision + verification"]
+    CCR["CCR router<br/>DAG · budget DP"]
+    CPO["CPO context packer<br/>PageRank · knapsack"]
+    RVS["RVS static verifier<br/>no generated-code execution"]
+    GATE["review + gate decision<br/>critical findings fail"]
+    REPAIR["bounded repair<br/>FSN / CRA"]
+    CCA["confidence<br/>provisional"]
+  end
+
+  subgraph STORE["Data — node:sqlite WAL · 51 tables"]
+    DB_RUNS[("runs · steps · events<br/>artifacts · checks · reviews")]
+    DB_USAGE[("usage · budget_reservations<br/>traces · gate_decisions")]
+    DB_ROUTE[("route_decisions · route_candidates<br/>context_* · confidence_*")]
+    DB_CHAT[("chat_threads · chat_messages<br/>chat_jobs · chat_events")]
+    DB_LEARN[("eval_* · sealed_pool* · promotions<br/>approval_tokens · learning_*")]
+    DB_SEARCH[("run_search_docs + FTS5<br/>derived, disposable")]
+  end
+
+  subgraph FILES["Runtime filesystem"]
+    WS["run workspace<br/>staging + published tree"]
+    STAGED["staged/ retained evidence"]
+    VAULT["vault reports / logs"]
+    SEARCHIDX["FTS5 index"]
+  end
+
+  subgraph AI["External boundary"]
+    DS["DeepSeek Chat Completions<br/>server-side key only"]
+  end
+
+  CLIENT -->|same-origin HTTP + SSE| API
+  API --> MGR
+  API --> API_CHAT
+  MGR --> PIPE
+  MGR --> SNAP
+  PIPE --> DECIDE
+  PIPE -->|untrusted proposal| DS
+  DECIDE --> RVS
+  RVS --> GATE
+  GATE --> REPAIR
+  REPAIR --> PIPE
+  PIPE --> PUB
+  PUB --> WS
+  PUB --> STAGED
+  PUB --> VAULT
+  SNAP --> DB_RUNS
+  MGR --> DB_RUNS
+  PIPE --> DB_USAGE
+  DECIDE --> DB_ROUTE
+  API_CHAT --> DB_CHAT
+  API_ANALYSIS --> DECIDE
+  API_SCRIPTS -->|read-only| PIPE
+  API_VAULT --> VAULT
+  DB_SEARCH --- SEARCHIDX
+  SEARCHIDX --- WS
+  DB_LEARN -.->|refused until evaluator + consent| API_OPS
+  API_OPS --> UI_SETTINGS
+  UI_OVERVIEW --> API_RUNS
+  UI_AGENTS --> API_AGENTS
+  UI_RUNS --> API_RUNS
+  UI_CHAT --> API_CHAT
+  UI_ANALYSIS --> API_ANALYSIS
+  UI_SCRIPTS --> API_SCRIPTS
+  UI_VAULT --> API_VAULT
+  UI_LEARNING --> API_OPS
+  UI_SETTINGS --> API_OPS
