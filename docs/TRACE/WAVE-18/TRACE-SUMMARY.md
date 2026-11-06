@@ -1,7 +1,7 @@
 # Wave 18 — whole-codebase cartography and live proof
 
 Date: 2026-11-05
-Baseline: `e0d522e` — 474 tests / 74 files; 44/44 E2E; stage 209/51/62/24; verify green.
+Baseline: `e0d522e` — 474 tests / 74 files; 44/44 E2E; stage 209/51/62/24; verify green. Audit commit: `95a71f1`.
 Server: `http://127.0.0.1:8787` (B2); native Chrome window visible; Playwright headless harness separate.
 
 ## Delivered
@@ -31,7 +31,7 @@ Paid submits, live Stop/cancel, mid-run SSE, resume success, `E_ZIP_EMPTY`, exis
 
 ## Gate
 
-Final gate: **474 tests / 74 files**, **44/44 E2E**, stage **209/51/62/24**, verify exit 0, preflight PASS (RAM 1.74 GB, disk 7.71 GB), audit 0. Commit/push recorded below after commit.
+Final gate: **474 tests / 74 files**, **44/44 E2E**, stage **209/51/62/24**, verify exit 0, preflight PASS (RAM 1.74 GB, disk 7.71 GB), audit 0. Commit `95a71f1`; push recorded after the evidence commit.
 
 ```text
 npm.cmd test

@@ -30,7 +30,7 @@ Status labels: `VERIFIED` (command/output read), `READ` (file inspected), `UNVER
 | C-022 | Paid submits and live destructive paths are unverified | no provider call/destructive action | UNVERIFIED |
 | C-023 | Existing-profile CUA browser automation is unverified | consent refusal; native CUA only | UNVERIFIED |
 | C-024 | Native app/CUA capability inside HiveRouter is absent | product code has no browser driver | VERIFIED |
-| C-025 | Full final gate is green | `npm.cmd run verify` 474/74 + build + stub 104 + secret 206; E2E 44/44; stage 209/51/62/24; preflight PASS RAM 1.74 GB/disk 7.71 GB; audit 0 | VERIFIED |
+| C-026 | Wave 18 audit/maps are committed | `95a71f1` — 145 files, docs/diagrams/audit; working tree clean before evidence follow-up | VERIFIED |\n| C-025 | Full final gate is green | `npm.cmd run verify` 474/74 + build + stub 104 + secret 206; E2E 44/44; stage 209/51/62/24; preflight PASS RAM 1.74 GB/disk 7.71 GB; audit 0 | VERIFIED |
 
 ## Contradictions checked
 
